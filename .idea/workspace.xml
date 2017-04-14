@@ -2,6 +2,221 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e0961963-9331-4abf-baf4-398e09a8d08a" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/apps-512-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/calendar-512-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/circle-empty-512-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/circle-fill-512-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/clock-512-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/dock_apps-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/dock_email-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/dock_facebook-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/dock_health-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/dock_instagram-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/dock_map-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/dock_music-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/dock_news-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/dock_schedule-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/dock_settings-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/dock_twitter-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/dock_youtube-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/email-512-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/facebook-512-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/hearts-512-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/instagram-512-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/keyboard-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/language-512-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/location-512-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/lock-512-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/map-512-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/music-512-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/music-left-512-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/music-pause-512-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/music-repeat-512-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/music-right-512-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/music-shuffle-512-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/news-512-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/numpad-512-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/party-cloudy-512-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/play-512-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/power-512-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/schedule-512-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/scrollbar-512-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/settings-512-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/sleep-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/toggle-left-512-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/toggle-right-512-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/triangle-down-512-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/triangle-up-512-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/twitter-512-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/user-512-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/weight-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/wifi-512-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/wifi-signal-full-512-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/wifi-signal-half-512-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/wifi-signal-low-512-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/bmp/youtube-512-inverted.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/apps-512-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/calendar-512-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/circle-empty-512-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/circle-fill-512-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/clock-512-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/dock_apps-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/dock_email-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/dock_facebook-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/dock_health-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/dock_instagram-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/dock_map-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/dock_music-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/dock_news-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/dock_schedule-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/dock_settings-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/dock_twitter-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/dock_youtube-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/email-512-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/facebook-512-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/hearts-512-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/instagram-512-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/keyboard-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/language-512-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/location-512-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/lock-512-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/map-512-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/music-512-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/music-left-512-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/music-pause-512-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/music-repeat-512-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/music-right-512-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/music-shuffle-512-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/news-512-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/numpad-512-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/party-cloudy-512-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/play-512-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/power-512-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/schedule-512-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/scrollbar-512-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/settings-512-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/sleep-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/toggle-left-512-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/toggle-right-512-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/triangle-down-512-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/triangle-up-512-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/twitter-512-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/user-512-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/weight-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/wifi-512-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/wifi-signal-full-512-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/wifi-signal-half-512-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/wifi-signal-low-512-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/inverted/png/youtube-512-inverted.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/apps-512.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/calendar-512.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/circle-empty-512.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/circle-fill-512.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/clock-512.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/dock_apps.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/dock_email.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/dock_facebook.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/dock_health.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/dock_instagram.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/dock_map.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/dock_music.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/dock_news.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/dock_schedule.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/dock_settings.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/dock_twitter.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/dock_youtube.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/email-512.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/facebook-512.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/hearts-512.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/instagram-512.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/keyboard.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/language-512.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/location-512.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/lock-512.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/map-512.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/music-512.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/music-left-512.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/music-pause-512.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/music-repeat-512.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/music-right-512.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/music-shuffle-512.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/news-512.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/numpad-512.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/party-cloudy-512.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/play-512.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/power-512.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/schedule-512.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/scrollbar-512.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/settings-512.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/sleep.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/toggle-left-512.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/toggle-right-512.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/triangle-down-512.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/triangle-up-512.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/twitter-512.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/user-512.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/weight.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/wifi-512.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/wifi-signal-full-512.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/wifi-signal-half-512.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/wifi-signal-low-512.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/bmp/youtube-512.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/album.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/apps-512.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/calendar-512.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/circle-empty-512.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/circle-fill-512.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/clock-512.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/dock_apps.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/dock_email.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/dock_facebook.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/dock_health.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/dock_instagram.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/dock_map.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/dock_music.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/dock_news.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/dock_schedule.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/dock_settings.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/dock_twitter.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/dock_youtube.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/email-512.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/facebook-512.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/hearts-512.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/instagram-512.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/keyboard.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/language-512.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/location-512.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/lock-512.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/map-512.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/music-512.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/music-left-512.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/music-pause-512.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/music-repeat-512.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/music-right-512.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/music-shuffle-512.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/news-512.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/news.PNG" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/numpad-512.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/party-cloudy-512.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/play-512.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/power-512.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/schedule-512.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/scrollbar-512.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/settings-512.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/sleep.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/toggle-left-512.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/toggle-right-512.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/traffic.PNG" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/triangle-down-512.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/triangle-up-512.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/twitter-512.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/user-512.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/weight.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/wifi-512.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/wifi-signal-full-512.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/wifi-signal-half-512.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/wifi-signal-low-512.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/icons/normal/png/youtube-512.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MirrorUI.iws" />
@@ -24,58 +239,7 @@
     <favorites_list name="MirrorUI" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="processing.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/processing.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="15" selection-start-line="3" selection-start-column="15" selection-end-line="3" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="home.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/home.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="41" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MirrorUI.pde" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MirrorUI.pde">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="proj2.pde" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/proj2.pde">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -90,6 +254,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/MirrorUI.pde" />
+        <option value="$PROJECT_DIR$/ActionListener.pde" />
         <option value="$PROJECT_DIR$/home.html" />
       </list>
     </option>
@@ -101,7 +267,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="9" />
+    <option name="x" value="35" />
     <option name="y" value="23" />
     <option name="width" value="1276" />
     <option name="height" value="777" />
@@ -168,6 +334,330 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/apps-512-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/calendar-512-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/circle-empty-512-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/circle-fill-512-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/clock-512-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/dock_apps-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/dock_email-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/dock_facebook-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/dock_health-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/dock_instagram-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/dock_map-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/dock_music-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/dock_news-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/dock_schedule-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/dock_settings-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/dock_twitter-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/dock_youtube-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/email-512-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/facebook-512-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/hearts-512-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/instagram-512-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/keyboard-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/language-512-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/location-512-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/lock-512-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/map-512-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/music-512-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/music-left-512-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/music-pause-512-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/music-repeat-512-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/music-right-512-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/music-shuffle-512-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/news-512-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/numpad-512-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/party-cloudy-512-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/play-512-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/power-512-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/schedule-512-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/scrollbar-512-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/settings-512-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/sleep-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/toggle-left-512-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/toggle-right-512-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/triangle-down-512-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/triangle-up-512-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/twitter-512-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/user-512-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/weight-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/wifi-512-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/wifi-signal-full-512-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/wifi-signal-half-512-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/wifi-signal-low-512-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/bmp/youtube-512-inverted.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/apps-512-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/calendar-512-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/circle-empty-512-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/circle-fill-512-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/clock-512-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/dock_apps-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/dock_email-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/dock_facebook-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/dock_health-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/dock_instagram-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/dock_map-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/dock_music-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/dock_news-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/dock_schedule-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/dock_settings-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/dock_twitter-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/dock_youtube-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/email-512-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/facebook-512-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/hearts-512-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/instagram-512-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/keyboard-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/language-512-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/location-512-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/lock-512-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/map-512-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/music-512-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/music-left-512-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/music-pause-512-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/music-repeat-512-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/music-right-512-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/music-shuffle-512-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/news-512-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/numpad-512-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/party-cloudy-512-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/play-512-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/power-512-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/schedule-512-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/scrollbar-512-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/settings-512-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/sleep-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/toggle-left-512-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/toggle-right-512-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/triangle-down-512-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/triangle-up-512-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/twitter-512-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/user-512-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/weight-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/wifi-512-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/wifi-signal-full-512-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/wifi-signal-half-512-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/wifi-signal-low-512-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/inverted/png/youtube-512-inverted.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/apps-512.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/calendar-512.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/circle-empty-512.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/circle-fill-512.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/clock-512.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/dock_apps.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/dock_email.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/dock_facebook.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/dock_health.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/dock_instagram.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/dock_map.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/dock_music.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/dock_news.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/dock_schedule.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/dock_settings.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/dock_twitter.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/dock_youtube.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/email-512.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/facebook-512.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/hearts-512.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/instagram-512.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/keyboard.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/language-512.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/location-512.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/lock-512.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/map-512.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/music-512.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/music-left-512.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/music-pause-512.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/music-repeat-512.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/music-right-512.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/music-shuffle-512.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/news-512.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/numpad-512.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/party-cloudy-512.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/play-512.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/power-512.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/schedule-512.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/scrollbar-512.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/settings-512.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/sleep.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/toggle-left-512.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/toggle-right-512.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/triangle-down-512.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/triangle-up-512.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/twitter-512.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/user-512.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/weight.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/wifi-512.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/wifi-signal-full-512.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/wifi-signal-half-512.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/wifi-signal-low-512.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/bmp/youtube-512.bmp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/album.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/apps-512.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/calendar-512.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/circle-empty-512.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/circle-fill-512.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/clock-512.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/dock_apps.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/dock_email.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/dock_facebook.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/dock_health.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/dock_instagram.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/dock_map.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/dock_music.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/dock_news.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/dock_schedule.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/dock_settings.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/dock_twitter.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/dock_youtube.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/email-512.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/facebook-512.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/hearts-512.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/instagram-512.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/keyboard.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/language-512.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/location-512.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/lock-512.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/map-512.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/music-512.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/music-left-512.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/music-pause-512.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/music-repeat-512.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/music-right-512.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/music-shuffle-512.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/news-512.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/news.PNG</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/numpad-512.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/party-cloudy-512.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/play-512.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/power-512.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/schedule-512.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/scrollbar-512.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/settings-512.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/sleep.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/toggle-left-512.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/toggle-right-512.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/traffic.PNG</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/triangle-down-512.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/triangle-up-512.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/twitter-512.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/user-512.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/weight.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/wifi-512.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/wifi-signal-full-512.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/wifi-signal-half-512.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/wifi-signal-low-512.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/icons/normal/png/youtube-512.png</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
+  </component>
   <component name="RunManager">
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <method />
@@ -228,7 +718,7 @@
       <option name="presentableId" value="Default" />
       <updated>1491276689751</updated>
       <workItem from="1491276691222" duration="900000" />
-      <workItem from="1492199804728" duration="263000" />
+      <workItem from="1492199804728" duration="2105000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <created>1491276960391</created>
@@ -244,32 +734,39 @@
       <option name="project" value="LOCAL" />
       <updated>1492200065734</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="First Commit">
+      <created>1492200071713</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1492200071713</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1163000" />
+    <option name="totallyTimeSpent" value="3005000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="9" y="23" width="1276" height="777" extended-state="6" />
-    <editor active="true" />
+    <frame x="35" y="23" width="1276" height="777" extended-state="0" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32909605" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32909605" sideWeight="0.5031348" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32909605" sideWeight="0.4968652" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -289,12 +786,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/processing.js</url>
-          <line>3</line>
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="1" />
     </breakpoint-manager>
     <watches-manager />
@@ -332,15 +823,78 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/proj2.pde">
+    <entry file="file://$PROJECT_DIR$/MirrorUI.pde">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+        <state relative-caret-position="45">
+          <caret line="3" column="16" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MirrorUI.pde">
+    <entry file="file://$PROJECT_DIR$/icons/inverted/bmp/apps-512-inverted.bmp">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/icons/inverted/bmp/calendar-512-inverted.bmp">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/icons/inverted/bmp/circle-empty-512-inverted.bmp">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/icons/inverted/bmp/circle-fill-512-inverted.bmp">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/icons/inverted/bmp/clock-512-inverted.bmp">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/icons/inverted/bmp/dock_apps-inverted.bmp">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/icons/inverted/bmp/youtube-512-inverted.bmp">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/icons/inverted/bmp/wifi-signal-low-512-inverted.bmp">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/icons/inverted/bmp/wifi-signal-half-512-inverted.bmp">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/icons/inverted/bmp/wifi-signal-full-512-inverted.bmp">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/icons/inverted/bmp/wifi-512-inverted.bmp">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ActionListener.pde">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AppDrawer.pde">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -350,8 +904,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="41" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
+        <state relative-caret-position="0">
+          <caret line="0" column="15" selection-start-line="0" selection-start-column="15" selection-end-line="0" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/proj2.pde">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="71" column="20" selection-start-line="71" selection-start-column="20" selection-end-line="71" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Module.pde">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
