@@ -5,9 +5,12 @@
 class AppDrawer extends ButtonPanel {
   // image sources for the AppDrawer buttons
   private String PLACEHOLDER="icon_Apple.svg";  // placeholder button image source 
-  private String FBOOK="", INSTA="", TWITTER="", YOUTUBE="";
-  private String NEWS="", EMAIL="", MAPS="", CALENDAR="";
-  private String HEALTH="", MUSIC="";
+  // EDIT THESE LINES TO HAVE .svg AS THE FILE EXTENSION ONCE ICONS ARE .SVG
+  private String FBOOK="dock_facebook.png", INSTA="dock_instagram.png", 
+        TWITTER="dock_twitter.png", YOUTUBE="dock_youtube.png";
+  private String NEWS="dock_news.png", EMAIL="dock_email.png", 
+        MAPS="dock_map.png", CALENDAR="dock_schedule.png";
+  private String HEALTH="dock_health.png", MUSIC="dock_music.png";
   
   Button fbookBtn, instaBtn, twitterBtn, youTubeBtn;
   Button newsBtn, emailBtn, mapsBtn, calBtn;
@@ -47,28 +50,28 @@ class AppDrawer extends ButtonPanel {
   
   
   private void create_Btns(){
-    fbookBtn = create_PanelBtn(0,0,true,PLACEHOLDER);
-    instaBtn = create_PanelBtn(0,1,true,PLACEHOLDER);
-    twitterBtn = create_PanelBtn(0,2,true,PLACEHOLDER);
-    youTubeBtn = create_PanelBtn(0,3,true,PLACEHOLDER);
-    newsBtn = create_PanelBtn(1,0,true,PLACEHOLDER);
-    emailBtn = create_PanelBtn(1,1,true,PLACEHOLDER);
-    mapsBtn = create_PanelBtn(1,2,true,PLACEHOLDER);
-    calBtn = create_PanelBtn(1,3,true,PLACEHOLDER);
-    healthBtn = create_PanelBtn(2,0,true,PLACEHOLDER);
-    musicBtn = create_PanelBtn(2,1,true,PLACEHOLDER);
+    //fbookBtn = create_PanelBtn(0,0,true,PLACEHOLDER);
+    //instaBtn = create_PanelBtn(0,1,true,PLACEHOLDER);
+    //twitterBtn = create_PanelBtn(0,2,true,PLACEHOLDER);
+    //youTubeBtn = create_PanelBtn(0,3,true,PLACEHOLDER);
+    //newsBtn = create_PanelBtn(1,0,true,PLACEHOLDER);
+    //emailBtn = create_PanelBtn(1,1,true,PLACEHOLDER);
+    //mapsBtn = create_PanelBtn(1,2,true,PLACEHOLDER);
+    //calBtn = create_PanelBtn(1,3,true,PLACEHOLDER);
+    //healthBtn = create_PanelBtn(2,0,true,PLACEHOLDER);
+    //musicBtn = create_PanelBtn(2,1,true,PLACEHOLDER);
     
 
-    //fbookBtn = create_PanelBtn(0,0,true,FBOOK);
-    //instaBtn = create_PanelBtn(0,1,true,INSTA);
-    //twitterBtn = create_PanelBtn(0,2,true,TWITTER);
-    //youTubeBtn = create_PanelBtn(0,3,true,YOUTUBE);
-    //newsBtn = create_PanelBtn(1,0,true,NEWS);
-    //emailBtn = create_PanelBtn(1,1,true,EMAIL);
-    //mapsBtn = create_PanelBtn(1,2,true,MAPS);
-    //calBtn = create_PanelBtn(1,3,true,CALENDAR);
-    //healthBtn = create_PanelBtn(2,0,true,HEALTH);
-    //musicBtn = create_PanelBtn(2,1,true,MUSIC);
+    fbookBtn = create_PanelBtn(0,0,true,FBOOK);
+    instaBtn = create_PanelBtn(0,1,true,INSTA);
+    twitterBtn = create_PanelBtn(0,2,true,TWITTER);
+    youTubeBtn = create_PanelBtn(0,3,true,YOUTUBE);
+    newsBtn = create_PanelBtn(1,0,true,NEWS);
+    emailBtn = create_PanelBtn(1,1,true,EMAIL);
+    mapsBtn = create_PanelBtn(1,2,true,MAPS);
+    calBtn = create_PanelBtn(1,3,true,CALENDAR);
+    healthBtn = create_PanelBtn(2,0,true,HEALTH);
+    musicBtn = create_PanelBtn(2,1,true,MUSIC);
     
     // don't need this line because we do it during create_PanelBtn(...)
     //super.add_PanelBtns(new Button[]{});
