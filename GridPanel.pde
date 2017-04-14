@@ -1,16 +1,15 @@
 /********************************************************************/
 /***************       Panel class and methods        ***************/
 
-abstract class Panel {  // --> can this be an abstract class ???
+// everything that can be drawn is a Panel. 
+abstract class Panel { 
   int state;
   int locX, locY, szWidth, szHeight, corner;
   color fillColor;
     
   public Panel(){
     state = -1;
-    fillColor = color(25,25,25);
     corner = 0;
-    // width = 0; height = 0;
   }
   public Panel(int w, int h){
     this();
@@ -20,14 +19,13 @@ abstract class Panel {  // --> can this be an abstract class ???
     this(w,h);
     set_PanelLoc(x,y);
   }
-  
   public Panel(Panel p){
     this(p.locX, p.locY, p.szWidth, p.szHeight);
   }
   
   public Panel(int x, int y, int w, int h, color c){
     this(x,y,w,h);
-    fillColor = c;
+    set_FillColor(c);
   }
   
   public void set_PanelSize(int w, int h){
@@ -37,9 +35,12 @@ abstract class Panel {  // --> can this be an abstract class ???
     locX = x;  locY = y;
   }
   
+  
+  // this might be legit not doing anything useful haha
   void draw_Panel(){
     noStroke();
-    fill(fillColor);
+    noFill();
+    //fill(fillColor);
     if (state != 0)       
       rect(locX, locY, szWidth, szHeight, corner);
   }
@@ -48,6 +49,11 @@ abstract class Panel {  // --> can this be an abstract class ???
     fillColor = c;
   }
   
+  public void set_State(int newState){
+    state = newState;
+  }
+  
+  // need this for all onClick() stuff!!!
   boolean is_MouseOverItem(){
     return mouseX>locX && mouseX<locX+szWidth &&  
       mouseY>locY && mouseY<locY+szHeight;
