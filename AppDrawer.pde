@@ -43,8 +43,7 @@ class AppDrawer extends ButtonPanel {
   
   
   // implement once we decide the relative location of the appdrawer
-  void set_RelativeSizeLoc(int parentWidth, int parentHeight){ 
-  }
+  void set_RelativeSizeLoc(int parentWidth, int parentHeight){ }
   
   
   private void create_Btns(){

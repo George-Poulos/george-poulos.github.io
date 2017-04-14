@@ -16,7 +16,8 @@ abstract class Panel {
     set_PanelSize(w,h);
   }
   public Panel(int x, int y, int w, int h){
-    this(w,h);
+    //this(w,h);
+    set_PanelSize(w,h);
     set_PanelLoc(x,y);
   }
   public Panel(Panel p){

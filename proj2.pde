@@ -98,7 +98,7 @@ void setup() {
   // we can set the location and calculate better dimensions from within this class 
   // so this is just like this for now :)
   appDrawer = new AppDrawer(mirror.rightPanel);
-  System.out.println("side padding: " + sidePadding);
+  //System.out.println("side padding: " + sidePadding);
 }
 /////////////////////////////////////////////////////
 

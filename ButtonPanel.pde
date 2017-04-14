@@ -32,7 +32,8 @@ abstract class ButtonPanel extends Panel {
   
   // we'll use this if we add a button panel inside another one
   public ButtonPanel(ButtonPanel parent){
-    this();
+    //this();
+    panelBtns = new ArrayList<Button>();
       this.colWidth = parent.colWidth;
       this.rowHeight = parent.rowHeight;
       this.panelBtnWidth = parent.panelBtnWidth;
@@ -99,6 +100,7 @@ abstract class ButtonPanel extends Panel {
     return create_PanelBtn(row,col,1,1,btnMirror);
   }
 
+  // this is the one we are using in AppDrawer 
   Button create_PanelBtn(int row, int col, boolean img, String btnMirror){
     return create_PanelBtn(row,col,1,1,img,btnMirror);
   }
@@ -111,7 +113,9 @@ abstract class ButtonPanel extends Panel {
   // NOTE:  once we add Module class, we should add another param. to this function 
   //        that lets us instantiate the button's Module instance variable from here.
   Button create_PanelBtn(int row, int col, int rowsToSpan, int colsToSpan, boolean img, String btnMirror){
-    Button b = create_PanelBtn(row,col,rowsToSpan,colsToSpan);
+    //Button b = create_PanelBtn(row,col,rowsToSpan,colsToSpan);
+    Button b = new Button(locX + col*panelBtnWidth, locY + row*panelBtnHeight, 
+          panelBtnWidth*colsToSpan, panelBtnHeight*rowsToSpan);
     if (img) b.set_Img(btnMirror); 
     else b.set_Text(btnMirror);
     
@@ -177,7 +181,11 @@ abstract class ButtonPanel extends Panel {
   public void draw_ButtonPanel(){
     if (this.state != 0) {   
       draw_Panel();      // draw enclosing Panel - might remove this????
-      draw_PanelBtns();  // draw each button in the panelBtns list
+      
+      for (Button b : panelBtns)
+        b.draw_Btn();
+
+      //draw_PanelBtns();  // draw each button in the panelBtns list
     }
   }
 }
