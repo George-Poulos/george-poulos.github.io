@@ -5,15 +5,17 @@
 abstract class ButtonPanel extends Panel {  
   // we could prob move margins into Panel class...
   int marginTop, marginBottom, marginLeft, marginRight;
-  
+  //boolean isActive;  // moved this to Panel for now
   int panelRows, panelCols, panelBtnWidth, panelBtnHeight;  
   int rowHeight, colWidth;
   
-  ArrayList<Button> panelBtns;
+  ArrayList<Button> innerPanelBtns;
+  ArrayList<ButtonPanel> innerPanels;
   
   public ButtonPanel(){ 
     super();   
-    panelBtns = new ArrayList<Button>();
+    innerPanelBtns = new ArrayList<Button>();
+    innerPanels = new ArrayList<ButtonPanel>();
   }
   
   public ButtonPanel(int w, int h){
@@ -33,11 +35,12 @@ abstract class ButtonPanel extends Panel {
   // we'll use this if we add a button panel inside another one
   public ButtonPanel(ButtonPanel parent){
     //this();
-    panelBtns = new ArrayList<Button>();
-      this.colWidth = parent.colWidth;
-      this.rowHeight = parent.rowHeight;
-      this.panelBtnWidth = parent.panelBtnWidth;
-      this.panelBtnHeight = parent.panelBtnHeight;
+    innerPanelBtns = new ArrayList<Button>();
+    innerPanels = new ArrayList<ButtonPanel>();
+    this.colWidth = parent.colWidth;
+    this.rowHeight = parent.rowHeight;
+    this.panelBtnWidth = parent.panelBtnWidth;
+    this.panelBtnHeight = parent.panelBtnHeight;
   }
 
   // # of rows/columns will depend on which kind of ButtonPanel we're implementing.
@@ -68,7 +71,7 @@ abstract class ButtonPanel extends Panel {
   };
 
 
-// blahhh
+// blahhh we can delete soon
   void set_PanelRC(int r, int c){
     panelRows = r;  panelCols = c;
     set_BtnSizes();  // if we change #rows and #cols, recalc the btnSizes
@@ -77,9 +80,16 @@ abstract class ButtonPanel extends Panel {
   int get_LocXInParent(int colInParent){
     return locX + colInParent*colWidth;
   }
+  
   int get_LocYInParent(int rowInParent){
     return locY + rowInParent*rowHeight;
   }
+
+  void add_InnerPanel(ButtonPanel p){
+    innerPanels.add(p);    
+    //add_PanelBtns(p.innerPanelBtns);
+  }
+
 
   // Creates and returns a Button (potentially to be placed in the ButtonPanel).
   // Calculates the location and size of the button based on the size of the
@@ -114,13 +124,15 @@ abstract class ButtonPanel extends Panel {
   //        that lets us instantiate the button's Module instance variable from here.
   Button create_PanelBtn(int row, int col, int rowsToSpan, int colsToSpan, boolean img, String btnMirror){
     //Button b = create_PanelBtn(row,col,rowsToSpan,colsToSpan);
+    
     Button b = new Button(locX + col*panelBtnWidth, locY + row*panelBtnHeight,
           panelBtnWidth*colsToSpan, panelBtnHeight*rowsToSpan);
     if (img) b.set_Img(btnMirror);
     else b.set_Text(btnMirror);
 
-    // added this line for project 2 - it just automatically adds the button to panelBtns list :)
-    panelBtns.add(b);
+    // uncomment this to just automatically adds the button to panelBtns list. 
+    // it's not the best idea though.
+    //panelBtns.add(b);
     return b;
   }
 
@@ -153,7 +165,7 @@ abstract class ButtonPanel extends Panel {
 
   // Same as ^^^, but adds an already-created Button to the list.
   public void add_PanelBtn(Button b){
-    panelBtns.add(b);
+    innerPanelBtns.add(b);
   }
 
   // self-explanatory
@@ -161,16 +173,20 @@ abstract class ButtonPanel extends Panel {
     for (Button b : btns)
       add_PanelBtn(b);
   }
+  public void add_PanelBtns(ArrayList<Button> btns){
+    for (Button b : btns)
+      add_PanelBtn(b);
+  }
 
   // Returns the list of buttons (panelBtns) in the current panel.
   // Mostly called when we check if any of those buttons were clicked.
   public ArrayList<Button> get_PanelBtns(){
-    return panelBtns;
+    return innerPanelBtns;
   }
 
   // gets called from draw_ButtonPanel()
   void draw_PanelBtns(){
-    for (Button b : panelBtns)
+    for (Button b : innerPanelBtns)
       b.draw_Btn();
   }
 
@@ -179,11 +195,19 @@ abstract class ButtonPanel extends Panel {
   //     clicked on the App Drawer expansion icon)
   // ** might update this to be "if active"
   public void draw_ButtonPanel(){
-    if (this.state != 0) {
-      draw_Panel();      // draw enclosing Panel - might remove this????
 
-      for (Button b : panelBtns)
-        b.draw_Btn();
+    if (this.isActive){
+      for (ButtonPanel p : innerPanels){
+        if (p.isActive) {
+          p.draw_ButtonPanel();
+          for (Button b : p.innerPanelBtns){
+            b.draw_Btn();
+          }
+        }        
+      //draw_Panel();      // draw enclosing Panel - might remove this????
+      }
+    for (Button b : innerPanelBtns)
+      b.draw_Btn();
 
       //draw_PanelBtns();  // draw each button in the panelBtns list
     }
