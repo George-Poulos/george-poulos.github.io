@@ -129,7 +129,7 @@ void draw() {
   
   mirrorActiveLeft.draw_Mirror();
   mirrorActiveRight.draw_Mirror();
-  timeBtn.set_Text(hour()%12+":"+minute() + (hour()>=12 ? " pm" : " am"));
+  timeBtn.set_Text(hour()%12+":"+ (minute()<10 ? "0":"") + minute()+  (hour()>=12 ? " pm" : " am"));
   dateBtn.set_Text(month()+"/"+day()+"/"+year());
   draw_Btn(timeBtn, dateBtn);
 }
