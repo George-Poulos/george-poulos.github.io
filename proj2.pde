@@ -57,6 +57,7 @@ final color DAYCOLOR = color(205,219,225);
 //final color NIGHTCOLOR = color(,,,);  // maybe we do warm tint on daycolor ?
 color mirrorColor;
 
+int numUsers = 2;
 final int canvasWidth = 1200;
 final int canvasHeight = 680;
 int sidePadding = canvasWidth/32;
@@ -64,7 +65,7 @@ int mirrorWidth = canvasWidth-2*sidePadding;
 int mirrorHeight = canvasHeight;  // update this if we add vertical padding
 
 Mirror mirror;  // mirror has left, right, and center grid panels
-MirrorActive mirrorActive;
+MirrorActive mirrorActiveLeft, mirrorActiveRight;
 AppDrawer appDrawer;
 
 /////////////////////////////////////////////////////
@@ -81,9 +82,14 @@ void setup() {
   
   //mainScreen.set_ActiveMode(functionsMode);
   
-  mirrorActive = new MirrorActive(sidePadding,0,mirrorWidth,mirrorHeight);
-  mirrorActive.add_InnerPanels();  // creates left, right, and center grid panels
-  set_ActiveMirror(mirrorActive);
+  //mirrorActiveLeft = new MirrorActive(sidePadding,0,mirrorWidth,mirrorHeight);  
+  mirrorActiveLeft = new MirrorActive(sidePadding,0,mirrorWidth/numUsers,mirrorHeight);
+  mirrorActiveLeft.add_InnerPanels();  // creates left, right, and center grid panels
+  set_ActiveMirror(mirrorActiveLeft);
+ 
+  mirrorActiveRight = new MirrorActive(sidePadding+mirrorWidth/numUsers,0,mirrorWidth/numUsers,mirrorHeight);
+  mirrorActiveRight.add_InnerPanels();  // creates left, right, and center grid panels
+  set_ActiveMirror(mirrorActiveRight);
 
 }
 /////////////////////////////////////////////////////
@@ -101,7 +107,8 @@ void draw() {
   rect(0, 0, sidePadding, canvasHeight);  // left outer padding
   rect(canvasWidth-sidePadding, 0, sidePadding, canvasHeight);  // right outer padding
   
-  mirrorActive.draw_Mirror();
+  mirrorActiveLeft.draw_Mirror();
+  mirrorActiveRight.draw_Mirror();
 }
 
 
@@ -121,7 +128,7 @@ void mouseReleased() {
   
   // this works :)
   //for (Button b : appDrawer.get_PanelBtns()){
-  for (Button b : mirrorActive.get_AllMirrorBtns()){
+  for (Button b : mirrorActiveLeft.get_AllMirrorBtns()){
       if (btn_Clicked(b)){
         noLoop();
         // call b.onClick() method, which should, at the very least, open the selected 
@@ -133,7 +140,7 @@ void mouseReleased() {
   }
   
   // looping thru the current mirror's Left, Center, and Right panels  
-  for (ButtonPanel p1 : mirrorActive.get_AllMirrorPanels()){
+  for (ButtonPanel p1 : mirrorActiveLeft.get_AllMirrorPanels()){
     // check that panel's buttons 
     for (Button b1 : p1.get_PanelBtns()){
       if (btn_Clicked(b1)){

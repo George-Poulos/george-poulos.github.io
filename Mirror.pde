@@ -7,7 +7,8 @@
 class CenterPanel extends ButtonPanel {
     
   public CenterPanel(Panel parent){
-    super((3*parent.szWidth)/4, parent.szHeight);
+    //super((3*parent.szWidth)/4, parent.szHeight);
+    super(parent.szWidth/2, parent.szHeight);
   }
     
       
@@ -21,7 +22,7 @@ class CenterPanel extends ButtonPanel {
 class SidePanel extends ButtonPanel {
   
   public SidePanel(Panel parent){
-    super(parent.szWidth/8, parent.szHeight);
+    super(parent.szWidth/4, parent.szHeight);
     calc_PanelRC(4);
   }
               
@@ -117,6 +118,7 @@ class Mirror extends Panel {
   // draw Mirror by drawing each Panel and its buttons
   public void draw_Mirror(){    
       //draw_Panel();  // ??
+      draw_PanelLine(leftPanel);
       leftPanel.draw_ButtonPanel();
       draw_PanelLine(centerPanel);
       centerPanel.draw_ButtonPanel();      
