@@ -48,8 +48,8 @@ public void create_clockAndWeather(MirrorActive m){
   int w = m.rightPanel.colWidth;
   int h = m.rightPanel.rowHeight;
   // we will call set_Text() on timeBtn throughout the loop so it gives current time info ;)
-  timeBtn = new Button(m.locX, m.locY+h, 4*w, 3*h);
-  dateBtn = new Button(m.locX, m.locY+timeBtn.szHeight, 4*w, 2*h);
+  timeBtn = new Button(m.locX, m.locY+h, 4*w, 2*h);
+  dateBtn = new Button(m.locX, m.locY+timeBtn.szHeight, 4*w, h);
   dateBtn.set_BtnFont(dateFont);
   //weatherBtn = rightPanel.create_PanelBtn(1,1,2,3,true,WEATHER);
 }
@@ -93,8 +93,8 @@ void setup() {
   // is roughly the same ratio.
   //size(1600,900);
   size(1200,680);
-  defaultFont = createFont("Arial",36,true); 
-  dateFont = createFont("Arial",24,true);
+  defaultFont = createFont("Arial Rounded MT Bold",48,true); 
+  dateFont = createFont("Arial Rounded MT Bold",22,true);
   
   // just a (pretty good) guess based on what our website mirror looks like
   mirrorColor = DAYCOLOR;
@@ -130,7 +130,7 @@ void draw() {
   mirrorActiveLeft.draw_Mirror();
   mirrorActiveRight.draw_Mirror();
   timeBtn.set_Text(hour()%12+":"+minute() + (hour()>=12 ? " pm" : " am"));
-  dateBtn.set_Text(day()+"/"+month()+"/"+year());
+  dateBtn.set_Text(month()+"/"+day()+"/"+year());
   draw_Btn(timeBtn, dateBtn);
 }
 
