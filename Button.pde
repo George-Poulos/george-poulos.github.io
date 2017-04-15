@@ -11,6 +11,7 @@ class Button extends Panel implements ActionListener {
   String btnTxt = "";  // we won't use this as much for project 2
   color clr, activeClr, inactiveClr;
   int padding;  // move this into Panel class???
+  Module module;
 
   // no specified color or text
   public Button(int x, int y, int w, int h){
@@ -28,6 +29,12 @@ class Button extends Panel implements ActionListener {
   public void on_Click(){
     // toggle the button active state
     isActive = !isActive;
+    if(isActive){
+      module.setVisibility(true);
+    }
+    else{
+      module.setVisibility(false);
+    }
     //open_Module();    // not yet implemented :)
   }
 
@@ -42,6 +49,7 @@ class Button extends Panel implements ActionListener {
     activeClr = color(255);
     inactiveClr = color(235);
     clr = inactiveClr;  // might delete this for proj2
+    module = new Module(100,100,100,100,"map.jpg");
   }
 
   void set_isActive(boolean newIsActive){
@@ -103,6 +111,7 @@ class Button extends Panel implements ActionListener {
         // this doesn't actually fill in the icon - it fills the vector paths
         fill(activeClr);
         // COMMENT THIS LINE ONCE ICONS ARE .SVG
+        module.displayModule();
         noTint();
       }
       else {
