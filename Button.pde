@@ -85,7 +85,7 @@ class Button extends Panel implements ActionListener {
     //btnImg.disableStyle();   
     // COMMENT THESE 2 LINES AND UNCOMMENT ABOVE 2 LINES ONCE ICONS ARE .SVG
     btnImg = loadImage(img);
-    btnImg.loadPixels();
+    //btnImg.loadPixels();
   }
 
   // rounded corner for drawing rectangle buttons without images
@@ -138,9 +138,14 @@ class Button extends Panel implements ActionListener {
     
     else {  // the else part we will need to update for any buttons that 
             // have text but do not have an outline.
-      rect(locX, locY, szWidth, szHeight, corner); 
+      noFill();    
+      stroke(0.5);
+      rectMode(CENTER);
+      //rect(locX, locY, szWidth, szHeight, corner); 
       setup_Text(font, 255);
-      text(btnTxt, locX+(int)(szWidth/2), locY+(int)(szHeight/2));
+      //text(btnTxt, locX+(int)(szWidth/2), locY+(int)(szHeight/2));
+      text(btnTxt, locX, locY);
+      rectMode(CORNER);
     }    
   }
   

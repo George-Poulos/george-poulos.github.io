@@ -4,6 +4,7 @@
 class MirrorActive extends Mirror {
   private String APPDOCK = "dock_apps.png";
   private String SETTINGS = "dock_settings.png";
+  //private String WEATHER = "";
   
   AppDrawer appDrawer;
   AppDrawerBtn appBtn;
@@ -28,6 +29,7 @@ class MirrorActive extends Mirror {
     
     settingsBtn = rightPanel.create_PanelBtn(
         rightPanel.panelRows-1,3,true,fileLoc.concat(SETTINGS));
+            
     rightPanel.add_PanelBtn(settingsBtn);
     rightPanel.add_PanelBtn(appBtn);
     rightPanel.add_InnerPanel(appDrawer);    
