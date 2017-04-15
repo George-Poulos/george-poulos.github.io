@@ -111,6 +111,11 @@ public void set_CurrentRMirror(int mirrorFlag){
   }
 }
 
+public void set_CurrentMirrors(Mirror Lmirror, Mirror Rmirror){
+  currMirrorLeft = Lmirror;
+  currMirrorRight = Rmirror;
+}
+
 /////////////////////////////////////////////////////
 public void setup_Text(PFont font, color c){
   textFont(font);
@@ -169,9 +174,8 @@ void setup() {
 
   create_clockAndWeather(mirrorActiveRight);
   
-  // starting state is mirrors both turned off :)
-  currMirrorLeft = mirrorOffLeft;
-  currMirrorRight = mirrorOffRight;
+  // starting state 
+  set_CurrentMirrors(mirrorActiveLeft, mirrorActiveRight);
 }
 /////////////////////////////////////////////////////
 
