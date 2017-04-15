@@ -12,7 +12,7 @@
 
 /* @pjs font="Arial.ttf","LCD-BOLD.TTF","Courier New.ttf"; */
 
-PFont defaultFont;
+PFont defaultFont, dateFont;
 
 public boolean btn_Clicked(Button btn){
   return btn.is_MouseOverItem();
@@ -48,8 +48,9 @@ public void create_clockAndWeather(MirrorActive m){
   int w = m.rightPanel.colWidth;
   int h = m.rightPanel.rowHeight;
   // we will call set_Text() on timeBtn throughout the loop so it gives current time info ;)
-  timeBtn = new Button(m.locX, m.locY+h, 4*w, 2*h);
-  
+  timeBtn = new Button(m.locX, m.locY+h, 4*w, 3*h);
+  dateBtn = new Button(m.locX, m.locY+timeBtn.szHeight, 4*w, 2*h);
+  dateBtn.set_BtnFont(dateFont);
   //weatherBtn = rightPanel.create_PanelBtn(1,1,2,3,true,WEATHER);
 }
 
@@ -59,7 +60,7 @@ public void create_clockAndWeather(MirrorActive m){
 public void setup_Text(PFont font, color c){
   textFont(font);
   fill(c);
-  textAlign(CENTER, BOTTOM);
+  textAlign(CENTER, CENTER);
 }
 
 
@@ -92,14 +93,14 @@ void setup() {
   // is roughly the same ratio.
   //size(1600,900);
   size(1200,680);
-  defaultFont = createFont("Arial",28,true); 
+  defaultFont = createFont("Arial",36,true); 
+  dateFont = createFont("Arial",24,true);
   
   // just a (pretty good) guess based on what our website mirror looks like
   mirrorColor = DAYCOLOR;
   
   //mainScreen.set_ActiveMode(functionsMode);
   
-  //mirrorActiveLeft = new MirrorActive(sidePadding,0,mirrorWidth,mirrorHeight);  
   mirrorActiveLeft = new MirrorActive(sidePadding,0,mirrorWidth/numUsers,mirrorHeight);
   mirrorActiveLeft.add_InnerPanels();  // creates left, right, and center grid panels
   set_ActiveMirror(mirrorActiveLeft);
@@ -128,9 +129,9 @@ void draw() {
   
   mirrorActiveLeft.draw_Mirror();
   mirrorActiveRight.draw_Mirror();
-  timeBtn.set_Text(hour()%12+":"+minute() + (hour()>=12 ? " PM" : " AM"));
-  
-  draw_Btn(timeBtn);
+  timeBtn.set_Text(hour()%12+":"+minute() + (hour()>=12 ? " pm" : " am"));
+  dateBtn.set_Text(day()+"/"+month()+"/"+year());
+  draw_Btn(timeBtn, dateBtn);
 }
 
 
