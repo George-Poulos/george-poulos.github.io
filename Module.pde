@@ -3,6 +3,7 @@ class Module{
   float locationX, locationY;
   PImage modImage;
   String imgName;
+  boolean isNew;
   boolean visibility;
   
   public Module(float sizeX, float sizeY, float locationX, float locationY, String imgName){
@@ -12,19 +13,24 @@ class Module{
     this.locationY = locationY;
     this.imgName = imgName;
     modImage = loadImage(imgName);
+    this.isNew = true;
   }
   
   public void setVisibility(boolean view){
     visibility = view;
+    if(!visibility){
+      this.isNew = true;
+    }
   }
   
   void setLocation(float locationX, float locationY){
     this.locationX = locationX;
     this.locationY = locationY;
+    this.isNew = false;
   }
   
   public void displayModule(){
     if(visibility)
-      image(modImage, sizeX, sizeY, locationX, locationY);
+      image(modImage,locationX, locationY,sizeX, sizeY);
   }
 }

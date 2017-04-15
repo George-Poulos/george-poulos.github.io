@@ -202,8 +202,9 @@ abstract class ButtonPanel extends Panel {
         }        
       //draw_Panel();      // draw enclosing Panel - might remove this????
       }
-    for (Button b : innerPanelBtns)
+    for (Button b : innerPanelBtns){
       b.draw_Btn();
+    }
 
       //draw_PanelBtns();  // draw each button in the panelBtns list
     }
