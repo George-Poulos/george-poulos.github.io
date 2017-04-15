@@ -18,6 +18,11 @@ public boolean btn_Clicked(Button btn){
   return btn.is_MouseOverItem();
 }
 
+public void draw_Btn(Button... btns){
+  for (Button b : btns)
+    b.draw_Btn();
+}
+
 public void reset_BtnStates(Button... btns){
   for (Button b : btns)
     b.set_isActive(false);
@@ -29,15 +34,23 @@ public void reset_AllBtnStates(ArrayList<Button> btns){
     //b.state = -1;
 }
 
-public void open_SettingsMode(){
-  //mainScreen.set_ActiveMode((Mode)settingsMode);
-}
-
 // sets each of Left, Center, Right panels on the current mirror state to "Active"
 // so that they are drawn by Processing.
 public void set_ActiveMirror(Mirror m){
   for (ButtonPanel p : m.allPanels)
     p.isActive = true;
+}
+
+// these buttons stretch across the center of the mirror, so we place them
+// based on where the right mirror starts
+// these buttons get drawn from their origin, so we can set their x,y coords to mirror start.
+public void create_clockAndWeather(MirrorActive m){
+  int w = m.rightPanel.colWidth;
+  int h = m.rightPanel.rowHeight;
+  // we will call set_Text() on timeBtn throughout the loop so it gives current time info ;)
+  timeBtn = new Button(m.locX, m.locY+h, 4*w, 2*h);
+  
+  //weatherBtn = rightPanel.create_PanelBtn(1,1,2,3,true,WEATHER);
 }
 
 /////////////////////////////////////////////////////
@@ -46,7 +59,7 @@ public void set_ActiveMirror(Mirror m){
 public void setup_Text(PFont font, color c){
   textFont(font);
   fill(c);
-  textAlign(CENTER, CENTER);
+  textAlign(CENTER, BOTTOM);
 }
 
 
@@ -59,6 +72,8 @@ color mirrorColor;
 
 // change this line and comment out line that draws mirrorActiveRight to stretch full screen
 int numUsers = 2;
+// in the center of the screen
+Button timeBtn, dateBtn, weatherBtn;
 
 final int canvasWidth = 1200;
 final int canvasHeight = 680;
@@ -77,7 +92,7 @@ void setup() {
   // is roughly the same ratio.
   //size(1600,900);
   size(1200,680);
-  defaultFont = createFont("Arial",24,true); 
+  defaultFont = createFont("Arial",28,true); 
   
   // just a (pretty good) guess based on what our website mirror looks like
   mirrorColor = DAYCOLOR;
@@ -89,10 +104,12 @@ void setup() {
   mirrorActiveLeft.add_InnerPanels();  // creates left, right, and center grid panels
   set_ActiveMirror(mirrorActiveLeft);
  
-  mirrorActiveRight = new MirrorActive(sidePadding+mirrorWidth/numUsers,0,mirrorWidth/numUsers,mirrorHeight);
+  mirrorActiveRight = new MirrorActive(sidePadding+mirrorWidth/numUsers,0,
+        mirrorWidth/numUsers,mirrorHeight);
   mirrorActiveRight.add_InnerPanels();  // creates left, right, and center grid panels
   set_ActiveMirror(mirrorActiveRight);
 
+  create_clockAndWeather(mirrorActiveRight);
 }
 /////////////////////////////////////////////////////
 
@@ -111,6 +128,9 @@ void draw() {
   
   mirrorActiveLeft.draw_Mirror();
   mirrorActiveRight.draw_Mirror();
+  timeBtn.set_Text(hour()%12+":"+minute() + (hour()>=12 ? " PM" : " AM"));
+  
+  draw_Btn(timeBtn);
 }
 
 
@@ -143,8 +163,9 @@ void mouseReleasedBothUsers(MirrorActive m){
       }    
   }
   
+  // Don't think we need this part below!! Just above part!
+
   // looping thru the current mirror's Left, Center, and Right panels  
-  // Don't think we need this!! Just above part!
   //for (ButtonPanel p1 : m.get_AllMirrorPanels()){
   //  // check that panel's buttons 
   //  for (Button b1 : p1.get_PanelBtns()){

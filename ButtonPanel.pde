@@ -44,10 +44,6 @@ abstract class ButtonPanel extends Panel {
     this.panelBtnHeight = parent.panelBtnHeight;
   }
 
-  // # of rows/columns will depend on which kind of ButtonPanel we're implementing.
-  // GET RID OF THIS ITS DUMB
-  abstract void set_PanelRC();
-
   // default margins  ??
   void set_Margins(){
     marginTop = marginBottom = marginLeft = marginRight = 0;
@@ -195,7 +191,7 @@ abstract class ButtonPanel extends Panel {
   //     clicked on the App Drawer expansion icon)
   // ** might update this to be "if active"
   public void draw_ButtonPanel(){
-
+  
     if (this.isActive){
       for (ButtonPanel p : innerPanels){
         if (p.isActive) {
