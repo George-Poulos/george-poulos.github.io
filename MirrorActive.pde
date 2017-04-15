@@ -49,24 +49,21 @@ class AppDrawerBtn extends Button {
     this.btnImg = btn.btnImg;
   }
   
-    //colInParent = 2;
-    //rowInParent = parent.panelRows - this.panelRows;
-    //this.set_PanelSize(this.panelCols*this.colWidth, this.panelRows*this.rowHeight);
-    //this.locX = parent.locX;
-    //this.set_PanelLoc(get_LocXInParent(colInParent), get_LocYInParent(rowInParent));
-
-
-
   public void set_BtnModule(ButtonPanel myMod){
     module = myMod;    
   }
   
   // overriding this so it opens the AppDrawer (instead of a module..)
   public void on_Click(){
-    // toggle the button active state
+    // toggle the button's active state
     isActive = !isActive;
     // toggle its module's active state
     module.isActive = !module.isActive;
+    // if we've closed the app drawer, set the buttons to be not active
+    if (!isActive){
+      for (Button b : module.innerPanelBtns)
+        b.set_isActive(false);
+    }
   }
 
 }
