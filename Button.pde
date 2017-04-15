@@ -52,6 +52,7 @@ class Button extends Panel implements ActionListener {
     module = new Module(100,100,100,100,"map.jpg");
   }
 
+  // I have this twice ...
   void set_isActive(boolean newIsActive){
     isActive = newIsActive;
   }

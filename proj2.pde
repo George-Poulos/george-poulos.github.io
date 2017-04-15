@@ -57,7 +57,9 @@ final color DAYCOLOR = color(205,219,225);
 //final color NIGHTCOLOR = color(,,,);  // maybe we do warm tint on daycolor ?
 color mirrorColor;
 
+// change this line and comment out line that draws mirrorActiveRight to stretch full screen
 int numUsers = 2;
+
 final int canvasWidth = 1200;
 final int canvasHeight = 680;
 int sidePadding = canvasWidth/32;
@@ -125,10 +127,12 @@ void mousePressed(){
 // keep track of which button was pressed and do click stuff
 
 void mouseReleased() {
-  
-  // this works :)
-  //for (Button b : appDrawer.get_PanelBtns()){
-  for (Button b : mirrorActiveLeft.get_AllMirrorBtns()){
+  mouseReleasedBothUsers(mirrorActiveLeft);
+  mouseReleasedBothUsers(mirrorActiveRight);
+}
+
+void mouseReleasedBothUsers(MirrorActive m){
+  for (Button b : m.get_AllMirrorBtns()){
       if (btn_Clicked(b)){
         noLoop();
         // call b.onClick() method, which should, at the very least, open the selected 
@@ -140,50 +144,24 @@ void mouseReleased() {
   }
   
   // looping thru the current mirror's Left, Center, and Right panels  
-  for (ButtonPanel p1 : mirrorActiveLeft.get_AllMirrorPanels()){
-    // check that panel's buttons 
-    for (Button b1 : p1.get_PanelBtns()){
-      if (btn_Clicked(b1)){
-        noLoop();
-        b1.on_Click();
-        loop();
-      }
-    }
-    // looping thru that panel's inner panels, if any
-    for (ButtonPanel p : p1.innerPanels)
-      for (Button b : p.get_PanelBtns()){
-        if (btn_Clicked(b)){
-          noLoop();
-          // call b.onClick() method, which should, at the very least, open the selected 
-          // button's Module and will toggle the button state (active=1 vs inactive=0).
-          // (because if button is "active" we color it differently (activeClr vs. inactiveClr))
-          b.on_Click();  
-          loop();
-        }
-      }
-  }
-  
-  //for (Button b : mainButtons.get_PanelBtns()){
-  //  if (btn_Clicked(b)){
-  //    noLoop();
-  //    if      (b.equals(mainButtons.functionBtn))  mainScreen.set_ActiveMode(functionsMode);
-  //    else if (b.equals(mainButtons.heatTimeBtn))  mainScreen.set_ActiveMode(heatTimeMode);
-  //    else if (b.equals(mainButtons.clearOffBtn)) {
-  //      if (mainScreen.state != 0)  
-  //        mainScreen.get_ActiveMode().reset_CurrSettings();
-  //      else {
-  //        mainScreen.state = 1;
-  //      }        
+  // Don't think we need this!! Just above part!
+  //for (ButtonPanel p1 : m.get_AllMirrorPanels()){
+  //  // check that panel's buttons 
+  //  for (Button b1 : p1.get_PanelBtns()){
+  //    if (btn_Clicked(b1)){
+  //      noLoop();
+  //      b1.on_Click();
+  //      loop();
   //    }
-  //    loop();
   //  }
-  //}
-  
-  //for (Button b : mainScreen.get_ActiveMode().activeMirror.get_AllMirrorBtns()){
-  //  if (btn_Clicked(b)){
-  //    noLoop();
-  //    mainScreen.get_ActiveMode().do_BtnClick(b);
-  //    loop();
-  //  }
+  //  // looping thru that panel's inner panels, if any
+  //  for (ButtonPanel p : p1.innerPanels)
+  //    for (Button b : p.get_PanelBtns()){
+  //      if (btn_Clicked(b)){
+  //        noLoop();
+  //        b.on_Click();  
+  //        loop();
+  //      }
+  //    }
   //}  
 }
