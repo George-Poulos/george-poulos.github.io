@@ -16,6 +16,7 @@ class MirrorActive extends Mirror {
     create_RPanel();
     add_RPanelStuff();
     add_InnerPanels();
+    set_AppDrawerModuleLocs();
     allBtns.addAll(appDrawer.innerPanelBtns);
   } 
   
@@ -62,6 +63,9 @@ class AppDrawerBtn extends Button {
     this.imgFlag = btn.imgFlag;
     this.btnImg = btn.btnImg;
   }
+  
+  // need this here.
+  public void set_ModuleLoc(int r, int c){}
   
   public void set_BtnModule(ButtonPanel myMod){
     module = myMod;    

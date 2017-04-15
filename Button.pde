@@ -32,6 +32,7 @@ class Button extends Panel implements ActionListener {
   public void on_Click(){
     // toggle the button active state
     isActive = !isActive;
+    module.setVisibility(isActive);
     // hopefully this will only display the module if the button is "active",
     // and will close it otherwise.
     if (isActive)  
@@ -49,13 +50,15 @@ class Button extends Panel implements ActionListener {
     x = moduleParent.get_LocXInParent(col);
     y = moduleParent.get_LocYInParent(row);
     module.setLocation(x,y);
+    System.out.println(x + "," + y);
+    System.out.println(row + "," + col);
+
     if(isActive){
-      module.setVisibility(true);
+      //module.setVisibility(true);
     }
     else{
-      module.setVisibility(false);
+      //module.setVisibility(false);
     }
-    //open_Module();    // not yet implemented :)
   }
 
   //////////////////////////////////////////////////////////

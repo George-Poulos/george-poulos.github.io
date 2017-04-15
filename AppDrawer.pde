@@ -41,10 +41,6 @@ class AppDrawer extends ButtonPanel {
     this.colWidth = parent.colWidth;
   }
 
-  // implemented abstract fn from ButtonPanel superclass
-  void set_PanelRC(){
-    //this.panelRows = 3;
-  }
 
   // creates the buttons inside the AppDrawer
   private void create_Btns(){
