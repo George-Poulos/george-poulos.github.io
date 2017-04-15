@@ -10,9 +10,9 @@ class Button extends Panel implements ActionListener {
   //boolean isActive;
   String btnTxt = "";  // we won't use this as much for project 2
   color clr, activeClr, inactiveClr;
-  int padding;  
-  Module btnModule;
   ButtonPanel moduleParent;  // sets the panel that btnModule will open in
+  int padding;  // move this into Panel class???
+  Module module;
 
   // no specified color or text
   public Button(int x, int y, int w, int h){
@@ -35,7 +35,7 @@ class Button extends Panel implements ActionListener {
     // hopefully this will only display the module if the button is "active",
     // and will close it otherwise.
     if (isActive)  
-      btnModule.displayModule();    
+      module.displayModule();    
   }
   
   // sets the panel that btnModule will be opened in
@@ -48,7 +48,14 @@ class Button extends Panel implements ActionListener {
     int x,y;
     x = moduleParent.get_LocXInParent(col);
     y = moduleParent.get_LocYInParent(row);
-    btnModule.setLocation(x,y);
+    module.setLocation(x,y);
+    if(isActive){
+      module.setVisibility(true);
+    }
+    else{
+      module.setVisibility(false);
+    }
+    //open_Module();    // not yet implemented :)
   }
 
   //////////////////////////////////////////////////////////
@@ -62,6 +69,7 @@ class Button extends Panel implements ActionListener {
     activeClr = color(255);
     inactiveClr = color(235);
     clr = inactiveClr;  // might delete this for proj2
+    module = new Module(100,100,100,100,"map.jpg");
   }
 
   // I have this twice ...
@@ -124,6 +132,7 @@ class Button extends Panel implements ActionListener {
         // this doesn't actually fill in the icon - it fills the vector paths
         fill(activeClr);
         // COMMENT THIS LINE ONCE ICONS ARE .SVG
+        module.displayModule();
         noTint();
       }
       else {
