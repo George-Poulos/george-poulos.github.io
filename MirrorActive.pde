@@ -4,7 +4,6 @@
 class MirrorActive extends Mirror {
   private String APPDOCK = "dock_apps.png";
   private String SETTINGS = "dock_settings.png";
-  //private String WEATHER = "";
   
   AppDrawer appDrawer;
   AppDrawerBtn appBtn;

@@ -47,7 +47,7 @@ class Mirror extends Panel {
   CenterPanel centerPanel;
   
   // just so we can access all the buttons easily
-  private ArrayList<ButtonPanel> allPanels;  
+  ArrayList<ButtonPanel> allPanels;  
   ArrayList<Button> allBtns;
   
   
@@ -56,11 +56,13 @@ class Mirror extends Panel {
     init_BtnsAndPanels();
   }   
   
-  // will get rid of this soon
-  public Mirror(Panel p){  
-    this(p.locX, p.locY, p.szWidth, p.szHeight);
+  // adding this because all the "mirrors" will have same 
+  // panel sizes etc. - will use this but add stuff to copy m
+  public Mirror(Mirror m){
+    this(m.locX, m.locY, m.szWidth, m.szHeight);
+    
   }
-  
+
   private void init_BtnsAndPanels(){
     allPanels = new ArrayList<ButtonPanel>();
     allBtns = new ArrayList<Button>();      
@@ -86,7 +88,7 @@ class Mirror extends Panel {
     centerPanel.set_BtnSizes();
   }
   
-  // called from setup() in processing ?
+  // called from subclass constructors
   public void add_InnerPanels(){
     allPanels.add(leftPanel);
     allPanels.add(centerPanel);
