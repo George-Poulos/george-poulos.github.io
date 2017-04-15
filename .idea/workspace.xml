@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e0961963-9331-4abf-baf4-398e09a8d08a" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AppDrawer.pde" afterPath="$PROJECT_DIR$/AppDrawer.pde" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Button.pde" afterPath="$PROJECT_DIR$/Button.pde" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ButtonPanel.pde" afterPath="$PROJECT_DIR$/ButtonPanel.pde" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/home.html" afterPath="$PROJECT_DIR$/home.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj2.pde" afterPath="$PROJECT_DIR$/proj2.pde" />
     </list>
     <ignored path="MirrorUI.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -49,7 +47,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/home.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
@@ -59,10 +57,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ButtonPanel.pde" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ButtonPanel.pde" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ButtonPanel.pde">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2850">
+            <state relative-caret-position="1262">
               <caret line="190" column="1" lean-forward="false" selection-start-line="190" selection-start-column="1" selection-end-line="190" selection-end-column="1" />
               <folding />
             </state>
@@ -72,8 +70,8 @@
       <file leaf-file-name="proj2.pde" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/proj2.pde">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="117" column="2" lean-forward="true" selection-start-line="117" selection-start-column="2" selection-end-line="117" selection-end-column="2" />
+            <state relative-caret-position="257">
+              <caret line="47" column="32" lean-forward="true" selection-start-line="47" selection-start-column="32" selection-end-line="47" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -82,8 +80,18 @@
       <file leaf-file-name="Button.pde" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Button.pde">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="531">
-              <caret line="126" column="1" lean-forward="false" selection-start-line="126" selection-start-column="1" selection-end-line="126" selection-end-column="1" />
+            <state relative-caret-position="167">
+              <caret line="111" column="8" lean-forward="false" selection-start-line="111" selection-start-column="8" selection-end-line="111" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AppDrawer.pde" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AppDrawer.pde">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="206">
+              <caret line="60" column="54" lean-forward="true" selection-start-line="60" selection-start-column="54" selection-end-line="60" selection-end-column="54" />
               <folding />
             </state>
           </provider>
@@ -106,9 +114,10 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/proj2.pde" />
-        <option value="$PROJECT_DIR$/home.html" />
-        <option value="$PROJECT_DIR$/Button.pde" />
         <option value="$PROJECT_DIR$/ButtonPanel.pde" />
+        <option value="$PROJECT_DIR$/home.html" />
+        <option value="$PROJECT_DIR$/AppDrawer.pde" />
+        <option value="$PROJECT_DIR$/Button.pde" />
       </list>
     </option>
   </component>
@@ -150,6 +159,60 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="MirrorUI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MirrorUI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MirrorUI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="icons" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="normal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="png" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MirrorUI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MirrorUI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="icons" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="normal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MirrorUI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MirrorUI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="icons" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -263,7 +326,7 @@
       <workItem from="1491276691222" duration="900000" />
       <workItem from="1492199804728" duration="263000" />
       <workItem from="1492206842477" duration="3081000" />
-      <workItem from="1492210859902" duration="169000" />
+      <workItem from="1492210859902" duration="3569000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <created>1491276960391</created>
@@ -293,11 +356,18 @@
       <option name="project" value="LOCAL" />
       <updated>1492208810221</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="working with processing.js ! finally">
+      <created>1492211053529</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1492211053529</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4413000" />
+    <option name="totallyTimeSpent" value="7813000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="82" y="23" width="1223" height="840" extended-state="0" />
@@ -357,7 +427,8 @@
     <MESSAGE value="First Commit" />
     <MESSAGE value="added fonts" />
     <MESSAGE value="added Mirror.pde to list" />
-    <option name="LAST_COMMIT_MESSAGE" value="added Mirror.pde to list" />
+    <MESSAGE value="working with processing.js ! finally" />
+    <option name="LAST_COMMIT_MESSAGE" value="working with processing.js ! finally" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -520,26 +591,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ButtonPanel.pde">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2850">
-          <caret line="190" column="1" lean-forward="false" selection-start-line="190" selection-start-column="1" selection-end-line="190" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/proj2.pde">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="117" column="2" lean-forward="true" selection-start-line="117" selection-start-column="2" selection-end-line="117" selection-end-column="2" />
+        <state relative-caret-position="257">
+          <caret line="47" column="32" lean-forward="true" selection-start-line="47" selection-start-column="32" selection-end-line="47" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Button.pde">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="531">
-          <caret line="126" column="1" lean-forward="false" selection-start-line="126" selection-start-column="1" selection-end-line="126" selection-end-column="1" />
+        <state relative-caret-position="167">
+          <caret line="111" column="8" lean-forward="false" selection-start-line="111" selection-start-column="8" selection-end-line="111" selection-end-column="8" />
           <folding />
         </state>
       </provider>
@@ -548,6 +611,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" column="7" lean-forward="true" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AppDrawer.pde">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="60" column="54" lean-forward="true" selection-start-line="60" selection-start-column="54" selection-end-line="60" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ButtonPanel.pde">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1262">
+          <caret line="190" column="1" lean-forward="false" selection-start-line="190" selection-start-column="1" selection-end-line="190" selection-end-column="1" />
           <folding />
         </state>
       </provider>
