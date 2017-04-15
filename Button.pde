@@ -7,7 +7,7 @@ class Button extends Panel implements ActionListener {
   // COMMENT THIS LINE AND UNCOMMENT ABOVE LINE ONCE ICONS ARE .SVG
   PImage btnImg;
   boolean imgFlag;
-  boolean isActive;
+  //boolean isActive;
   String btnTxt = "";  // we won't use this as much for project 2
   color clr, activeClr, inactiveClr;
   int padding;  // move this into Panel class???
@@ -23,14 +23,7 @@ class Button extends Panel implements ActionListener {
     this(x,y,w,h);
     btnTxt = txt;
   }
-
-  // specified color and specified text - we can prob get rid of this
-  // once the project 1 timer buttons are gone.
-  public Button(int x, int y, int w, int h, color c, String txt){
-    this(x,y,w,h,txt);
-    clr = c;
-  }
-
+  
   // implemented from ActionListener interface
   public void on_Click(){
     // toggle the button active state
@@ -51,6 +44,7 @@ class Button extends Panel implements ActionListener {
     clr = inactiveClr;  // might delete this for proj2
   }
 
+  // I have this twice ...
   void set_isActive(boolean newIsActive){
     isActive = newIsActive;
   }
@@ -75,14 +69,15 @@ class Button extends Panel implements ActionListener {
     btnTxt = txt;
   }
 
+
   // we call disableStyle() so that we can color the .svg how we want
   void set_Img(String img){
     imgFlag = true;
     //btnImg = loadShape(img);
-    //btnImg.disableStyle();
+    //btnImg.disableStyle();   
     // COMMENT THESE 2 LINES AND UNCOMMENT ABOVE 2 LINES ONCE ICONS ARE .SVG
     btnImg = loadImage(img);
-    btnImg.loadPixels();
+    //btnImg.loadPixels();
   }
 
   // rounded corner for drawing rectangle buttons without images
@@ -120,23 +115,28 @@ class Button extends Panel implements ActionListener {
 
       // draws button icon from center of where I tell it to go
       //shapeMode(CENTER);
-      //shape(btnImg, locX+(int)(szWidth/2), locY+(int)(szHeight/2),
+      //shape(btnImg, locX+(int)(szWidth/2), locY+(int)(szHeight/2), 
       //      szWidth-2*padding, szHeight-2*padding);
-
+      
       // COMMENT THESE 2 LINES AND UNCOMMENT ABOVE 2 LINES ONCE ICONS ARE .SVG
       imageMode(CENTER);
-      image(btnImg, locX+(int)(szWidth/2), locY+(int)(szHeight/2),
+      image(btnImg, locX+(int)(szWidth/2), locY+(int)(szHeight/2), 
             szWidth-2*padding, szHeight-2*padding);
-
+      
       // not this one
       //shape(btnImg, locX, locY, 48, 48);
     }
     
     else {  // the else part we will need to update for any buttons that 
             // have text but do not have an outline.
-      rect(locX, locY, szWidth, szHeight, corner); 
+      noFill();    
+      stroke(0.5);
+      rectMode(CENTER);
+      //rect(locX, locY, szWidth, szHeight, corner); 
       setup_Text(font, 255);
-      text(btnTxt, locX+(int)(szWidth/2), locY+(int)(szHeight/2));
+      //text(btnTxt, locX+(int)(szWidth/2), locY+(int)(szHeight/2));
+      text(btnTxt, locX, locY);
+      rectMode(CORNER);
     }    
   }
   
