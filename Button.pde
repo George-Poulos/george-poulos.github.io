@@ -7,7 +7,7 @@ class Button extends Panel implements ActionListener {
   // COMMENT THIS LINE AND UNCOMMENT ABOVE LINE ONCE ICONS ARE .SVG
   PImage btnImg;
   boolean imgFlag;
-  boolean isActive;
+  //boolean isActive;
   String btnTxt = "";  // we won't use this as much for project 2
   color clr, activeClr, inactiveClr;
   int padding;  // move this into Panel class???
@@ -23,14 +23,7 @@ class Button extends Panel implements ActionListener {
     this(x,y,w,h);
     btnTxt = txt;
   }
-
-  // specified color and specified text - we can prob get rid of this
-  // once the project 1 timer buttons are gone.
-  public Button(int x, int y, int w, int h, color c, String txt){
-    this(x,y,w,h,txt);
-    clr = c;
-  }
-
+  
   // implemented from ActionListener interface
   public void on_Click(){
     // toggle the button active state
@@ -74,6 +67,7 @@ class Button extends Panel implements ActionListener {
   void set_Text(String txt){
     btnTxt = txt;
   }
+
 
   // we call disableStyle() so that we can color the .svg how we want
   void set_Img(String img){

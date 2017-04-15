@@ -40,7 +40,7 @@ class MainButtons extends ButtonPanel {
     clearOffBtn = create_PanelBtn(9,0,2,1,"CLEAR |\nOFF");
     
     super.add_PanelBtns(new Button[]{functionBtn, heatTimeBtn, startBtn, clearOffBtn});
-    for (Button b : panelBtns){
+    for (Button b : innerPanelBtns){
       b.set_State(0);
       //b.clear_ClickColor();
     }    

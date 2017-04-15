@@ -47,12 +47,16 @@ class SidePanel extends ButtonPanel {
 }
 
 /**********************************************************************************************/
-/*****************************    Mirror Class     *******************************************/
+/*****************************    Mirror Class     ********************************************/
+/**********************************************************************************************/
 
 /**  
-    Mirror is really just a project-specific extension of the Panel abstract class.  
-    Each "Mode" has a "default display" and an "active display".  A Mirror is the enclosure for
-     multiple panels - this allows us to group related (ButtonPanels) together, which creates a Mode.
+    Mirror is really just a project-specific implementation of the Panel abstract class.  
+    Mirror is more of a "Mirror Layout" - it just places objects into a left, center, or right panel.
+    
+    Each "Mirror Mode" (diff. class) will be what determines which "Mirror" display is shown, 
+    ie. "MirrorActive" will have the AppDrawer / icons, weather, user's name, etc, 
+        "MirrorSetup" will contain the (multiple) mirror setup stages  ....
 */
 class Mirror extends Panel {
   
@@ -68,58 +72,58 @@ class Mirror extends Panel {
     init_BtnsAndPanels();
   }   
   
-  // can prob get rid of this.
+  // will get rid of this soon
   public Mirror(Panel p){  
     this(p.locX, p.locY, p.szWidth, p.szHeight);
   }
   
   private void init_BtnsAndPanels(){
     allPanels = new ArrayList<ButtonPanel>();
-    allBtns = new ArrayList<Button>();    
+    allBtns = new ArrayList<Button>();      
   }
   
-  // called from setup() in processing
+  public void create_RPanel(){
+    rightPanel = new SidePanel(this);  // width,height based on mirror
+    rightPanel.set_PanelLoc(this.locX + this.szWidth - rightPanel.szWidth, this.locY);  // x,y loc    
+  }
+  
+  public void create_LPanel(){
+    leftPanel = new SidePanel(this);                // width,height based on mirror
+    leftPanel.set_PanelLoc(this.locX,this.locY);    // x,y loc    
+  }
+  
+  // called from setup() in processing ?
   public void add_InnerPanels(){
-    add_LeftPanel();
-    add_RightPanel();
+    allPanels.add(leftPanel);
+    allPanels.add(rightPanel);
+    set_AllMirrorBtns();
     //add_CenterPanel();
   }
-  
-  private void add_LeftPanel(){
-    leftPanel = new SidePanel(this); // width,height based on mirror
-    leftPanel.set_PanelLoc(this.locX,this.locY);    // x,y loc
-    add_InnerPanel(leftPanel);
-  }
-  
-  private void add_RightPanel(){
-    rightPanel = new SidePanel(this);  // width,height based on mirror
-    rightPanel.set_PanelLoc(this.locX + this.szWidth - rightPanel.szWidth, this.locY);  // x,y loc
-    add_InnerPanel(rightPanel);
-  }
-  
+    
   // TODO: update this for project 2
-  void add_CenterPanel(){
+  private void add_CenterPanel(){
     centerPanel = new CenterPanel(this); 
-    add_InnerPanel(centerPanel);
+    allPanels.add(centerPanel);
   }
   
-  private void add_InnerPanel(ButtonPanel p){
-    allPanels.add(p);
-  }
   
   // adds all the buttons from each panel to the list of all the Mirror's buttons
   public void set_AllMirrorBtns(){
     for (ButtonPanel p : allPanels)
-      allBtns.addAll(p.panelBtns);    
+      allBtns.addAll(p.innerPanelBtns);    
   }  
   
+  public ArrayList<ButtonPanel> get_AllMirrorPanels(){
+    return allPanels;
+  }
+        
   public ArrayList<Button> get_AllMirrorBtns(){
     return allBtns;
   }
-      
+        
   // draw Mirror by drawing each Panel and its buttons
   public void draw_Mirror(){    
-      //draw_Panel();  // ??
+      draw_Panel();  // ??
       leftPanel.draw_ButtonPanel();
       rightPanel.draw_ButtonPanel();
       //centerPanel.draw_ButtonPanel();      

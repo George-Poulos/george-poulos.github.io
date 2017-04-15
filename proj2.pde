@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
-//  Sarah Hayden - CS 422 Project 1 - Spring 2017
+//  Group 5 - CS 422 Project 2 - Spring 2017
 
 // uncomment these two lines to get audio in Processing
 //import processing.sound.*;
@@ -11,17 +11,8 @@
 
 
 /* @pjs font="Arial.ttf","LCD-BOLD.TTF","Courier New.ttf"; */
-/* @pjs preload="rightarrow.png, leftarrow.png, settings.png, temp.png, time.png, toast.png"; */
-
 
 PFont defaultFont;
-
-//FunctionsMode functionsMode;
-//HeatTimeMode heatTimeMode;
-//SettingsMode settingsMode;
-
-//MainButtons mainButtons;
-//MainScreen mainScreen;
 
 public boolean btn_Clicked(Button btn){
   return btn.is_MouseOverItem();
@@ -42,19 +33,15 @@ public void open_SettingsMode(){
   //mainScreen.set_ActiveMode((Mode)settingsMode);
 }
 
+// sets each of Left, Center, Right panels on the current mirror state to "Active"
+// so that they are drawn by Processing.
+public void set_ActiveMirror(Mirror m){
+  for (ButtonPanel p : m.allPanels)
+    p.isActive = true;
+}
+
 /////////////////////////////////////////////////////
 
-
-/******************************/
-public void create_Oven(){
-  //mainScreen = new MainScreen(canvasWidth, canvasHeight);
-  //functionsMode = new FunctionsMode(mainScreen);
-  //heatTimeMode = new HeatTimeMode(mainScreen);
-  //settingsMode = new SettingsMode(mainScreen);  
-  //mainScreen.set_ActiveMode(functionsMode);
-  //mainButtons = new MainButtons(canvasWidth, canvasHeight);
-}
-/******************************/
 
 public void setup_Text(PFont font, color c){
   textFont(font);
@@ -63,8 +50,9 @@ public void setup_Text(PFont font, color c){
 }
 
 
-
 /////////////////////////////////////////////////////
+public String fileLoc = "icons/normal/png/";
+
 final color DAYCOLOR = color(205,219,225);
 //final color NIGHTCOLOR = color(,,,);  // maybe we do warm tint on daycolor ?
 color mirrorColor;
@@ -76,6 +64,7 @@ int mirrorWidth = canvasWidth-2*sidePadding;
 int mirrorHeight = canvasHeight;  // update this if we add vertical padding
 
 Mirror mirror;  // mirror has left, right, and center grid panels
+MirrorActive mirrorActive;
 AppDrawer appDrawer;
 
 /////////////////////////////////////////////////////
@@ -91,13 +80,14 @@ void setup() {
   mirrorColor = DAYCOLOR;
   
   //mainScreen.set_ActiveMode(functionsMode);
-  mirror = new Mirror(sidePadding,0,mirrorWidth,mirrorHeight);
-  mirror.add_InnerPanels();  // creates left, right, and center grid panels
+  //mirror = new Mirror(sidePadding,0,mirrorWidth,mirrorHeight);
+  //mirror.add_InnerPanels();  // creates left, right, and center grid panels
+  //appDrawer = new AppDrawer(mirror.rightPanel);
+
   
-  
-  // we can set the location and calculate better dimensions from within this class 
-  // so this is just like this for now :)
-  appDrawer = new AppDrawer(mirror.rightPanel);
+  mirrorActive = new MirrorActive(sidePadding,0,mirrorWidth-sidePadding,mirrorHeight);
+  mirrorActive.add_InnerPanels();  // creates left, right, and center grid panels
+  set_ActiveMirror(mirrorActive);
 
 }
 /////////////////////////////////////////////////////
@@ -114,8 +104,9 @@ void draw() {
   fill(200);
   rect(0, 0, sidePadding, canvasHeight);  // left outer padding
   rect(canvasWidth-sidePadding, 0, sidePadding, canvasHeight);  // right outer padding
-  appDrawer.draw_ButtonPanel();
+  //appDrawer.draw_ButtonPanel();
   
+  mirrorActive.draw_Mirror();
 }
 
 
@@ -134,16 +125,40 @@ void mousePressed(){
 void mouseReleased() {
   
   // this works :)
-  for (Button b : appDrawer.get_PanelBtns()){
-    if (btn_Clicked(b)){
-      noLoop();
-      // call b.onClick() method, which should, at the very least, open the selected 
-      // button's Module and will toggle the button state (active=1 vs inactive=0).
-      // (because if button is "active" we color it differently (activeClr vs. inactiveClr))
-      b.on_Click();
-
-      loop();
+  //for (Button b : appDrawer.get_PanelBtns()){
+  for (Button b : mirrorActive.get_AllMirrorBtns()){
+      if (btn_Clicked(b)){
+        noLoop();
+        // call b.onClick() method, which should, at the very least, open the selected 
+        // button's Module and will toggle the button state (active=1 vs inactive=0).
+        // (because if button is "active" we color it differently (activeClr vs. inactiveClr))
+        b.on_Click();  
+        loop();
+      }    
+  }
+  
+  // looping thru the current mirror's Left, Center, and Right panels  
+  for (ButtonPanel p1 : mirrorActive.get_AllMirrorPanels()){
+    // check that panel's buttons 
+    for (Button b1 : p1.get_PanelBtns()){
+      if (btn_Clicked(b1)){
+        noLoop();
+        b1.on_Click();
+        loop();
+      }
     }
+    // looping thru that panel's inner panels, if any
+    for (ButtonPanel p : p1.innerPanels)
+      for (Button b : p.get_PanelBtns()){
+        if (btn_Clicked(b)){
+          noLoop();
+          // call b.onClick() method, which should, at the very least, open the selected 
+          // button's Module and will toggle the button state (active=1 vs inactive=0).
+          // (because if button is "active" we color it differently (activeClr vs. inactiveClr))
+          b.on_Click();  
+          loop();
+        }
+      }
   }
   
   //for (Button b : mainButtons.get_PanelBtns()){

@@ -6,7 +6,8 @@ abstract class Panel {
   int state;
   int locX, locY, szWidth, szHeight, corner;
   color fillColor;
-    
+  boolean isActive;
+  
   public Panel(){
     state = -1;
     corner = 0;
