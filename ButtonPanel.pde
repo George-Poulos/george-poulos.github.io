@@ -11,7 +11,6 @@ abstract class ButtonPanel extends Panel {
   
   ArrayList<Button> innerPanelBtns;
   ArrayList<ButtonPanel> innerPanels;
-  ArrayList<Point> emptySpace;
   
   public ButtonPanel(){ 
     super();   
