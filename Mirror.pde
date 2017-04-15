@@ -19,8 +19,6 @@ class CenterPanel extends ButtonPanel {
   }   
     
   private void set_Margins(Panel p){
-    //this.marginTop = this.marginBottom = (int)(p.szHeight / 10); 
-    //this.marginLeft = this.marginRight = 0;
   }
   
   // implemented abstract fn from superclass

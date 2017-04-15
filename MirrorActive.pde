@@ -3,9 +3,11 @@
 
 class MirrorActive extends Mirror {
   private String APPDOCK = "dock_apps.png";
+  private String SETTINGS = "dock_settings.png";
   
   AppDrawer appDrawer;
   AppDrawerBtn appBtn;
+  Button settingsBtn;
   
   public MirrorActive(int x, int y, int w, int h){
     super(x,y,w,h); 
@@ -20,11 +22,14 @@ class MirrorActive extends Mirror {
     appDrawer = new AppDrawer(this.rightPanel);
     // creating AppDrawer button based on specs of a regular button.
     appBtn = new AppDrawerBtn(rightPanel.create_PanelBtn(
-          rightPanel.panelRows-1, rightPanel.panelCols-2, true, fileLoc.concat(APPDOCK)));
+          rightPanel.panelRows-1, 2, true, fileLoc.concat(APPDOCK)));
     appBtn.set_BtnModule(appDrawer); 
-    rightPanel.add_PanelBtn(appBtn);
-    rightPanel.add_InnerPanel(appDrawer);
     
+    settingsBtn = rightPanel.create_PanelBtn(
+        rightPanel.panelRows-1,3,true,fileLoc.concat(SETTINGS));
+    rightPanel.add_PanelBtn(settingsBtn);
+    rightPanel.add_PanelBtn(appBtn);
+    rightPanel.add_InnerPanel(appDrawer);    
   }
   
 }
