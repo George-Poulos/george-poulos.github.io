@@ -5,11 +5,7 @@ class Button extends Panel implements ActionListener {
   PFont font;
   //PShape btnImg;    // made it a PShape so we can have .svg files :)
   // COMMENT THIS LINE AND UNCOMMENT ABOVE LINE ONCE ICONS ARE .SVG
-<<<<<<< HEAD
-  PImage btnImg;  
-=======
   PImage btnImg;
->>>>>>> 78b931b04c4f70d64cf9fc6406364940e687f332
   boolean imgFlag;
   boolean isActive;
   String btnTxt = "";  // we won't use this as much for project 2
@@ -83,11 +79,7 @@ class Button extends Panel implements ActionListener {
   void set_Img(String img){
     imgFlag = true;
     //btnImg = loadShape(img);
-<<<<<<< HEAD
     //btnImg.disableStyle();   
-=======
-    //btnImg.disableStyle();
->>>>>>> 78b931b04c4f70d64cf9fc6406364940e687f332
     // COMMENT THESE 2 LINES AND UNCOMMENT ABOVE 2 LINES ONCE ICONS ARE .SVG
     btnImg = loadImage(img);
     btnImg.loadPixels();
@@ -128,7 +120,6 @@ class Button extends Panel implements ActionListener {
 
       // draws button icon from center of where I tell it to go
       //shapeMode(CENTER);
-<<<<<<< HEAD
       //shape(btnImg, locX+(int)(szWidth/2), locY+(int)(szHeight/2), 
       //      szWidth-2*padding, szHeight-2*padding);
       
@@ -137,16 +128,6 @@ class Button extends Panel implements ActionListener {
       image(btnImg, locX+(int)(szWidth/2), locY+(int)(szHeight/2), 
             szWidth-2*padding, szHeight-2*padding);
       
-=======
-      //shape(btnImg, locX+(int)(szWidth/2), locY+(int)(szHeight/2),
-      //      szWidth-2*padding, szHeight-2*padding);
-
-      // COMMENT THESE 2 LINES AND UNCOMMENT ABOVE 2 LINES ONCE ICONS ARE .SVG
-      imageMode(CENTER);
-      image(btnImg, locX+(int)(szWidth/2), locY+(int)(szHeight/2),
-            szWidth-2*padding, szHeight-2*padding);
-
->>>>>>> 78b931b04c4f70d64cf9fc6406364940e687f332
       // not this one
       //shape(btnImg, locX, locY, 48, 48);
     }

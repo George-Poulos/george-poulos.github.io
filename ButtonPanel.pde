@@ -100,11 +100,7 @@ abstract class ButtonPanel extends Panel {
     return create_PanelBtn(row,col,1,1,btnMirror);
   }
 
-<<<<<<< HEAD
-  // this is the one we are using in AppDrawer 
-=======
   // this is the one we are using in AppDrawer
->>>>>>> 78b931b04c4f70d64cf9fc6406364940e687f332
   Button create_PanelBtn(int row, int col, boolean img, String btnMirror){
     return create_PanelBtn(row,col,1,1,img,btnMirror);
   }
@@ -118,15 +114,9 @@ abstract class ButtonPanel extends Panel {
   //        that lets us instantiate the button's Module instance variable from here.
   Button create_PanelBtn(int row, int col, int rowsToSpan, int colsToSpan, boolean img, String btnMirror){
     //Button b = create_PanelBtn(row,col,rowsToSpan,colsToSpan);
-<<<<<<< HEAD
-    Button b = new Button(locX + col*panelBtnWidth, locY + row*panelBtnHeight, 
-          panelBtnWidth*colsToSpan, panelBtnHeight*rowsToSpan);
-    if (img) b.set_Img(btnMirror); 
-=======
     Button b = new Button(locX + col*panelBtnWidth, locY + row*panelBtnHeight,
           panelBtnWidth*colsToSpan, panelBtnHeight*rowsToSpan);
     if (img) b.set_Img(btnMirror);
->>>>>>> 78b931b04c4f70d64cf9fc6406364940e687f332
     else b.set_Text(btnMirror);
 
     // added this line for project 2 - it just automatically adds the button to panelBtns list :)
@@ -191,11 +181,6 @@ abstract class ButtonPanel extends Panel {
   public void draw_ButtonPanel(){
     if (this.state != 0) {
       draw_Panel();      // draw enclosing Panel - might remove this????
-<<<<<<< HEAD
-      
-=======
-
->>>>>>> 78b931b04c4f70d64cf9fc6406364940e687f332
       for (Button b : panelBtns)
         b.draw_Btn();
 
