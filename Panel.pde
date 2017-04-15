@@ -17,7 +17,6 @@ abstract class Panel {
     set_PanelSize(w,h);
   }
   public Panel(int x, int y, int w, int h){
-    //this(w,h);
     set_PanelSize(w,h);
     set_PanelLoc(x,y);
   }
@@ -53,6 +52,10 @@ abstract class Panel {
   
   public void set_State(int newState){
     state = newState;
+  }
+  
+  void set_isActive(boolean newIsActive){
+    isActive = newIsActive;
   }
   
   // need this for all onClick() stuff!!!

@@ -44,6 +44,7 @@ class Button extends Panel implements ActionListener {
     clr = inactiveClr;  // might delete this for proj2
   }
 
+  // I have this twice ...
   void set_isActive(boolean newIsActive){
     isActive = newIsActive;
   }
