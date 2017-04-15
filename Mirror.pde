@@ -7,7 +7,6 @@
 class CenterPanel extends ButtonPanel {
     
   public CenterPanel(Panel parent){
-    //super((3*parent.szWidth)/4, parent.szHeight);
     super(parent.szWidth/2, parent.szHeight);
   }
     
@@ -27,9 +26,7 @@ class SidePanel extends ButtonPanel {
   }
               
   // implemented abstract fn from superclass (default rows/cols for SidePanel)
-  void set_PanelRC(){
-    //this.panelCols = 4;
-  }
+  void set_PanelRC(){  }
 }
 
 /**********************************************************************************************/
@@ -70,15 +67,12 @@ class Mirror extends Panel {
   
   void create_RPanel(){
     rightPanel = new SidePanel(this);  // width,height based on mirror
-    //rightPanel.set_PanelLoc(this.locX + this.szWidth - rightPanel.szWidth, this.locY);  // x,y loc    
     rightPanel.set_PanelLoc(this.locX + leftPanel.szWidth + centerPanel.szWidth,this.locY);
-    System.out.println("rightWidth: "+rightPanel.szWidth);
   }
   
   void create_LPanel(){
     leftPanel = new SidePanel(this);                // width,height based on mirror
     leftPanel.set_PanelLoc(this.locX,this.locY);    // x,y loc   
-    System.out.println("leftWidth: "+leftPanel.szWidth);
   }
   
   void create_CPanel(){
@@ -88,7 +82,6 @@ class Mirror extends Panel {
     centerPanel.rowHeight = leftPanel.rowHeight;
     centerPanel.panelRows = leftPanel.panelRows;
     centerPanel.panelCols = centerPanel.szWidth / centerPanel.colWidth;
-    System.out.println("centerWidth: "+centerPanel.szWidth);
     centerPanel.set_BtnSizes();
   }
   
