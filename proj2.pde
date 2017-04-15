@@ -174,7 +174,7 @@ void setup() {
 
   create_clockAndWeather(mirrorActiveRight);
   
-  // starting state 
+  // starting state so we can test module locs
   set_CurrentMirrors(mirrorActiveLeft, mirrorActiveRight);
 }
 /////////////////////////////////////////////////////
