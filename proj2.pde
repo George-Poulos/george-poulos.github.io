@@ -8,8 +8,6 @@
 // here is a processing.js solution from http://aaron-sherwood.com/processingjs/circleSound.html
 // uncomment this line to get audio in Processing.js
 //Audio beepSound = new Audio();
-
-
 /* @pjs font="Arial.ttf","LCD-BOLD.TTF","Courier New.ttf"; */
 
 PFont defaultFont, dateFont;
@@ -41,9 +39,25 @@ public void set_ActiveMirror(Mirror m){
     p.isActive = true;
 }
 
-// these buttons stretch across the center of the mirror, so we place them
-// based on where the right mirror starts
-// these buttons get drawn from their origin, so we can set their x,y coords to mirror start.
+// do not call this function from setup()! Processing.js doesn't understand the param type >:(
+public void set_LRActiveMirrors(Mirror... mirrors){
+  for (Mirror m : mirrors)
+    set_ActiveMirror(m);
+}
+
+//
+// Draws the "current mirror state" for each side of the mirror.
+// By setting currMirrorLeft and/or currMirrorRight to any known 
+// mirror state, the chosen state will be drawn :)
+public void draw_LRMirrors(Mirror... mirrors){
+  for (Mirror m : mirrors)
+    m.draw_Mirror();
+}
+
+// 
+// These buttons stretch across the center of the mirror, so we place them
+// based on where the right mirror starts. These buttons get drawn
+//  from their origin, so we can set their x,y coords to mirror start.
 public void create_clockAndWeather(MirrorActive m){
   int w = m.rightPanel.colWidth;
   int h = m.rightPanel.rowHeight;
@@ -55,16 +69,20 @@ public void create_clockAndWeather(MirrorActive m){
 }
 
 /////////////////////////////////////////////////////
-
-
 public void setup_Text(PFont font, color c){
   textFont(font);
   fill(c);
   textAlign(CENTER, CENTER);
 }
 
-
+// just to check where the outer side mirror edges are drawn
+public void draw_OuterFrame(){
+  fill(200);  
+  rect(0, 0, sidePadding, canvasHeight);  // left outer padding
+  rect(canvasWidth-sidePadding, 0, sidePadding, canvasHeight);  // right outer padding  
+}
 /////////////////////////////////////////////////////
+
 public String fileLoc = "icons/normal/png/";
 
 final color DAYCOLOR = color(205,219,225);
@@ -82,9 +100,14 @@ int sidePadding = canvasWidth/32;
 int mirrorWidth = canvasWidth-2*sidePadding;
 int mirrorHeight = canvasHeight;  // update this if we add vertical padding
 
-Mirror mirror;  // mirror has left, right, and center grid panels
+// this allows us to set the "active mirror", and draw the current mirror state based on it :D
+Mirror currMirrorLeft, currMirrorRight; 
+
+MirrorOff mirrorOffLeft, mirrorOffRight;
+// inactive state = off state + time/date buttons
+MirrorOff mirrorInactiveLeft, mirrorInactiveRight;
 MirrorActive mirrorActiveLeft, mirrorActiveRight;
-AppDrawer appDrawer;
+
 
 /////////////////////////////////////////////////////
 void setup() {
@@ -98,19 +121,24 @@ void setup() {
   
   // just a (pretty good) guess based on what our website mirror looks like
   mirrorColor = DAYCOLOR;
-  
-  //mainScreen.set_ActiveMode(functionsMode);
-  
-  mirrorActiveLeft = new MirrorActive(sidePadding,0,mirrorWidth/numUsers,mirrorHeight);
-  mirrorActiveLeft.add_InnerPanels();  // creates left, right, and center grid panels
-  set_ActiveMirror(mirrorActiveLeft);
- 
+    
+  mirrorActiveLeft = new MirrorActive(sidePadding,0,mirrorWidth/numUsers,mirrorHeight); 
   mirrorActiveRight = new MirrorActive(sidePadding+mirrorWidth/numUsers,0,
         mirrorWidth/numUsers,mirrorHeight);
-  mirrorActiveRight.add_InnerPanels();  // creates left, right, and center grid panels
+  set_ActiveMirror(mirrorActiveLeft);
   set_ActiveMirror(mirrorActiveRight);
 
   create_clockAndWeather(mirrorActiveRight);
+  
+  mirrorOffLeft = new MirrorOff(sidePadding,0,mirrorWidth/numUsers,mirrorHeight);
+  mirrorOffRight = new MirrorOff(sidePadding+mirrorWidth/numUsers,0,
+        mirrorWidth/numUsers,mirrorHeight);
+  set_ActiveMirror(mirrorOffLeft);
+  set_ActiveMirror(mirrorOffRight);
+  
+  // starting state is mirrors both turned off :)
+  currMirrorLeft = mirrorOffLeft;
+  currMirrorRight = mirrorOffRight;
 }
 /////////////////////////////////////////////////////
 
@@ -119,19 +147,16 @@ void draw() {
   background(mirrorColor);
   noStroke();
 
-  //// draws the "Active Mode" on the front of the oven.
-  //mainScreen.draw_ActiveMode();
-       
-  // just to check where the outer side paddings are drawn
-  fill(200);
-  rect(0, 0, sidePadding, canvasHeight);  // left outer padding
-  rect(canvasWidth-sidePadding, 0, sidePadding, canvasHeight);  // right outer padding
+  // just to check where the outer frame is
+  draw_OuterFrame();
   
-  mirrorActiveLeft.draw_Mirror();
-  mirrorActiveRight.draw_Mirror();
+  // we need to create something that draws the time/date buttons as long as the mirror is not turned off 
   timeBtn.set_Text(hour()%12+":"+ (minute()<10 ? "0":"") + minute()+  (hour()>=12 ? " pm" : " am"));
   dateBtn.set_Text(month()+"/"+day()+"/"+year());
-  draw_Btn(timeBtn, dateBtn);
+  //draw_Btn(timeBtn, dateBtn);
+
+  // Draw the current mirror state for each side of the mirror
+  draw_LRMirrors(currMirrorLeft, currMirrorRight);
 }
 
 
@@ -148,11 +173,14 @@ void mousePressed(){
 // keep track of which button was pressed and do click stuff
 
 void mouseReleased() {
-  mouseReleasedBothUsers(mirrorActiveLeft);
-  mouseReleasedBothUsers(mirrorActiveRight);
+  mouseReleasedBothUsers(currMirrorLeft);
+  mouseReleasedBothUsers(currMirrorRight);
 }
 
-void mouseReleasedBothUsers(MirrorActive m){
+// updated this to have Mirror as the parameter type; we check if mouse is clicked
+// on the *current mirror state* - whichever current mirror state either side is in, 
+// we're checking for clicks on it.
+void mouseReleasedBothUsers(Mirror m){
   for (Button b : m.get_AllMirrorBtns()){
       if (btn_Clicked(b)){
         noLoop();
