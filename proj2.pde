@@ -54,6 +54,28 @@ public void draw_LRMirrors(Mirror... mirrors){
     m.draw_Mirror();
 }
 
+//
+// Creates MirrorOff states for L and R mirror.
+// *Does not* set the "current mirror" state. Just initializes here.
+public void create_MirrorOffStates(){
+  mirrorOffLeft = new MirrorOff(sidePadding,0,mirrorWidth/numUsers,mirrorHeight);
+  mirrorOffRight = new MirrorOff(sidePadding+mirrorWidth/numUsers,0,
+        mirrorWidth/numUsers,mirrorHeight);
+  set_ActiveMirror(mirrorOffLeft);
+  set_ActiveMirror(mirrorOffRight);  
+}
+
+//
+// Creates MirrorActive states for L and R mirror.
+// *Does not* set the "current mirror" state. Just initializes here.
+public void create_MirrorActiveStates(){
+  mirrorActiveLeft = new MirrorActive(sidePadding,0,mirrorWidth/numUsers,mirrorHeight); 
+  mirrorActiveRight = new MirrorActive(sidePadding+mirrorWidth/numUsers,0,
+        mirrorWidth/numUsers,mirrorHeight);
+  set_ActiveMirror(mirrorActiveLeft);
+  set_ActiveMirror(mirrorActiveRight);  
+}
+
 // 
 // These buttons stretch across the center of the mirror, so we place them
 // based on where the right mirror starts. These buttons get drawn
@@ -66,6 +88,27 @@ public void create_clockAndWeather(MirrorActive m){
   dateBtn = new Button(m.locX, m.locY+timeBtn.szHeight, 4*w, h);
   dateBtn.set_BtnFont(dateFont);
   //weatherBtn = rightPanel.create_PanelBtn(1,1,2,3,true,WEATHER);
+}
+
+//
+// Goal here is to allow us to pass in a flag via javascript function in our html file
+// that will tell Processing which LEFT SIDE Mirror state we want to start in
+public void set_CurrentLMirror(int mirrorFlag){
+  switch(mirrorFlag){
+    case 0:  currMirrorLeft = mirrorOffLeft;
+    case 1:  currMirrorLeft = mirrorInactiveLeft;
+    case 2:  currMirrorLeft = mirrorActiveLeft;
+  }
+}
+//
+// Goal here is to allow us to pass in a flag via javascript function in our html file
+// that will tell Processing which RIGHT SIDE Mirror state we want to start in
+public void set_CurrentRMirror(int mirrorFlag){
+  switch(mirrorFlag){
+    case 0:  currMirrorRight = mirrorOffRight;
+    case 1:  currMirrorRight = mirrorInactiveRight; // gotta create this one first tho
+    case 2:  currMirrorRight = mirrorActiveRight;
+  }
 }
 
 /////////////////////////////////////////////////////
@@ -121,20 +164,10 @@ void setup() {
   
   // just a (pretty good) guess based on what our website mirror looks like
   mirrorColor = DAYCOLOR;
-    
-  mirrorActiveLeft = new MirrorActive(sidePadding,0,mirrorWidth/numUsers,mirrorHeight); 
-  mirrorActiveRight = new MirrorActive(sidePadding+mirrorWidth/numUsers,0,
-        mirrorWidth/numUsers,mirrorHeight);
-  set_ActiveMirror(mirrorActiveLeft);
-  set_ActiveMirror(mirrorActiveRight);
+  create_MirrorOffStates();
+  create_MirrorActiveStates();
 
   create_clockAndWeather(mirrorActiveRight);
-  
-  mirrorOffLeft = new MirrorOff(sidePadding,0,mirrorWidth/numUsers,mirrorHeight);
-  mirrorOffRight = new MirrorOff(sidePadding+mirrorWidth/numUsers,0,
-        mirrorWidth/numUsers,mirrorHeight);
-  set_ActiveMirror(mirrorOffLeft);
-  set_ActiveMirror(mirrorOffRight);
   
   // starting state is mirrors both turned off :)
   currMirrorLeft = mirrorOffLeft;
@@ -184,6 +217,11 @@ void mouseReleasedBothUsers(Mirror m){
   for (Button b : m.get_AllMirrorBtns()){
       if (btn_Clicked(b)){
         noLoop();
+        // set the ROW and COLUMN that the module should open in, in its parent panel.
+        // we can grab these row/col vals from a list of "vacant locs" maintained by the Mirror (will add that later)
+        // the panel that the module should open in is already chosen during that mirror's setup
+        b.set_ModuleLoc(5,0);
+        
         // call b.onClick() method, which should, at the very least, open the selected 
         // button's Module and will toggle the button state (active=1 vs inactive=0).
         // (because if button is "active" we color it differently (activeClr vs. inactiveClr))

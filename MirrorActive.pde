@@ -19,6 +19,13 @@ class MirrorActive extends Mirror {
     allBtns.addAll(appDrawer.innerPanelBtns);
   } 
   
+  // just sets all the modules for the app drawer (not incl. appdrawer btn and settings btn)
+  // to be opened in the LeftPanel of the mirror. can change later if we want
+  void set_AppDrawerModuleLocs(){
+    for (Button b : appDrawer.innerPanelBtns)
+      b.set_ModuleParent(leftPanel);
+  }
+  
   void add_RPanelStuff(){
     appDrawer = new AppDrawer(this.rightPanel);
     // creating AppDrawer button based on specs of a regular button.

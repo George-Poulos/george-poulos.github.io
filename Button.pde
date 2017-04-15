@@ -10,7 +10,9 @@ class Button extends Panel implements ActionListener {
   //boolean isActive;
   String btnTxt = "";  // we won't use this as much for project 2
   color clr, activeClr, inactiveClr;
-  int padding;  // move this into Panel class???
+  int padding;  
+  Module btnModule;
+  ButtonPanel moduleParent;  // sets the panel that btnModule will open in
 
   // no specified color or text
   public Button(int x, int y, int w, int h){
@@ -25,10 +27,28 @@ class Button extends Panel implements ActionListener {
   }
   
   // implemented from ActionListener interface
+  // this gets called from mouseReleased(), after we have set the 
+  // location of the module!
   public void on_Click(){
     // toggle the button active state
     isActive = !isActive;
-    //open_Module();    // not yet implemented :)
+    // hopefully this will only display the module if the button is "active",
+    // and will close it otherwise.
+    if (isActive)  
+      btnModule.displayModule();    
+  }
+  
+  // sets the panel that btnModule will be opened in
+  public void set_ModuleParent(ButtonPanel p){
+    moduleParent = p;
+  }
+  
+  // called from mouseReleased() function to tell btnModule which row,col to open in
+  public void set_ModuleLoc(int row, int col){
+    int x,y;
+    x = moduleParent.get_LocXInParent(col);
+    y = moduleParent.get_LocYInParent(row);
+    btnModule.setLocation(x,y);
   }
 
   //////////////////////////////////////////////////////////

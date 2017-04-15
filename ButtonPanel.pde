@@ -125,7 +125,7 @@ abstract class ButtonPanel extends Panel {
           panelBtnWidth*colsToSpan, panelBtnHeight*rowsToSpan);
     if (img) b.set_Img(btnMirror);
     else b.set_Text(btnMirror);
-
+    
     // uncomment this to just automatically adds the button to panelBtns list. 
     // it's not the best idea though.
     //panelBtns.add(b);
