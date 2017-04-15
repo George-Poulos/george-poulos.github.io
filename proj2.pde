@@ -80,12 +80,8 @@ void setup() {
   mirrorColor = DAYCOLOR;
   
   //mainScreen.set_ActiveMode(functionsMode);
-  //mirror = new Mirror(sidePadding,0,mirrorWidth,mirrorHeight);
-  //mirror.add_InnerPanels();  // creates left, right, and center grid panels
-  //appDrawer = new AppDrawer(mirror.rightPanel);
-
   
-  mirrorActive = new MirrorActive(sidePadding,0,mirrorWidth-sidePadding,mirrorHeight);
+  mirrorActive = new MirrorActive(sidePadding,0,mirrorWidth,mirrorHeight);
   mirrorActive.add_InnerPanels();  // creates left, right, and center grid panels
   set_ActiveMirror(mirrorActive);
 
@@ -104,7 +100,6 @@ void draw() {
   fill(200);
   rect(0, 0, sidePadding, canvasHeight);  // left outer padding
   rect(canvasWidth-sidePadding, 0, sidePadding, canvasHeight);  // right outer padding
-  //appDrawer.draw_ButtonPanel();
   
   mirrorActive.draw_Mirror();
 }

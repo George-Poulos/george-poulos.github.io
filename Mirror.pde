@@ -5,27 +5,14 @@
 
 // I will deal with CenterPanel after I get SidePanels working right
 class CenterPanel extends ButtonPanel {
-  
-  public CenterPanel(Mirror d){
-    super();
-    set_Margins(d);   
     
-    set_PanelLoc(d.locX + d.leftPanel.szWidth, d.locY + this.marginTop);         
-    set_PanelSize(d.szWidth - d.leftPanel.szWidth - d.rightPanel.szWidth, 
-      d.szHeight - this.marginTop - this.marginBottom);
-    
-    set_PanelRC();
-    super.set_BtnSizes();
-  }   
-    
-  private void set_Margins(Panel p){
+  public CenterPanel(Panel parent){
+    super((3*parent.szWidth)/4, parent.szHeight);
   }
-  
+    
+      
   // implemented abstract fn from superclass
-  void set_PanelRC(){
-    panelRows = 2;
-    panelCols = 2;
-  }   
+  void set_PanelRC(){  }   
   
 }
 
@@ -80,35 +67,43 @@ class Mirror extends Panel {
     allBtns = new ArrayList<Button>();      
   }
   
-  public void create_RPanel(){
+  void create_RPanel(){
     rightPanel = new SidePanel(this);  // width,height based on mirror
-    rightPanel.set_PanelLoc(this.locX + this.szWidth - rightPanel.szWidth, this.locY);  // x,y loc    
+    //rightPanel.set_PanelLoc(this.locX + this.szWidth - rightPanel.szWidth, this.locY);  // x,y loc    
+    rightPanel.set_PanelLoc(this.locX + leftPanel.szWidth + centerPanel.szWidth,this.locY);
+    System.out.println("rightWidth: "+rightPanel.szWidth);
   }
   
-  public void create_LPanel(){
+  void create_LPanel(){
     leftPanel = new SidePanel(this);                // width,height based on mirror
-    leftPanel.set_PanelLoc(this.locX,this.locY);    // x,y loc    
+    leftPanel.set_PanelLoc(this.locX,this.locY);    // x,y loc   
+    System.out.println("leftWidth: "+leftPanel.szWidth);
+  }
+  
+  void create_CPanel(){
+    centerPanel = new CenterPanel(this);
+    centerPanel.set_PanelLoc(this.locX+leftPanel.szWidth, this.locY);
+    centerPanel.colWidth = leftPanel.colWidth;
+    centerPanel.rowHeight = leftPanel.rowHeight;
+    centerPanel.panelRows = leftPanel.panelRows;
+    centerPanel.panelCols = centerPanel.szWidth / centerPanel.colWidth;
+    System.out.println("centerWidth: "+centerPanel.szWidth);
+    centerPanel.set_BtnSizes();
   }
   
   // called from setup() in processing ?
   public void add_InnerPanels(){
     allPanels.add(leftPanel);
+    allPanels.add(centerPanel);
     allPanels.add(rightPanel);
     set_AllMirrorBtns();
-    //add_CenterPanel();
   }
     
-  // TODO: update this for project 2
-  private void add_CenterPanel(){
-    centerPanel = new CenterPanel(this); 
-    allPanels.add(centerPanel);
-  }
-  
-  
   // adds all the buttons from each panel to the list of all the Mirror's buttons
   public void set_AllMirrorBtns(){
-    for (ButtonPanel p : allPanels)
-      allBtns.addAll(p.innerPanelBtns);    
+    for (ButtonPanel p : allPanels){
+      allBtns.addAll(p.innerPanelBtns);  
+    }
   }  
   
   public ArrayList<ButtonPanel> get_AllMirrorPanels(){
@@ -121,9 +116,18 @@ class Mirror extends Panel {
         
   // draw Mirror by drawing each Panel and its buttons
   public void draw_Mirror(){    
-      draw_Panel();  // ??
+      //draw_Panel();  // ??
       leftPanel.draw_ButtonPanel();
+      draw_PanelLine(centerPanel);
+      centerPanel.draw_ButtonPanel();      
+      draw_PanelLine(rightPanel);
       rightPanel.draw_ButtonPanel();
-      //centerPanel.draw_ButtonPanel();      
   }
+  
+  // just to test where the boundaries are!
+  public void draw_PanelLine(Panel p){
+    stroke(0);
+    line(p.locX, p.locY, p.locX, p.szHeight);
+  }
+  
 }

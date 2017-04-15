@@ -11,9 +11,10 @@ class MirrorActive extends Mirror {
   
   public MirrorActive(int x, int y, int w, int h){
     super(x,y,w,h); 
+    create_LPanel();
+    create_CPanel();
     create_RPanel();
     add_RPanelStuff();
-    create_LPanel();
     add_InnerPanels();
     allBtns.addAll(appDrawer.innerPanelBtns);
   } 

@@ -33,6 +33,7 @@ abstract class ButtonPanel extends Panel {
   }
   
   // we'll use this if we add a button panel inside another one
+  // (ex: AppDrawer is inside of Mirror's RightPanel)
   public ButtonPanel(ButtonPanel parent){
     //this();
     innerPanelBtns = new ArrayList<Button>();
@@ -87,7 +88,6 @@ abstract class ButtonPanel extends Panel {
 
   void add_InnerPanel(ButtonPanel p){
     innerPanels.add(p);    
-    //add_PanelBtns(p.innerPanelBtns);
   }
 
 
