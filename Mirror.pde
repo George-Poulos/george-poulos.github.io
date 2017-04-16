@@ -80,9 +80,6 @@ class Mirror extends Panel {
         if (btn_Clicked(b)){
           noLoop();
           if(!(b instanceof AppDrawerBtn)){
-          // set the ROW and COLUMN that the module should open in, in its parent panel.
-          // we can grab these row/col vals from a list of "vacant locs" maintained by the Mirror (will add that later)
-          // the panel that the module should open in is already chosen during that mirror's setup
             for(Point p : widgetFreeSpace){
               int compY = b.moduleParent.get_LocYInParent(p.x);
               int compX = b.moduleParent.get_LocXInParent(p.y);
@@ -98,7 +95,6 @@ class Mirror extends Panel {
                 p.taken = false;
                 break;
               }
-              b.module.visibility = false;
             }
           }
           
@@ -108,7 +104,7 @@ class Mirror extends Panel {
           b.on_Click();  
           loop();
         }    
-  }
+      }
   }
   
   void setFreeSpace(){
@@ -117,8 +113,18 @@ class Mirror extends Panel {
       widgetFreeSpace.add(new Point(i,2));
     }
     for(int i = 5; i < 15; i = i+3){
-      widgetFreeSpace.add(new Point(i,14)); //<>// //<>//
+      widgetFreeSpace.add(new Point(i,14)); //<>//
     }
+  }
+  
+  void addFreespaceLeftMirror(){
+    widgetFreeSpace.add(0,new Point(2,2));
+    widgetFreeSpace.add(5,new Point(17,2));
+  }
+  
+  void addFreespaceRighttMirror(){
+    widgetFreeSpace.add(4,new Point(17,2));
+    widgetFreeSpace.add(5,new Point(2,14));
   }
   
   void create_RPanel(){
@@ -165,20 +171,20 @@ class Mirror extends Panel {
   }
         
   // draw Mirror by drawing each Panel and its buttons
-  public void draw_Mirror(){     //<>// //<>//
+  public void draw_Mirror(){     //<>//
       //draw_Panel();  // ??
       draw_PanelLine(leftPanel);
-      leftPanel.draw_ButtonPanel(); //<>// //<>//
-      draw_PanelLine(centerPanel); //<>// //<>//
-      centerPanel.draw_ButtonPanel();       //<>// //<>//
-      draw_PanelLine(rightPanel); //<>// //<>//
-      rightPanel.draw_ButtonPanel(); //<>// //<>// //<>//
+      leftPanel.draw_ButtonPanel(); //<>//
+      draw_PanelLine(centerPanel); //<>//
+      centerPanel.draw_ButtonPanel();       //<>//
+      draw_PanelLine(rightPanel); //<>//
+      rightPanel.draw_ButtonPanel(); //<>// //<>//
   }
-   //<>// //<>//
+   //<>//
   // just to test where the boundaries are!
   public void draw_PanelLine(Panel p){
-    stroke(0); //<>// //<>//
-    line(p.locX, p.locY, p.locX, p.szHeight); //<>// //<>//
-  } //<>// //<>//
+    stroke(0); //<>//
+    line(p.locX, p.locY, p.locX, p.szHeight); //<>//
+  } //<>//
   
-} //<>// //<>//
+} //<>//
