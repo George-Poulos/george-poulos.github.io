@@ -41,5 +41,6 @@ class Module{
     if(visibility)
       noTint();
       image(modImage,locationX, locationY,sizeX, sizeY);
+      tint(235);
   }
 }
