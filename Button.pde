@@ -50,8 +50,6 @@ class Button extends Panel implements ActionListener {
     x = moduleParent.get_LocXInParent(col);
     y = moduleParent.get_LocYInParent(row);
     module.setLocation(x,y);
-    System.out.println(x + "," + y);
-    System.out.println(row + "," + col);
 
     if(isActive){
       //module.setVisibility(true);

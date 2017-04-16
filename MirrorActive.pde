@@ -72,7 +72,6 @@ class AppDrawerBtn extends Button {
   }
   
   // overriding this so it opens the AppDrawer (instead of a module..)
-  @Override
   public void on_Click(){
     // toggle the button's active state
     isActive = !isActive;
