@@ -142,10 +142,8 @@ int numUsers = 2;
 // in the center of the screen
 Button timeBtn, dateBtn, weatherBtn;
 
-final int canvasWidth = 2732;
-final int canvasHeight = 1536;
-//final int canvasWidth = 1600;
-//final int canvasHeight = 900;
+final int canvasWidth = 2732, canvasHeight = 1536;
+//final int canvasWidth = 1600, canvasHeight = 900;
 
 int sidePadding = canvasWidth/32;
 int mirrorWidth = canvasWidth-2*sidePadding;
@@ -181,7 +179,7 @@ void setup() {
   // starting state so we can test module locs
   set_CurrentMirrors(mirrorActiveLeft, mirrorActiveRight);
   currMirrorLeft.addFreespaceLeftMirror();
-  currMirrorRight.addFreespaceRightMirror();
+  currMirrorRight.addFreespaceRighttMirror();
   
 }
 /////////////////////////////////////////////////////
