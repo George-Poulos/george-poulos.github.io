@@ -94,10 +94,11 @@ class Mirror extends Panel {
                 p.taken = true;
                 break;
               }
-              else if(compY == (int)b.module.locationY && compX == (int)b.module.locationX){
+              else if(compY == (int)b.module.locationY && compX == (int)b.module.locationX && b.isActive){
                 p.taken = false;
                 break;
               }
+              b.module.setSize(0,0);
             }
           }
           
