@@ -39,6 +39,7 @@ class Module{
   
   public void displayModule(){
     if(visibility)
+      noTint();
       image(modImage,locationX, locationY,sizeX, sizeY);
   }
 }
