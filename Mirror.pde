@@ -98,7 +98,7 @@ class Mirror extends Panel {
                 p.taken = false;
                 break;
               }
-              b.module.setSize(0,0);
+              b.module.visibility = false;
             }
           }
           
@@ -117,7 +117,7 @@ class Mirror extends Panel {
       widgetFreeSpace.add(new Point(i,2));
     }
     for(int i = 5; i < 15; i = i+3){
-      widgetFreeSpace.add(new Point(i,14)); //<>//
+      widgetFreeSpace.add(new Point(i,14)); //<>// //<>//
     }
   }
   
@@ -165,20 +165,20 @@ class Mirror extends Panel {
   }
         
   // draw Mirror by drawing each Panel and its buttons
-  public void draw_Mirror(){     //<>//
+  public void draw_Mirror(){     //<>// //<>//
       //draw_Panel();  // ??
       draw_PanelLine(leftPanel);
-      leftPanel.draw_ButtonPanel(); //<>//
-      draw_PanelLine(centerPanel); //<>//
-      centerPanel.draw_ButtonPanel();       //<>//
-      draw_PanelLine(rightPanel); //<>//
-      rightPanel.draw_ButtonPanel(); //<>// //<>//
+      leftPanel.draw_ButtonPanel(); //<>// //<>//
+      draw_PanelLine(centerPanel); //<>// //<>//
+      centerPanel.draw_ButtonPanel();       //<>// //<>//
+      draw_PanelLine(rightPanel); //<>// //<>//
+      rightPanel.draw_ButtonPanel(); //<>// //<>// //<>//
   }
-   //<>//
+   //<>// //<>//
   // just to test where the boundaries are!
   public void draw_PanelLine(Panel p){
-    stroke(0); //<>//
-    line(p.locX, p.locY, p.locX, p.szHeight); //<>//
-  } //<>//
+    stroke(0); //<>// //<>//
+    line(p.locX, p.locY, p.locX, p.szHeight); //<>// //<>//
+  } //<>// //<>//
   
-} //<>//
+} //<>// //<>//
