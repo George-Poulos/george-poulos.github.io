@@ -6,7 +6,7 @@ class Module{
   boolean isNew;
   boolean visibility;
   
-  public Module(float sizeX, float sizeY, float locationX, float locationY{
+  public Module(float sizeX, float sizeY, float locationX, float locationY){
     this.sizeX = sizeX;
     this.sizeY = sizeY;
     this.locationX = locationX;

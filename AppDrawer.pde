@@ -55,8 +55,17 @@ class AppDrawer extends ButtonPanel {
     calBtn = create_PanelBtn(1,3,true,fileLoc.concat(CALENDAR));
     healthBtn = create_PanelBtn(2,0,true,fileLoc.concat(HEALTH));
     musicBtn = create_PanelBtn(2,1,true,fileLoc.concat(MUSIC));
-    fbookBtn.module.imgName = "/widgets/facebook.png";
-    
+   
+    fbookBtn.module.setImageName("widgets/facebook.png");
+    instaBtn.module.setImageName("widgets/instagram.png");
+    twitterBtn.module.setImageName("widgets/twitter.png");
+    youTubeBtn.module.setImageName("widgets/youtube.png");
+    newsBtn.module.setImageName("icons/normal/png/news.PNG");
+    emailBtn.module.setImageName("widgets/mail.png");
+    mapsBtn.module.setImageName("icons/normal/png/traffic.PNG");
+    calBtn.module.setImageName("widgets/calendar.png");
+    healthBtn.module.setImageName("widgets/health.png");
+    musicBtn.module.setImageName("icons/normal/png/dock_music.png");
     
     add_PanelBtns(new Button[]{
       fbookBtn, instaBtn, twitterBtn, youTubeBtn, newsBtn, emailBtn, mapsBtn, calBtn, healthBtn, musicBtn});
