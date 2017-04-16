@@ -36,6 +36,7 @@ class Module{
   
   public void displayModule(){
     if(visibility)
+      modImage = loadImage(imgName);
       image(modImage,locationX, locationY,sizeX, sizeY);
   }
 }
