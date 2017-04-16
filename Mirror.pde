@@ -65,7 +65,9 @@ class Mirror extends Panel {
   private void init_BtnsAndPanels(){
     allPanels = new ArrayList<ButtonPanel>();
     allBtns = new ArrayList<Button>();
-    setFreeSpace();
+    // added this here - this method is really just to initialize the arraylists
+    widgetFreeSpace = new ArrayList<Point>();
+    //setFreeSpace();
   }
   
   public boolean btn_Clicked(Button btn){
@@ -80,14 +82,16 @@ class Mirror extends Panel {
         if (btn_Clicked(b)){
           noLoop();
           if(!(b instanceof AppDrawerBtn)){
-            for(Point p : widgetFreeSpace){
+            for(Point p : widgetFreeSpace){  // note to self: widgetFreeSpace holds (row,col) free spaces.
               int compY = b.moduleParent.get_LocYInParent(p.x);
               int compX = b.moduleParent.get_LocXInParent(p.y);
               if(!p.taken && !b.isActive){
-                float sizeX = leftPanel.colWidth;
-                float sizeY = leftPanel.rowHeight;
+                // I commented these lines out because I added a line in ButtonPanel's create_PanelBtn(...)
+                // that sets these sizes when the button is created.  Less computing stuff to deal with
+                //float sizeX = leftPanel.colWidth;
+                //float sizeY = leftPanel.rowHeight;
                 //b.module.setSize(sizeX*4,sizeY*3);
-                b.module.setSize(sizeX*4,sizeY*3-5);  // gave you a little padding between the widgets
+                //b.module.setSize(sizeX*4,sizeY*3-5);  // gave you a little padding between the widgets
                 b.set_ModuleLoc(p.x,p.y);
                 p.taken = true;
                 break;
@@ -107,6 +111,7 @@ class Mirror extends Panel {
       }
   }
   
+  // not using this one.. see below
   void setFreeSpace(){
     widgetFreeSpace = new ArrayList<Point>();
     for(int i = 5; i < 15; i = i+3){
@@ -117,14 +122,38 @@ class Mirror extends Panel {
     }
   }
   
-  void addFreespaceLeftMirror(){
-    widgetFreeSpace.add(0,new Point(2,2));
-    widgetFreeSpace.add(5,new Point(17,2));
+  // this does what setFreeSpace() does, only diff is that I 
+  // init'd widgetFreeSpace separately in init_BtnsAndPanels().
+  void add_FreeSpace(){
+    int center = 2;
+    // add left panel free spaces
+    for(int i = 5; i < 15; i+=3){
+      widgetFreeSpace.add(new Point(i,center));
+    }
+    
+    // add right panel free spaces    
+    int rcol = center + this.leftPanel.panelCols + this.centerPanel.panelCols;
+    for(int i = 5; i < 15; i+=3){
+      widgetFreeSpace.add(new Point(i,rcol));
+    }
   }
   
+  // this and method below are used to add free space locs for the *left mirror*
+  // and *right mirror*; we need these because of the location of the clock
+  void addFreespaceLeftMirror(){
+    int center = 2;
+    //widgetFreeSpace.add(0,new Point(2,2));
+    //widgetFreeSpace.add(5,new Point(17,2));
+    widgetFreeSpace.add(0,new Point(2,center));
+    widgetFreeSpace.add(5,new Point(17,center));
+  }    
   void addFreespaceRighttMirror(){
-    widgetFreeSpace.add(4,new Point(17,2));
-    widgetFreeSpace.add(5,new Point(2,14));
+    //widgetFreeSpace.add(4,new Point(17,2));
+    //widgetFreeSpace.add(5,new Point(2,14));
+    int center = 2;
+    int rcol = center + this.leftPanel.panelCols + this.centerPanel.panelCols;
+    widgetFreeSpace.add(4,new Point(17,center));
+    widgetFreeSpace.add(5,new Point(2,rcol));
   }
   
   void create_RPanel(){

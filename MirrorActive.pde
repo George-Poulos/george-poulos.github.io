@@ -14,6 +14,9 @@ class MirrorActive extends Mirror {
     create_LPanel();
     create_CPanel();
     create_RPanel();
+    // put this here to add free space locs without hard-coding a  
+    // column value for the free spaces on the right panel
+    add_FreeSpace();
     add_RPanelStuff();
     add_InnerPanels();
     set_AppDrawerModuleLocs();

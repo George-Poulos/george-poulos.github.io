@@ -123,9 +123,13 @@ abstract class ButtonPanel extends Panel {
     //Button b = create_PanelBtn(row,col,rowsToSpan,colsToSpan);
     
     Button b = new Button(locX + col*panelBtnWidth, locY + row*panelBtnHeight,
-          panelBtnWidth*colsToSpan, panelBtnHeight*rowsToSpan);
+          panelBtnWidth*colsToSpan, panelBtnHeight*rowsToSpan);        
     if (img) b.set_Img(btnMirror);
     else b.set_Text(btnMirror);
+    
+    // size of rows/cols is the same on the entire mirror, so we can set the module sizes here.
+    // btn's module will have already been instantiated in Button constructor
+    b.module.setSize(this.colWidth*4,this.rowHeight*3 - 5);
     
     // uncomment this to just automatically adds the button to panelBtns list. 
     // it's not the best idea though.

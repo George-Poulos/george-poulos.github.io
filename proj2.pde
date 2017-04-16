@@ -166,8 +166,8 @@ void setup() {
   // will update these to scale for the displays in class.
   // chose these numbers cause the mirror is 80"x45" and this 
   // is roughly the same ratio.
-  //size(1600,900);
   size(2732, 1536);
+  //size(1600,900);
   defaultFont = createFont("Arial Rounded MT Bold",48,true); 
   dateFont = createFont("Arial Rounded MT Bold",22,true);
   
@@ -181,7 +181,7 @@ void setup() {
   // starting state so we can test module locs
   set_CurrentMirrors(mirrorActiveLeft, mirrorActiveRight);
   currMirrorLeft.addFreespaceLeftMirror();
-  currMirrorRight.addFreespaceRighttMirror();
+  currMirrorRight.addFreespaceRightMirror();
   
 }
 /////////////////////////////////////////////////////
