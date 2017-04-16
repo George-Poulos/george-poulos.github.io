@@ -148,6 +148,7 @@ int sidePadding = canvasWidth/32;
 int mirrorWidth = canvasWidth-2*sidePadding;
 int mirrorHeight = canvasHeight;  // update this if we add vertical padding
 
+
 // this allows us to set the "active mirror", and draw the current mirror state based on it :D
 Mirror currMirrorLeft, currMirrorRight; 
 
@@ -176,6 +177,7 @@ void setup() {
   
   // starting state so we can test module locs
   set_CurrentMirrors(mirrorActiveLeft, mirrorActiveRight);
+  
 }
 /////////////////////////////////////////////////////
 
@@ -190,7 +192,7 @@ void draw() {
   // we need to create something that draws the time/date buttons as long as the mirror is not turned off 
   timeBtn.set_Text(hour()%12+":"+ (minute()<10 ? "0":"") + minute()+  (hour()>=12 ? " pm" : " am"));
   dateBtn.set_Text(month()+"/"+day()+"/"+year());
-  //draw_Btn(timeBtn, dateBtn);
+  draw_Btn(timeBtn, dateBtn);
 
   // Draw the current mirror state for each side of the mirror
   draw_LRMirrors(currMirrorLeft, currMirrorRight);
@@ -218,21 +220,7 @@ void mouseReleased() {
 // on the *current mirror state* - whichever current mirror state either side is in, 
 // we're checking for clicks on it.
 void mouseReleasedBothUsers(Mirror m){
-  for (Button b : m.get_AllMirrorBtns()){
-      if (btn_Clicked(b)){
-        noLoop();
-        // set the ROW and COLUMN that the module should open in, in its parent panel.
-        // we can grab these row/col vals from a list of "vacant locs" maintained by the Mirror (will add that later)
-        // the panel that the module should open in is already chosen during that mirror's setup
-        b.set_ModuleLoc(5,0);
-        
-        // call b.onClick() method, which should, at the very least, open the selected 
-        // button's Module and will toggle the button state (active=1 vs inactive=0).
-        // (because if button is "active" we color it differently (activeClr vs. inactiveClr))
-        b.on_Click();  
-        loop();
-      }    
-  }
+  m.LocateModule(); //<>//
   
   // Don't think we need this part below!! Just above part!
 

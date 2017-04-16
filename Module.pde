@@ -16,6 +16,11 @@ class Module{
     this.isNew = true;
   }
   
+  public void setSize(float x, float y){
+    this.sizeX = x;
+    this.sizeY = y;
+  }
+  
   public void setVisibility(boolean view){
     visibility = view;
     if(!visibility){

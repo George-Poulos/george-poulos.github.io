@@ -49,7 +49,7 @@ class Mirror extends Panel {
   // just so we can access all the buttons easily
   ArrayList<ButtonPanel> allPanels;  
   ArrayList<Button> allBtns;
-  
+  ArrayList<Point> widgetFreeSpace;
   
   public Mirror(int x, int y, int w, int h){
     super(x,y,w,h);  
@@ -60,12 +60,64 @@ class Mirror extends Panel {
   // panel sizes etc. - will use this but add stuff to copy m
   public Mirror(Mirror m){
     this(m.locX, m.locY, m.szWidth, m.szHeight);
-    
   }
 
   private void init_BtnsAndPanels(){
     allPanels = new ArrayList<ButtonPanel>();
-    allBtns = new ArrayList<Button>();      
+    allBtns = new ArrayList<Button>();
+    setFreeSpace();
+  }
+  
+  public boolean btn_Clicked(Button btn){
+    return btn.is_MouseOverItem();
+  }
+  
+  /**
+  * TODO : Only enough space for 6 widgets on each panel... need a solution
+  */
+  void LocateModule(){
+      for (Button b : allBtns){
+        if (btn_Clicked(b)){
+          noLoop();
+          if(!(b instanceof AppDrawerBtn)){
+          // set the ROW and COLUMN that the module should open in, in its parent panel.
+          // we can grab these row/col vals from a list of "vacant locs" maintained by the Mirror (will add that later)
+          // the panel that the module should open in is already chosen during that mirror's setup
+            for(Point p : widgetFreeSpace){
+              int compY = b.moduleParent.get_LocYInParent(p.x);
+              int compX = b.moduleParent.get_LocXInParent(p.y);
+              if(!p.taken && !b.isActive){
+                float sizeX = leftPanel.colWidth;
+                float sizeY = leftPanel.rowHeight;
+                b.module.setSize(sizeX*4,sizeY*3);
+                b.set_ModuleLoc(p.x,p.y);
+                p.taken = true;
+                break;
+              }
+              else if(compY == (int)b.module.locationY && compX == (int)b.module.locationX){
+                p.taken = false;
+                break;
+              }
+            }
+          }
+          
+          // call b.onClick() method, which should, at the very least, open the selected 
+          // button's Module and will toggle the button state (active=1 vs inactive=0).
+          // (because if button is "active" we color it differently (activeClr vs. inactiveClr))
+          b.on_Click();  
+          loop();
+        }    
+  }
+  }
+  
+  void setFreeSpace(){
+    widgetFreeSpace = new ArrayList<Point>();
+    for(int i = 5; i < 15; i = i+3){
+      widgetFreeSpace.add(new Point(i,2));
+    }
+    for(int i = 5; i < 15; i = i+3){
+      widgetFreeSpace.add(new Point(i,14)); //<>//
+    }
   }
   
   void create_RPanel(){
