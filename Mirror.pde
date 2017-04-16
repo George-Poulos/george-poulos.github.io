@@ -108,10 +108,10 @@ class Mirror extends Panel {
   
   void setFreeSpace(){
     widgetFreeSpace = new ArrayList<Point>();
-    for(int i = 17; i > 4; i = i-3){
+    for(int i = 5; i < 15; i = i+3){
       widgetFreeSpace.add(new Point(i,2));
     }
-    for(int i = 17; i > 4; i = i-3){
+    for(int i = 5; i < 15; i = i+3){
       widgetFreeSpace.add(new Point(i,14)); //<>// //<>//
     }
   }
