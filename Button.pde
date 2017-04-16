@@ -10,7 +10,9 @@ class Button extends Panel implements ActionListener {
   //boolean isActive;
   String btnTxt = "";  // we won't use this as much for project 2
   color clr, activeClr, inactiveClr;
+  ButtonPanel moduleParent;  // sets the panel that btnModule will open in
   int padding;  // move this into Panel class???
+  Module module;
 
   // no specified color or text
   public Button(int x, int y, int w, int h){
@@ -25,10 +27,38 @@ class Button extends Panel implements ActionListener {
   }
   
   // implemented from ActionListener interface
+  // this gets called from mouseReleased(), after we have set the 
+  // location of the module!
   public void on_Click(){
     // toggle the button active state
     isActive = !isActive;
-    //open_Module();    // not yet implemented :)
+    module.setVisibility(isActive);
+    // hopefully this will only display the module if the button is "active",
+    // and will close it otherwise.
+    if (isActive)  
+      module.displayModule();    
+  }
+  
+  // sets the panel that btnModule will be opened in
+  public void set_ModuleParent(ButtonPanel p){
+    moduleParent = p;
+  }
+  
+  // called from mouseReleased() function to tell btnModule which row,col to open in
+  public void set_ModuleLoc(int row, int col){
+    int x,y;
+    x = moduleParent.get_LocXInParent(col);
+    y = moduleParent.get_LocYInParent(row);
+    module.setLocation(x,y);
+    System.out.println(x + "," + y);
+    System.out.println(row + "," + col);
+
+    if(isActive){
+      //module.setVisibility(true);
+    }
+    else{
+      //module.setVisibility(false);
+    }
   }
 
   //////////////////////////////////////////////////////////
@@ -42,8 +72,10 @@ class Button extends Panel implements ActionListener {
     activeClr = color(255);
     inactiveClr = color(235);
     clr = inactiveClr;  // might delete this for proj2
+    module = new Module(100,100,100,100,"map.jpg");
   }
 
+  // I have this twice ...
   void set_isActive(boolean newIsActive){
     isActive = newIsActive;
   }
@@ -76,7 +108,7 @@ class Button extends Panel implements ActionListener {
     //btnImg.disableStyle();   
     // COMMENT THESE 2 LINES AND UNCOMMENT ABOVE 2 LINES ONCE ICONS ARE .SVG
     btnImg = loadImage(img);
-    btnImg.loadPixels();
+    //btnImg.loadPixels();
   }
 
   // rounded corner for drawing rectangle buttons without images
@@ -103,6 +135,7 @@ class Button extends Panel implements ActionListener {
         // this doesn't actually fill in the icon - it fills the vector paths
         fill(activeClr);
         // COMMENT THIS LINE ONCE ICONS ARE .SVG
+        module.displayModule();
         noTint();
       }
       else {
@@ -128,9 +161,14 @@ class Button extends Panel implements ActionListener {
     
     else {  // the else part we will need to update for any buttons that 
             // have text but do not have an outline.
-      rect(locX, locY, szWidth, szHeight, corner); 
+      noFill();    
+      stroke(0.5);
+      rectMode(CENTER);
+      //rect(locX, locY, szWidth, szHeight, corner); 
       setup_Text(font, 255);
-      text(btnTxt, locX+(int)(szWidth/2), locY+(int)(szHeight/2));
+      //text(btnTxt, locX+(int)(szWidth/2), locY+(int)(szHeight/2));
+      text(btnTxt, locX, locY);
+      rectMode(CORNER);
     }    
   }
   

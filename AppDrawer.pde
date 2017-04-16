@@ -30,7 +30,6 @@ class AppDrawer extends ButtonPanel {
     this.set_PanelSize(this.panelCols*this.colWidth, this.panelRows*this.rowHeight);
     this.locX = parent.locX;
     this.set_PanelLoc(get_LocXInParent(colInParent), get_LocYInParent(rowInParent));
-    //concat_FileLoc(FBOOK,INSTA,TWITTER,YOUTUBE,NEWS,EMAIL,MAPS,CALENDAR,HEALTH,MUSIC);
     create_Btns();
   }
 
@@ -42,10 +41,6 @@ class AppDrawer extends ButtonPanel {
     this.colWidth = parent.colWidth;
   }
 
-  // implemented abstract fn from ButtonPanel superclass
-  void set_PanelRC(){
-    //this.panelRows = 3;
-  }
 
   // creates the buttons inside the AppDrawer
   private void create_Btns(){

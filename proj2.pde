@@ -8,14 +8,17 @@
 // here is a processing.js solution from http://aaron-sherwood.com/processingjs/circleSound.html
 // uncomment this line to get audio in Processing.js
 //Audio beepSound = new Audio();
-
-
 /* @pjs font="Arial.ttf","LCD-BOLD.TTF","Courier New.ttf"; */
 
-PFont defaultFont;
+PFont defaultFont, dateFont;
 
 public boolean btn_Clicked(Button btn){
   return btn.is_MouseOverItem();
+}
+
+public void draw_Btn(Button... btns){
+  for (Button b : btns)
+    b.draw_Btn();
 }
 
 public void reset_BtnStates(Button... btns){
@@ -29,10 +32,6 @@ public void reset_AllBtnStates(ArrayList<Button> btns){
     //b.state = -1;
 }
 
-public void open_SettingsMode(){
-  //mainScreen.set_ActiveMode((Mode)settingsMode);
-}
-
 // sets each of Left, Center, Right panels on the current mirror state to "Active"
 // so that they are drawn by Processing.
 public void set_ActiveMirror(Mirror m){
@@ -40,22 +39,108 @@ public void set_ActiveMirror(Mirror m){
     p.isActive = true;
 }
 
+// do not call this function from setup()! Processing.js doesn't understand the param type >:(
+public void set_LRActiveMirrors(Mirror... mirrors){
+  for (Mirror m : mirrors)
+    set_ActiveMirror(m);
+}
+
+//
+// Draws the "current mirror state" for each side of the mirror.
+// By setting currMirrorLeft and/or currMirrorRight to any known 
+// mirror state, the chosen state will be drawn :)
+public void draw_LRMirrors(Mirror... mirrors){
+  for (Mirror m : mirrors)
+    m.draw_Mirror();
+}
+
+//
+// Creates MirrorOff states for L and R mirror.
+// *Does not* set the "current mirror" state. Just initializes here.
+public void create_MirrorOffStates(){
+  mirrorOffLeft = new MirrorOff(sidePadding,0,mirrorWidth/numUsers,mirrorHeight);
+  mirrorOffRight = new MirrorOff(sidePadding+mirrorWidth/numUsers,0,
+        mirrorWidth/numUsers,mirrorHeight);
+  set_ActiveMirror(mirrorOffLeft);
+  set_ActiveMirror(mirrorOffRight);  
+}
+
+//
+// Creates MirrorActive states for L and R mirror.
+// *Does not* set the "current mirror" state. Just initializes here.
+public void create_MirrorActiveStates(){
+  mirrorActiveLeft = new MirrorActive(sidePadding,0,mirrorWidth/numUsers,mirrorHeight); 
+  mirrorActiveRight = new MirrorActive(sidePadding+mirrorWidth/numUsers,0,
+        mirrorWidth/numUsers,mirrorHeight);
+  set_ActiveMirror(mirrorActiveLeft);
+  set_ActiveMirror(mirrorActiveRight);  
+}
+
+// 
+// These buttons stretch across the center of the mirror, so we place them
+// based on where the right mirror starts. These buttons get drawn
+//  from their origin, so we can set their x,y coords to mirror start.
+public void create_clockAndWeather(MirrorActive m){
+  int w = m.rightPanel.colWidth;
+  int h = m.rightPanel.rowHeight;
+  // we will call set_Text() on timeBtn throughout the loop so it gives current time info ;)
+  timeBtn = new Button(m.locX, m.locY+h, 4*w, 2*h);
+  dateBtn = new Button(m.locX, m.locY+timeBtn.szHeight, 4*w, h);
+  dateBtn.set_BtnFont(dateFont);
+  //weatherBtn = rightPanel.create_PanelBtn(1,1,2,3,true,WEATHER);
+}
+
+//
+// Goal here is to allow us to pass in a flag via javascript function in our html file
+// that will tell Processing which LEFT SIDE Mirror state we want to start in
+public void set_CurrentLMirror(int mirrorFlag){
+  switch(mirrorFlag){
+    case 0:  currMirrorLeft = mirrorOffLeft;
+    case 1:  currMirrorLeft = mirrorInactiveLeft;
+    case 2:  currMirrorLeft = mirrorActiveLeft;
+  }
+}
+//
+// Goal here is to allow us to pass in a flag via javascript function in our html file
+// that will tell Processing which RIGHT SIDE Mirror state we want to start in
+public void set_CurrentRMirror(int mirrorFlag){
+  switch(mirrorFlag){
+    case 0:  currMirrorRight = mirrorOffRight;
+    case 1:  currMirrorRight = mirrorInactiveRight; // gotta create this one first tho
+    case 2:  currMirrorRight = mirrorActiveRight;
+  }
+}
+
+public void set_CurrentMirrors(Mirror Lmirror, Mirror Rmirror){
+  currMirrorLeft = Lmirror;
+  currMirrorRight = Rmirror;
+}
+
 /////////////////////////////////////////////////////
-
-
 public void setup_Text(PFont font, color c){
   textFont(font);
   fill(c);
   textAlign(CENTER, CENTER);
 }
 
-
+// just to check where the outer side mirror edges are drawn
+public void draw_OuterFrame(){
+  fill(200);  
+  rect(0, 0, sidePadding, canvasHeight);  // left outer padding
+  rect(canvasWidth-sidePadding, 0, sidePadding, canvasHeight);  // right outer padding  
+}
 /////////////////////////////////////////////////////
+
 public String fileLoc = "icons/normal/png/";
 
 final color DAYCOLOR = color(205,219,225);
 //final color NIGHTCOLOR = color(,,,);  // maybe we do warm tint on daycolor ?
 color mirrorColor;
+
+// change this line and comment out line that draws mirrorActiveRight to stretch full screen
+int numUsers = 2;
+// in the center of the screen
+Button timeBtn, dateBtn, weatherBtn;
 
 final int canvasWidth = 1200;
 final int canvasHeight = 680;
@@ -63,9 +148,15 @@ int sidePadding = canvasWidth/32;
 int mirrorWidth = canvasWidth-2*sidePadding;
 int mirrorHeight = canvasHeight;  // update this if we add vertical padding
 
-Mirror mirror;  // mirror has left, right, and center grid panels
-MirrorActive mirrorActive;
-AppDrawer appDrawer;
+
+// this allows us to set the "active mirror", and draw the current mirror state based on it :D
+Mirror currMirrorLeft, currMirrorRight; 
+
+MirrorOff mirrorOffLeft, mirrorOffRight;
+// inactive state = off state + time/date buttons
+MirrorOff mirrorInactiveLeft, mirrorInactiveRight;
+MirrorActive mirrorActiveLeft, mirrorActiveRight;
+
 
 /////////////////////////////////////////////////////
 void setup() {
@@ -74,21 +165,19 @@ void setup() {
   // is roughly the same ratio.
   //size(1600,900);
   size(1200,680);
-  defaultFont = createFont("Arial",24,true); 
+  defaultFont = createFont("Arial Rounded MT Bold",48,true); 
+  dateFont = createFont("Arial Rounded MT Bold",22,true);
   
   // just a (pretty good) guess based on what our website mirror looks like
   mirrorColor = DAYCOLOR;
-  
-  //mainScreen.set_ActiveMode(functionsMode);
-  //mirror = new Mirror(sidePadding,0,mirrorWidth,mirrorHeight);
-  //mirror.add_InnerPanels();  // creates left, right, and center grid panels
-  //appDrawer = new AppDrawer(mirror.rightPanel);
+  create_MirrorOffStates();
+  create_MirrorActiveStates();
 
+  create_clockAndWeather(mirrorActiveRight);
   
-  mirrorActive = new MirrorActive(sidePadding,0,mirrorWidth-sidePadding,mirrorHeight);
-  mirrorActive.add_InnerPanels();  // creates left, right, and center grid panels
-  set_ActiveMirror(mirrorActive);
-
+  // starting state so we can test module locs
+  set_CurrentMirrors(mirrorActiveLeft, mirrorActiveRight);
+  
 }
 /////////////////////////////////////////////////////
 
@@ -97,16 +186,16 @@ void draw() {
   background(mirrorColor);
   noStroke();
 
-  //// draws the "Active Mode" on the front of the oven.
-  //mainScreen.draw_ActiveMode();
-       
-  // just to check where the outer side paddings are drawn
-  fill(200);
-  rect(0, 0, sidePadding, canvasHeight);  // left outer padding
-  rect(canvasWidth-sidePadding, 0, sidePadding, canvasHeight);  // right outer padding
-  //appDrawer.draw_ButtonPanel();
+  // just to check where the outer frame is
+  draw_OuterFrame();
   
-  mirrorActive.draw_Mirror();
+  // we need to create something that draws the time/date buttons as long as the mirror is not turned off 
+  timeBtn.set_Text(hour()%12+":"+ (minute()<10 ? "0":"") + minute()+  (hour()>=12 ? " pm" : " am"));
+  dateBtn.set_Text(month()+"/"+day()+"/"+year());
+  draw_Btn(timeBtn, dateBtn);
+
+  // Draw the current mirror state for each side of the mirror
+  draw_LRMirrors(currMirrorLeft, currMirrorRight);
 }
 
 
@@ -123,65 +212,36 @@ void mousePressed(){
 // keep track of which button was pressed and do click stuff
 
 void mouseReleased() {
+  mouseReleasedBothUsers(currMirrorLeft);
+  mouseReleasedBothUsers(currMirrorRight);
+}
+
+// updated this to have Mirror as the parameter type; we check if mouse is clicked
+// on the *current mirror state* - whichever current mirror state either side is in, 
+// we're checking for clicks on it.
+void mouseReleasedBothUsers(Mirror m){
+  m.LocateModule(); //<>//
   
-  // this works :)
-  //for (Button b : appDrawer.get_PanelBtns()){
-  for (Button b : mirrorActive.get_AllMirrorBtns()){
-      if (btn_Clicked(b)){
-        noLoop();
-        // call b.onClick() method, which should, at the very least, open the selected 
-        // button's Module and will toggle the button state (active=1 vs inactive=0).
-        // (because if button is "active" we color it differently (activeClr vs. inactiveClr))
-        b.on_Click();  
-        loop();
-      }    
-  }
-  
+  // Don't think we need this part below!! Just above part!
+
   // looping thru the current mirror's Left, Center, and Right panels  
-  for (ButtonPanel p1 : mirrorActive.get_AllMirrorPanels()){
-    // check that panel's buttons 
-    for (Button b1 : p1.get_PanelBtns()){
-      if (btn_Clicked(b1)){
-        noLoop();
-        b1.on_Click();
-        loop();
-      }
-    }
-    // looping thru that panel's inner panels, if any
-    for (ButtonPanel p : p1.innerPanels)
-      for (Button b : p.get_PanelBtns()){
-        if (btn_Clicked(b)){
-          noLoop();
-          // call b.onClick() method, which should, at the very least, open the selected 
-          // button's Module and will toggle the button state (active=1 vs inactive=0).
-          // (because if button is "active" we color it differently (activeClr vs. inactiveClr))
-          b.on_Click();  
-          loop();
-        }
-      }
-  }
-  
-  //for (Button b : mainButtons.get_PanelBtns()){
-  //  if (btn_Clicked(b)){
-  //    noLoop();
-  //    if      (b.equals(mainButtons.functionBtn))  mainScreen.set_ActiveMode(functionsMode);
-  //    else if (b.equals(mainButtons.heatTimeBtn))  mainScreen.set_ActiveMode(heatTimeMode);
-  //    else if (b.equals(mainButtons.clearOffBtn)) {
-  //      if (mainScreen.state != 0)  
-  //        mainScreen.get_ActiveMode().reset_CurrSettings();
-  //      else {
-  //        mainScreen.state = 1;
-  //      }        
+  //for (ButtonPanel p1 : m.get_AllMirrorPanels()){
+  //  // check that panel's buttons 
+  //  for (Button b1 : p1.get_PanelBtns()){
+  //    if (btn_Clicked(b1)){
+  //      noLoop();
+  //      b1.on_Click();
+  //      loop();
   //    }
-  //    loop();
   //  }
-  //}
-  
-  //for (Button b : mainScreen.get_ActiveMode().activeMirror.get_AllMirrorBtns()){
-  //  if (btn_Clicked(b)){
-  //    noLoop();
-  //    mainScreen.get_ActiveMode().do_BtnClick(b);
-  //    loop();
-  //  }
+  //  // looping thru that panel's inner panels, if any
+  //  for (ButtonPanel p : p1.innerPanels)
+  //    for (Button b : p.get_PanelBtns()){
+  //      if (btn_Clicked(b)){
+  //        noLoop();
+  //        b.on_Click();  
+  //        loop();
+  //      }
+  //    }
   //}  
 }

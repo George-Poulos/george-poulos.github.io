@@ -5,29 +5,14 @@
 
 // I will deal with CenterPanel after I get SidePanels working right
 class CenterPanel extends ButtonPanel {
-  
-  public CenterPanel(Mirror d){
-    super();
-    set_Margins(d);   
     
-    set_PanelLoc(d.locX + d.leftPanel.szWidth, d.locY + this.marginTop);         
-    set_PanelSize(d.szWidth - d.leftPanel.szWidth - d.rightPanel.szWidth, 
-      d.szHeight - this.marginTop - this.marginBottom);
-    
-    set_PanelRC();
-    super.set_BtnSizes();
-  }   
-    
-  private void set_Margins(Panel p){
-    //this.marginTop = this.marginBottom = (int)(p.szHeight / 10); 
-    //this.marginLeft = this.marginRight = 0;
+  public CenterPanel(Panel parent){
+    super(parent.szWidth/2, parent.szHeight);
   }
-  
+    
+      
   // implemented abstract fn from superclass
-  void set_PanelRC(){
-    panelRows = 2;
-    panelCols = 2;
-  }   
+  void set_PanelRC(){  }   
   
 }
 
@@ -36,14 +21,12 @@ class CenterPanel extends ButtonPanel {
 class SidePanel extends ButtonPanel {
   
   public SidePanel(Panel parent){
-    super(parent.szWidth/8, parent.szHeight);
+    super(parent.szWidth/4, parent.szHeight);
     calc_PanelRC(4);
   }
               
   // implemented abstract fn from superclass (default rows/cols for SidePanel)
-  void set_PanelRC(){
-    //this.panelCols = 4;
-  }
+  void set_PanelRC(){  }
 }
 
 /**********************************************************************************************/
@@ -64,53 +47,112 @@ class Mirror extends Panel {
   CenterPanel centerPanel;
   
   // just so we can access all the buttons easily
-  private ArrayList<ButtonPanel> allPanels;  
+  ArrayList<ButtonPanel> allPanels;  
   ArrayList<Button> allBtns;
+  ArrayList<Point> widgetFreeSpace;
   
   public Mirror(int x, int y, int w, int h){
     super(x,y,w,h);  
     init_BtnsAndPanels();
   }   
   
-  // will get rid of this soon
-  public Mirror(Panel p){  
-    this(p.locX, p.locY, p.szWidth, p.szHeight);
+  // adding this because all the "mirrors" will have same 
+  // panel sizes etc. - will use this but add stuff to copy m
+  public Mirror(Mirror m){
+    this(m.locX, m.locY, m.szWidth, m.szHeight);
   }
-  
+
   private void init_BtnsAndPanels(){
     allPanels = new ArrayList<ButtonPanel>();
-    allBtns = new ArrayList<Button>();      
+    allBtns = new ArrayList<Button>();
+    setFreeSpace();
   }
   
-  public void create_RPanel(){
+  public boolean btn_Clicked(Button btn){
+    return btn.is_MouseOverItem();
+  }
+  
+  /**
+  * TODO : Only enough space for 6 widgets on each panel... need a solution
+  */
+  void LocateModule(){
+      for (Button b : allBtns){
+        if (btn_Clicked(b)){
+          noLoop();
+          if(!(b instanceof AppDrawerBtn)){
+          // set the ROW and COLUMN that the module should open in, in its parent panel.
+          // we can grab these row/col vals from a list of "vacant locs" maintained by the Mirror (will add that later)
+          // the panel that the module should open in is already chosen during that mirror's setup
+            for(Point p : widgetFreeSpace){
+              int compY = b.moduleParent.get_LocYInParent(p.x);
+              int compX = b.moduleParent.get_LocXInParent(p.y);
+              if(!p.taken && !b.isActive){
+                float sizeX = leftPanel.colWidth;
+                float sizeY = leftPanel.rowHeight;
+                b.module.setSize(sizeX*4,sizeY*3);
+                b.set_ModuleLoc(p.x,p.y);
+                p.taken = true;
+                break;
+              }
+              else if(compY == (int)b.module.locationY && compX == (int)b.module.locationX){
+                p.taken = false;
+                break;
+              }
+            }
+          }
+          
+          // call b.onClick() method, which should, at the very least, open the selected 
+          // button's Module and will toggle the button state (active=1 vs inactive=0).
+          // (because if button is "active" we color it differently (activeClr vs. inactiveClr))
+          b.on_Click();  
+          loop();
+        }    
+  }
+  }
+  
+  void setFreeSpace(){
+    widgetFreeSpace = new ArrayList<Point>();
+    for(int i = 5; i < 15; i = i+3){
+      widgetFreeSpace.add(new Point(i,2));
+    }
+    for(int i = 5; i < 15; i = i+3){
+      widgetFreeSpace.add(new Point(i,14)); //<>//
+    }
+  }
+  
+  void create_RPanel(){
     rightPanel = new SidePanel(this);  // width,height based on mirror
-    rightPanel.set_PanelLoc(this.locX + this.szWidth - rightPanel.szWidth, this.locY);  // x,y loc    
+    rightPanel.set_PanelLoc(this.locX + leftPanel.szWidth + centerPanel.szWidth,this.locY);
   }
   
-  public void create_LPanel(){
+  void create_LPanel(){
     leftPanel = new SidePanel(this);                // width,height based on mirror
-    leftPanel.set_PanelLoc(this.locX,this.locY);    // x,y loc    
+    leftPanel.set_PanelLoc(this.locX,this.locY);    // x,y loc   
   }
   
-  // called from setup() in processing ?
+  void create_CPanel(){
+    centerPanel = new CenterPanel(this);
+    centerPanel.set_PanelLoc(this.locX+leftPanel.szWidth, this.locY);
+    centerPanel.colWidth = leftPanel.colWidth;
+    centerPanel.rowHeight = leftPanel.rowHeight;
+    centerPanel.panelRows = leftPanel.panelRows;
+    centerPanel.panelCols = centerPanel.szWidth / centerPanel.colWidth;
+    centerPanel.set_BtnSizes();
+  }
+  
+  // called from subclass constructors
   public void add_InnerPanels(){
     allPanels.add(leftPanel);
+    allPanels.add(centerPanel);
     allPanels.add(rightPanel);
     set_AllMirrorBtns();
-    //add_CenterPanel();
   }
     
-  // TODO: update this for project 2
-  private void add_CenterPanel(){
-    centerPanel = new CenterPanel(this); 
-    allPanels.add(centerPanel);
-  }
-  
-  
   // adds all the buttons from each panel to the list of all the Mirror's buttons
   public void set_AllMirrorBtns(){
-    for (ButtonPanel p : allPanels)
-      allBtns.addAll(p.innerPanelBtns);    
+    for (ButtonPanel p : allPanels){
+      allBtns.addAll(p.innerPanelBtns);  
+    }
   }  
   
   public ArrayList<ButtonPanel> get_AllMirrorPanels(){
@@ -122,10 +164,20 @@ class Mirror extends Panel {
   }
         
   // draw Mirror by drawing each Panel and its buttons
-  public void draw_Mirror(){    
-      draw_Panel();  // ??
-      leftPanel.draw_ButtonPanel();
-      rightPanel.draw_ButtonPanel();
-      //centerPanel.draw_ButtonPanel();      
+  public void draw_Mirror(){     //<>//
+      //draw_Panel();  // ??
+      draw_PanelLine(leftPanel);
+      leftPanel.draw_ButtonPanel(); //<>//
+      draw_PanelLine(centerPanel); //<>//
+      centerPanel.draw_ButtonPanel();       //<>//
+      draw_PanelLine(rightPanel); //<>//
+      rightPanel.draw_ButtonPanel(); //<>// //<>//
   }
-}
+   //<>//
+  // just to test where the boundaries are!
+  public void draw_PanelLine(Panel p){
+    stroke(0); //<>//
+    line(p.locX, p.locY, p.locX, p.szHeight); //<>//
+  } //<>//
+  
+} //<>//

@@ -11,6 +11,7 @@ abstract class ButtonPanel extends Panel {
   
   ArrayList<Button> innerPanelBtns;
   ArrayList<ButtonPanel> innerPanels;
+  ArrayList<Point> widgetFreeSpace;
   
   public ButtonPanel(){ 
     super();   
@@ -33,6 +34,7 @@ abstract class ButtonPanel extends Panel {
   }
   
   // we'll use this if we add a button panel inside another one
+  // (ex: AppDrawer is inside of Mirror's RightPanel)
   public ButtonPanel(ButtonPanel parent){
     //this();
     innerPanelBtns = new ArrayList<Button>();
@@ -43,10 +45,6 @@ abstract class ButtonPanel extends Panel {
     this.panelBtnHeight = parent.panelBtnHeight;
   }
 
-  // # of rows/columns will depend on which kind of ButtonPanel we're implementing.
-  // GET RID OF THIS ITS DUMB
-  abstract void set_PanelRC();
-
   // default margins  ??
   void set_Margins(){
     marginTop = marginBottom = marginLeft = marginRight = 0;
@@ -56,6 +54,13 @@ abstract class ButtonPanel extends Panel {
   void set_BtnSizes(){
     panelBtnWidth = colWidth;
     panelBtnHeight = rowHeight;
+  }
+
+  void setupFreeSpace(){
+    for(int i = 0; i < 5; i++){
+      Point p = new Point(2,i*2);
+      widgetFreeSpace.add(p);
+    }
   }
 
   // set # of rows and col/row height based on the desired # of cols
@@ -87,7 +92,6 @@ abstract class ButtonPanel extends Panel {
 
   void add_InnerPanel(ButtonPanel p){
     innerPanels.add(p);    
-    //add_PanelBtns(p.innerPanelBtns);
   }
 
 
@@ -129,7 +133,7 @@ abstract class ButtonPanel extends Panel {
           panelBtnWidth*colsToSpan, panelBtnHeight*rowsToSpan);
     if (img) b.set_Img(btnMirror);
     else b.set_Text(btnMirror);
-
+    
     // uncomment this to just automatically adds the button to panelBtns list. 
     // it's not the best idea though.
     //panelBtns.add(b);
@@ -170,8 +174,9 @@ abstract class ButtonPanel extends Panel {
 
   // self-explanatory
   public void add_PanelBtns(Button[] btns){
-    for (Button b : btns)
+    for (Button b : btns){
       add_PanelBtn(b);
+    }
   }
   public void add_PanelBtns(ArrayList<Button> btns){
     for (Button b : btns)
@@ -195,7 +200,7 @@ abstract class ButtonPanel extends Panel {
   //     clicked on the App Drawer expansion icon)
   // ** might update this to be "if active"
   public void draw_ButtonPanel(){
-
+  
     if (this.isActive){
       for (ButtonPanel p : innerPanels){
         if (p.isActive) {
@@ -206,8 +211,9 @@ abstract class ButtonPanel extends Panel {
         }        
       //draw_Panel();      // draw enclosing Panel - might remove this????
       }
-    for (Button b : innerPanelBtns)
+    for (Button b : innerPanelBtns){
       b.draw_Btn();
+    }
 
       //draw_PanelBtns();  // draw each button in the panelBtns list
     }
