@@ -65,7 +65,7 @@ class AppDrawer extends ButtonPanel {
     mapsBtn.module.setImageName("icons/normal/png/traffic.PNG");
     calBtn.module.setImageName("widgets/calendar.png");
     healthBtn.module.setImageName("widgets/health.png");
-    musicBtn.module.setImageName("icons/normal/png/dock_music.png");
+    musicBtn.module.setImageName("widgets/music-play.png");
     
     add_PanelBtns(new Button[]{
       fbookBtn, instaBtn, twitterBtn, youTubeBtn, newsBtn, emailBtn, mapsBtn, calBtn, healthBtn, musicBtn});
