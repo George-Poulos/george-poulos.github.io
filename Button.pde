@@ -80,7 +80,7 @@ class Button extends Panel implements ActionListener {
     activeClr = color(255);
     inactiveClr = color(235);
     clr = inactiveClr;  // might delete this for proj2
-    module = new Module(100,100,100,100,"map.jpg");
+    module = new Module(100,100,100,100);
   }
 
   // I have this twice ...

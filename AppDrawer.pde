@@ -55,6 +55,7 @@ class AppDrawer extends ButtonPanel {
     calBtn = create_PanelBtn(1,3,true,fileLoc.concat(CALENDAR));
     healthBtn = create_PanelBtn(2,0,true,fileLoc.concat(HEALTH));
     musicBtn = create_PanelBtn(2,1,true,fileLoc.concat(MUSIC));
+    fbookBtn.module.imgName = "/widgets/facebook.png";
     
     
     add_PanelBtns(new Button[]{
