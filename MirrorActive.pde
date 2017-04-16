@@ -77,11 +77,15 @@ class AppDrawerBtn extends Button {
     isActive = !isActive;
     // toggle its module's active state
     module.isActive = !module.isActive;
+    
     // if we've closed the app drawer, set the buttons to be not active
-    if (!isActive){
-      for (Button b : module.innerPanelBtns)
-        b.set_isActive(false);
-    }
+    // EDIT: this is actually not desirable now that the buttons will open their 
+    // respective modules.  Widgets should keep their locations if the app drawer 
+    // is closed, but should be "hidden" until we reopen the app drawer :)
+    //if (!isActive){
+    //  for (Button b : module.innerPanelBtns)
+    //    b.set_isActive(false);
+    //}
   }
 
 }

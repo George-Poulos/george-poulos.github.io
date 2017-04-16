@@ -191,9 +191,7 @@ abstract class ButtonPanel extends Panel {
   // We will only draw the ButtonPanel if it's active..
   // (i.e. we wouldn't draw the expanded App Drawer if the user hadn't
   //     clicked on the App Drawer expansion icon)
-  // ** might update this to be "if active"
-  public void draw_ButtonPanel(){
-  
+  public void draw_ButtonPanel(){  
     if (this.isActive){
       for (ButtonPanel p : innerPanels){
         if (p.isActive) {
@@ -202,13 +200,10 @@ abstract class ButtonPanel extends Panel {
             b.draw_Btn();
           }
         }        
-      //draw_Panel();      // draw enclosing Panel - might remove this????
       }
-    for (Button b : innerPanelBtns){
-      b.draw_Btn();
-    }
-
-      //draw_PanelBtns();  // draw each button in the panelBtns list
+      for (Button b : innerPanelBtns){
+        b.draw_Btn();
+      }
     }
   }
 }
