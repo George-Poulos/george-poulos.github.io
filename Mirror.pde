@@ -91,13 +91,12 @@ class Mirror extends Panel {
                 p.taken = true;
                 break;
               }
-              else if(compY == (int)b.module.locationY && compX == (int)b.module.locationX && b.isActive){
+              else if(compY == b.module.locationY && compX == b.module.locationX && b.isActive){
                 p.taken = false;
                 break;
               }
             }
           }
-          
           // call b.onClick() method, which should, at the very least, open the selected 
           // button's Module and will toggle the button state (active=1 vs inactive=0).
           // (because if button is "active" we color it differently (activeClr vs. inactiveClr))
@@ -113,7 +112,7 @@ class Mirror extends Panel {
       widgetFreeSpace.add(new Point(i,2));
     }
     for(int i = 5; i < 15; i = i+3){
-      widgetFreeSpace.add(new Point(i,14)); //<>//
+      widgetFreeSpace.add(new Point(i,14)); //<>// //<>//
     }
   }
   
@@ -171,20 +170,20 @@ class Mirror extends Panel {
   }
         
   // draw Mirror by drawing each Panel and its buttons
-  public void draw_Mirror(){     //<>//
+  public void draw_Mirror(){     //<>// //<>//
       //draw_Panel();  // ??
       draw_PanelLine(leftPanel);
-      leftPanel.draw_ButtonPanel(); //<>//
-      draw_PanelLine(centerPanel); //<>//
-      centerPanel.draw_ButtonPanel();       //<>//
-      draw_PanelLine(rightPanel); //<>//
-      rightPanel.draw_ButtonPanel(); //<>// //<>//
+      leftPanel.draw_ButtonPanel(); //<>// //<>//
+      draw_PanelLine(centerPanel); //<>// //<>//
+      centerPanel.draw_ButtonPanel();       //<>// //<>//
+      draw_PanelLine(rightPanel); //<>// //<>//
+      rightPanel.draw_ButtonPanel(); //<>// //<>// //<>//
   }
-   //<>//
+   //<>// //<>//
   // just to test where the boundaries are!
   public void draw_PanelLine(Panel p){
-    stroke(0); //<>//
-    line(p.locX, p.locY, p.locX, p.szHeight); //<>//
-  } //<>//
+    stroke(0); //<>// //<>//
+    line(p.locX, p.locY, p.locX, p.szHeight); //<>// //<>//
+  } //<>// //<>//
   
-} //<>//
+} //<>// //<>//
