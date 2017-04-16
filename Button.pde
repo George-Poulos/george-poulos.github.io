@@ -60,13 +60,6 @@ class Button extends Panel implements ActionListener {
     x = moduleParent.get_LocXInParent(col);
     y = moduleParent.get_LocYInParent(row);
     module.setLocation(x,y);
-
-    if(isActive){
-      //module.setVisibility(true);
-    }
-    else{
-      //module.setVisibility(false);
-    }
   }
 
   //////////////////////////////////////////////////////////
@@ -116,7 +109,6 @@ class Button extends Panel implements ActionListener {
     //btnImg.disableStyle();   
     // COMMENT THESE 2 LINES AND UNCOMMENT ABOVE 2 LINES ONCE ICONS ARE .SVG
     btnImg = loadImage(img);
-    //btnImg.loadPixels();
   }
 
   // rounded corner for drawing rectangle buttons without images
@@ -142,8 +134,8 @@ class Button extends Panel implements ActionListener {
         stroke(activeClr);
         // this doesn't actually fill in the icon - it fills the vector paths
         fill(activeClr);
-        // COMMENT THIS LINE ONCE ICONS ARE .SVG
         module.displayModule();
+        // COMMENT THIS LINE ONCE ICONS ARE .SVG
         noTint();
       }
       else {

@@ -86,7 +86,8 @@ class Mirror extends Panel {
               if(!p.taken && !b.isActive){
                 float sizeX = leftPanel.colWidth;
                 float sizeY = leftPanel.rowHeight;
-                b.module.setSize(sizeX*4,sizeY*3);
+                //b.module.setSize(sizeX*4,sizeY*3);
+                b.module.setSize(sizeX*4,sizeY*3-5);  // gave you a little padding between the widgets
                 b.set_ModuleLoc(p.x,p.y);
                 p.taken = true;
                 break;

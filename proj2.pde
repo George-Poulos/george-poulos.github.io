@@ -144,6 +144,9 @@ Button timeBtn, dateBtn, weatherBtn;
 
 final int canvasWidth = 2732;
 final int canvasHeight = 1536;
+//final int canvasWidth = 1600;
+//final int canvasHeight = 900;
+
 int sidePadding = canvasWidth/32;
 int mirrorWidth = canvasWidth-2*sidePadding;
 int mirrorHeight = canvasHeight;  // update this if we add vertical padding
