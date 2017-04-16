@@ -142,8 +142,8 @@ int numUsers = 2;
 // in the center of the screen
 Button timeBtn, dateBtn, weatherBtn;
 
-final int canvasWidth = 1200;
-final int canvasHeight = 680;
+final int canvasWidth = 2732;
+final int canvasHeight = 1536;
 int sidePadding = canvasWidth/32;
 int mirrorWidth = canvasWidth-2*sidePadding;
 int mirrorHeight = canvasHeight;  // update this if we add vertical padding
@@ -164,7 +164,7 @@ void setup() {
   // chose these numbers cause the mirror is 80"x45" and this 
   // is roughly the same ratio.
   //size(1600,900);
-  size(1200,680);
+  size(2732, 1536);
   defaultFont = createFont("Arial Rounded MT Bold",48,true); 
   dateFont = createFont("Arial Rounded MT Bold",22,true);
   
