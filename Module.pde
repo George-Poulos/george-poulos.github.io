@@ -40,6 +40,7 @@ class Module{
   public void displayModule(){
     if(visibility)
       noTint();
+      modImage = loadImage(imgName);
       image(modImage,locationX, locationY,sizeX, sizeY);
   }
 }
