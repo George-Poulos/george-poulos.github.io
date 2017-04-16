@@ -11,7 +11,6 @@ abstract class ButtonPanel extends Panel {
   
   ArrayList<Button> innerPanelBtns;
   ArrayList<ButtonPanel> innerPanels;
-  ArrayList<Point> widgetFreeSpace;
   
   public ButtonPanel(){ 
     super();   
@@ -56,12 +55,6 @@ abstract class ButtonPanel extends Panel {
     panelBtnHeight = rowHeight;
   }
 
-  void setupFreeSpace(){
-    for(int i = 0; i < 5; i++){
-      Point p = new Point(2,i*2);
-      widgetFreeSpace.add(p);
-    }
-  }
 
   // set # of rows and col/row height based on the desired # of cols
   // and the height of this GridPanel. this is defined for outer parent panels.
