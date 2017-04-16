@@ -39,6 +39,16 @@ class Button extends Panel implements ActionListener {
       module.displayModule();    
   }
   
+    public void on_Click(boolean bool){
+    // toggle the button active state
+    isActive = bool;
+    module.setVisibility(isActive);
+    // hopefully this will only display the module if the button is "active",
+    // and will close it otherwise.
+    if (isActive)  
+      module.displayModule();    
+  }
+  
   // sets the panel that btnModule will be opened in
   public void set_ModuleParent(ButtonPanel p){
     moduleParent = p;

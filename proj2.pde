@@ -177,6 +177,8 @@ void setup() {
   
   // starting state so we can test module locs
   set_CurrentMirrors(mirrorActiveLeft, mirrorActiveRight);
+  currMirrorLeft.addFreespaceLeftMirror();
+  currMirrorRight.addFreespaceRighttMirror();
   
 }
 /////////////////////////////////////////////////////
