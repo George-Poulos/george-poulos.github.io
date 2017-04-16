@@ -32,7 +32,6 @@ class Module{
     this.locationX = locationX;
     this.locationY = locationY;
     this.isNew = false;
-    modImage = loadImage(imgName);
   }
   
   public void displayModule(){
