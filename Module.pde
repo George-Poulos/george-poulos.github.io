@@ -32,11 +32,11 @@ class Module{
     this.locationX = locationX;
     this.locationY = locationY;
     this.isNew = false;
+    modImage = loadImage(imgName);
   }
   
   public void displayModule(){
     if(visibility)
-      modImage = loadImage(imgName);
       image(modImage,locationX, locationY,sizeX, sizeY);
   }
 }
