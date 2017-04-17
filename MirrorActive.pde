@@ -7,7 +7,9 @@ class MirrorActive extends Mirror {
   
   AppDrawer appDrawer;
   AppDrawerBtn appBtn;
-  Button settingsBtn;
+  SettingsApp settingsApp;
+  //Button settingsBtn;
+  AppDrawerBtn settingsBtn;  // haha hooray for code reuse
   
   public MirrorActive(int x, int y, int w, int h){
     super(x,y,w,h); 
@@ -17,10 +19,14 @@ class MirrorActive extends Mirror {
     // put this here to add free space locs without hard-coding a  
     // column value for the free spaces on the right panel
     add_FreeSpace();
-    add_RPanelStuff();
+    //add_RPanelStuff();
+    //add_CPanelStuff();
+    add_AppDrawerStuff();
+    add_SettingsAppStuff();
     add_InnerPanels();
     set_AppDrawerModuleLocs();
     allBtns.addAll(appDrawer.innerPanelBtns);
+    allBtns.addAll(settingsApp.innerPanelBtns);
   } 
   
   // just sets all the modules for the app drawer (not incl. appdrawer btn and settings btn)
@@ -29,20 +35,52 @@ class MirrorActive extends Mirror {
     for (Button b : appDrawer.innerPanelBtns)
       b.set_ModuleParent(leftPanel);
   }
-  
-  void add_RPanelStuff(){
+
+  // create & add AppDrawer button and the AppDrawer panel 
+  void add_AppDrawerStuff(){
     appDrawer = new AppDrawer(this.rightPanel);
     // creating AppDrawer button based on specs of a regular button.
     appBtn = new AppDrawerBtn(rightPanel.create_PanelBtn(
           rightPanel.panelRows-1, 2, true, fileLoc.concat(APPDOCK)));
     appBtn.set_BtnModule(appDrawer); 
-    
-    settingsBtn = rightPanel.create_PanelBtn(
-        rightPanel.panelRows-1,3,true,fileLoc.concat(SETTINGS));
-            
+    rightPanel.add_PanelBtn(appBtn);  
+    rightPanel.add_InnerPanel(appDrawer);
+  }
+  
+  // create & add Settings button and SettingsApp panel
+  void add_SettingsAppStuff(){
+    settingsApp = new SettingsApp(this.centerPanel);
+    settingsBtn = new AppDrawerBtn(rightPanel.create_PanelBtn(
+        rightPanel.panelRows-1,3,true,fileLoc.concat(SETTINGS)));
+    settingsBtn.set_BtnModule(settingsApp);
     rightPanel.add_PanelBtn(settingsBtn);
-    rightPanel.add_PanelBtn(appBtn);
-    rightPanel.add_InnerPanel(appDrawer);    
+    centerPanel.add_InnerPanel(settingsApp);    
+  }
+  
+  
+  // DEPRICATED
+  void add_RPanelStuff(){
+    appDrawer = new AppDrawer(this.rightPanel);  // .
+    // creating AppDrawer button based on specs of a regular button.
+    appBtn = new AppDrawerBtn(rightPanel.create_PanelBtn(  // .
+          rightPanel.panelRows-1, 2, true, fileLoc.concat(APPDOCK)));
+    appBtn.set_BtnModule(appDrawer);   // .
+    
+    //settingsBtn = rightPanel.create_PanelBtn(
+        //rightPanel.panelRows-1,3,true,fileLoc.concat(SETTINGS));
+    settingsBtn = new AppDrawerBtn(rightPanel.create_PanelBtn(  //.
+        rightPanel.panelRows-1,3,true,fileLoc.concat(SETTINGS)));
+            
+    rightPanel.add_PanelBtn(settingsBtn);  //.   
+    rightPanel.add_PanelBtn(appBtn);  // .
+    rightPanel.add_InnerPanel(appDrawer);     // .
+  }
+  
+  // DEPRICATED
+  void add_CPanelStuff(){
+    settingsApp = new SettingsApp(this.centerPanel);  //.
+    settingsBtn.set_BtnModule(this.settingsApp);  //.
+    centerPanel.add_InnerPanel(settingsApp);  //.
   }
   
 }
@@ -55,8 +93,7 @@ class MirrorActive extends Mirror {
 
 class AppDrawerBtn extends Button {
   ButtonPanel module;
-  
-  
+    
   public AppDrawerBtn(int x, int y, int w, int h){
     super(x,y,w,h);
   }

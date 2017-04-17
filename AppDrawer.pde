@@ -7,7 +7,6 @@ class AppDrawer extends ButtonPanel {
 
   private String PLACEHOLDER="icon_Apple.svg";  // placeholder button image source
   
-
   // EDIT THESE LINES TO HAVE .svg AS THE FILE EXTENSION ONCE ICONS ARE .SVG
   private String FBOOK="dock_facebook.png", INSTA="dock_instagram.png",
         TWITTER="dock_twitter.png", YOUTUBE="dock_youtube.png";
@@ -31,14 +30,6 @@ class AppDrawer extends ButtonPanel {
     this.locX = parent.locX;
     this.set_PanelLoc(get_LocXInParent(colInParent), get_LocYInParent(rowInParent));
     create_Btns();
-  }
-
-
-  // not using this  right now
-  void calc_PanelRC(ButtonPanel parent){
-    this.panelCols = parent.panelCols;
-    this.rowHeight = parent.rowHeight;
-    this.colWidth = parent.colWidth;
   }
 
 
