@@ -63,7 +63,7 @@ class Keyboard extends Module {
           (int) locationY + row*keyH + paddingy,
           keyW,
           keyH,
-          keyMap.charAt(i),
+          "" + keyMap.charAt(i),
           20
         )
       );
