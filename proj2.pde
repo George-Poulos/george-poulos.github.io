@@ -96,10 +96,10 @@ public void create_clockAndWeather(MirrorActive m){
   timeBtn.set_BtnFont(clockFont);
   timeBtn.set_isActive(true);
   //timeBtn.set_TextAlignment(CENTER);
-  
+   //<>//
   // yes this is ghetto the way I determined the Y-location.
-  dateBtn = new Button(m.locX-w, timeBtn.locY+(3*timeBtn.szHeight)/4, 2*w, h);
-  dateBtn.set_BtnFont(dateFont);
+  dateBtn = new Button(m.locX-w, timeBtn.locY+(3*timeBtn.szHeight)/4, 2*w, h); //<>//
+  dateBtn.set_BtnFont(dateFont); //<>//
   dateBtn.set_isActive(true);
   //dateBtn.set_TextAlignment(CENTER); //<>//
   weatherMod = new Module(w*1.5,h*1.5,m.locX, m.locY+ h/2); //<>// //<>//
@@ -194,11 +194,9 @@ void setup() {
   // is roughly the same ratio.
   size(1600,900);
   //size(2732, 1536);
-      
   // If the keyboard is needed this is the constructor
-  /*keyboard = new Keyboard(10, 10, 40, 40, 5); // x=10, y=10, keywidth=40, keyheight=40, round=5px
+  keyboard = new Keyboard(10, 10, 40, 40, 5); // x=10, y=10, keywidth=40, keyheight=40, round=5px
   keyboard.setVisibility(true); // Set true so displayModule() works
-  keyboard.displayModule();*/
 
   defaultFont = createFont("Arial Rounded MT Bold",32,true); 
   clockFont = createFont("Arial Rounded MT Bold",48,true);
@@ -213,7 +211,6 @@ void setup() {
   set_CurrentMirrors(mirrorActiveLeft, mirrorActiveRight);
   currMirrorLeft.addFreespaceLeftMirror();
   currMirrorRight.addFreespaceRighttMirror();
-  
   set_CurrentMirrors(mirrorOffLeft, mirrorOffRight);
 }
 /////////////////////////////////////////////////////
@@ -225,11 +222,12 @@ void draw() {
 
   // just to check where the outer frame is
   draw_OuterFrame();
-  
+   //<>//
   // we need to create something that draws the time/date buttons as long as the mirror is not turned off 
-  timeBtn.set_Text(hour()%12+":"+ (minute()<10 ? "0":"") + minute()+  (hour()>=12 ? " pm" : " am"));
+  timeBtn.set_Text(hour()%12+":"+ (minute()<10 ? "0":"") + minute()+  (hour()>=12 ? " pm" : " am")); //<>//
   dateBtn.set_Text(month()+"/"+day()+"/"+year());
   draw_Btn(timeBtn, dateBtn);
+    keyboard.displayModule();
 
   // Draw the current mirror state for each side of the mirror
   draw_LRMirrors(currMirrorLeft, currMirrorRight);
