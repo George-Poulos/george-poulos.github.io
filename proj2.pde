@@ -11,6 +11,8 @@
 /* @pjs font="Arial.ttf","LCD-BOLD.TTF","Courier New.ttf"; */
 
 PFont defaultFont, clockFont, dateFont;
+String weather = "icons/normal/png/weather-512.png";
+Module weatherMod;
 
 public boolean btn_Clicked(Button btn){
   return btn.is_MouseOverItem();
@@ -94,8 +96,10 @@ public void create_clockAndWeather(MirrorActive m){
   dateBtn.set_BtnFont(dateFont);
   dateBtn.set_isActive(true);
   //dateBtn.set_TextAlignment(CENTER);
-  
-  //weatherBtn = rightPanel.create_PanelBtn(1,1,2,3,true,WEATHER);
+  weatherMod = new Module(w*1.3,h*1.3,m.locX, m.locY+ 2*h/3); //<>//
+  weatherMod.setVisibility(true);
+  weatherMod.setImageName(weather); //<>//
+  //weatherBtn = rightPanel.create_PanelBtn(1,1,2,3,true,WEATHER); //<>//
 }
 
 //
@@ -220,15 +224,16 @@ void draw() {
 
   // Draw the current mirror state for each side of the mirror
   draw_LRMirrors(currMirrorLeft, currMirrorRight);
+  weatherMod.displayModule();
 }
 
 
 /////////////////////////////////////////////////////
 
 // mousePressed() just colors the button with click color to show that we clicked it.
-// don't really care about this for Project 2 though.
+// don't really care about this for Project 2 though. //<>//
 void mousePressed(){
-}
+} //<>//
 
 /////////////////////////////////////////////////////
 
