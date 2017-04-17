@@ -8,7 +8,8 @@
 // here is a processing.js solution from http://aaron-sherwood.com/processingjs/circleSound.html
 // uncomment this line to get audio in Processing.js
 //Audio beepSound = new Audio();
-/* @pjs font="Arial.ttf","LCD-BOLD.TTF","Courier New.ttf"; */
+/* @pjs font="Arial Rounded Bold.ttf","Arial.ttf","LCD-BOLD.TTF","Courier New.ttf"; */
+
 
 PFont defaultFont, clockFont, dateFont;
 String weather = "icons/normal/png/weather-512.png";
@@ -190,7 +191,7 @@ void setup() {
   size(2732, 1536);
       
   defaultFont = createFont("Arial Rounded MT Bold",32,true); 
-  clockFont = createFont("Arial Rounded MT Bold",48,true); 
+  clockFont = createFont("Arial Rounded MT Bold",48,true);
   dateFont = createFont("Arial Rounded MT Bold",22,true);
    
   create_MirrorOffStates();
