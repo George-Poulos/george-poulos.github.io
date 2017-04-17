@@ -78,15 +78,17 @@ public void create_MirrorActiveStates(){
 
 // 
 // These buttons stretch across the center of the mirror, so we place them
-// based on where the right mirror starts. These buttons get drawn
-//  from their origin, so we can set their x,y coords to mirror start.
+// based on where the right mirror starts. 
 public void create_clockAndWeather(MirrorActive m){
   int w = m.rightPanel.colWidth;
   int h = m.rightPanel.rowHeight;
   // we will call set_Text() on timeBtn throughout the loop so it gives current time info ;)
-  timeBtn = new Button(m.locX, m.locY+h, 4*w, 2*h);
-  dateBtn = new Button(m.locX, m.locY+timeBtn.szHeight, 4*w, h);
+  timeBtn = new Button(m.locX-2*w, m.locY, 4*w, 2*h);
+
+  // yes this is ghetto the way I determined the Y-location.
+  dateBtn = new Button(m.locX-2*w, m.locY+(3*timeBtn.szHeight)/4, 4*w, h);
   dateBtn.set_BtnFont(dateFont);
+
   //weatherBtn = rightPanel.create_PanelBtn(1,1,2,3,true,WEATHER);
 }
 
@@ -131,10 +133,12 @@ public void draw_OuterFrame(){
 }
 /////////////////////////////////////////////////////
 
-public String fileLoc = "icons/normal/png/";
+final String fileLoc = "icons/normal/png/";
 
 final color DAYCOLOR = color(205,219,225);
 //final color NIGHTCOLOR = color(,,,);  // maybe we do warm tint on daycolor ?
+
+final color ICONCOLOR = color(255);
 color mirrorColor;
 
 // change this line and comment out line that draws mirrorActiveRight to stretch full screen
@@ -221,7 +225,7 @@ void mouseReleased() {
 
 // updated this to have Mirror as the parameter type; we check if mouse is clicked
 // on the *current mirror state* - whichever current mirror state either side is in, 
-// we're checking for clicks on it.
+// we're checking for clicks on it. //<>//
 void mouseReleasedBothUsers(Mirror m){
   m.LocateModule(); //<>//
   

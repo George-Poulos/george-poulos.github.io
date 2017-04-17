@@ -1,7 +1,6 @@
 /*************** Button class and functions ***************/
 
 class Button extends Panel implements ActionListener {
-  //PImage btnImg;
   PFont font;
   //PShape btnImg;    // made it a PShape so we can have .svg files :)
   // COMMENT THIS LINE AND UNCOMMENT ABOVE LINE ONCE ICONS ARE .SVG
@@ -39,7 +38,7 @@ class Button extends Panel implements ActionListener {
       module.displayModule();    
   }
   
-    public void on_Click(boolean bool){
+  public void on_Click(boolean bool){
     // toggle the button active state
     isActive = bool;
     module.setVisibility(isActive);
@@ -70,8 +69,10 @@ class Button extends Panel implements ActionListener {
     font = defaultFont;
     corner = 5;
     // these colors have been updated for Project 2 :)
-    activeClr = color(255);
-    inactiveClr = color(235);
+    //activeClr = color(255);
+    //inactiveClr = color(235);
+    activeClr = ICONCOLOR;
+    inactiveClr = create_InactiveColor(activeClr);
     clr = inactiveClr;  // might delete this for proj2
     module = new Module(100,100,100,100);
   }
@@ -159,15 +160,14 @@ class Button extends Panel implements ActionListener {
       //shape(btnImg, locX, locY, 48, 48);
     }
     
-    else {  // the else part we will need to update for any buttons that 
-            // have text but do not have an outline.
+    else {  // buttons with text instead of an image
       noFill();    
       stroke(0.5);
-      rectMode(CENTER);
       //rect(locX, locY, szWidth, szHeight, corner); 
       setup_Text(font, 255);
-      //text(btnTxt, locX+(int)(szWidth/2), locY+(int)(szHeight/2));
-      text(btnTxt, locX, locY);
+      rectMode(CENTER);  // this is just where to draw the text inside a button from so it's centered.
+      text(btnTxt, locX+(szWidth/2), locY+(szHeight/2));
+      //text(btnTxt, locX, locY);
       rectMode(CORNER);
     }    
   }
