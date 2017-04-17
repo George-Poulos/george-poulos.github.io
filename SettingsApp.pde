@@ -65,6 +65,9 @@ class SettingsApp extends ButtonPanel {
     pActiveMode = p;
   }
   
+  void reset_ActiveSettingsMode(){
+    pActiveMode = pDefaultMode;
+  }
   
   SettingsInnerPanel get_ActiveMode(){
     return pActiveMode;

@@ -107,12 +107,16 @@ class AppDrawerBtn extends Button { // ugh AppDrawerBtn could've extended FakeBu
     module = myMod;    
   }
   
-  // overriding this so it opens the AppDrawer (instead of a module..)
+  // overriding this so appDrawerBtn opens the AppDrawer (instead of a module..)
+  // and same thing for settingsBtn (we want it to open SettingsApp)
   public void on_Click(){
     // toggle the button's active state
     isActive = !isActive;
     // toggle its module's active state
     module.isActive = !module.isActive;
+    
+    if (this.equals(settingsBtn) && !this.isActive)
+      settingsApp.reset_ActiveSettingsMode();
     
     // if we've closed the app drawer, set the buttons to be not active
     // EDIT: this is actually not desirable now that the buttons will open their 
