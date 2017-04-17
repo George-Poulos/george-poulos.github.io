@@ -52,8 +52,24 @@ class MirrorActive extends Mirror {
         rightPanel.panelRows-1,3,true,fileLoc.concat(SETTINGS)));
     settingsBtn.set_BtnModule(settingsApp);
     rightPanel.add_PanelBtn(settingsBtn);
-    centerPanel.add_InnerPanel(settingsApp); 
-    
+    centerPanel.add_InnerPanel(settingsApp);     
+  }
+  
+  public void do_SettingsClickStuff(){
+    if (settingsApp.isActive){
+      for (Button b : settingsApp.get_ActiveMode().innerPanelBtns){
+        if (btn_Clicked(b)){
+          noLoop();
+          b.on_Click();
+          if (settingsApp.settings.get_MirrorIconColor() != ICONCOLOR){
+            ICONCOLOR = settingsApp.settings.get_MirrorIconColor();
+            for (Button btn : get_AllMirrorBtns())
+              btn.set_ActiveColor(ICONCOLOR);
+          }
+          loop();
+        }
+      }
+    }
   }
   
 }

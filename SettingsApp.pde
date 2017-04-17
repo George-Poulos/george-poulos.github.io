@@ -46,7 +46,6 @@ class SettingsApp extends ButtonPanel {
     settingsIcon = new FakeButton(create_PanelBtn(0,0,2,2,true,fileLoc.concat(SETTINGS)));
     settingsWord = new FakeButton(create_PanelBtn(0,2,2,4,"Settings"));
     settingsWord.set_BtnFont(clockFont);
-    //settingsWord.set_TextAlignment(CENTER);
     add_PanelBtns(new Button[]{settingsIcon, settingsWord});
   }
   
@@ -80,13 +79,12 @@ class SettingsApp extends ButtonPanel {
     // "Menu" buttons to select which type of settings user would like to access. 
     // Made these AppDrawerBtns b/c they open a button panel (not a module) when clicked.
     SettingsMenuBtn displayPrefsBtn, linkedAppsBtn, personalInfoBtn;
-    ArrayList<SettingsMenuBtn> menuBtns; 
+    ArrayList<SettingsMenuBtn> menuBtns; // ??
+    
     public MenuSettingsPanel(SettingsApp parent){
       super(parent);  // use constructor of SettingsInnerPanel :)
       create_Btns();
       set_SettingsInnerBtnModules(parent);
-      //add_PanelBtns(new SettingsMenuBtn[]{displayPrefsBtn, linkedAppsBtn, personalInfoBtn});
-      parent.add_InnerPanel(this);
       parent.add_PanelBtns(new SettingsMenuBtn[]{displayPrefsBtn, linkedAppsBtn, personalInfoBtn});
       
     }
@@ -117,9 +115,12 @@ class SettingsApp extends ButtonPanel {
         module = m;
       }
       public void on_Click(){
-        for (SettingsMenuBtn b : new SettingsMenuBtn[]{displayPrefsBtn, linkedAppsBtn, personalInfoBtn}) 
-          b.isActive = false;
-        set_ActiveSettingsMode(this.module);
+        //if (module.isActive)
+        if (isActive){
+          for (SettingsMenuBtn b : new SettingsMenuBtn[]{displayPrefsBtn, linkedAppsBtn, personalInfoBtn}) 
+            b.isActive = false;
+          set_ActiveSettingsMode(this.module);
+        }
       }      
     }
   }  
@@ -127,17 +128,59 @@ class SettingsApp extends ButtonPanel {
   
   
   class DisplaySettingsPanel extends SettingsInnerPanel {
+    //Settings.DisplayPrefs panelSettings;
+    FakeButton iconColorLbl;
+    ArrayList<Button> iconColorBtns;
+    
     public DisplaySettingsPanel(SettingsApp parent){
       super(parent);  // use constructor of SettingsInnerPanel :)
-      tempBtn = new FakeButton(create_PanelBtn(0,0,1,1,"FakeBtn - display settings"));
-      tempBtn.font = dateFont;
-      add_PanelBtns(new Button[]{tempBtn});      
+      create_Btns();
+      add_PanelBtns(new Button[]{iconColorLbl});   
+      add_PanelBtns(iconColorBtns);
+      
+      mySetting = settings.displayPrefs;
     }
     
     void create_Btns(){
+      iconColorLbl = new FakeButton(create_PanelBtn(0,0,1,1,"icons: "));
+      iconColorLbl.set_BtnFont(dateFont);
+      create_IconColorBtns();
+    }
+    
+    private void create_IconColorBtns(){
+      iconColorBtns = new ArrayList();
+      iconColorBtns.add(new DisplaySettingsBtn(create_PanelBtn(0,1,1,1,""), WHITE));
+      iconColorBtns.add(new DisplaySettingsBtn(create_PanelBtn(0,2,1,1,""), PINK));
+      iconColorBtns.add(new DisplaySettingsBtn(create_PanelBtn(0,3,1,1,""), BLUE));
+      iconColorBtns.add(new DisplaySettingsBtn(create_PanelBtn(0,4,1,1,""), RED));
+      iconColorBtns.add(new DisplaySettingsBtn(create_PanelBtn(0,5,1,1,""), BLACK));
+    }
+    
+    class DisplaySettingsBtn extends SettingsBtn {
+      public DisplaySettingsBtn(Button btn){
+        super(btn);
+      }
+
+      public DisplaySettingsBtn(Button btn, color c){
+        this(btn);
+        // button color to choose colors for theme or mirror background
+        this.set_Color(c);
+      }
+      
+      public void on_Click(){
+        // hopefully this will check to see if the button clicked was an icon color button 
+        if (iconColorBtns.contains(this)){
+          System.out.println("found icon color btn!");
+          settings.set_MirrorIconColor(this.get_Color());
+          
+        }
+      }
+    
       
     }
   }  
+  
+
 
   class LinkedAppsSettingsPanel extends SettingsInnerPanel {
     public LinkedAppsSettingsPanel(SettingsApp parent){
@@ -171,6 +214,7 @@ class SettingsApp extends ButtonPanel {
 /**** Settings Inner Panel - allows us to change display based on which Settings Mode the user chooses ****/
 abstract class SettingsInnerPanel extends ButtonPanel {
   FakeButton tempBtn;
+  SettingsType mySetting;  // ???
   
   public SettingsInnerPanel(SettingsApp parent){
     super(parent);  // sets 1x1 row/col/button size to size of those in parent    
@@ -180,10 +224,9 @@ abstract class SettingsInnerPanel extends ButtonPanel {
     this.panelCols = parent.panelCols-colInParent;
     this.panelRows = parent.panelRows-rowInParent;    
     this.set_PanelSize(this.panelCols*this.colWidth, this.panelRows*this.rowHeight);
-    this.locX = parent.locX;
-    this.locY = parent.locY;
+    this.locX = parent.locX;  this.locY = parent.locY;
     this.set_PanelLoc(get_LocXInParent(colInParent), get_LocYInParent(rowInParent));
-    // TODO: REMOVE THIS LINE ONCE WE KNOW ALL INNER SETTINGS PANELS WORK!
+    // TODO: REMOVE THIS LINE ONCE WE KNOW ALL INNER SETTINGS PANELS WORK?
     create_Btns();
   }
   
@@ -195,4 +238,57 @@ abstract class SettingsInnerPanel extends ButtonPanel {
     add_PanelBtns(new Button[]{tempBtn});    
   }
   
+  void draw_ButtonPanel(){
+    if (isActive){
+      super.draw_ButtonPanel();
+      for (Button b : this.get_PanelBtns())
+        b.draw_Btn();
+    }
+  }
+    
+  
+  class SettingsBtn extends Button {
+    boolean shapeFlag;  // added hack-ish way to know we want a shape :P
+    
+    public SettingsBtn(Button btn){
+      super(btn);
+      this.font = dateFont;
+      this.imgFlag = btn.imgFlag;
+      if (btn.imgFlag) {
+        this.imgFlag = btn.imgFlag;
+        this.btnImg = btn.btnImg;
+      }
+      else if (!btn.btnTxt.isEmpty()) 
+        this.set_Text(btn.btnTxt);   
+      else 
+        shapeFlag = true;      
+    }
+
+    void set_BtnSetting(SettingsType s){
+      mySetting = s;
+    }
+    
+    // maybe put SettingsType as param somewhere else...?
+    // like in Mirror locate module, do if b instanceof SettingsInnerPanel.SettingsBtn, 
+    // (do something with button info and call on click?)
+    public void on_Click(){
+      
+    }    
+    
+    public void draw_Btn(){
+      if (shapeFlag){
+        // draw shape that is filled with this.clr
+        fill(this.clr);
+        rect(locX, locY, szWidth, szHeight, corner);
+      }
+      else super.draw_Btn();
+    }    
+  }  
 }
+
+// yep, putting these down here 
+color PINK = color(255,51,153);
+color BLUE = color(0,0,204);
+color RED = color(255,0,0);
+color BLACK = color(0);
+color WHITE = color(255);

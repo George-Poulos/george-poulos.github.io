@@ -22,4 +22,26 @@ class FakeButton extends Button {
   // don't do anything when we click it cause it's a fake button :)
   public void on_Click(){}  
   
+  
+  // override from button class cause we always want to draw a fake button
+  public void draw_Btn(){
+    if (imgFlag){  
+      strokeWeight(0.25);
+      stroke(activeClr);
+
+      fill(activeClr);
+      noTint();
+      imageMode(CENTER);
+      image(btnImg, locX+(int)(szWidth/2), locY+(int)(szHeight/2), 
+            szWidth-2*padding, szHeight-2*padding);      
+    }
+    else {
+      noFill();    
+      stroke(0.5);
+      rect(locX, locY, szWidth, szHeight, corner);   
+      setup_Text(font, 255, btnTxtAlign);
+      text(btnTxt, locX, locY);
+      rectMode(CORNER);  
+    }
+  }
 }

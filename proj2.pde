@@ -146,7 +146,8 @@ final String fileLoc = "icons/normal/png/";
 final color DAYCOLOR = color(205,219,225);
 //final color NIGHTCOLOR = color(,,,);  // maybe we do warm tint on daycolor ?
 
-final color ICONCOLOR = color(255);
+final color DEFAULTICONCOLOR = color(255);  // default icon theme color
+color ICONCOLOR = DEFAULTICONCOLOR;
 color mirrorColor;
 
 // change this line and comment out line that draws mirrorActiveRight to stretch full screen
@@ -237,7 +238,27 @@ void mouseReleased() {
 // on the *current mirror state* - whichever current mirror state either side is in, 
 // we're checking for clicks on it. //<>//
 void mouseReleasedBothUsers(Mirror m){
-  m.LocateModule(); //<>//
+  if (m instanceof MirrorActive){
+      // call a mirror active method that checks if we're in settings
+      ((MirrorActive)m).do_SettingsClickStuff();  
+      
+      // do module stuff (we don't want to call this method if the mirror is in "off" mode!)
+      m.LocateModule();
+  }
+  
+  else if (m instanceof MirrorOff){
+      for (Button b : m.allBtns){  // should just be the 1 power button here
+        if (btn_Clicked(b)){
+          noLoop();
+          if (m.equals(mirrorOffLeft)) currMirrorLeft = mirrorActiveLeft;
+          else currMirrorRight = mirrorActiveRight;
+          // add something else here maybe to check who we log in as??
+          // ...
+          loop();
+        }
+      }
+  }
+   //<>//
   
   // Don't think we need this part below!! Just above part!
 

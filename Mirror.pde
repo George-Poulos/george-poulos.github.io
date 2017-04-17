@@ -67,7 +67,6 @@ class Mirror extends Panel {
     allBtns = new ArrayList<Button>();
     // added this here - this method is really just to initialize the arraylists
     widgetFreeSpace = new ArrayList<Point>();
-    //setFreeSpace();
   }
   
   public boolean btn_Clicked(Button btn){
@@ -86,12 +85,6 @@ class Mirror extends Panel {
               int compY = b.moduleParent.get_LocYInParent(p.x);
               int compX = b.moduleParent.get_LocXInParent(p.y);
               if(!p.taken && !b.isActive){
-                // I commented these lines out because I added a line in ButtonPanel's create_PanelBtn(...)
-                // that sets these sizes when the button is created.  Less computing stuff to deal with
-                //float sizeX = leftPanel.colWidth;
-                //float sizeY = leftPanel.rowHeight;
-                //b.module.setSize(sizeX*4,sizeY*3);
-                //b.module.setSize(sizeX*4,sizeY*3-5);  // gave you a little padding between the widgets
                 b.set_ModuleLoc(p.x,p.y);
                 p.taken = true;
                 break;
@@ -142,14 +135,10 @@ class Mirror extends Panel {
   // and *right mirror*; we need these because of the location of the clock
   void addFreespaceLeftMirror(){
     int center = 2;
-    //widgetFreeSpace.add(0,new Point(2,2));
-    //widgetFreeSpace.add(5,new Point(17,2));
     widgetFreeSpace.add(0,new Point(2,center));
     widgetFreeSpace.add(5,new Point(17,center));
   }    
   void addFreespaceRighttMirror(){
-    //widgetFreeSpace.add(4,new Point(17,2));
-    //widgetFreeSpace.add(5,new Point(2,14));
     int center = 2;
     int rcol = center + this.leftPanel.panelCols + this.centerPanel.panelCols;
     widgetFreeSpace.add(4,new Point(17,center));

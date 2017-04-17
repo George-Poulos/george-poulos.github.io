@@ -14,14 +14,14 @@ color create_InactiveColor(color c){
   float red = get_RGBred(c);
   float green = get_RGBgreen(c);
   float blue = get_RGBblue(c);
-  //if (red == green && green == blue){  // aka if all the numbers are the same
+  if (red == green && green == blue){  // aka if all the numbers are the same
     return color(red-20, green-20, blue-20);
-  //}
-  //float valToChange = max(red, green, blue);
-  //float newVal = valToChange-20;
-  //if (valToChange == red) return color(newVal, green, blue);
-  //else if (valToChange == green) return color(red, newVal, blue);
-  //else return color(red, green, newVal);
+  }
+  float valToChange = max(red, green, blue);
+  float newVal = valToChange-20;
+  if (valToChange == red) return color(newVal, green, blue);
+  else if (valToChange == green) return color(red, newVal, blue);
+  else return color(red, green, newVal);
 }
 
 /********************************************************************/

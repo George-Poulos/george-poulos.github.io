@@ -19,8 +19,9 @@ class MirrorOff extends Mirror {
   
   public void add_CenterPanelStuff(){
     powerBtn = centerPanel.create_PanelBtn(
-        centerPanel.panelRows-1,centerPanel.panelCols/2,true,fileLoc.concat(POWER));
-            
+        centerPanel.panelRows-1,centerPanel.panelCols/2,true,fileLoc.concat(POWER));            
     centerPanel.add_PanelBtn(powerBtn);  
   }  
+  
+  
 }

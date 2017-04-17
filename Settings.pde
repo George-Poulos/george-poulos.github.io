@@ -73,7 +73,7 @@ class Settings {
   /**********  Inner Classes for specific types of settings ***********/
   
   /** the "Mirror Settings" **/
-  class DisplayPrefs {
+  class DisplayPrefs extends SettingsType {
     color mirrorBGColor;    // warm vs. cool
     color mirrorIconColor;  // "color theme"
     boolean nightMode;  
@@ -81,18 +81,20 @@ class Settings {
     
     private DisplayPrefs(){
       mirrorBGColor = DAYCOLOR;  // defaults
-      mirrorIconColor = ICONCOLOR;
+      mirrorIconColor = DEFAULTICONCOLOR;
       // TODO: when we create Buttons, set button color to mirrorIconColor.
     }
   }
   
   /** User's linked accounts (social media, email, etc.) **/
-  class LinkedApps {  
+  class LinkedApps extends SettingsType {  
     // TODO: implement this :)
+    private LinkedApps(){
+    }
   }
   
   /** User profile and personal information **/
-  class PersonalInfo {
+  class PersonalInfo extends SettingsType {
     String language;
     String location;
     boolean hasLockPin;
@@ -103,4 +105,9 @@ class Settings {
       location = "";
     }
   }
+}
+
+
+abstract class SettingsType {
+  public SettingsType(){ }
 }

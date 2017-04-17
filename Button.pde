@@ -25,6 +25,10 @@ class Button extends Panel implements ActionListener {
     btnTxt = txt;
   }
   
+  public Button(Button btn){
+    this(btn.locX, btn.locY, btn.szWidth, btn.szHeight);
+  }
+  
   // implemented from ActionListener interface
   // this gets called from mouseReleased(), after we have set the 
   // location of the module!
@@ -75,23 +79,19 @@ class Button extends Panel implements ActionListener {
     // these colors have been updated for Project 2 :)
     //activeClr = color(255);
     //inactiveClr = color(235);
-    activeClr = ICONCOLOR;
+    activeClr = DEFAULTICONCOLOR;
     inactiveClr = create_InactiveColor(activeClr);
     clr = inactiveClr;  // might delete this for proj2
     module = new Module(100,100,100,100);
   }
 
-  // I have this twice ...
-  //void set_isActive(boolean newIsActive){
-  //  isActive = newIsActive;
-  //}
-
-  void set_Colors(color c){
+  void set_Color(color c){
     clr = c;
   }
 
-  void set_ClickColor(color c){
+  void set_ActiveColor(color c){
     activeClr = c;
+    inactiveClr = create_InactiveColor(activeClr);
   }
 
   void set_BtnFont(PFont f){
@@ -123,6 +123,9 @@ class Button extends Panel implements ActionListener {
   ////     button action / draw to screen methods     //////
   //////////////////////////////////////////////////////////
 
+  public color get_Color(){
+    return clr;
+  }
 
   // something like this will be implemented for project 2
   void do_ClickAction(){
@@ -136,7 +139,8 @@ class Button extends Panel implements ActionListener {
       if (isActive){
         stroke(activeClr);
         // this doesn't actually fill in the icon - it fills the vector paths
-        fill(activeClr);
+        //fill(activeClr);
+        noTint();
         module.displayModule();
         // COMMENT THIS LINE ONCE ICONS ARE .SVG
         noTint();
@@ -156,24 +160,23 @@ class Button extends Panel implements ActionListener {
       // COMMENT THESE 2 LINES AND UNCOMMENT ABOVE 2 LINES ONCE ICONS ARE .SVG
       imageMode(CENTER);
       image(btnImg, locX+(int)(szWidth/2), locY+(int)(szHeight/2), 
-            szWidth-2*padding, szHeight-2*padding);
-      
-      // not this one
-      //shape(btnImg, locX, locY, 48, 48);
+            szWidth-2*padding, szHeight-2*padding);      
     }
     
-    else {  // buttons with text instead of an image
-      noFill();    
-      stroke(0.5);
-      rect(locX, locY, szWidth, szHeight, corner); 
-
-      setup_Text(font, 255, btnTxtAlign);
-      //rectMode(CENTER);  // this is just where to draw the text inside a button from so it's centered.
-      //text(btnTxt, locX+(szWidth/2), locY+(szHeight/2));
-      if (isActive || this instanceof FakeButton)
-      text(btnTxt, locX, locY);
-      rectMode(CORNER);
-    }    
+    else {
+      if (isActive ) {  // buttons with text instead of an image
+        noFill();    
+        stroke(0.5);
+        rect(locX, locY, szWidth, szHeight, corner); 
+  
+        setup_Text(font, 255, btnTxtAlign);
+        //rectMode(CENTER);  // this is just where to draw the text inside a button from so it's centered.
+        //text(btnTxt, locX+(szWidth/2), locY+(szHeight/2));
+        //if (isActive || this instanceof FakeButton)
+        text(btnTxt, locX, locY);
+        rectMode(CORNER);
+      } 
+    }
   }
   
 }
