@@ -170,7 +170,6 @@ class SettingsApp extends ButtonPanel {
       public void on_Click(){
         // hopefully this will check to see if the button clicked was an icon color button 
         if (iconColorBtns.contains(this)){
-          System.out.println("found icon color btn!");
           settings.set_MirrorIconColor(this.get_Color());
           
         }
