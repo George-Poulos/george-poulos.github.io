@@ -70,8 +70,10 @@ class Button extends Panel implements ActionListener {
     font = defaultFont;
     corner = 5;
     // these colors have been updated for Project 2 :)
-    activeClr = color(255);
-    inactiveClr = color(235);
+    //activeClr = color(255);
+    //inactiveClr = color(235);
+    activeClr = ICONCOLOR;
+    inactiveClr = create_InactiveColor(activeClr);
     clr = inactiveClr;  // might delete this for proj2
     module = new Module(100,100,100,100);
   }

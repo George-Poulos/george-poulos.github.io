@@ -56,6 +56,7 @@ class MirrorActive extends Mirror {
 class AppDrawerBtn extends Button {
   ButtonPanel module;
   
+  
   public AppDrawerBtn(int x, int y, int w, int h){
     super(x,y,w,h);
   }

@@ -131,10 +131,12 @@ public void draw_OuterFrame(){
 }
 /////////////////////////////////////////////////////
 
-public String fileLoc = "icons/normal/png/";
+final String fileLoc = "icons/normal/png/";
 
 final color DAYCOLOR = color(205,219,225);
 //final color NIGHTCOLOR = color(,,,);  // maybe we do warm tint on daycolor ?
+
+final color ICONCOLOR = color(255);
 color mirrorColor;
 
 // change this line and comment out line that draws mirrorActiveRight to stretch full screen
@@ -221,7 +223,7 @@ void mouseReleased() {
 
 // updated this to have Mirror as the parameter type; we check if mouse is clicked
 // on the *current mirror state* - whichever current mirror state either side is in, 
-// we're checking for clicks on it.
+// we're checking for clicks on it. //<>//
 void mouseReleasedBothUsers(Mirror m){
   m.LocateModule(); //<>//
   
