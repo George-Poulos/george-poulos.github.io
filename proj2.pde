@@ -96,18 +96,16 @@ public void create_clockAndWeather(MirrorActive m){
   timeBtn.set_BtnFont(clockFont);
   timeBtn.set_isActive(true);
   //timeBtn.set_TextAlignment(CENTER);
-   //<>//
-<<<<<<< HEAD
-  // yes this is ghetto the way I determined the Y-location.
-  dateBtn = new Button(m.locX-w, timeBtn.locY+(3*timeBtn.szHeight)/4, 2*w, h); //<>//
-  dateBtn.set_BtnFont(dateFont); //<>//
-  dateBtn.set_isActive(true);
-=======
+   //<>// //<>//
+
   // yes this is ghetto the way I determined the Y-location. //<>//
-  dateBtn = new Button(m.locX-w, timeBtn.locY+(3*timeBtn.szHeight)/4, 2*w, h); //<>//
+  dateBtn = new Button(m.locX-w, timeBtn.locY+(3*timeBtn.szHeight)/4, 2*w, h); //<>// //<>//
   dateBtn.set_BtnFont(dateFont); //<>//
   dateBtn.set_isActive(true); //<>//
->>>>>>> c90d78b66c940acb06cebd80ba99e162999be07d
+  // yes this is ghetto the way I determined the Y-location. //<>// //<>//
+  dateBtn = new Button(m.locX-w, timeBtn.locY+(3*timeBtn.szHeight)/4, 2*w, h); //<>// //<>//
+  dateBtn.set_BtnFont(dateFont); //<>// //<>//
+  dateBtn.set_isActive(true); //<>// //<>//
   //dateBtn.set_TextAlignment(CENTER); //<>//
   weatherMod = new Module(w*1.5,h*1.5,m.locX, m.locY+ h/2); //<>// //<>//
   weatherMod.setVisibility(true); //<>//
@@ -177,8 +175,8 @@ int numUsers = 2;
 // in the center of the screen
 Button timeBtn, dateBtn, weatherBtn;
 
-final int canvasWidth = 2732, canvasHeight = 1536;
-//final int canvasWidth = 1600, canvasHeight = 900;
+//final int canvasWidth = 2732, canvasHeight = 1536;
+final int canvasWidth = 1600, canvasHeight = 900;
 
 int sidePadding = canvasWidth/32;
 int mirrorWidth = canvasWidth-2*sidePadding;
@@ -199,14 +197,14 @@ void setup() {
   // will update these to scale for the displays in class.
   // chose these numbers cause the mirror is 80"x45" and this 
   // is roughly the same ratio.
-<<<<<<< HEAD
+
   size(1600,900);
   //size(2732, 1536);
-=======
-  //size(1600,900);
-  size(2732, 1536);
+
+  size(1600,900);
+  //size(2732, 1536);
       
->>>>>>> c90d78b66c940acb06cebd80ba99e162999be07d
+
   // If the keyboard is needed this is the constructor
   keyboard = new Keyboard(10, 10, 40, 40, 5); // x=10, y=10, keywidth=40, keyheight=40, round=5px
   keyboard.setVisibility(true); // Set true so displayModule() works
@@ -224,9 +222,9 @@ void setup() {
   set_CurrentMirrors(mirrorActiveLeft, mirrorActiveRight);
   currMirrorLeft.addFreespaceLeftMirror();
   currMirrorRight.addFreespaceRighttMirror();
-  set_CurrentMirrors(mirrorOffLeft, mirrorOffRight);
+  set_CurrentMirrors(mirrorOffLeft, mirrorOffRight); //<>//
 }
-/////////////////////////////////////////////////////
+///////////////////////////////////////////////////// //<>//
 
 
 void draw() {
@@ -240,23 +238,23 @@ void draw() {
   timeBtn.set_Text(hour()%12+":"+ (minute()<10 ? "0":"") + minute()+  (hour()>=12 ? " pm" : " am")); //<>//
   dateBtn.set_Text(month()+"/"+day()+"/"+year());
   draw_Btn(timeBtn, dateBtn);
-<<<<<<< HEAD
-    keyboard.displayModule();
-
-=======
  //<>//
->>>>>>> c90d78b66c940acb06cebd80ba99e162999be07d
+    keyboard.displayModule();
+ //<>//
+ //<>//
+ //<>// //<>//
+ //<>//
   // Draw the current mirror state for each side of the mirror
   draw_LRMirrors(currMirrorLeft, currMirrorRight); //<>//
-  weatherMod.displayModule(); //<>//
+  weatherMod.displayModule(); //<>// //<>//
 } //<>//
+ //<>// //<>//
  //<>//
-
 /////////////////////////////////////////////////////
  //<>//
 // mousePressed() just colors the button with click color to show that we clicked it.
 // don't really care about this for Project 2 though. //<>// //<>//
-void mousePressed(){ //<>//
+void mousePressed(){ //<>// //<>//
 } //<>// //<>//
  //<>//
 ///////////////////////////////////////////////////// //<>//
@@ -264,8 +262,8 @@ void mousePressed(){ //<>//
 // if the mouse button is released inside a known button,  //<>//
 // keep track of which button was pressed and do click stuff
  //<>// //<>//
-void mouseReleased() { //<>//
-  mouseReleasedBothUsers(currMirrorLeft); //<>//
+void mouseReleased() { //<>// //<>//
+  mouseReleasedBothUsers(currMirrorLeft); //<>// //<>//
   mouseReleasedBothUsers(currMirrorRight); //<>//
 }
 
@@ -276,18 +274,18 @@ void mouseReleasedBothUsers(Mirror m){
   // Checks keys if they are clicked on
   for (KeyboardKey k : keyboard.keys) {
     if (keyboard.visibility && key_Clicked(k)) //<>//
-      println(k.letter);
+      println(k.letter); //<>//
   } //<>//
- //<>//
-  if (m instanceof MirrorActive){ //<>//
+ //<>// //<>//
+  if (m instanceof MirrorActive){ //<>// //<>//
       // call a mirror active method that checks if we're in settings //<>//
       ((MirrorActive)m).do_SettingsClickStuff();  
       
       // do module stuff (we don't want to call this method if the mirror is in "off" mode!) //<>//
-      m.LocateModule();
+      m.LocateModule(); //<>//
   } //<>//
-   //<>//
-  else if (m instanceof MirrorOff){
+   //<>// //<>//
+  else if (m instanceof MirrorOff){ //<>//
       for (Button b : m.allBtns){  // should just be the 1 power button here
         if (btn_Clicked(b)){
           noLoop();
