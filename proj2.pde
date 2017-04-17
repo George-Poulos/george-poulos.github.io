@@ -11,7 +11,7 @@
 /* @pjs font="Arial.ttf","LCD-BOLD.TTF","Courier New.ttf"; */
 
 PFont defaultFont, clockFont, dateFont;
-String weather = "icons/normal/png/party-cloudy-512.png";
+String weather = "icons/normal/png/weather-512.png";
 Module weatherMod;
 
 public boolean btn_Clicked(Button btn){
