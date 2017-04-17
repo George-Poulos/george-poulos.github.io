@@ -9,10 +9,6 @@ class CenterPanel extends ButtonPanel {
   public CenterPanel(Panel parent){
     super(parent.szWidth/2, parent.szHeight);
   }
-    
-      
-  // implemented abstract fn from superclass
-  void set_PanelRC(){  }   
   
 }
 
@@ -23,10 +19,7 @@ class SidePanel extends ButtonPanel {
   public SidePanel(Panel parent){
     super(parent.szWidth/4, parent.szHeight);
     calc_PanelRC(4);
-  }
-              
-  // implemented abstract fn from superclass (default rows/cols for SidePanel)
-  void set_PanelRC(){  }
+  }              
 }
 
 /**********************************************************************************************/
@@ -104,18 +97,8 @@ class Mirror extends Panel {
       }
   }
   
-  // not using this one.. see below
-  void setFreeSpace(){
-    widgetFreeSpace = new ArrayList<Point>();
-    for(int i = 5; i < 15; i = i+3){
-      widgetFreeSpace.add(new Point(i,2));
-    }
-    for(int i = 5; i < 15; i = i+3){
-      widgetFreeSpace.add(new Point(i,14)); //<>// //<>//
-    }
-  }
-  
-  // this does what setFreeSpace() does, only diff is that I 
+   //<>//
+  // this does what setFreeSpace() did, only diff is that I 
   // init'd widgetFreeSpace separately in init_BtnsAndPanels().
   void add_FreeSpace(){
     int center = 2;
@@ -189,20 +172,19 @@ class Mirror extends Panel {
   }
         
   // draw Mirror by drawing each Panel and its buttons
-  public void draw_Mirror(){     //<>// //<>//
-      //draw_Panel();  // ??
+  public void draw_Mirror(){      //<>//
       draw_PanelLine(leftPanel);
-      leftPanel.draw_ButtonPanel(); //<>// //<>//
-      draw_PanelLine(centerPanel); //<>// //<>//
-      centerPanel.draw_ButtonPanel();       //<>// //<>//
-      draw_PanelLine(rightPanel); //<>// //<>//
-      rightPanel.draw_ButtonPanel(); //<>// //<>// //<>//
+      leftPanel.draw_ButtonPanel();  //<>//
+      draw_PanelLine(centerPanel);  //<>//
+      centerPanel.draw_ButtonPanel();        //<>//
+      draw_PanelLine(rightPanel);  //<>//
+      rightPanel.draw_ButtonPanel();  //<>//
   }
-   //<>// //<>//
+    //<>//
   // just to test where the boundaries are!
   public void draw_PanelLine(Panel p){
-    stroke(0); //<>// //<>//
-    line(p.locX, p.locY, p.locX, p.szHeight); //<>// //<>//
-  } //<>// //<>//
+    stroke(0);  //<>//
+    line(p.locX, p.locY, p.locX, p.szHeight);  //<>//
+  }  //<>//
   
-} //<>// //<>//
+}  //<>//

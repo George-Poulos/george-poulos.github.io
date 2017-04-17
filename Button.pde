@@ -164,18 +164,17 @@ class Button extends Panel implements ActionListener {
     }
     
     else {
-      if (isActive ) {  // buttons with text instead of an image
+      //if (isActive) {  // buttons with text instead of an image
         noFill();    
         stroke(0.5);
-        rect(locX, locY, szWidth, szHeight, corner); 
+        //rect(locX, locY, szWidth, szHeight, corner); 
   
         setup_Text(font, 255, btnTxtAlign);
         //rectMode(CENTER);  // this is just where to draw the text inside a button from so it's centered.
         //text(btnTxt, locX+(szWidth/2), locY+(szHeight/2));
-        //if (isActive || this instanceof FakeButton)
         text(btnTxt, locX, locY);
         rectMode(CORNER);
-      } 
+      //} 
     }
   }
   

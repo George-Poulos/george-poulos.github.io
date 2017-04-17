@@ -2,12 +2,9 @@
 
 class MirrorOff extends Mirror {
   
-  private String POWER = "power-512.png";
-  
-  // TODO: override Button class here so power button turns on mirror
+  private String POWER = "power-512.png";  
   Button powerBtn;
-  
-  
+    
   public MirrorOff(int x, int y, int w, int h){
     super(x,y,w,h); 
     create_LPanel();

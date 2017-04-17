@@ -31,8 +31,8 @@ class Settings {
   public void toggle_NightMode(){
     displayPrefs.nightMode = !displayPrefs.nightMode;
   }
-  public void set_AutoNightMode(boolean b){
-    displayPrefs.autoNightMode = b;
+  public void toggle_AutoNightMode(){
+    displayPrefs.autoNightMode = !displayPrefs.autoNightMode;
   }
   
   // so we can color the mirror background accordingly

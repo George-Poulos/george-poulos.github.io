@@ -85,8 +85,7 @@ class SettingsApp extends ButtonPanel {
       super(parent);  // use constructor of SettingsInnerPanel :)
       create_Btns();
       set_SettingsInnerBtnModules(parent);
-      parent.add_PanelBtns(new SettingsMenuBtn[]{displayPrefsBtn, linkedAppsBtn, personalInfoBtn});
-      
+      add_PanelBtns(new SettingsMenuBtn[]{displayPrefsBtn, linkedAppsBtn, personalInfoBtn});
     }
     
     // implemented from abstract class SettingsInnerPanel; will be called during constructor 
@@ -128,48 +127,56 @@ class SettingsApp extends ButtonPanel {
 /********************************************************************/  
   
   class DisplaySettingsPanel extends SettingsInnerPanel {
-    //Settings.DisplayPrefs panelSettings;
+
     FakeButton iconColorLbl, bgColorLbl;
+    DisplaySettingsBtn autoNightBtn, toggleNightBtn;    
     ArrayList<Button> iconColorBtns;
     ArrayList<Button> bgColorBtns;
     
     public DisplaySettingsPanel(SettingsApp parent){
       super(parent);  // use constructor of SettingsInnerPanel :)
       create_Btns();
-      add_PanelBtns(new Button[]{iconColorLbl, bgColorLbl});   
+      add_PanelBtns(new Button[]{iconColorLbl, bgColorLbl, autoNightBtn, toggleNightBtn});   
       add_PanelBtns(iconColorBtns);
       add_PanelBtns(bgColorBtns);
     }
     
     void create_Btns(){
-      iconColorLbl = new FakeButton(create_PanelBtn(0,0,1,1,"ICON: "));
-      bgColorLbl = new FakeButton(create_PanelBtn(1,0,1,1,"BG: "));
+      iconColorLbl = new FakeButton(create_PanelBtn(0,0,1,2,"THEME: "));
+      bgColorLbl = new FakeButton(create_PanelBtn(1,0,1,2,"BG: "));
       iconColorLbl.set_BtnFont(dateFont);
       bgColorLbl.set_BtnFont(dateFont);
       create_IconColorBtns();
       create_bgColorBtns();
+      create_NightModeBtns();
     }
     
     private void create_IconColorBtns(){
       iconColorBtns = new ArrayList();
-      iconColorBtns.add(new DisplaySettingsBtn(create_PanelBtn(0,1,1,1,""), WHITE));  // default
-      iconColorBtns.add(new DisplaySettingsBtn(create_PanelBtn(0,2,1,1,""), PINK));
-      iconColorBtns.add(new DisplaySettingsBtn(create_PanelBtn(0,3,1,1,""), BLUE));
-      iconColorBtns.add(new DisplaySettingsBtn(create_PanelBtn(0,4,1,1,""), RED));
+      iconColorBtns.add(new DisplaySettingsBtn(create_PanelBtn(0,2,1,1,""), WHITE));  // default
+      iconColorBtns.add(new DisplaySettingsBtn(create_PanelBtn(0,3,1,1,""), PINK));
+      iconColorBtns.add(new DisplaySettingsBtn(create_PanelBtn(0,4,1,1,""), BLUE));
+      //iconColorBtns.add(new DisplaySettingsBtn(create_PanelBtn(0,4,1,1,""), RED));
       iconColorBtns.add(new DisplaySettingsBtn(create_PanelBtn(0,5,1,1,""), BLACK));
     }
     
     private void create_bgColorBtns(){
       bgColorBtns = new ArrayList();
-      bgColorBtns.add(new DisplaySettingsBtn(create_PanelBtn(1,1,1,1,""), DAYCOLOR));  // default
-      bgColorBtns.add(new DisplaySettingsBtn(create_PanelBtn(1,2,1,1,""), BGWARMWHITE));
-      bgColorBtns.add(new DisplaySettingsBtn(create_PanelBtn(1,3,1,1,""), BGCOOLWHITE));
-      bgColorBtns.add(new DisplaySettingsBtn(create_PanelBtn(1,4,1,1,""), BGGRAY));
+      bgColorBtns.add(new DisplaySettingsBtn(create_PanelBtn(1,2,1,1,""), DAYCOLOR));  // default
+      bgColorBtns.add(new DisplaySettingsBtn(create_PanelBtn(1,3,1,1,""), BGWARMWHITE));
+      bgColorBtns.add(new DisplaySettingsBtn(create_PanelBtn(1,4,1,1,""), BGCOOLWHITE));
+      bgColorBtns.add(new DisplaySettingsBtn(create_PanelBtn(1,5,1,1,""), BGGRAY));
+    }
+    
+    private void create_NightModeBtns(){
+      autoNightBtn = new DisplaySettingsBtn(create_PanelBtn(2,1,1,5,"Night Mode AUTO"), DAYCOLOR);
+      toggleNightBtn = new DisplaySettingsBtn(create_PanelBtn(3,1,1,5,"Night Mode ON/OFF"), DAYCOLOR);
     }
 
     ///////////////////////////////////////////////////////
     //  inner class for the display settings buttons     //
     class DisplaySettingsBtn extends SettingsBtn {
+      
       public DisplaySettingsBtn(Button btn){
         super(btn);
       }
@@ -194,6 +201,14 @@ class SettingsApp extends ButtonPanel {
           m.currUserSettings.set_MirrorBGColor(this.get_Color());
           MIRRORCOLOR = this.get_Color();
         }
+        else if (this.equals(autoNightBtn)) {
+          m.currUserSettings.toggle_AutoNightMode();
+          this.isActive = !this.isActive;
+        }
+        else if (this.equals(toggleNightBtn)) {
+          m.currUserSettings.toggle_NightMode();
+          isActive = !this.isActive;
+        }        
         
       }
     
@@ -240,7 +255,6 @@ class SettingsApp extends ButtonPanel {
 /**** Settings Inner Panel - allows us to change display based on which Settings Mode the user chooses ****/
 abstract class SettingsInnerPanel extends ButtonPanel {
   FakeButton tempBtn;
-  SettingsType mySetting;  // ???
   
   public SettingsInnerPanel(SettingsApp parent){
     super(parent);  // sets 1x1 row/col/button size to size of those in parent    
@@ -291,27 +305,23 @@ abstract class SettingsInnerPanel extends ButtonPanel {
         shapeFlag = true;      
     }
 
-    void set_BtnSetting(SettingsType s){
-      mySetting = s;
-    }
-    
-    
     // maybe put SettingsType as param somewhere else...? 
     // (do something with button info and call on click?)
-    public void on_Click(){      
-    }    
+    public void on_Click(){ }    
     
-    public void on_Click(MirrorActive m){ 
-      
-    }    
+    public void on_Click(MirrorActive m){ }    
     
     public void draw_Btn(){
       if (shapeFlag){
         // draw shape that is filled with this.clr
         fill(this.clr);
-        rect(locX, locY, szWidth, szHeight, corner);
+        //rect(locX, locY, szWidth, szHeight, corner);
       }
-      else super.draw_Btn();
+      else noFill();
+      if (isActive) fill(66, 188, 244); 
+      noStroke();
+      rect(locX, locY, szWidth, szHeight, corner);
+      super.draw_Btn();
     }
     
   } // end of class SettingsBtn 

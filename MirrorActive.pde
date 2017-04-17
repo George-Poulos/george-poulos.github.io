@@ -65,7 +65,7 @@ class MirrorActive extends Mirror {
           noLoop();
           if (settingsApp.get_ActiveMode() == settingsApp.pMenu)
             b.on_Click();
-          else {
+          else if (! (b instanceof FakeButton)){
             ((SettingsInnerPanel.SettingsBtn)b).on_Click(this);
           }
           loop();

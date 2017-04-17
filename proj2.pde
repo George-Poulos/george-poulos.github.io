@@ -186,8 +186,9 @@ void setup() {
   // will update these to scale for the displays in class.
   // chose these numbers cause the mirror is 80"x45" and this 
   // is roughly the same ratio.
-  size(2732, 1536);
   //size(1600,900);
+  size(2732, 1536);
+      
   defaultFont = createFont("Arial Rounded MT Bold",32,true); 
   clockFont = createFont("Arial Rounded MT Bold",48,true); 
   dateFont = createFont("Arial Rounded MT Bold",22,true);
@@ -239,7 +240,7 @@ void mousePressed(){
 
 // if the mouse button is released inside a known button, 
 // keep track of which button was pressed and do click stuff
-
+ //<>//
 void mouseReleased() {
   mouseReleasedBothUsers(currMirrorLeft);
   mouseReleasedBothUsers(currMirrorRight);
@@ -261,7 +262,7 @@ void mouseReleasedBothUsers(Mirror m){
       for (Button b : m.allBtns){  // should just be the 1 power button here
         if (btn_Clicked(b)){
           noLoop();
-          if (m.equals(mirrorOffLeft)) currMirrorLeft = mirrorActiveLeft;
+          if (m.equals(mirrorOffLeft)) currMirrorLeft = mirrorActiveLeft; //<>//
           else currMirrorRight = mirrorActiveRight;
           // add something else here maybe to check who we log in as??
           // ...
