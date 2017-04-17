@@ -18,7 +18,7 @@ class AppDrawer extends ButtonPanel {
   Button newsBtn, emailBtn, mapsBtn, calBtn;
   Button healthBtn, musicBtn;
 
-  int rowInParent, colInParent;
+  //int rowInParent, colInParent;
 
   public AppDrawer(ButtonPanel parent){
     super(parent);  // sets row/col/button size to size of those in parent

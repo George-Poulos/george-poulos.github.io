@@ -10,7 +10,7 @@
 //Audio beepSound = new Audio();
 /* @pjs font="Arial.ttf","LCD-BOLD.TTF","Courier New.ttf"; */
 
-PFont defaultFont, dateFont;
+PFont defaultFont, clockFont, dateFont;
 
 public boolean btn_Clicked(Button btn){
   return btn.is_MouseOverItem();
@@ -78,17 +78,23 @@ public void create_MirrorActiveStates(){
 
 // 
 // These buttons stretch across the center of the mirror, so we place them
-// based on where the right mirror starts. 
+// based on where the right mirror starts :P
+//
 public void create_clockAndWeather(MirrorActive m){
   int w = m.rightPanel.colWidth;
   int h = m.rightPanel.rowHeight;
   // we will call set_Text() on timeBtn throughout the loop so it gives current time info ;)
-  timeBtn = new Button(m.locX-2*w, m.locY, 4*w, 2*h);
-
+  timeBtn = new Button(m.locX-2*w, m.locY+h, 4*w, 2*h);
+  timeBtn.set_BtnFont(clockFont);
+  timeBtn.set_isActive(true);
+  //timeBtn.set_TextAlignment(CENTER);
+  
   // yes this is ghetto the way I determined the Y-location.
-  dateBtn = new Button(m.locX-2*w, m.locY+(3*timeBtn.szHeight)/4, 4*w, h);
+  dateBtn = new Button(m.locX-w, timeBtn.locY+(3*timeBtn.szHeight)/4, 2*w, h);
   dateBtn.set_BtnFont(dateFont);
-
+  dateBtn.set_isActive(true);
+  //dateBtn.set_TextAlignment(CENTER);
+  
   //weatherBtn = rightPanel.create_PanelBtn(1,1,2,3,true,WEATHER);
 }
 
@@ -119,11 +125,13 @@ public void set_CurrentMirrors(Mirror Lmirror, Mirror Rmirror){
 }
 
 /////////////////////////////////////////////////////
-public void setup_Text(PFont font, color c){
+// called from button class's draw_Btn() method; added new param to set alignment.
+public void setup_Text(PFont font, color c, int align){
   textFont(font);
   fill(c);
-  textAlign(CENTER, CENTER);
+  textAlign(align, TOP);
 }
+/////////////////////////////////////////////////////
 
 // just to check where the outer side mirror edges are drawn
 public void draw_OuterFrame(){
@@ -170,8 +178,10 @@ void setup() {
   // is roughly the same ratio.
   size(2732, 1536);
   //size(1600,900);
-  defaultFont = createFont("Arial Rounded MT Bold",48,true); 
+  defaultFont = createFont("Arial Rounded MT Bold",32,true); 
+  clockFont = createFont("Arial Rounded MT Bold",48,true); 
   dateFont = createFont("Arial Rounded MT Bold",22,true);
+   
   
   // just a (pretty good) guess based on what our website mirror looks like
   mirrorColor = DAYCOLOR;

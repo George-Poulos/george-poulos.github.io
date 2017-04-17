@@ -19,8 +19,6 @@ class MirrorActive extends Mirror {
     // put this here to add free space locs without hard-coding a  
     // column value for the free spaces on the right panel
     add_FreeSpace();
-    //add_RPanelStuff();
-    //add_CPanelStuff();
     add_AppDrawerStuff();
     add_SettingsAppStuff();
     add_InnerPanels();
@@ -54,33 +52,8 @@ class MirrorActive extends Mirror {
         rightPanel.panelRows-1,3,true,fileLoc.concat(SETTINGS)));
     settingsBtn.set_BtnModule(settingsApp);
     rightPanel.add_PanelBtn(settingsBtn);
-    centerPanel.add_InnerPanel(settingsApp);    
-  }
-  
-  
-  // DEPRICATED
-  void add_RPanelStuff(){
-    appDrawer = new AppDrawer(this.rightPanel);  // .
-    // creating AppDrawer button based on specs of a regular button.
-    appBtn = new AppDrawerBtn(rightPanel.create_PanelBtn(  // .
-          rightPanel.panelRows-1, 2, true, fileLoc.concat(APPDOCK)));
-    appBtn.set_BtnModule(appDrawer);   // .
+    centerPanel.add_InnerPanel(settingsApp); 
     
-    //settingsBtn = rightPanel.create_PanelBtn(
-        //rightPanel.panelRows-1,3,true,fileLoc.concat(SETTINGS));
-    settingsBtn = new AppDrawerBtn(rightPanel.create_PanelBtn(  //.
-        rightPanel.panelRows-1,3,true,fileLoc.concat(SETTINGS)));
-            
-    rightPanel.add_PanelBtn(settingsBtn);  //.   
-    rightPanel.add_PanelBtn(appBtn);  // .
-    rightPanel.add_InnerPanel(appDrawer);     // .
-  }
-  
-  // DEPRICATED
-  void add_CPanelStuff(){
-    settingsApp = new SettingsApp(this.centerPanel);  //.
-    settingsBtn.set_BtnModule(this.settingsApp);  //.
-    centerPanel.add_InnerPanel(settingsApp);  //.
   }
   
 }
@@ -91,7 +64,7 @@ class MirrorActive extends Mirror {
 /*           AppDrawerBtn is the Button that expands the AppDrawer                */
 /**********************************************************************************/
 
-class AppDrawerBtn extends Button {
+class AppDrawerBtn extends Button { // ugh AppDrawerBtn could've extended FakeButton class
   ButtonPanel module;
     
   public AppDrawerBtn(int x, int y, int w, int h){
@@ -102,7 +75,8 @@ class AppDrawerBtn extends Button {
   public AppDrawerBtn(Button btn){
     this(btn.locX, btn.locY, btn.szWidth, btn.szHeight);
     this.imgFlag = btn.imgFlag;
-    this.btnImg = btn.btnImg;
+    if (this.imgFlag) this.btnImg = btn.btnImg;
+    else this.set_Text(btn.btnTxt);
   }
   
   // need this here.

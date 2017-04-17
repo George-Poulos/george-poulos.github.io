@@ -8,6 +8,8 @@ abstract class ButtonPanel extends Panel {
   //boolean isActive;  // moved this to Panel for now
   int panelRows, panelCols, panelBtnWidth, panelBtnHeight;  
   int rowHeight, colWidth;
+  int rowInParent, colInParent;  // moved this into here instead of subclasses.
+
   
   ArrayList<Button> innerPanelBtns;
   ArrayList<ButtonPanel> innerPanels;
@@ -87,6 +89,9 @@ abstract class ButtonPanel extends Panel {
     innerPanels.add(p);    
   }
 
+  void add_InnerPanels(ArrayList<ButtonPanel> panels){
+    innerPanels.addAll(panels);    
+  }
 
   // Creates and returns a Button (potentially to be placed in the ButtonPanel).
   // Calculates the location and size of the button based on the size of the

@@ -6,9 +6,9 @@ class Button extends Panel implements ActionListener {
   // COMMENT THIS LINE AND UNCOMMENT ABOVE LINE ONCE ICONS ARE .SVG
   PImage btnImg;
   boolean imgFlag;
-  //boolean isActive;
   String btnTxt = "";  // we won't use this as much for project 2
   color clr, activeClr, inactiveClr;
+  int btnTxtAlign;
   ButtonPanel moduleParent;  // sets the panel that btnModule will open in
   int padding;  // move this into Panel class???
   Module module;
@@ -38,6 +38,9 @@ class Button extends Panel implements ActionListener {
       module.displayModule();    
   }
   
+  //
+  // TODO: can we delete this???
+  //
   public void on_Click(boolean bool){
     // toggle the button active state
     isActive = bool;
@@ -67,6 +70,7 @@ class Button extends Panel implements ActionListener {
   private void set_BtnDefaults(){
     padding = 1;
     font = defaultFont;
+    btnTxtAlign = LEFT;
     corner = 5;
     // these colors have been updated for Project 2 :)
     //activeClr = color(255);
@@ -78,17 +82,12 @@ class Button extends Panel implements ActionListener {
   }
 
   // I have this twice ...
-  void set_isActive(boolean newIsActive){
-    isActive = newIsActive;
-  }
+  //void set_isActive(boolean newIsActive){
+  //  isActive = newIsActive;
+  //}
 
   void set_Colors(color c){
     clr = c;
-  }
-
-  // allows us to click on a button but not show any feedback -> "fake button"
-  void clear_ClickColor(){
-    activeClr = inactiveClr;
   }
 
   void set_ClickColor(color c){
@@ -101,7 +100,10 @@ class Button extends Panel implements ActionListener {
   void set_Text(String txt){
     btnTxt = txt;
   }
-
+  
+  void set_TextAlignment(int newAlign){
+    btnTxtAlign = newAlign;
+  }
 
   // we call disableStyle() so that we can color the .svg how we want
   void set_Img(String img){
@@ -163,11 +165,13 @@ class Button extends Panel implements ActionListener {
     else {  // buttons with text instead of an image
       noFill();    
       stroke(0.5);
-      //rect(locX, locY, szWidth, szHeight, corner); 
-      setup_Text(font, 255);
-      rectMode(CENTER);  // this is just where to draw the text inside a button from so it's centered.
-      text(btnTxt, locX+(szWidth/2), locY+(szHeight/2));
-      //text(btnTxt, locX, locY);
+      rect(locX, locY, szWidth, szHeight, corner); 
+
+      setup_Text(font, 255, btnTxtAlign);
+      //rectMode(CENTER);  // this is just where to draw the text inside a button from so it's centered.
+      //text(btnTxt, locX+(szWidth/2), locY+(szHeight/2));
+      if (isActive || this instanceof FakeButton)
+      text(btnTxt, locX, locY);
       rectMode(CORNER);
     }    
   }

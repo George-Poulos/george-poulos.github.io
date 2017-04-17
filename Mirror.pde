@@ -81,7 +81,7 @@ class Mirror extends Panel {
       for (Button b : allBtns){
         if (btn_Clicked(b)){
           noLoop();
-          if(!(b instanceof AppDrawerBtn || b instanceof FakeButton)){  
+          if(!(b instanceof AppDrawerBtn || b instanceof SettingsApp.MenuSettingsPanel.SettingsMenuBtn || b instanceof FakeButton)){  
             for(Point p : widgetFreeSpace){  // note to self: widgetFreeSpace holds (row,col) free spaces.
               int compY = b.moduleParent.get_LocYInParent(p.x);
               int compX = b.moduleParent.get_LocXInParent(p.y);

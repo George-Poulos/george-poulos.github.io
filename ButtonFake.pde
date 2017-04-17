@@ -12,7 +12,8 @@ class FakeButton extends Button {
   public FakeButton(Button btn){
     this(btn.locX, btn.locY, btn.szWidth, btn.szHeight);
     this.imgFlag = btn.imgFlag;
-    this.btnImg = btn.btnImg;
+    if (this.imgFlag) this.btnImg = btn.btnImg;
+    else this.set_Text(btn.btnTxt);
   }
   
   /* need these here */
