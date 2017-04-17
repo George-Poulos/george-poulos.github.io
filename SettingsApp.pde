@@ -156,7 +156,6 @@ class SettingsApp extends ButtonPanel {
       iconColorBtns.add(new DisplaySettingsBtn(create_PanelBtn(0,2,1,1,""), WHITE));  // default
       iconColorBtns.add(new DisplaySettingsBtn(create_PanelBtn(0,3,1,1,""), PINK));
       iconColorBtns.add(new DisplaySettingsBtn(create_PanelBtn(0,4,1,1,""), BLUE));
-      //iconColorBtns.add(new DisplaySettingsBtn(create_PanelBtn(0,4,1,1,""), RED));
       iconColorBtns.add(new DisplaySettingsBtn(create_PanelBtn(0,5,1,1,""), BLACK));
     }
     
@@ -210,9 +209,7 @@ class SettingsApp extends ButtonPanel {
           isActive = !this.isActive;
         }        
         
-      }
-    
-      
+      }      
     }
   }  
   
@@ -266,8 +263,7 @@ abstract class SettingsInnerPanel extends ButtonPanel {
     this.set_PanelSize(this.panelCols*this.colWidth, this.panelRows*this.rowHeight);
     this.locX = parent.locX;  this.locY = parent.locY;
     this.set_PanelLoc(get_LocXInParent(colInParent), get_LocYInParent(rowInParent));
-    // TODO: REMOVE THIS LINE ONCE WE KNOW ALL INNER SETTINGS PANELS WORK?
-    create_Btns();
+
   }
   
   // could've prob made this an abstract method in ButtonPanel class :P
@@ -305,11 +301,9 @@ abstract class SettingsInnerPanel extends ButtonPanel {
         shapeFlag = true;      
     }
 
-    // maybe put SettingsType as param somewhere else...? 
-    // (do something with button info and call on click?)
-    public void on_Click(){ }    
+    public void on_Click(){}    
     
-    public void on_Click(MirrorActive m){ }    
+    //public void on_Click(MirrorActive m){ }    
     
     public void draw_Btn(){
       if (shapeFlag){

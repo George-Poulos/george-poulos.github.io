@@ -96,10 +96,10 @@ public void create_clockAndWeather(MirrorActive m){
   dateBtn.set_BtnFont(dateFont);
   dateBtn.set_isActive(true);
   //dateBtn.set_TextAlignment(CENTER);
-  weatherMod = new Module(w*1.5,h*1.5,m.locX, m.locY+ h/2); //<>//
+  weatherMod = new Module(w*1.5,h*1.5,m.locX, m.locY+ h/2); //<>// //<>//
   weatherMod.setVisibility(true);
-  weatherMod.setImageName(weather); //<>//
-  //weatherBtn = rightPanel.create_PanelBtn(1,1,2,3,true,WEATHER); //<>//
+  weatherMod.setImageName(weather); //<>// //<>//
+  //weatherBtn = rightPanel.create_PanelBtn(1,1,2,3,true,WEATHER); //<>// //<>//
 }
 
 //
@@ -193,9 +193,6 @@ void setup() {
   clockFont = createFont("Arial Rounded MT Bold",48,true); 
   dateFont = createFont("Arial Rounded MT Bold",22,true);
    
-  
-  // just a (pretty good) guess based on what our website mirror looks like
-  //MIRRORCOLOR = DAYCOLOR;
   create_MirrorOffStates();
   create_MirrorActiveStates();
 
@@ -235,15 +232,15 @@ void draw() {
 // don't really care about this for Project 2 though. //<>//
 void mousePressed(){
 } //<>//
-
+ //<>//
 /////////////////////////////////////////////////////
-
+ //<>//
 // if the mouse button is released inside a known button, 
 // keep track of which button was pressed and do click stuff
  //<>//
 void mouseReleased() {
   mouseReleasedBothUsers(currMirrorLeft);
-  mouseReleasedBothUsers(currMirrorRight);
+  mouseReleasedBothUsers(currMirrorRight); //<>//
 }
 
 // updated this to have Mirror as the parameter type; we check if mouse is clicked
@@ -251,7 +248,7 @@ void mouseReleased() {
 // we're checking for clicks on it. //<>//
 void mouseReleasedBothUsers(Mirror m){
   if (m instanceof MirrorActive){
-      // call a mirror active method that checks if we're in settings
+      // call a mirror active method that checks if we're in settings //<>//
       ((MirrorActive)m).do_SettingsClickStuff();  
       
       // do module stuff (we don't want to call this method if the mirror is in "off" mode!)
@@ -265,7 +262,7 @@ void mouseReleasedBothUsers(Mirror m){
           if (m.equals(mirrorOffLeft)) currMirrorLeft = mirrorActiveLeft; //<>//
           else currMirrorRight = mirrorActiveRight;
           // add something else here maybe to check who we log in as??
-          // ...
+          // ... //<>//
           loop();
         }
       }
@@ -273,7 +270,7 @@ void mouseReleasedBothUsers(Mirror m){
    //<>//
   
   // Don't think we need this part below!! Just above part!
-
+ //<>//
   // looping thru the current mirror's Left, Center, and Right panels  
   //for (ButtonPanel p1 : m.get_AllMirrorPanels()){
   //  // check that panel's buttons 

@@ -42,6 +42,8 @@ class Button extends Panel implements ActionListener {
       module.displayModule();    
   }
   
+  public void on_Click(Mirror m){ }
+  
   //
   // TODO: can we delete this???
   //
