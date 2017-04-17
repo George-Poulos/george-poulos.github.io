@@ -21,7 +21,7 @@ class FakeButton extends Button {
   public void set_ModuleLoc(int r, int c){}
   // don't do anything when we click it cause it's a fake button :)
   public void on_Click(){}  
-  public void on_Click(Mirror m){}
+  //public void on_Click(Mirror m){}
   
   // override from button class cause we always want to draw a fake button
   public void draw_Btn(){
