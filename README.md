@@ -12,10 +12,12 @@
     - Custom UI library
 - Dennis Leancu
     - Keyboard
+    - App images
 - George Poulos
     - Apps
 - Tony Wong
     - Out of box experience
+    - UI images
 ## Tools Used
 - Photoshop
 - JetBrains WebStorm
