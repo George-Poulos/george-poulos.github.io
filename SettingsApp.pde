@@ -258,7 +258,7 @@ abstract class SettingsInnerPanel extends ButtonPanel {
         this.imgFlag = btn.imgFlag;
         this.btnImg = btn.btnImg;
       }
-      else if (!btn.btnTxt.isEmpty()) 
+      else if (btn.btnTxt.length()>0) 
         this.set_Text(btn.btnTxt);   
       else 
         shapeFlag = true;      
