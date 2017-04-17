@@ -30,3 +30,18 @@
 - Mail app from Google Gmail
 - News from The Guardian
 - Traffic & Map data from Google
+## Feature Highlight
+[Image of setup screen]
+MirrorUI sports an out of box experience similar to many other smart devices out there today.
+[Image of a different step in setup screen]
+The initial setup lets you know how far along you are until you can use the mirror. Can't wait? Skip ahead!
+[User creation screen]
+Personalize your mirror with your own profile. MirrorUI will remember your name and settings for you.
+[Showing resting state, or picking users]
+MirrorUI works for 2 people at the same time. A simple tap of the power button is all you need to begin.
+[Showing main signed in screen]
+The time, weather, and date are always displayed for your convinience.
+[Apps drawer open]
+The app drawer shows you what apps you can open or close.
+[Settings open]
+Need to change your personal preferences? The settings app lets you change ...., ...., ...., and .....

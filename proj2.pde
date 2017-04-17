@@ -208,7 +208,6 @@ void setup() {
   // If the keyboard is needed this is the constructor
   keyboard = new Keyboard(10, 10, 40, 40, 5); // x=10, y=10, keywidth=40, keyheight=40, round=5px
   keyboard.setVisibility(true); // Set true so displayModule() works
-  keyboard.displayModule();
 
   defaultFont = createFont("Arial Rounded MT Bold",32,true); 
   clockFont = createFont("Arial Rounded MT Bold",48,true);
