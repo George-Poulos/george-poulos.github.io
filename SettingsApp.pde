@@ -5,7 +5,7 @@ class SettingsApp extends ButtonPanel {
   private String SETTINGS = "dock_settings.png";
   //int rowInParent, colInParent;
     
-  Settings settings;
+  //Settings settings;
   // these parts will be shown to user the whole time
   FakeButton settingsIcon, settingsWord;
   
@@ -26,7 +26,7 @@ class SettingsApp extends ButtonPanel {
     this.locX = parent.locX;
     this.set_PanelLoc(get_LocXInParent(colInParent), get_LocYInParent(rowInParent));
     
-    settings = new Settings();    // create Settings instance  
+    //settings = new Settings();    // create Settings instance  
     create_FakeBtns();
     init_SettingsInnerPanels();
     
@@ -103,7 +103,8 @@ class SettingsApp extends ButtonPanel {
       personalInfoBtn.set_BtnModule(p.pPersonalPrefs);    
     } 
     
-    // inner class for the three settings menu buttons
+    ///////////////////////////////////////////////////////
+    //  inner class for the three settings menu buttons  //
     class SettingsMenuBtn extends AppDrawerBtn {
       SettingsInnerPanel module;
       
@@ -115,7 +116,6 @@ class SettingsApp extends ButtonPanel {
         module = m;
       }
       public void on_Click(){
-        //if (module.isActive)
         if (isActive){
           for (SettingsMenuBtn b : new SettingsMenuBtn[]{displayPrefsBtn, linkedAppsBtn, personalInfoBtn}) 
             b.isActive = false;
@@ -125,37 +125,50 @@ class SettingsApp extends ButtonPanel {
     }
   }  
   
-  
+/********************************************************************/  
   
   class DisplaySettingsPanel extends SettingsInnerPanel {
     //Settings.DisplayPrefs panelSettings;
-    FakeButton iconColorLbl;
+    FakeButton iconColorLbl, bgColorLbl;
     ArrayList<Button> iconColorBtns;
+    ArrayList<Button> bgColorBtns;
     
     public DisplaySettingsPanel(SettingsApp parent){
       super(parent);  // use constructor of SettingsInnerPanel :)
       create_Btns();
-      add_PanelBtns(new Button[]{iconColorLbl});   
+      add_PanelBtns(new Button[]{iconColorLbl, bgColorLbl});   
       add_PanelBtns(iconColorBtns);
-      
-      mySetting = settings.displayPrefs;
+      add_PanelBtns(bgColorBtns);
     }
     
     void create_Btns(){
-      iconColorLbl = new FakeButton(create_PanelBtn(0,0,1,1,"icons: "));
+      iconColorLbl = new FakeButton(create_PanelBtn(0,0,1,1,"ICON: "));
+      bgColorLbl = new FakeButton(create_PanelBtn(1,0,1,1,"BG: "));
       iconColorLbl.set_BtnFont(dateFont);
+      bgColorLbl.set_BtnFont(dateFont);
       create_IconColorBtns();
+      create_bgColorBtns();
     }
     
     private void create_IconColorBtns(){
       iconColorBtns = new ArrayList();
-      iconColorBtns.add(new DisplaySettingsBtn(create_PanelBtn(0,1,1,1,""), WHITE));
+      iconColorBtns.add(new DisplaySettingsBtn(create_PanelBtn(0,1,1,1,""), WHITE));  // default
       iconColorBtns.add(new DisplaySettingsBtn(create_PanelBtn(0,2,1,1,""), PINK));
       iconColorBtns.add(new DisplaySettingsBtn(create_PanelBtn(0,3,1,1,""), BLUE));
       iconColorBtns.add(new DisplaySettingsBtn(create_PanelBtn(0,4,1,1,""), RED));
       iconColorBtns.add(new DisplaySettingsBtn(create_PanelBtn(0,5,1,1,""), BLACK));
     }
     
+    private void create_bgColorBtns(){
+      bgColorBtns = new ArrayList();
+      bgColorBtns.add(new DisplaySettingsBtn(create_PanelBtn(1,1,1,1,""), DAYCOLOR));  // default
+      bgColorBtns.add(new DisplaySettingsBtn(create_PanelBtn(1,2,1,1,""), BGWARMWHITE));
+      bgColorBtns.add(new DisplaySettingsBtn(create_PanelBtn(1,3,1,1,""), BGCOOLWHITE));
+      bgColorBtns.add(new DisplaySettingsBtn(create_PanelBtn(1,4,1,1,""), BGGRAY));
+    }
+
+    ///////////////////////////////////////////////////////
+    //  inner class for the display settings buttons     //
     class DisplaySettingsBtn extends SettingsBtn {
       public DisplaySettingsBtn(Button btn){
         super(btn);
@@ -167,19 +180,28 @@ class SettingsApp extends ButtonPanel {
         this.set_Color(c);
       }
       
-      public void on_Click(){
-        // hopefully this will check to see if the button clicked was an icon color button 
+      public void on_Click(MirrorActive m){
+        // this checks to see if the button clicked was an icon color button 
         if (iconColorBtns.contains(this)){
-          settings.set_MirrorIconColor(this.get_Color());
-          
+          m.currUserSettings.set_MirrorIconColor(this.get_Color());
+          ICONCOLOR = this.get_Color();
+          for (Button btn : m.get_AllMirrorBtns())
+            btn.set_ActiveColor(ICONCOLOR);
+          timeBtn.activeClr = ICONCOLOR;
+          dateBtn.activeClr = ICONCOLOR;
         }
+        else if (bgColorBtns.contains(this)){
+          m.currUserSettings.set_MirrorBGColor(this.get_Color());
+          MIRRORCOLOR = this.get_Color();
+        }
+        
       }
     
       
     }
   }  
   
-
+/********************************************************************/
 
   class LinkedAppsSettingsPanel extends SettingsInnerPanel {
     public LinkedAppsSettingsPanel(SettingsApp parent){
@@ -193,6 +215,9 @@ class SettingsApp extends ButtonPanel {
       
     }
   }  
+
+  
+/********************************************************************/
   
   class PersonalSettingsPanel extends SettingsInnerPanel {
     public PersonalSettingsPanel(SettingsApp parent){
@@ -209,6 +234,8 @@ class SettingsApp extends ButtonPanel {
 }
 
 
+/********************************************************************/
+/********************************************************************/
 
 /**** Settings Inner Panel - allows us to change display based on which Settings Mode the user chooses ****/
 abstract class SettingsInnerPanel extends ButtonPanel {
@@ -245,7 +272,8 @@ abstract class SettingsInnerPanel extends ButtonPanel {
     }
   }
     
-  
+  ///////////////////////////////////////////////////////
+  //  inner class for the three settings menu buttons  //  
   class SettingsBtn extends Button {
     boolean shapeFlag;  // added hack-ish way to know we want a shape :P
     
@@ -267,10 +295,13 @@ abstract class SettingsInnerPanel extends ButtonPanel {
       mySetting = s;
     }
     
-    // maybe put SettingsType as param somewhere else...?
-    // like in Mirror locate module, do if b instanceof SettingsInnerPanel.SettingsBtn, 
+    
+    // maybe put SettingsType as param somewhere else...? 
     // (do something with button info and call on click?)
-    public void on_Click(){
+    public void on_Click(){      
+    }    
+    
+    public void on_Click(MirrorActive m){ 
       
     }    
     
@@ -281,8 +312,9 @@ abstract class SettingsInnerPanel extends ButtonPanel {
         rect(locX, locY, szWidth, szHeight, corner);
       }
       else super.draw_Btn();
-    }    
-  }  
+    }
+    
+  } // end of class SettingsBtn 
 }
 
 // yep, putting these down here 
