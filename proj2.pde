@@ -14,6 +14,11 @@
 PFont defaultFont, clockFont, dateFont;
 String weather = "icons/normal/png/weather-512.png";
 Module weatherMod;
+Keyboard keyboard;
+
+public boolean key_Clicked(KeyboardKey k) {
+  return k.is_MouseOverItem();
+}
 
 public boolean btn_Clicked(Button btn){
   return btn.is_MouseOverItem();
@@ -190,6 +195,11 @@ void setup() {
   size(1600,900);
   //size(2732, 1536);
       
+  // If the keyboard is needed this is the constructor
+  /*keyboard = new Keyboard(10, 10, 40, 40, 5); // x=10, y=10, keywidth=40, keyheight=40, round=5px
+  keyboard.setVisibility(true); // Set true so displayModule() works
+  keyboard.displayModule();*/
+
   defaultFont = createFont("Arial Rounded MT Bold",32,true); 
   clockFont = createFont("Arial Rounded MT Bold",48,true);
   dateFont = createFont("Arial Rounded MT Bold",22,true);
@@ -248,6 +258,12 @@ void mouseReleased() {
 // on the *current mirror state* - whichever current mirror state either side is in, 
 // we're checking for clicks on it. //<>//
 void mouseReleasedBothUsers(Mirror m){
+  // Checks keys if they are clicked on
+  for (KeyboardKey k : keyboard.keys) {
+    if (keyboard.visibility && key_Clicked(k))
+      println(k.letter);
+  }
+
   if (m instanceof MirrorActive){ //<>//
       // call a mirror active method that checks if we're in settings //<>//
       ((MirrorActive)m).do_SettingsClickStuff();  
