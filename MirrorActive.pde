@@ -8,6 +8,8 @@ class MirrorActive extends Mirror {
   AppDrawer appDrawer;
   AppDrawerBtn appBtn;
   SettingsApp settingsApp;
+  // where we store the settings when they get changed :)
+  Settings currUserSettings;
   //Button settingsBtn;
   AppDrawerBtn settingsBtn;  // haha hooray for code reuse
   
@@ -25,6 +27,7 @@ class MirrorActive extends Mirror {
     set_AppDrawerModuleLocs();
     allBtns.addAll(appDrawer.innerPanelBtns);
     allBtns.addAll(settingsApp.innerPanelBtns);
+    currUserSettings = new Settings(this);
   } 
   
   // just sets all the modules for the app drawer (not incl. appdrawer btn and settings btn)
@@ -60,11 +63,10 @@ class MirrorActive extends Mirror {
       for (Button b : settingsApp.get_ActiveMode().innerPanelBtns){
         if (btn_Clicked(b)){
           noLoop();
-          b.on_Click();
-          if (settingsApp.settings.get_MirrorIconColor() != ICONCOLOR){
-            ICONCOLOR = settingsApp.settings.get_MirrorIconColor();
-            for (Button btn : get_AllMirrorBtns())
-              btn.set_ActiveColor(ICONCOLOR);
+          if (settingsApp.get_ActiveMode() == settingsApp.pMenu)
+            b.on_Click();
+          else {
+            ((SettingsInnerPanel.SettingsBtn)b).on_Click(this);
           }
           loop();
         }

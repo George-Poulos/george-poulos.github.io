@@ -146,13 +146,18 @@ public void draw_OuterFrame(){
 /////////////////////////////////////////////////////
 
 final String fileLoc = "icons/normal/png/";
-
+// mirror BG Color options
 final color DAYCOLOR = color(205,219,225);
-//final color NIGHTCOLOR = color(,,,);  // maybe we do warm tint on daycolor ?
+final color BGWARMWHITE = color(255,229,204);
+final color BGCOOLWHITE = color(204,229,255);
+final color BGGRAY = color(192,192,192);
 
 final color DEFAULTICONCOLOR = color(255);  // default icon theme color
+
+//final color NIGHTCOLOR = color(,,,);  // maybe we do warm tint on daycolor ?
+
 color ICONCOLOR = DEFAULTICONCOLOR;
-color mirrorColor;
+color MIRRORCOLOR = DAYCOLOR;
 
 // change this line and comment out line that draws mirrorActiveRight to stretch full screen
 int numUsers = 2;
@@ -189,23 +194,24 @@ void setup() {
    
   
   // just a (pretty good) guess based on what our website mirror looks like
-  mirrorColor = DAYCOLOR;
+  //MIRRORCOLOR = DAYCOLOR;
   create_MirrorOffStates();
   create_MirrorActiveStates();
 
   create_clockAndWeather(mirrorActiveRight);
   
-  // starting state so we can test module locs
+  // starting state so we can test module locs  
   set_CurrentMirrors(mirrorActiveLeft, mirrorActiveRight);
   currMirrorLeft.addFreespaceLeftMirror();
   currMirrorRight.addFreespaceRighttMirror();
   
+  set_CurrentMirrors(mirrorOffLeft, mirrorOffRight);
 }
 /////////////////////////////////////////////////////
 
 
 void draw() {
-  background(mirrorColor);
+  background(MIRRORCOLOR);
   noStroke();
 
   // just to check where the outer frame is

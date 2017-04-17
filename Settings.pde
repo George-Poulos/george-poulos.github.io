@@ -6,14 +6,17 @@
 /********************************************************************/
 
 class Settings {
+  Mirror currMirror;
+  
   DisplayPrefs displayPrefs;
   LinkedApps linkedApps;
   PersonalInfo personalInfo;
   
-  public Settings(){
+  public Settings(Mirror m){
     displayPrefs = new DisplayPrefs();
     linkedApps = new LinkedApps();
     personalInfo = new PersonalInfo();
+    currMirror = m;
   }
   
   /********************************************************/
