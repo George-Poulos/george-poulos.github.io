@@ -96,7 +96,7 @@ public void create_clockAndWeather(MirrorActive m){
   dateBtn.set_BtnFont(dateFont);
   dateBtn.set_isActive(true);
   //dateBtn.set_TextAlignment(CENTER);
-  weatherMod = new Module(w*1.3,h*1.3,m.locX, m.locY+ 2*h/3); //<>//
+  weatherMod = new Module(w*1.5,h*1.5,m.locX, m.locY+ h/2); //<>//
   weatherMod.setVisibility(true);
   weatherMod.setImageName(weather); //<>//
   //weatherBtn = rightPanel.create_PanelBtn(1,1,2,3,true,WEATHER); //<>//
