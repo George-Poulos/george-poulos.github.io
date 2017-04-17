@@ -66,6 +66,10 @@ class SettingsApp extends ButtonPanel {
   }
   
   void reset_ActiveSettingsMode(){
+    pDisplayPrefs.set_isActive(false);
+    
+    pDefaultMode = pMenu;
+    pDefaultMode.set_isActive(true);
     pActiveMode = pDefaultMode;
   }
   
@@ -306,7 +310,7 @@ abstract class SettingsInnerPanel extends ButtonPanel {
 
     public void on_Click(){}    
     
-    //public void on_Click(MirrorActive m){ }    
+    public void on_Click(MirrorActive m){ }    
     
     public void draw_Btn(){
       if (shapeFlag){

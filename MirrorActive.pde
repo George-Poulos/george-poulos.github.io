@@ -11,7 +11,7 @@ class MirrorActive extends Mirror {
   // where we store the settings when they get changed :)
   Settings currUserSettings;
   //Button settingsBtn;
-  AppDrawerBtn settingsBtn;  // haha hooray for code reuse
+  SettingsAppBtn settingsBtn;  // haha hooray for code reuse
   
   public MirrorActive(int x, int y, int w, int h){
     super(x,y,w,h); 
@@ -51,7 +51,7 @@ class MirrorActive extends Mirror {
   // create & add Settings button and SettingsApp panel
   void add_SettingsAppStuff(){
     settingsApp = new SettingsApp(this.centerPanel);
-    settingsBtn = new AppDrawerBtn(rightPanel.create_PanelBtn(
+    settingsBtn = new SettingsAppBtn(rightPanel.create_PanelBtn(
         rightPanel.panelRows-1,3,true,fileLoc.concat(SETTINGS)));
     settingsBtn.set_BtnModule(settingsApp);
     rightPanel.add_PanelBtn(settingsBtn);
@@ -115,9 +115,6 @@ class AppDrawerBtn extends Button { // ugh AppDrawerBtn could've extended FakeBu
     // toggle its module's active state
     module.isActive = !module.isActive;
     
-    if (this.equals(settingsBtn) && !this.isActive)
-      settingsApp.reset_ActiveSettingsMode();
-    
     // if we've closed the app drawer, set the buttons to be not active
     // EDIT: this is actually not desirable now that the buttons will open their 
     // respective modules.  Widgets should keep their locations if the app drawer 
@@ -127,5 +124,24 @@ class AppDrawerBtn extends Button { // ugh AppDrawerBtn could've extended FakeBu
     //    b.set_isActive(false);
     //}
   }
+}
 
+
+class SettingsAppBtn extends AppDrawerBtn {
+  //SettingsApp module;
+  
+  public SettingsAppBtn(Button btn){
+    super(btn);
+  }
+  public void set_ModuleLoc(int r, int c){}
+  
+  //public void set_BtnModule(SettingsApp myMod){
+  //  module = myMod;    
+  //}
+  
+  public void on_Click(){
+    super.on_Click();
+    if (!this.module.isActive) 
+      ((SettingsApp)module).reset_ActiveSettingsMode();
+  } 
 }
