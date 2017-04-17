@@ -213,9 +213,8 @@ class SettingsApp extends ButtonPanel {
         }
         else if (this.equals(toggleNightBtn)) {
           m.currUserSettings.toggle_NightMode();
-          isActive = !this.isActive;
-        }        
-        
+          this.isActive = !this.isActive;
+        }                
       }      
     }
   }  
@@ -223,15 +222,20 @@ class SettingsApp extends ButtonPanel {
 /********************************************************************/
 
   class LinkedAppsSettingsPanel extends SettingsInnerPanel {
+    ArrayList<Button> linkedAppsBtns;
+    
     public LinkedAppsSettingsPanel(SettingsApp parent){
       super(parent);  // use constructor of SettingsInnerPanel :)
-      tempBtn = new FakeButton(create_PanelBtn(0,0,1,1,"FakeBtn - linked apps"));
-      tempBtn.font = dateFont;
-      add_PanelBtns(new Button[]{tempBtn});      
+      create_Btns();
+      add_PanelBtns(linkedAppsBtns);      
     }
     
     void create_Btns(){
-      
+      linkedAppsBtns = new ArrayList();
+      linkedAppsBtns.add(new SettingsBtn(create_PanelBtn(0,1,1,5,"Facebook")));
+      linkedAppsBtns.add(new SettingsBtn(create_PanelBtn(1,1,1,5,"Twitter")));
+      linkedAppsBtns.add(new SettingsBtn(create_PanelBtn(2,1,1,5,"Instagram")));
+      linkedAppsBtns.add(new SettingsBtn(create_PanelBtn(3,1,1,5,"E-Mail")));
     }
   }  
 
@@ -241,6 +245,7 @@ class SettingsApp extends ButtonPanel {
   class PersonalSettingsPanel extends SettingsInnerPanel {
     public PersonalSettingsPanel(SettingsApp parent){
       super(parent);  // use constructor of SettingsInnerPanel :)
+      create_Btns();
       tempBtn = new FakeButton(create_PanelBtn(0,0,1,1,"FakeBtn - personal info"));
       tempBtn.font = dateFont;
       add_PanelBtns(new Button[]{tempBtn});      
@@ -308,8 +313,8 @@ abstract class SettingsInnerPanel extends ButtonPanel {
         shapeFlag = true;      
     }
 
-    public void on_Click(){}    
-    
+    // set fill color to something different than what it normally is
+    public void on_Click(){}        
     public void on_Click(MirrorActive m){ }    
     
     public void draw_Btn(){
