@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e0961963-9331-4abf-baf4-398e09a8d08a" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj2.pde" afterPath="$PROJECT_DIR$/proj2.pde" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/home.html" afterPath="$PROJECT_DIR$/home.html" />
     </list>
     <ignored path="MirrorUI.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -49,8 +49,8 @@
       <file leaf-file-name="home.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+            <state relative-caret-position="120">
+              <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -82,8 +82,8 @@
         <option value="$PROJECT_DIR$/MirrorActive.pde" />
         <option value="$PROJECT_DIR$/Button.pde" />
         <option value="$PROJECT_DIR$/Module.pde" />
-        <option value="$PROJECT_DIR$/home.html" />
         <option value="$PROJECT_DIR$/proj2.pde" />
+        <option value="$PROJECT_DIR$/home.html" />
       </list>
     </option>
   </component>
@@ -172,12 +172,7 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Button.pde</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/ButtonFake.pde</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Mirror.pde</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/MirrorActive.pde</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/MirrorOff.pde</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Settings.pde</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/README.md</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/SettingsApp.pde</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/proj2.pde</PATH>
         </FILE-GROUP>
@@ -187,6 +182,7 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="CREATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Keyboard.pde</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Deleted" />
@@ -372,7 +368,7 @@
       <workItem from="1492283100833" duration="577000" />
       <workItem from="1492307627937" duration="801000" />
       <workItem from="1492309068905" duration="3217000" />
-      <workItem from="1492377076368" duration="3452000" />
+      <workItem from="1492377076368" duration="4731000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <created>1491276960391</created>
@@ -444,11 +440,18 @@
       <option name="project" value="LOCAL" />
       <updated>1492443995681</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="trying to get this damn Arial Rounded Bold font in there">
+      <created>1492455092432</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1492455092432</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21974000" />
+    <option name="totallyTimeSpent" value="23253000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -514,7 +517,8 @@
     <MESSAGE value="added a few .pde files in home.html after creating them in processing" />
     <MESSAGE value="added ButtonFake.pde and SettingsApp.pde files in home.html after creating them in processing" />
     <MESSAGE value="trying to get this damn font in there" />
-    <option name="LAST_COMMIT_MESSAGE" value="trying to get this damn font in there" />
+    <MESSAGE value="trying to get this damn Arial Rounded Bold font in there" />
+    <option name="LAST_COMMIT_MESSAGE" value="trying to get this damn Arial Rounded Bold font in there" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -850,8 +854,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+        <state relative-caret-position="120">
+          <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
           <folding />
         </state>
       </provider>
