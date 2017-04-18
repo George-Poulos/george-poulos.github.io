@@ -422,7 +422,7 @@ class initialize {
 
 
   State state = new State();
-  Setup setup = new Setup();
+  Setup iSetup = new Setup();
   Languages lang = new Languages();
 
   public initialize() {
@@ -462,7 +462,7 @@ class initialize {
     xfooter = xmid;
     yfooter = height*0.9;
 
-    setup.v = Setup.LANGUAGE;
+    iSetup.v = Setup.LANGUAGE;
     setup_language_icon = new Button(xheader, yheader, icon_size_large, loadImage("Data/language-512.png"), false);
     setup_wifi_icon = new Button(xheader, yheader, icon_size_large, loadImage("Data/wifi-512.png"), false);
     setup_time_icon = new Button(xheader, yheader, icon_size_large, loadImage("Data/clock-512.png"), false);
@@ -615,7 +615,7 @@ class initialize {
       draw_out_of_box();
       break;
     case State.SETUP:
-      draw_setup(setup);
+      draw_setup(iSetup);
       break;
     case State.SETUP_WIFI:
       draw_wifi_instance(wifi_instance);
@@ -653,7 +653,7 @@ class initialize {
     textAlign(LEFT);
     text(strWifi[lang.ordinal()], xheader_text, yheader_text);
     setup_wifi_icon.display();
-    draw_status_bar(setup.ordinal());
+    draw_status_bar(iSetup.ordinal());
 
     float x = xheader_text;
     float y = yheader_text + spacing;
@@ -677,14 +677,14 @@ class initialize {
         state.v = State.SETUP;
       }
     }
-    if (state.v == State.SETUP && setup.v == Setup.LANGUAGE) {
+    if (state.v == State.SETUP && iSetup.v == Setup.LANGUAGE) {
       for (int i = 0; i < strLanguages.length; i++) {
         if (setup_language_texts[i].isMouseOver()) {
           lang.v = i;
         }
       }
     }
-    if (state.v == State.SETUP && setup.v == Setup.WIFI) {
+    if (state.v == State.SETUP && iSetup.v == Setup.WIFI) {
       for (int i = 0; i < setup_wifi_texts.length; i++) {
         if (setup_wifi_texts[i].isMouseOver()) {
           state.v = State.SETUP_WIFI;
@@ -693,18 +693,18 @@ class initialize {
       }
     }
     if (state.v == State.SETUP && (next_menu.isMouseOver() || skip_wifi_button.isMouseOver())) {
-      switch(setup.v) {
+      switch(iSetup.v) {
       case Setup.LANGUAGE:
-        setup.v = Setup.WIFI;
+        iSetup.v = Setup.WIFI;
         break;
       case Setup.WIFI:
-        setup.v = Setup.TIME;
+        iSetup.v = Setup.TIME;
         break;
       case Setup.TIME:
-        setup.v = Setup.DATE;
+        iSetup.v = Setup.DATE;
         break;
       case Setup.DATE:
-        setup.v = Setup.LOCATION;
+        iSetup.v = Setup.LOCATION;
         break;
       case Setup.LOCATION:
         state.v = State.IDLE;
