@@ -28,26 +28,51 @@ String input_password;
 int max_pass_length;
 
 class State{
- int OUT_OF_BOX = 0,
+  static final int OUT_OF_BOX = 0,
   SETUP = 1,
   SETUP_WIFI = 2,
   IDLE = 3,
   WIFI_ERROR = 4,
   CREATE_USER = 5;
+  int v;
+ 
+  public State(){
+    v = 0;
+  }
+  int ordinal(){
+    return v;
+  }
 }
 
 class Setup {
-  int LANGUAGE = 0,
+  static final int LANGUAGE = 0,
   WIFI = 1,
   TIME = 2,
   DATE = 3,
   LOCATION = 4;
+  int v;
+ 
+  public Setup(){
+    v = 0;
+  }
+  int ordinal(){
+    return v;
+  }
 };
 
 class Languages {
-  int ENGLISH = 0,
+  static final int ENGLISH = 0,
   FRENCH = 1,
   SPANISH = 2;
+  int v;
+ 
+  public Languages(){
+    v = 0;
+  }
+  int ordinal(){
+    return v;
+  }
+
 };
 
 String[] strLanguages = {
@@ -394,10 +419,10 @@ Button skip_wifi_button;
 
 
 
-State State = new State();
-Setup Setup = new Setup();
-Languages Languages = new Languages();
-int state,setup,lang;
+
+State state = new State();
+Setup setup = new Setup();
+Languages lang = new Languages();
 
 public initialize() {
   inSetup = true;
@@ -414,7 +439,7 @@ public initialize() {
   font = createFont(fnt, 200);
   font_size_small = 60*scale;
   font_size_large = 120*scale;
-  lang = Languages.ENGLISH;
+  lang.v = Languages.ENGLISH;
   spacing = 200*scale;
   
 
@@ -424,7 +449,7 @@ public initialize() {
 
   bg = bg_default;
   background(bg);
-  state = State.OUT_OF_BOX;
+  state.v = State.OUT_OF_BOX;
   power_button = new Button(xmid, ybottom, icon_size_small, loadImage("power-512.png"), true);
 
   
@@ -435,7 +460,7 @@ public initialize() {
   xfooter = xmid;
   yfooter = height*0.9;
   
-  setup = Setup.LANGUAGE;
+  setup.v = Setup.LANGUAGE;
   setup_language_icon = new Button(xheader, yheader, icon_size_large, loadImage("language-512.png"), false);
   setup_wifi_icon = new Button(xheader, yheader, icon_size_large, loadImage("wifi-512.png"), false);
   setup_time_icon = new Button(xheader, yheader, icon_size_large, loadImage("clock-512.png"), false);
@@ -535,8 +560,8 @@ void draw_setup(Setup s) {
   background(bg);
   textSize(font_size_large);
   textAlign(LEFT);
-  switch(s) {
-    case LANGUAGE:
+  switch(s.v) {
+    case Setup.LANGUAGE:
       setup_language_icon.display();
       text(strLang[lang.ordinal()], xheader_text, yheader_text);
       next_menu.changeText(strNext[lang.ordinal()]);
@@ -544,26 +569,26 @@ void draw_setup(Setup s) {
       skip_wifi_button.changeText(strSkip[lang.ordinal()]);
       draw_language_content();
       break;
-    case WIFI:
+    case Setup.WIFI:
       text(strWifi[lang.ordinal()], xheader_text, yheader_text);
       setup_wifi_icon.display();
       draw_wifi_content();
       break;
-    case TIME:
+    case Setup.TIME:
       text(strTime[lang.ordinal()], xheader_text, yheader_text);
       setup_time_icon.display();
       break;
-    case DATE:
+    case Setup.DATE:
       text(strDate[lang.ordinal()], xheader_text, yheader_text);
       setup_date_icon.display();
       break;
-    case LOCATION:
+    case Setup.LOCATION:
       text(strLocation[lang.ordinal()], xheader_text, yheader_text);
       setup_location_icon.display();
       break;
   }
   draw_status_bar(s.ordinal());
-  if(s != Setup.WIFI) {
+  if(s.v != Setup.WIFI) {
     next_menu.display();
   }
   else {
@@ -589,23 +614,23 @@ void draw_create_user() {
 }
 
 void draw_state(State s) {
-  switch(s) {
-    case OUT_OF_BOX:
+  switch(s.v) {
+    case State.OUT_OF_BOX:
       draw_out_of_box();
       break;
-    case SETUP:
+    case State.SETUP:
       draw_setup(setup);
       break;
-    case SETUP_WIFI:
+    case State.SETUP_WIFI:
       draw_wifi_instance(wifi_instance);
       break;
-    case IDLE:
+    case State.IDLE:
       draw_idle();
       break;
-    case WIFI_ERROR:
+    case State.WIFI_ERROR:
       draw_wifi_error();
       break;
-    case CREATE_USER:
+    case State.CREATE_USER:
       draw_create_user();
       break;
   }
@@ -651,58 +676,58 @@ void draw_wifi_instance(int i) {
 }
 
 void mousePressed() {
-  if(state == State.OUT_OF_BOX) {
+  if(state.v == State.OUT_OF_BOX) {
     if(power_button.isMouseOver()) {
-      state = State.SETUP;
+      state.v = State.SETUP;
     }
   }
-  if(state == State.SETUP && setup == Setup.LANGUAGE) {
+  if(state.v == State.SETUP && setup.v == Setup.LANGUAGE) {
     for(int i = 0; i < strLanguages.length; i++) {
       if(setup_language_texts[i].isMouseOver()) {
-        lang = Languages.values()[i];
+        lang.v = i;
       }
     }
   }
-  if(state == State.SETUP && setup == Setup.WIFI) {
+  if(state.v == State.SETUP && setup.v == Setup.WIFI) {
     for(int i = 0; i < setup_wifi_texts.length; i++) {
       if(setup_wifi_texts[i].isMouseOver()) {
-        state = State.SETUP_WIFI;
+        state.v = State.SETUP_WIFI;
         wifi_instance = i;
       }
     }
   }
-  if(state == State.SETUP && (next_menu.isMouseOver() || skip_wifi_button.isMouseOver())) {
-    switch(setup) {
-      case LANGUAGE:
-        setup = Setup.WIFI;
+  if(state.v == State.SETUP && (next_menu.isMouseOver() || skip_wifi_button.isMouseOver())) {
+    switch(setup.v) {
+      case Setup.LANGUAGE:
+        setup.v = Setup.WIFI;
         break;
-      case WIFI:
-        setup = Setup.TIME;
+      case Setup.WIFI:
+        setup.v = Setup.TIME;
         break;
-      case TIME:
-        setup = Setup.DATE;
+      case Setup.TIME:
+        setup.v = Setup.DATE;
         break;
-      case DATE:
-        setup = Setup.LOCATION;
+      case Setup.DATE:
+        setup.v = Setup.LOCATION;
         break;
-      case LOCATION:
-        state = State.IDLE;
+      case Setup.LOCATION:
+        state.v = State.IDLE;
         break;
     }
   }
-  if(state == State.SETUP_WIFI) {
+  if(state.v == State.SETUP_WIFI) {
     osk.update();
     if(enter_input.isMouseOver()) {
       if(check_wifi()) {
-        state = State.IDLE;
+        state.v = State.IDLE;
       }
       else {
-        state = State.WIFI_ERROR;
+        state.v = State.WIFI_ERROR;
       }
     }
   }
-  if(state == State.WIFI_ERROR && back_button.isMouseOver()) {
-    state = State.SETUP;
+  if(state.v == State.WIFI_ERROR && back_button.isMouseOver()) {
+    state.v = State.SETUP;
   }
 }
 }
