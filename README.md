@@ -1,10 +1,3 @@
-<style>
-div{
-    border-style: dotted;
-    border-width: 1px;
-}
-</style>
-
 # MirrorUI
 ## Source Code
 [Source code hosted on GitHub](https://github.com/George-Poulos/george-poulos.github.io/tree/master)
@@ -40,16 +33,16 @@ div{
 - News from The Guardian
 - Traffic & Map data from Google
 ## Feature Highlight
-![Alt text](https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/setup_language.png)
-MirrorUI sports an out of box experience similar to many other smart devices out there today.
+![](https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/setup_language.png)
+<b>MirrorUI sports an out of box experience similar to many other smart devices out there today.</b>
+
+
 <img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/setup_wifi.png" width="250"><img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/setup_wifi2.gif" width="250"><img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/setup_time.png" width="250"><img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/setup_date.png" width="250"><img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/setup_location.gif" width="250">
 
 The initial setup lets you know how far along you are until you can use the mirror. Can't wait? Skip ahead!
 
-<div>
 <img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/user_empty.png" width="425"><img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/user_creation.gif" width="425">
 Personalize your mirror with your own profile. MirrorUI will remember your name and settings for you.
-</div>
 
 <img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/user_select.png" width="900">
 MirrorUI works for 2 people at the same time. A simple tap of the power button is all you need to begin.
