@@ -198,7 +198,7 @@ void setup() {
   // is roughly the same ratio.
 
 
-  size(1600,900);
+  //size(1600,900);
   size(2732, 1536);
   initState = new initialize();
 

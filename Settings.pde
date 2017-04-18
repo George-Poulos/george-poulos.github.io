@@ -85,15 +85,13 @@ class Settings {
     private DisplayPrefs(){
       mirrorBGColor = DAYCOLOR;  // defaults
       mirrorIconColor = DEFAULTICONCOLOR;
-      // TODO: when we create Buttons, set button color to mirrorIconColor.
     }
   }
   
   /** User's linked accounts (social media, email, etc.) **/
   class LinkedApps extends SettingsType {  
-    // TODO: implement this :)
-    private LinkedApps(){
-    }
+    // TODO: implement this
+    private LinkedApps(){ }
   }
   
   /** User profile and personal information **/
