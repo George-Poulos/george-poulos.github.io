@@ -454,8 +454,8 @@ class initialize {
     bg = bg_default;
     background(bg);
     state.v = State.OUT_OF_BOX;
-
-    power_button = new Button(xmid, ybottom, icon_size_small, loadImage("Data/power-512.png"), true);
+    PImage pic = loadImage("Data/power-512.png");
+    power_button = new Button(xmid, ybottom, icon_size_small, pic, true);
     xheader = width*0.39;
     yheader = height*0.273;
     xheader_text = width*0.43;
