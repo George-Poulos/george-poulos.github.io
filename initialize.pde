@@ -427,12 +427,11 @@ Languages lang = new Languages();
 public initialize() {
   inSetup = true;
   // for testing purposes
-  /*scale = 0.70;      // set this to 1 to maximize resolution
+  scale = 0.70;      // set this to 1 to maximize resolution
   float newX = 2732*scale;
   float newY = 1536*scale;
   surface.setResizable(true);
   surface.setSize(int(newX), int(newY));
-  */
   // end of testing purposes
   
   icon_size_small = 70*scale;
@@ -451,7 +450,7 @@ public initialize() {
   bg = bg_default;
   background(bg);
   state.v = State.OUT_OF_BOX;
-  power_button = new Button(xmid, ybottom, icon_size_small, loadImage("power-512.png"), true);
+  power_button = new Button(xmid, ybottom, icon_size_small, loadImage("Data/power-512.png"), true);
 
   
   xheader = width*0.39;
@@ -462,13 +461,13 @@ public initialize() {
   yfooter = height*0.9;
   
   setup.v = Setup.LANGUAGE;
-  setup_language_icon = new Button(xheader, yheader, icon_size_large, loadImage("language-512.png"), false);
-  setup_wifi_icon = new Button(xheader, yheader, icon_size_large, loadImage("wifi-512.png"), false);
-  setup_time_icon = new Button(xheader, yheader, icon_size_large, loadImage("clock-512.png"), false);
-  setup_date_icon = new Button(xheader, yheader, icon_size_large, loadImage("calendar-512.png"), false);
-  setup_location_icon = new Button(xheader, yheader, icon_size_large, loadImage("location-512.png"), false);
-  setup_status_icon_fill = new Button(0, 0, icon_size_small, loadImage("circle-fill-512.png"), false);
-  setup_status_icon_empty = new Button(0, 0, icon_size_small, loadImage("circle-empty-512.png"), false);
+  setup_language_icon = new Button(xheader, yheader, icon_size_large, loadImage("Data/language-512.png"), false);
+  setup_wifi_icon = new Button(xheader, yheader, icon_size_large, loadImage("Data/wifi-512.png"), false);
+  setup_time_icon = new Button(xheader, yheader, icon_size_large, loadImage("Data/clock-512.png"), false);
+  setup_date_icon = new Button(xheader, yheader, icon_size_large, loadImage("Data/calendar-512.png"), false);
+  setup_location_icon = new Button(xheader, yheader, icon_size_large, loadImage("Data/location-512.png"), false);
+  setup_status_icon_fill = new Button(0, 0, icon_size_small, loadImage("Data/circle-fill-512.png"), false);
+  setup_status_icon_empty = new Button(0, 0, icon_size_small, loadImage("Data/circle-empty-512.png"), false);
   next_menu = new Button(xfooter + 2.5*spacing, yfooter*1.01, font_size_small, "ERROR", true);
   
   setup_language_texts = new Button[strLanguages.length];
@@ -483,7 +482,7 @@ public initialize() {
   for(int i = 0; i < wifi_count; i++) {
     JSONObject obj  = json_wifi.getJSONObject(i);
     setup_wifi_texts[i] = new Button(0, 0, font_size_small, obj.getString("id"), true);
-    String s = "wifi-signal-" + obj.getString("strength") + "-512.png";
+    String s = "Data/wifi-signal-" + obj.getString("strength") + "-512.png";
     setup_wifi_icons[i] = new Button(0, 0, icon_size_small, loadImage(s), false);
   }
   
