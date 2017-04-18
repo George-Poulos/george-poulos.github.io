@@ -1,3 +1,28 @@
+enum State {
+  OUT_OF_BOX, 
+  SETUP,
+  SETUP_WIFI,
+  IDLE,
+  WIFI_ERROR,
+  CREATE_USER
+};
+
+enum Setup {
+  LANGUAGE,
+  WIFI,
+  TIME,
+  DATE,
+  LOCATION
+};
+
+enum Languages {
+  ENGLISH,
+  FRENCH,
+  SPANISH
+};
+class initialize {
+ 
+boolean inSetup;
 color bg_default = color(197, 214, 224);
 color bg;
 color hover_tint = color(0, 153, 204);
@@ -365,36 +390,14 @@ Button enter_input;
 Button back_button;
 Button skip_wifi_button;
 
-enum State {
-  OUT_OF_BOX, 
-  SETUP,
-  SETUP_WIFI,
-  IDLE,
-  WIFI_ERROR,
-  CREATE_USER
-};
 
-enum Setup {
-  LANGUAGE,
-  WIFI,
-  TIME,
-  DATE,
-  LOCATION
-};
-
-enum Languages {
-  ENGLISH,
-  FRENCH,
-  SPANISH
-};
 
 State state;
 Setup setup;
 Languages lang;
 
-void setup() {
-  size(2732, 1536);
-
+public initialize() {
+  inSetup = true;
   // for testing purposes
   scale = 0.70;      // set this to 1 to maximize resolution
   float newX = 2732*scale;
@@ -605,7 +608,7 @@ void draw_state(State s) {
   }
 }
 
-void draw() {
+void drawBegin() {
   draw_state(state);
 }
 
@@ -698,4 +701,5 @@ void mousePressed() {
   if(state == State.WIFI_ERROR && back_button.isMouseOver()) {
     state = State.SETUP;
   }
+}
 }
