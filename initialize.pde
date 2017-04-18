@@ -433,8 +433,8 @@ public initialize() {
   scale = 0.7;      // set this to 1 to maximize resolution
   float newX = 2732*scale;
   float newY = 1536*scale;
-  surface.setResizable(true);
-  surface.setSize(int(newX), int(newY));
+  frame.setResizable(true);
+  frame.setSize(int(newX), int(newY));
   // end of testing purposes
   
   icon_size_small = 70*scale;
