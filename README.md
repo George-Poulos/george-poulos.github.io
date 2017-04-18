@@ -16,6 +16,7 @@
     - Keyboard
 - George Poulos
     - Apps
+    - Processing wizard
 - Tony Wong
     - Out of box experience
     - UI images
