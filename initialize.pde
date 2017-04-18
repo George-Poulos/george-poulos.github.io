@@ -171,6 +171,7 @@ class initialize {
       size = sz;
       active = clickable;
       isImg = true;
+      println(pic);
     }
 
     Button(float xpos, float ypos, float sz, PImage pic, String s, boolean clickable) {
@@ -180,12 +181,11 @@ class initialize {
       y = ypos;
       size = sz;
       active = clickable;
-      isImg = true;
+      isImg = false;
     }
 
     Button(float xpos, float ypos, float sz, String t, boolean clickable) {
       txt = t;
-      icon = loadImage(t);
       x = xpos;
       y = ypos;
       size = sz;
@@ -213,7 +213,6 @@ class initialize {
         text(txt, x, y);
         fill(255);
       }
-      println(x);
     }
 
     boolean isMouseOver() {
@@ -437,7 +436,7 @@ class initialize {
     //surface.setSize(int(newX), int(newY));
     // end of testing purposes
 
-    power_button = new Button(xmid, ybottom, icon_size_small, "Data/power-512.png", true);
+    power_button = new Button(xmid, ybottom, icon_size_small, loadImage("Data/power-512.png"), true);
     icon_size_small = 70*scale;
     icon_size_large = 120*scale;
     font = createFont(fnt, 200);
