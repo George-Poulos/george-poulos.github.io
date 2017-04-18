@@ -129,11 +129,6 @@ class Button extends Panel implements ActionListener {
     return clr;
   }
 
-  // something like this will be implemented for project 2
-  void do_ClickAction(){
-    //System.out.println(this.text);
-  }
-
   public void draw_Btn(){
     if (imgFlag){  // this should usually evaluate to TRUE for project 2
       //stroke(66, 188, 244);  // a pretty blue

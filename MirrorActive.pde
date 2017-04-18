@@ -68,9 +68,6 @@ class MirrorActive extends Mirror {
           else {
             ((SettingsInnerPanel.SettingsBtn)b).on_Click(this);
           }
-          //else if (! (b instanceof FakeButton)){
-            //((SettingsInnerPanel.SettingsBtn)b).on_Click(this);
-          //}
           loop();
         }
       }

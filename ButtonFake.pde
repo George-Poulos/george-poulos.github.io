@@ -10,7 +10,8 @@ class FakeButton extends Button {
   
   // creates a Fake button based on the specs of btn
   public FakeButton(Button btn){
-    this(btn.locX, btn.locY, btn.szWidth, btn.szHeight);
+    //this(btn.locX, btn.locY, btn.szWidth, btn.szHeight);
+    super(btn);
     this.imgFlag = btn.imgFlag;
     if (this.imgFlag) this.btnImg = btn.btnImg;
     else this.set_Text(btn.btnTxt);
@@ -22,6 +23,7 @@ class FakeButton extends Button {
   // don't do anything when we click it cause it's a fake button :)
   public void on_Click(){}  
   public void on_Click(Mirror m){}
+  
   
   // override from button class cause we always want to draw a fake button
   public void draw_Btn(){
@@ -39,7 +41,7 @@ class FakeButton extends Button {
       noFill();    
       stroke(0.5);
       //rect(locX, locY, szWidth, szHeight, corner);   
-      setup_Text(font, 255, btnTxtAlign);
+      setup_Text(font, activeClr, btnTxtAlign);
       text(btnTxt, locX, locY);
       rectMode(CORNER);  
     }

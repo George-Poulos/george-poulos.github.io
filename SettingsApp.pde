@@ -3,9 +3,7 @@ class SettingsApp extends ButtonPanel {
   
   // TODO: I need an icon without a circle around it
   private String SETTINGS = "dock_settings.png";
-  //int rowInParent, colInParent;
-    
-  //Settings settings;
+
   // these parts will be shown to user the whole time
   FakeButton settingsIcon, settingsWord;
   
@@ -26,7 +24,6 @@ class SettingsApp extends ButtonPanel {
     this.locX = parent.locX;
     this.set_PanelLoc(get_LocXInParent(colInParent), get_LocYInParent(rowInParent));
     
-    //settings = new Settings();    // create Settings instance  
     create_FakeBtns();
     init_SettingsInnerPanels();
     
@@ -65,9 +62,11 @@ class SettingsApp extends ButtonPanel {
     pActiveMode = p;
   }
   
+  // resets SettingsApp back to starting menu if SettingsApp is closed
   void reset_ActiveSettingsMode(){
-    pDisplayPrefs.set_isActive(false);
-    
+    //for (SettingsInnerPanel p : new SettingsInnerPanel[]()
+    for (ButtonPanel p : this.innerPanels)  p.set_isActive(false);
+    //pDisplayPrefs.set_isActive(false);    
     pDefaultMode = pMenu;
     pDefaultMode.set_isActive(true);
     pActiveMode = pDefaultMode;
@@ -95,7 +94,7 @@ class SettingsApp extends ButtonPanel {
       add_PanelBtns(new SettingsMenuBtn[]{displayPrefsBtn, linkedAppsBtn, personalInfoBtn});
     }
     
-    // implemented from abstract class SettingsInnerPanel; will be called during constructor 
+    // implemented from abstract class SettingsInnerPanel
     void create_Btns(){
       int listCols = panelCols;
       displayPrefsBtn = new SettingsMenuBtn(create_PanelBtn(0,0,1,listCols,"Display Preferences"));
@@ -122,11 +121,9 @@ class SettingsApp extends ButtonPanel {
         module = m;
       }
       public void on_Click(){
-        if (isActive){
-          for (SettingsMenuBtn b : new SettingsMenuBtn[]{displayPrefsBtn, linkedAppsBtn, personalInfoBtn}) 
-            b.isActive = false;
-          set_ActiveSettingsMode(this.module);
-        }
+        for (SettingsMenuBtn b : new SettingsMenuBtn[]{displayPrefsBtn, linkedAppsBtn, personalInfoBtn}) 
+          b.isActive = false;
+        set_ActiveSettingsMode(this.module);
       }      
     }
   }  
@@ -243,11 +240,12 @@ class SettingsApp extends ButtonPanel {
 /********************************************************************/
   
   class PersonalSettingsPanel extends SettingsInnerPanel {
+    
     public PersonalSettingsPanel(SettingsApp parent){
       super(parent);  // use constructor of SettingsInnerPanel :)
       create_Btns();
-      tempBtn = new FakeButton(create_PanelBtn(0,0,1,1,"FakeBtn - personal info"));
-      tempBtn.font = dateFont;
+      //tempBtn = new FakeButton(create_PanelBtn(0,0,1,1,"FakeBtn - personal info"));
+      //tempBtn.font = dateFont;
       add_PanelBtns(new Button[]{tempBtn});      
     }
     
@@ -298,8 +296,9 @@ abstract class SettingsInnerPanel extends ButtonPanel {
   //  inner class for the three settings menu buttons  //  
   class SettingsBtn extends Button {
     boolean shapeFlag;  // added hack-ish way to know we want a shape :P
-    
+
     public SettingsBtn(Button btn){
+      
       super(btn);
       this.font = dateFont;
       this.imgFlag = btn.imgFlag;
@@ -313,7 +312,7 @@ abstract class SettingsInnerPanel extends ButtonPanel {
         shapeFlag = true;      
     }
 
-    // set fill color to something different than what it normally is
+    // set fill color to something different than what it normally is ?
     public void on_Click(){}        
     public void on_Click(MirrorActive m){ }    
     
@@ -324,9 +323,9 @@ abstract class SettingsInnerPanel extends ButtonPanel {
         //rect(locX, locY, szWidth, szHeight, corner);
       }
       else noFill();
-      if (isActive) fill(66, 188, 244); 
+      if (isActive) fill(66, 188, 244);   // don't like this color anymore really
       noStroke();
-      rect(locX, locY, szWidth, szHeight, corner);
+      rect(locX, locY, szWidth-1, szHeight-1, corner);
       super.draw_Btn();
     }
     

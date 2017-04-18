@@ -5,7 +5,6 @@
 abstract class ButtonPanel extends Panel {  
   // we could prob move margins into Panel class...
   int marginTop, marginBottom, marginLeft, marginRight;
-  //boolean isActive;  // moved this to Panel for now
   int panelRows, panelCols, panelBtnWidth, panelBtnHeight;  
   int rowHeight, colWidth;
   int rowInParent, colInParent;  // moved this into here instead of subclasses.
@@ -71,12 +70,6 @@ abstract class ButtonPanel extends Panel {
   };
 
 
-// blahhh we can delete soon
-  void set_PanelRC(int r, int c){
-    panelRows = r;  panelCols = c;
-    set_BtnSizes();  // if we change #rows and #cols, recalc the btnSizes
-  }
-
   int get_LocXInParent(int colInParent){
     return locX + colInParent*colWidth;
   }
@@ -136,9 +129,6 @@ abstract class ButtonPanel extends Panel {
     // btn's module will have already been instantiated in Button constructor
     b.module.setSize(this.colWidth*4,this.rowHeight*3 - 5);
     
-    // uncomment this to just automatically adds the button to panelBtns list. 
-    // it's not the best idea though.
-    //panelBtns.add(b);
     return b;
   }
 
