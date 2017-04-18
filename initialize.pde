@@ -212,7 +212,7 @@ class initialize {
         text(txt, x, y);
         fill(255);
       }
-      println(txt);
+      println(x);
     }
 
     boolean isMouseOver() {
