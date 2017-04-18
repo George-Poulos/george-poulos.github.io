@@ -437,7 +437,7 @@ class initialize {
     //surface.setSize(int(newX), int(newY));
     // end of testing purposes
 
-
+    power_button = new Button(xmid, ybottom, icon_size_small, "Data/power-512.png", true);
     icon_size_small = 70*scale;
     icon_size_large = 120*scale;
     font = createFont(fnt, 200);
@@ -454,7 +454,7 @@ class initialize {
     bg = bg_default;
     background(bg);
     state.v = State.OUT_OF_BOX;
-    power_button = new Button(xmid, ybottom, icon_size_small, loadImage("Data/power-512.png"), true);
+    
 
 
     xheader = width*0.39;
