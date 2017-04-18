@@ -1,0 +1,17 @@
+[
+  {
+    "id": "super-wifi",
+    "strength": "full", 
+    "password": "abc123"
+  },
+  {
+    "id": "xfinity wifi",
+    "strength": "low",
+    "password": "garbage"
+  },
+  {
+    "id": "FBI Surveillance Van",
+    "strength": "half",
+    "password": "password"
+  }
+]
