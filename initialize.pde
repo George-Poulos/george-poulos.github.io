@@ -22,10 +22,13 @@ String fnt = "MyriadPro-Regular.otf";
 float font_size_large;
 float font_size_small;
 float spacing;
-JSONArray json_wifi;
 int wifi_instance;
 String input_password;
 int max_pass_length;
+
+String [] arrName = {"super-wifi", "xfinity wifi", "FBI Surveillance Van"}; 
+String [] strength = {"full", "low", "half"}; 
+String [] password = {"abc123", "garbage", "password"}; 
 
 class State{
   static final int OUT_OF_BOX = 0,
@@ -427,7 +430,7 @@ Languages lang = new Languages();
 public initialize() {
   inSetup = true;
   // for testing purposes
-  scale = 1.0;      // set this to 1 to maximize resolution
+  scale = 0.7;      // set this to 1 to maximize resolution
   float newX = 2732*scale;
   float newY = 1536*scale;
   surface.setResizable(true);
@@ -475,14 +478,12 @@ public initialize() {
     setup_language_texts[i] = new Button(0, 0, font_size_small, strLanguages[i], true);
   }
   
-  json_wifi = loadJSONArray("wifi.json");
-  int wifi_count = json_wifi.size();
+  int wifi_count = arrName.length;
   setup_wifi_texts = new Button[wifi_count];
   setup_wifi_icons = new Button[wifi_count];
   for(int i = 0; i < wifi_count; i++) {
-    JSONObject obj  = json_wifi.getJSONObject(i);
-    setup_wifi_texts[i] = new Button(0, 0, font_size_small, obj.getString("id"), true);
-    String s = "Data/wifi-signal-" + obj.getString("strength") + "-512.png";
+    setup_wifi_texts[i] = new Button(0, 0, font_size_small, arrName[i], true);
+    String s = "Data/wifi-signal-" + strength[i] + "-512.png";
     setup_wifi_icons[i] = new Button(0, 0, icon_size_small, loadImage(s), false);
   }
   
@@ -546,8 +547,8 @@ void draw_wifi_content() {
 }
 
 boolean check_wifi() {
-  JSONObject obj = json_wifi.getJSONObject(wifi_instance);
-  String pw = obj.getString("password");
+  String pw = password[wifi_instance];
+  
   if(pw.equals(input_password)) {
     return true;
   }
@@ -676,8 +677,8 @@ void draw_wifi_instance(int i) {
 }
 
 void mousePressed() {
-  if(state.v == State.OUT_OF_BOX) {
-    if(power_button.isMouseOver()) {
+  if(state.v == State.OUT_OF_BOX) { //<>//
+    if(power_button.isMouseOver()) { //<>//
       state.v = State.SETUP;
     }
   }
