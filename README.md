@@ -37,7 +37,7 @@
 MirrorUI sports an out of box experience similar to many other smart devices out there today.
 
 ![Alt text](https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/setup_wifi.png)
-![Alt text](https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/setup_wifi2.png)
+![Alt text](https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/setup_wifi2.gif)
 ![Alt text](https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/setup_time.png)
 ![Alt text](https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/setup_date.png)
 ![Alt text](https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/setup_location.gif)
