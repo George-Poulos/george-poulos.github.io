@@ -40,7 +40,7 @@ MirrorUI sports an out of box experience similar to many other smart devices out
 The initial setup lets you know how far along you are until you can use the mirror. Can't wait? Skip ahead!
 
 
-<img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/user_empty.png" width="500"><img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/user_creation.gif" width="500">
+<img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/user_empty.png" width="400"><img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/user_creation.gif" width="400">
 Personalize your mirror with your own profile. MirrorUI will remember your name and settings for you.
 
 [Showing resting state, or picking users]
