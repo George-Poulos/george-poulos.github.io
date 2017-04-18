@@ -185,7 +185,6 @@ class initialize {
 
     Button(float xpos, float ypos, float sz, String t, boolean clickable) {
       txt = t;
-      icon = loadImage(t);
       x = xpos;
       y = ypos;
       size = sz;
@@ -202,6 +201,7 @@ class initialize {
           noTint();
         }
         image(icon, x, y, size, size);
+        println(icon);
       } else {
         if (isMouseOver() && active) {
           fill(hover_tint);
