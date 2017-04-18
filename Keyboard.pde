@@ -1,9 +1,9 @@
 class Keyboard extends Module {
-  ArrayList<KeyboardKey> keys = new ArrayList<KeyboardKey>(26);
+  ArrayList<KeyboardKey> keys = new ArrayList<KeyboardKey>(27);
   int keyW;
   int keyH;
   int padding;
-  int numKeys = 26;
+  int numKeys = 27; // 26 letters + backspace
   String keyMap = "qwertyuiopasdfghjklzxcvbnm";
   
   // Keyboard size if automatically calculated based on the key width and height
@@ -57,16 +57,31 @@ class Keyboard extends Module {
       }
       
       // Store calculated key
-      keys.add(i,
-        new KeyboardKey(
-          (int) locationX + column*keyW + paddingx,
-          (int) locationY + row*keyH + paddingy,
-          keyW,
-          keyH,
-          "" + keyMap.charAt(i),
-          20
-        )
-      );
+      if (i < numKeys - 1) {
+        keys.add(i,
+          new KeyboardKey(
+            (int) locationX + column*keyW + paddingx,
+            (int) locationY + row*keyH + paddingy,
+            keyW,
+            keyH,
+            "" + keyMap.charAt(i),
+            20
+          )
+        );
+      }
+      // Backspace key
+      else {
+        keys.add(i,
+          new KeyboardKey(
+            (int) locationX + column*keyW + paddingx,
+            (int) locationY + row*keyH + paddingy,
+            keyW*2,
+            keyH,
+            "<",
+            20
+          )
+        );
+      } 
     }
   }
 }
@@ -91,7 +106,14 @@ class KeyboardKey extends Panel implements ActionListener {
     fill(255);
     textSize(fontSize);
     textAlign(CENTER, CENTER);
-    text(letter, locX + szWidth/2, locY + szHeight/2);
+    // Backspace
+    if (letter.equals("<")) {
+      text("DEL", locX + szWidth/2, locY + szHeight/2);  
+    }
+    // Regular letters
+    else {
+      text(letter, locX + szWidth/2, locY + szHeight/2);
+    }
   }
   
   public void on_Click() {
