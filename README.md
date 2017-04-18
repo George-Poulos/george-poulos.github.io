@@ -36,21 +36,25 @@
 
 ![](https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/setup_language.png)
 <b>MirrorUI sports an out of box experience similar to many other smart devices out there today.</b>
-
+<br><br>
 
 <img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/setup_wifi.png" width="250"><img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/setup_wifi2.gif" width="250"><img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/setup_time.png" width="250"><img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/setup_date.png" width="250"><img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/setup_location.gif" width="250">
-
-The initial setup lets you know how far along you are until you can use the mirror. Can't wait? Skip ahead!
+<b>The initial setup lets you know how far along you are until you can use the mirror. Can't wait? Skip ahead!</b>
+<br><br>
 
 <img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/user_empty.png" width="425"><img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/user_creation.gif" width="425">
-Personalize your mirror with your own profile. MirrorUI will remember your name and settings for you.
+<b>Personalize your mirror with your own profile. MirrorUI will remember your name and settings for you.</b>
+<br><br>
 
 <img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/user_select.png" width="900">
-MirrorUI works for 2 people at the same time. A simple tap of the power button is all you need to begin.
+<b>MirrorUI works for 2 people at the same time. A simple tap of the power button is all you need to begin.</b>
+<br><br>
 
 <img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/home.gif" width="900">
-The time, weather, and date are always displayed for your convinience.
-The app drawer shows you what apps you can open or close.
+<b>The time, weather, and date are always displayed for your convinience.
+The app drawer shows you what apps you can open or close.</b>
+<br><br>
 
 <img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/settings.gif" width="900">
-Need to change your personal preferences? The settings app lets you change ...., ...., ...., and .....
+<b>Need to change your personal preferences? The settings app lets you change ...., ...., ...., and .....</b>
+<br><br>
