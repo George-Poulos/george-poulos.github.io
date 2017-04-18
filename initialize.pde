@@ -262,7 +262,7 @@ class Keyrow {
     keys = new Button[n];
     mapping = s;
     for(int i = 0; i < n; i++) {
-      String letter = "" + mapping.charAt(i);
+      String letter = "Data/" + mapping.charAt(i);
       String letterext = letter + ".png";
       keys[i] = new Button(0, 0, icon_size_small, loadImage(letterext), letter, true);
     }
