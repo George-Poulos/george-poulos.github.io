@@ -163,7 +163,6 @@ final color DAYCOLOR = color(205,219,225);
 final color BGWARMWHITE = color(255,229,204);
 final color BGCOOLWHITE = color(204,229,255);
 final color BGGRAY = color(192,192,192);
-
 final color DEFAULTICONCOLOR = color(255);  // default icon theme color
 
 //final color NIGHTCOLOR = color(,,,);  // maybe we do warm tint on daycolor ?
@@ -201,10 +200,7 @@ void setup() {
 
   size(1600,900);
   //size(2732, 1536);
-
-  size(1600,900);
-  //size(2732, 1536);
-   initState = new initialize();
+  initState = new initialize();
 
   // If the keyboard is needed this is the constructor
   keyboard = new Keyboard(10, 10, 40, 40, 5); // x=10, y=10, keywidth=40, keyheight=40, round=5px
@@ -223,9 +219,9 @@ void setup() {
   set_CurrentMirrors(mirrorActiveLeft, mirrorActiveRight);
   currMirrorLeft.addFreespaceLeftMirror();
   currMirrorRight.addFreespaceRighttMirror(); //<>//
-  set_CurrentMirrors(mirrorOffLeft, mirrorOffRight); //<>// //<>//
+  set_CurrentMirrors(mirrorOffLeft, mirrorOffRight);  //<>//
 } //<>//
-///////////////////////////////////////////////////// //<>// //<>//
+/////////////////////////////////////////////////////  //<>//
 
 
 void draw() {
@@ -239,33 +235,29 @@ void draw() {
   timeBtn.set_Text(hour()%12+":"+ (minute()<10 ? "0":"") + minute()+  (hour()>=12 ? " pm" : " am")); //<>//
   dateBtn.set_Text(month()+"/"+day()+"/"+year());
   draw_Btn(timeBtn, dateBtn); //<>//
- //<>// //<>//
-    keyboard.displayModule(); //<>//
- //<>// //<>// //<>//
- //<>// //<>// //<>//
- //<>// //<>// //<>// //<>//
- //<>// //<>//
+
+  keyboard.displayModule(); //<>// //<>//
+
+  //<>// //<>// //<>// //<>//
   // Draw the current mirror state for each side of the mirror
-  draw_LRMirrors(currMirrorLeft, currMirrorRight); //<>// //<>//
+  draw_LRMirrors(currMirrorLeft, currMirrorRight);  //<>//
   tint(255); //<>//
-  weatherMod.displayModule(); //<>// //<>// //<>//
-} //<>// //<>// //<>//
- //<>// //<>// //<>//
+  weatherMod.displayModule();  //<>//
+}  //<>//
+  //<>//
  //<>//
 /////////////////////////////////////////////////////
  //<>//
 // mousePressed() just colors the button with click color to show that we clicked it. //<>//
-// don't really care about this for Project 2 though. //<>// //<>// //<>//
-void mousePressed(){ //<>// //<>//
-} //<>// //<>//
+// don't really care about this for Project 2 though.  //<>//
+void mousePressed(){ }  //<>// //<>//
  //<>//
 ///////////////////////////////////////////////////// //<>//
  //<>//
 // if the mouse button is released inside a known button,  //<>//
-// keep track of which button was pressed and do click stuff //<>//
- //<>// //<>// //<>// //<>//
-void mouseReleased() { //<>// //<>// //<>//
-  mouseReleasedBothUsers(currMirrorLeft); //<>// //<>//
+// keep track of which button was pressed and do click stuff //<>// //<>//
+void mouseReleased() {  //<>//
+  mouseReleasedBothUsers(currMirrorLeft);  //<>//
   mouseReleasedBothUsers(currMirrorRight); //<>//
 }
 
@@ -275,18 +267,21 @@ void mouseReleased() { //<>// //<>// //<>//
 void mouseReleasedBothUsers(Mirror m){
   // Checks keys if they are clicked on
   for (KeyboardKey k : keyboard.keys) { //<>//
-    if (keyboard.visibility && key_Clicked(k)) //<>// //<>//
-      println(k.letter); //<>// //<>//
-  } //<>// //<>// //<>//
- //<>// //<>// //<>//
-  if (m instanceof MirrorActive){ //<>// //<>//
+    if (keyboard.visibility && key_Clicked(k)) { //<>//
+      noLoop();
+      println(k.letter);  //<>//
+      loop();
+    }
+  }  //<>//
+   //<>//
+  if (m instanceof MirrorActive){  //<>//
       // call a mirror active method that checks if we're in settings //<>//
       ((MirrorActive)m).do_SettingsClickStuff();  
        //<>//
       // do module stuff (we don't want to call this method if the mirror is in "off" mode!) //<>// //<>//
-      m.LocateModule(); //<>// //<>//
-  } //<>// //<>// //<>//
-   //<>// //<>// //<>//
+      m.LocateModule();  //<>//
+  }  //<>//
+    //<>//
   else if (m instanceof MirrorOff){ //<>//
       for (Button b : m.allBtns){  // should just be the 1 power button here
         if (btn_Clicked(b)){
