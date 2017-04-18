@@ -96,22 +96,22 @@ public void create_clockAndWeather(MirrorActive m){
   timeBtn = new Button(m.locX-2*w, m.locY+h, 4*w, 2*h);
   timeBtn.set_BtnFont(clockFont);
   timeBtn.set_isActive(true);
-  //timeBtn.set_TextAlignment(CENTER); //<>//
-   //<>// //<>// //<>//
- //<>//
+  //timeBtn.set_TextAlignment(CENTER);
+   //<>// //<>//
+
+  // yes this is ghetto the way I determined the Y-location. //<>// //<>//
+  dateBtn = new Button(m.locX-w, timeBtn.locY+(3*timeBtn.szHeight)/4, 2*w, h); //<>// //<>//
+  dateBtn.set_BtnFont(dateFont); //<>//
+  dateBtn.set_isActive(true); //<>// //<>//
   // yes this is ghetto the way I determined the Y-location. //<>// //<>// //<>//
   dateBtn = new Button(m.locX-w, timeBtn.locY+(3*timeBtn.szHeight)/4, 2*w, h); //<>// //<>// //<>//
-  dateBtn.set_BtnFont(dateFont); //<>// //<>//
-  dateBtn.set_isActive(true); //<>// //<>// //<>//
-  // yes this is ghetto the way I determined the Y-location. //<>// //<>// //<>// //<>//
-  dateBtn = new Button(m.locX-w, timeBtn.locY+(3*timeBtn.szHeight)/4, 2*w, h); //<>// //<>// //<>// //<>//
-  dateBtn.set_BtnFont(dateFont); //<>// //<>// //<>// //<>//
-  dateBtn.set_isActive(true); //<>// //<>// //<>//
-  //dateBtn.set_TextAlignment(CENTER); //<>//
-  weatherMod = new Module(w*1.5,h*1.5,m.locX, m.locY+ h/2); //<>// //<>//
-  weatherMod.setVisibility(true); //<>//
-  weatherMod.setImageName(weather); //<>// //<>// //<>//
-  //weatherBtn = rightPanel.create_PanelBtn(1,1,2,3,true,WEATHER); //<>// //<>//
+  dateBtn.set_BtnFont(dateFont); //<>// //<>// //<>//
+  dateBtn.set_isActive(true); //<>// //<>//
+  //dateBtn.set_TextAlignment(CENTER);
+  weatherMod = new Module(w*1.5,h*1.5,m.locX, m.locY+ h/2); //<>//
+  weatherMod.setVisibility(true);
+  weatherMod.setImageName(weather); //<>// //<>//
+  //weatherBtn = rightPanel.create_PanelBtn(1,1,2,3,true,WEATHER); //<>//
 }
 
 //
@@ -230,7 +230,7 @@ void setup() {
 
 void draw() {
   if(initState.inSetup){
-    initState.drawBegin();
+    initState.drawBegin(); //<>//
   }
   else{
   background(MIRRORCOLOR);
@@ -262,6 +262,7 @@ void draw() {
 // mousePressed() just colors the button with click color to show that we clicked it. //<>//
 // don't really care about this for Project 2 though. //<>// //<>// //<>//
 void mousePressed(){ //<>// //<>//
+  initState.mousePressed();
 } //<>// //<>//
  //<>//
 ///////////////////////////////////////////////////// //<>//
