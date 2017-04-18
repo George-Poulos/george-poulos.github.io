@@ -35,11 +35,11 @@
 ## Feature Highlight
 ![Alt text](https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/setup_language.png)
 MirrorUI sports an out of box experience similar to many other smart devices out there today.
-<div style = "center">
+<div style = "align : center">
 <img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/setup_wifi.png" width="250"><img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/setup_wifi2.gif" width="250"><img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/setup_time.png" width="250"><img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/setup_date.png" width="250"><img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/setup_location.gif" width="250"></div>
 The initial setup lets you know how far along you are until you can use the mirror. Can't wait? Skip ahead!
 
-
+<div>
 <img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/user_empty.png" width="400"><img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/user_creation.gif" width="400">
 Personalize your mirror with your own profile. MirrorUI will remember your name and settings for you.
 
