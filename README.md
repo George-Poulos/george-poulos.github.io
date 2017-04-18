@@ -33,10 +33,10 @@
 - News from The Guardian
 - Traffic & Map data from Google
 ## Feature Highlight
-<kbd>
+
 ![](https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/setup_language.png)
 <b>MirrorUI sports an out of box experience similar to many other smart devices out there today.</b>
-</kbd>
+
 
 <img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/setup_wifi.png" width="250"><img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/setup_wifi2.gif" width="250"><img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/setup_time.png" width="250"><img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/setup_date.png" width="250"><img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/setup_location.gif" width="250">
 
