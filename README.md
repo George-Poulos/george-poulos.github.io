@@ -35,15 +35,15 @@
 ## Feature Highlight
 ![Alt text](https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/setup_language.png)
 MirrorUI sports an out of box experience similar to many other smart devices out there today.
-<div style = "align : center">
-<img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/setup_wifi.png" width="250"><img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/setup_wifi2.gif" width="250"><img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/setup_time.png" width="250"><img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/setup_date.png" width="250"><img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/setup_location.gif" width="250"></div>
+<img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/setup_wifi.png" width="250"><img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/setup_wifi2.gif" width="250"><img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/setup_time.png" width="250"><img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/setup_date.png" width="250"><img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/setup_location.gif" width="250">
+
 The initial setup lets you know how far along you are until you can use the mirror. Can't wait? Skip ahead!
 
-<div>
-<img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/user_empty.png" width="400"><img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/user_creation.gif" width="400">
+
+<img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/user_empty.png" width="450"><img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/user_creation.gif" width="450">
 Personalize your mirror with your own profile. MirrorUI will remember your name and settings for you.
 
-[Showing resting state, or picking users]
+<img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/user_select.png" width="900">
 MirrorUI works for 2 people at the same time. A simple tap of the power button is all you need to begin.
 [Showing main signed in screen]
 The time, weather, and date are always displayed for your convinience.
