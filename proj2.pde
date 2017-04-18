@@ -203,7 +203,7 @@ void setup() {
   //size(2732, 1536);
 
   size(1600,900);
-  float scale = 0.7;      // set this to 1 to maximize resolution
+  scale = 0.7;      // set this to 1 to maximize resolution
   float newX = 2732*scale;
   float newY = 1536*scale;
   frame.setResizable(true);

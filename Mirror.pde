@@ -97,7 +97,7 @@ class Mirror extends Panel {
       }
   }
   
-   //<>//
+   //<>// //<>//
   // this does what setFreeSpace() did, only diff is that I 
   // init'd widgetFreeSpace separately in init_BtnsAndPanels().
   void add_FreeSpace(){
@@ -172,19 +172,19 @@ class Mirror extends Panel {
   }
         
   // draw Mirror by drawing each Panel and its buttons
-  public void draw_Mirror(){      //<>//
+  public void draw_Mirror(){      //<>// //<>//
       draw_PanelLine(leftPanel);
-      leftPanel.draw_ButtonPanel();  //<>//
-      draw_PanelLine(centerPanel);  //<>//
-      centerPanel.draw_ButtonPanel();        //<>//
-      draw_PanelLine(rightPanel);  //<>//
-      rightPanel.draw_ButtonPanel();  //<>//
+      leftPanel.draw_ButtonPanel();  //<>// //<>//
+      draw_PanelLine(centerPanel);  //<>// //<>//
+      centerPanel.draw_ButtonPanel();        //<>// //<>//
+      draw_PanelLine(rightPanel);  //<>// //<>//
+      rightPanel.draw_ButtonPanel();  //<>// //<>//
   }
-    //<>//
+    //<>// //<>//
   // just to test where the boundaries are!
   public void draw_PanelLine(Panel p){
-    stroke(0);  //<>//
-    line(p.locX, p.locY, p.locX, p.szHeight);  //<>//
-  }  //<>//
+    stroke(0);  //<>// //<>//
+    line(p.locX, p.locY, p.locX, p.szHeight);  //<>// //<>//
+  }  //<>// //<>//
   
-}  //<>//
+}  //<>// //<>//
