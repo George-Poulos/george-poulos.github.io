@@ -1,25 +1,4 @@
-enum State {
-  OUT_OF_BOX, 
-  SETUP,
-  SETUP_WIFI,
-  IDLE,
-  WIFI_ERROR,
-  CREATE_USER
-};
 
-enum Setup {
-  LANGUAGE,
-  WIFI,
-  TIME,
-  DATE,
-  LOCATION
-};
-
-enum Languages {
-  ENGLISH,
-  FRENCH,
-  SPANISH
-};
 class initialize {
  
 boolean inSetup;
@@ -47,6 +26,29 @@ JSONArray json_wifi;
 int wifi_instance;
 String input_password;
 int max_pass_length;
+
+class State{
+ int OUT_OF_BOX = 0,
+  SETUP = 1,
+  SETUP_WIFI = 2,
+  IDLE = 3,
+  WIFI_ERROR = 4,
+  CREATE_USER = 5;
+}
+
+class Setup {
+  int LANGUAGE = 0,
+  WIFI = 1,
+  TIME = 2,
+  DATE = 3,
+  LOCATION = 4;
+};
+
+class Languages {
+  int ENGLISH = 0,
+  FRENCH = 1,
+  SPANISH = 2;
+};
 
 String[] strLanguages = {
   "English",
@@ -392,9 +394,10 @@ Button skip_wifi_button;
 
 
 
-State state;
-Setup setup;
-Languages lang;
+State State = new State();
+Setup Setup = new Setup();
+Languages Languages = new Languages();
+int state,setup,lang;
 
 public initialize() {
   inSetup = true;

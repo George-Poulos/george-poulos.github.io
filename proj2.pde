@@ -229,6 +229,10 @@ void setup() {
 
 
 void draw() {
+  if(initState.inSetup){
+    initState.drawBegin();
+  }
+  else{
   background(MIRRORCOLOR);
   noStroke();
 
@@ -248,7 +252,8 @@ void draw() {
   // Draw the current mirror state for each side of the mirror
   draw_LRMirrors(currMirrorLeft, currMirrorRight); //<>// //<>//
   tint(255); //<>//
-  weatherMod.displayModule(); //<>// //<>// //<>//
+  weatherMod.displayModule(); //<>//
+  }//<>// //<>//
 } //<>// //<>// //<>//
  //<>// //<>// //<>//
  //<>//
