@@ -11,8 +11,9 @@
     - Apps
     - Custom UI library
 - Dennis Leancu
-    - Keyboard
     - App images
+    - Documentation
+    - Keyboard
 - George Poulos
     - Apps
 - Tony Wong
@@ -21,6 +22,7 @@
 ## Tools Used
 - Photoshop
 - JetBrains WebStorm
+- Visual Studio Code
 - Processing
 ## Media
 - Tony's icon source
