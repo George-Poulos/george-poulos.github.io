@@ -241,7 +241,7 @@ void draw() {
     dateBtn.set_Text(month()+"/"+day()+"/"+year()); //<>// //<>// //<>// //<>//
     draw_Btn(timeBtn, dateBtn); //<>// //<>//
    //<>// //<>//
-    keyboard.displayModule(); //<>// //<>// //<>// //<>//
+    //keyboard.displayModule(); //<>// //<>// //<>// //<>//
    //<>// //<>//
     //<>// //<>// //<>// //<>// //<>// //<>//
     // Draw the current mirror state for each side of the mirror //<>// //<>//
