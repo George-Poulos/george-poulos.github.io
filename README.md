@@ -45,9 +45,10 @@ Personalize your mirror with your own profile. MirrorUI will remember your name 
 
 <img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/user_select.png" width="900">
 MirrorUI works for 2 people at the same time. A simple tap of the power button is all you need to begin.
-[Showing main signed in screen]
+
+<img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/home.gif" width="900">
 The time, weather, and date are always displayed for your convinience.
-[Apps drawer open]
 The app drawer shows you what apps you can open or close.
-[Settings open]
+
+<img src="https://github.com/George-Poulos/george-poulos.github.io/blob/master/readmeImages/settings.gif" width="900">
 Need to change your personal preferences? The settings app lets you change ...., ...., ...., and .....
