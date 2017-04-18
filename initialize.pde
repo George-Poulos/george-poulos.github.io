@@ -156,7 +156,7 @@ String[] strBack = {
   "retroceder"
 };
 
-class Button {
+class ThisButton {
   PImage icon;
   float x;
   float y;
@@ -165,7 +165,7 @@ class Button {
   boolean isImg;
   String txt;
 
-  Button(float xpos, float ypos, float sz, PImage pic, boolean clickable) {
+  ThisButton(float xpos, float ypos, float sz, PImage pic, boolean clickable) {
     icon = pic;
     x = xpos;
     y = ypos;
@@ -174,7 +174,7 @@ class Button {
     isImg = true;
   }
   
-  Button(float xpos, float ypos, float sz, PImage pic, String s, boolean clickable) {
+  ThisButton(float xpos, float ypos, float sz, PImage pic, String s, boolean clickable) {
     icon = pic;
     txt = s;
     x = xpos;
@@ -184,7 +184,7 @@ class Button {
     isImg = true;
   }
   
-  Button(float xpos, float ypos, float sz, String t, boolean clickable) {
+  ThisButton(float xpos, float ypos, float sz, String t, boolean clickable) {
     txt = t;
     x = xpos;
     y = ypos;
@@ -252,19 +252,19 @@ class Button {
 }
 
 class Keyrow {
-  Button[] keys;
+  ThisButton[] keys;
   String mapping;
   int n;
   int x;
   int y;
   Keyrow(String s) {
     n = s.length();
-    keys = new Button[n];
+    keys = new ThisButton[n];
     mapping = s;
     for(int i = 0; i < n; i++) {
       String letter = "Data/" + mapping.charAt(i);
       String letterext = letter + ".png";
-      keys[i] = new Button(0, 0, icon_size_small, loadImage(letterext), letter, true);
+      keys[i] = new ThisButton(0, 0, icon_size_small, loadImage(letterext), letter, true);
     }
   }
   
@@ -404,21 +404,21 @@ class np {
 
 kb osk;
 np osnp;
-Button power_button;
-Button setup_language_icon;
-Button setup_wifi_icon;
-Button setup_time_icon;
-Button setup_date_icon;
-Button setup_location_icon;
-Button setup_status_icon_fill;
-Button setup_status_icon_empty;
-Button next_menu;
-Button[] setup_language_texts;
-Button[] setup_wifi_texts;
-Button[] setup_wifi_icons;
-Button enter_input;
-Button back_button;
-Button skip_wifi_button;
+ThisButton power_button;
+ThisButton setup_language_icon;
+ThisButton setup_wifi_icon;
+ThisButton setup_time_icon;
+ThisButton setup_date_icon;
+ThisButton setup_location_icon;
+ThisButton setup_status_icon_fill;
+ThisButton setup_status_icon_empty;
+ThisButton next_menu;
+ThisButton[] setup_language_texts;
+ThisButton[] setup_wifi_texts;
+ThisButton[] setup_wifi_icons;
+ThisButton enter_input;
+ThisButton back_button;
+ThisButton skip_wifi_button;
 
 
 
@@ -455,7 +455,7 @@ public initialize() {
   bg = bg_default;
   background(bg);
   state.v = State.OUT_OF_BOX;
-  power_button = new Button(xmid, ybottom, icon_size_small, loadImage("Data/power-512.png"), true);
+  power_button = new ThisButton(xmid, ybottom, icon_size_small, loadImage("Data/power-512.png"), true);
 
   
   xheader = width*0.39;
@@ -466,36 +466,36 @@ public initialize() {
   yfooter = height*0.9;
   
   setup.v = Setup.LANGUAGE;
-  setup_language_icon = new Button(xheader, yheader, icon_size_large, loadImage("Data/language-512.png"), false);
-  setup_wifi_icon = new Button(xheader, yheader, icon_size_large, loadImage("Data/wifi-512.png"), false);
-  setup_time_icon = new Button(xheader, yheader, icon_size_large, loadImage("Data/clock-512.png"), false);
-  setup_date_icon = new Button(xheader, yheader, icon_size_large, loadImage("Data/calendar-512.png"), false);
-  setup_location_icon = new Button(xheader, yheader, icon_size_large, loadImage("Data/location-512.png"), false);
-  setup_status_icon_fill = new Button(0, 0, icon_size_small, loadImage("Data/circle-fill-512.png"), false);
-  setup_status_icon_empty = new Button(0, 0, icon_size_small, loadImage("Data/circle-empty-512.png"), false);
-  next_menu = new Button(xfooter + 2.5*spacing, yfooter*1.01, font_size_small, "ERROR", true);
+  setup_language_icon = new ThisButton(xheader, yheader, icon_size_large, loadImage("Data/language-512.png"), false);
+  setup_wifi_icon = new ThisButton(xheader, yheader, icon_size_large, loadImage("Data/wifi-512.png"), false);
+  setup_time_icon = new ThisButton(xheader, yheader, icon_size_large, loadImage("Data/clock-512.png"), false);
+  setup_date_icon = new ThisButton(xheader, yheader, icon_size_large, loadImage("Data/calendar-512.png"), false);
+  setup_location_icon = new ThisButton(xheader, yheader, icon_size_large, loadImage("Data/location-512.png"), false);
+  setup_status_icon_fill = new ThisButton(0, 0, icon_size_small, loadImage("Data/circle-fill-512.png"), false);
+  setup_status_icon_empty = new ThisButton(0, 0, icon_size_small, loadImage("Data/circle-empty-512.png"), false);
+  next_menu = new ThisButton(xfooter + 2.5*spacing, yfooter*1.01, font_size_small, "ERROR", true);
   
-  setup_language_texts = new Button[strLanguages.length];
+  setup_language_texts = new ThisButton[strLanguages.length];
   for(int i = 0; i < strLanguages.length; i++) {
-    setup_language_texts[i] = new Button(0, 0, font_size_small, strLanguages[i], true);
+    setup_language_texts[i] = new ThisButton(0, 0, font_size_small, strLanguages[i], true);
   }
   
   int wifi_count = arrName.length;
-  setup_wifi_texts = new Button[wifi_count];
-  setup_wifi_icons = new Button[wifi_count];
+  setup_wifi_texts = new ThisButton[wifi_count];
+  setup_wifi_icons = new ThisButton[wifi_count];
   for(int i = 0; i < wifi_count; i++) {
-    setup_wifi_texts[i] = new Button(0, 0, font_size_small, arrName[i], true);
+    setup_wifi_texts[i] = new ThisButton(0, 0, font_size_small, arrName[i], true);
     String s = "Data/wifi-signal-" + strength[i] + "-512.png";
-    setup_wifi_icons[i] = new Button(0, 0, icon_size_small, loadImage(s), false);
+    setup_wifi_icons[i] = new ThisButton(0, 0, icon_size_small, loadImage(s), false);
   }
   
   input_password = "";
   osk = new kb(xheader, height*0.6);
   osnp = new np(width*0.6, height*0.6);
-  enter_input = new Button(xfooter + 2.5*spacing, height*0.6 + 3.3*icon_size_small, font_size_small, strEnter[lang.ordinal()], true);
+  enter_input = new ThisButton(xfooter + 2.5*spacing, height*0.6 + 3.3*icon_size_small, font_size_small, strEnter[lang.ordinal()], true);
   
-  back_button = new Button(xfooter + 2.5*spacing, height*0.7, font_size_small, strBack[lang.ordinal()], true);
-  skip_wifi_button = new Button(xfooter + 2.5*spacing, yfooter*1.01, font_size_small*0.7, "ERROR", true);
+  back_button = new ThisButton(xfooter + 2.5*spacing, height*0.7, font_size_small, strBack[lang.ordinal()], true);
+  skip_wifi_button = new ThisButton(xfooter + 2.5*spacing, yfooter*1.01, font_size_small*0.7, "ERROR", true);
 }
 
 void draw_status_bar(int step) {
