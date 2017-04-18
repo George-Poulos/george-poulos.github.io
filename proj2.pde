@@ -192,22 +192,13 @@ MirrorOff mirrorOffLeft, mirrorOffRight;
 MirrorOff mirrorInactiveLeft, mirrorInactiveRight;
 MirrorActive mirrorActiveLeft, mirrorActiveRight;
 
-
 /////////////////////////////////////////////////////
 void setup() {
   // will update these to scale for the displays in class.
   // chose these numbers cause the mirror is 80"x45" and this 
   // is roughly the same ratio.
-
-  size(1600,900);
-  //size(2732, 1536);
-
-  size(1600,900);
-  float scale = 0.7;      // set this to 1 to maximize resolution
-  float newX = 2732*scale;
-  float newY = 1536*scale;
-  frame.setResizable(true);
-  frame.setSize(int(newX), int(newY));
+  size(2732,1536);
+  //size(2732, 1536);  
   //size(2732, 1536);
    initState = new initialize();
 

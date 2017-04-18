@@ -431,7 +431,13 @@ public initialize() {
   inSetup = true;
   // for testing purposes
   
+  float scale = 1.0;      // set this to 1 to maximize resolution
+  float newX = 2732*scale;
+  float newY = 1536*scale;
+  //surface.setResizable(true);
+  //surface.setSize(int(newX), int(newY));
   // end of testing purposes
+ 
   
   icon_size_small = 70*scale;
   icon_size_large = 120*scale;
