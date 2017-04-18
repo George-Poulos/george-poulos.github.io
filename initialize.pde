@@ -671,7 +671,7 @@ class initialize {
     enter_input.display();
   }
 
-  void mousePressed() {
+  void mouse_Pressed() {
     if (state.v == State.OUT_OF_BOX) {
       if (power_button.isMouseOver()) {
         state.v = State.SETUP;

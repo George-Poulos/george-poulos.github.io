@@ -248,10 +248,10 @@ void draw() {
     draw_LRMirrors(currMirrorLeft, currMirrorRight);  //<>// //<>//
     tint(255); //<>//
     weatherMod.displayModule();  //<>// //<>//
+}   //<>//
+   //<>//
 }  //<>// //<>//
-  //<>// //<>//
-} //<>// //<>// //<>// //<>// //<>//
- //<>// //<>// //<>// //<>//
+  //<>//
 ///////////////////////////////////////////////////// //<>//
  //<>// //<>//
 // mousePressed() just colors the button with click color to show that we clicked it. //<>// //<>//

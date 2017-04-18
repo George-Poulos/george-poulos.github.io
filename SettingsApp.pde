@@ -105,7 +105,8 @@ class SettingsApp extends ButtonPanel {
     private void set_SettingsInnerBtnModules(SettingsApp p){
       displayPrefsBtn.set_BtnModule(p.pDisplayPrefs);
       linkedAppsBtn.set_BtnModule(p.pLinkedApps);
-      personalInfoBtn.set_BtnModule(p.pPersonalPrefs);    
+      //personalInfoBtn.set_BtnModule(p.pPersonalPrefs); 
+      personalInfoBtn.set_BtnModule(this);
     } 
     
     ///////////////////////////////////////////////////////
