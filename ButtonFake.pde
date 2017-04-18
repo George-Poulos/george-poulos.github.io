@@ -41,7 +41,7 @@ class FakeButton extends Button {
       noFill();    
       stroke(0.5);
       //rect(locX, locY, szWidth, szHeight, corner);   
-      setup_Text(font, activeClr, btnTxtAlign);
+      setup_Text(font, activeClr, btnTxtAlign, btnTxtAlignVert);
       text(btnTxt, locX, locY);
       rectMode(CORNER);  
     }

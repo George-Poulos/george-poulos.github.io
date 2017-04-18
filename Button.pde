@@ -9,6 +9,7 @@ class Button extends Panel implements ActionListener {
   String btnTxt = "";  // we won't use this as much for project 2
   color clr, activeClr, inactiveClr;
   int btnTxtAlign;
+  int btnTxtAlignVert;
   ButtonPanel moduleParent;  // sets the panel that btnModule will open in
   int padding;  // move this into Panel class???
   Module module;
@@ -77,6 +78,7 @@ class Button extends Panel implements ActionListener {
     padding = 1;
     font = defaultFont;
     btnTxtAlign = LEFT;
+    btnTxtAlignVert = TOP;
     corner = 5;
     // these colors have been updated for Project 2 :)
     //activeClr = color(255);
@@ -107,6 +109,10 @@ class Button extends Panel implements ActionListener {
     btnTxtAlign = newAlign;
   }
 
+  void set_VertTextAlignment(int newAlign){
+    btnTxtAlignVert = newAlign;
+  }
+
   // we call disableStyle() so that we can color the .svg how we want
   void set_Img(String img){
     imgFlag = true;
@@ -119,6 +125,10 @@ class Button extends Panel implements ActionListener {
   // rounded corner for drawing rectangle buttons without images
   void set_Corner(int c){
     this.corner = c;
+  }
+  
+  public void prep_BtnTextAppearance(){
+    setup_Text(font, ICONCOLOR, btnTxtAlign, btnTxtAlignVert);
   }
 
   //////////////////////////////////////////////////////////
@@ -166,7 +176,8 @@ class Button extends Panel implements ActionListener {
         stroke(0.5);
         //rect(locX, locY, szWidth, szHeight, corner); 
   
-        setup_Text(font, 255, btnTxtAlign);
+        //setup_Text(font, 255, btnTxtAlign);
+        setup_Text(font, ICONCOLOR, btnTxtAlign, btnTxtAlignVert);
         //rectMode(CENTER);  // this is just where to draw the text inside a button from so it's centered.
         //text(btnTxt, locX+(szWidth/2), locY+(szHeight/2));
         text(btnTxt, locX, locY);
