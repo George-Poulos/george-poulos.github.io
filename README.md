@@ -33,7 +33,7 @@
 - News from The Guardian
 - Traffic & Map data from Google
 ## Feature Highlight
-[Image of setup screen]
+(http://github.com/setup_language)
 MirrorUI sports an out of box experience similar to many other smart devices out there today.
 [Image of a different step in setup screen]
 The initial setup lets you know how far along you are until you can use the mirror. Can't wait? Skip ahead!
