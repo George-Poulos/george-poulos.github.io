@@ -200,11 +200,9 @@ class initialize {
         } else {
           noTint();
         }
-      }
         image(icon, x, y, size, size);
         println(icon);
-      
-      /*else {
+      }else {
         if (isMouseOver() && active) {
           fill(hover_tint);
         } else {
@@ -214,7 +212,7 @@ class initialize {
         textAlign(LEFT);
         text(txt, x, y);
         fill(255);
-      }*/
+      }
     }
 
     boolean isMouseOver() {

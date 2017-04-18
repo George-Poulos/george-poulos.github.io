@@ -97,21 +97,21 @@ public void create_clockAndWeather(MirrorActive m){
   timeBtn.set_BtnFont(clockFont);
   timeBtn.set_isActive(true);
   //timeBtn.set_TextAlignment(CENTER);
-   //<>// //<>//
+   //<>// //<>// //<>//
 
-  // yes this is ghetto the way I determined the Y-location. //<>// //<>//
-  dateBtn = new Button(m.locX-w, timeBtn.locY+(3*timeBtn.szHeight)/4, 2*w, h); //<>// //<>//
-  dateBtn.set_BtnFont(dateFont); //<>//
-  dateBtn.set_isActive(true); //<>// //<>//
   // yes this is ghetto the way I determined the Y-location. //<>// //<>// //<>//
   dateBtn = new Button(m.locX-w, timeBtn.locY+(3*timeBtn.szHeight)/4, 2*w, h); //<>// //<>// //<>//
-  dateBtn.set_BtnFont(dateFont); //<>// //<>// //<>//
-  dateBtn.set_isActive(true); //<>// //<>//
+  dateBtn.set_BtnFont(dateFont); //<>// //<>//
+  dateBtn.set_isActive(true); //<>// //<>// //<>//
+  // yes this is ghetto the way I determined the Y-location. //<>// //<>// //<>// //<>//
+  dateBtn = new Button(m.locX-w, timeBtn.locY+(3*timeBtn.szHeight)/4, 2*w, h); //<>// //<>// //<>// //<>//
+  dateBtn.set_BtnFont(dateFont); //<>// //<>// //<>// //<>//
+  dateBtn.set_isActive(true); //<>// //<>// //<>//
   //dateBtn.set_TextAlignment(CENTER);
-  weatherMod = new Module(w*1.5,h*1.5,m.locX, m.locY+ h/2); //<>//
+  weatherMod = new Module(w*1.5,h*1.5,m.locX, m.locY+ h/2); //<>// //<>//
   weatherMod.setVisibility(true);
-  weatherMod.setImageName(weather); //<>// //<>//
-  //weatherBtn = rightPanel.create_PanelBtn(1,1,2,3,true,WEATHER); //<>//
+  weatherMod.setImageName(weather); //<>// //<>// //<>//
+  //weatherBtn = rightPanel.create_PanelBtn(1,1,2,3,true,WEATHER); //<>// //<>//
 }
 
 //
@@ -218,15 +218,15 @@ void setup() {
   // starting state so we can test module locs  
   set_CurrentMirrors(mirrorActiveLeft, mirrorActiveRight);
   currMirrorLeft.addFreespaceLeftMirror();
-  currMirrorRight.addFreespaceRighttMirror(); //<>//
-  set_CurrentMirrors(mirrorOffLeft, mirrorOffRight); //<>// //<>//
-} //<>//
-///////////////////////////////////////////////////// //<>// //<>//
+  currMirrorRight.addFreespaceRighttMirror(); //<>// //<>//
+  set_CurrentMirrors(mirrorOffLeft, mirrorOffRight); //<>// //<>// //<>//
+} //<>// //<>//
+///////////////////////////////////////////////////// //<>// //<>// //<>//
 
 
 void draw() {
   if(initState.inSetup){
-    initState.drawBegin(); //<>//
+    initState.drawBegin(); //<>// //<>//
   }
   else{
   background(MIRRORCOLOR);
@@ -234,77 +234,77 @@ void draw() {
 
   // just to check where the outer frame is
   draw_OuterFrame();
-   //<>//
+   //<>// //<>//
   // we need to create something that draws the time/date buttons as long as the mirror is not turned off 
-  timeBtn.set_Text(hour()%12+":"+ (minute()<10 ? "0":"") + minute()+  (hour()>=12 ? " pm" : " am")); //<>//
+  timeBtn.set_Text(hour()%12+":"+ (minute()<10 ? "0":"") + minute()+  (hour()>=12 ? " pm" : " am")); //<>// //<>//
   dateBtn.set_Text(month()+"/"+day()+"/"+year());
-  draw_Btn(timeBtn, dateBtn); //<>//
- //<>// //<>//
-    keyboard.displayModule(); //<>//
+  draw_Btn(timeBtn, dateBtn); //<>// //<>//
  //<>// //<>// //<>//
- //<>// //<>// //<>//
+    keyboard.displayModule(); //<>// //<>//
  //<>// //<>// //<>// //<>//
- //<>// //<>//
+ //<>// //<>// //<>// //<>//
+ //<>// //<>// //<>// //<>// //<>//
+ //<>// //<>// //<>//
   // Draw the current mirror state for each side of the mirror
-  draw_LRMirrors(currMirrorLeft, currMirrorRight); //<>// //<>//
-  tint(255); //<>//
-  weatherMod.displayModule(); //<>//
-  }//<>// //<>//
-} //<>// //<>// //<>//
- //<>// //<>// //<>//
- //<>//
-/////////////////////////////////////////////////////
- //<>//
-// mousePressed() just colors the button with click color to show that we clicked it. //<>//
-// don't really care about this for Project 2 though. //<>// //<>// //<>//
-void mousePressed(){ //<>// //<>//
-  initState.mousePressed();
-} //<>// //<>//
- //<>//
-///////////////////////////////////////////////////// //<>//
- //<>//
-// if the mouse button is released inside a known button,  //<>//
-// keep track of which button was pressed and do click stuff //<>//
+  draw_LRMirrors(currMirrorLeft, currMirrorRight); //<>// //<>// //<>//
+  tint(255); //<>// //<>//
+  weatherMod.displayModule(); //<>// //<>//
+  }//<>// //<>// //<>//
+} //<>// //<>// //<>// //<>//
  //<>// //<>// //<>// //<>//
-void mouseReleased() { //<>// //<>// //<>//
-  mouseReleasedBothUsers(currMirrorLeft); //<>// //<>//
-  mouseReleasedBothUsers(currMirrorRight); //<>//
+ //<>// //<>//
+/////////////////////////////////////////////////////
+ //<>// //<>//
+// mousePressed() just colors the button with click color to show that we clicked it. //<>// //<>//
+// don't really care about this for Project 2 though. //<>// //<>// //<>// //<>//
+void mousePressed(){ //<>// //<>// //<>//
+  initState.mousePressed();
+} //<>// //<>// //<>//
+ //<>// //<>//
+///////////////////////////////////////////////////// //<>// //<>//
+ //<>// //<>//
+// if the mouse button is released inside a known button,  //<>// //<>//
+// keep track of which button was pressed and do click stuff //<>// //<>//
+ //<>// //<>// //<>// //<>// //<>//
+void mouseReleased() { //<>// //<>// //<>// //<>//
+  mouseReleasedBothUsers(currMirrorLeft); //<>// //<>// //<>//
+  mouseReleasedBothUsers(currMirrorRight); //<>// //<>//
 }
 
 // updated this to have Mirror as the parameter type; we check if mouse is clicked
 // on the *current mirror state* - whichever current mirror state either side is in, 
-// we're checking for clicks on it. //<>//
+// we're checking for clicks on it. //<>// //<>//
 void mouseReleasedBothUsers(Mirror m){
   // Checks keys if they are clicked on
-  for (KeyboardKey k : keyboard.keys) { //<>//
-    if (keyboard.visibility && key_Clicked(k)) //<>// //<>//
-      println(k.letter); //<>// //<>//
-  } //<>// //<>// //<>//
- //<>// //<>// //<>//
-  if (m instanceof MirrorActive){ //<>// //<>//
-      // call a mirror active method that checks if we're in settings //<>//
+  for (KeyboardKey k : keyboard.keys) { //<>// //<>//
+    if (keyboard.visibility && key_Clicked(k)) //<>// //<>// //<>//
+      println(k.letter); //<>// //<>// //<>//
+  } //<>// //<>// //<>// //<>//
+ //<>// //<>// //<>// //<>//
+  if (m instanceof MirrorActive){ //<>// //<>// //<>//
+      // call a mirror active method that checks if we're in settings //<>// //<>//
       ((MirrorActive)m).do_SettingsClickStuff();  
-       //<>//
-      // do module stuff (we don't want to call this method if the mirror is in "off" mode!) //<>// //<>//
-      m.LocateModule(); //<>// //<>//
-  } //<>// //<>// //<>//
-   //<>// //<>// //<>//
-  else if (m instanceof MirrorOff){ //<>//
+       //<>// //<>//
+      // do module stuff (we don't want to call this method if the mirror is in "off" mode!) //<>// //<>// //<>//
+      m.LocateModule(); //<>// //<>// //<>//
+  } //<>// //<>// //<>// //<>//
+   //<>// //<>// //<>// //<>//
+  else if (m instanceof MirrorOff){ //<>// //<>//
       for (Button b : m.allBtns){  // should just be the 1 power button here
         if (btn_Clicked(b)){
           noLoop();
-          if (m.equals(mirrorOffLeft)) currMirrorLeft = mirrorActiveLeft; //<>//
+          if (m.equals(mirrorOffLeft)) currMirrorLeft = mirrorActiveLeft; //<>// //<>//
           else currMirrorRight = mirrorActiveRight;
-          // add something else here maybe to check who we log in as?? //<>//
-          // ... //<>//
+          // add something else here maybe to check who we log in as?? //<>// //<>//
+          // ... //<>// //<>//
           loop();
         }
       }
   }
-   //<>//
+   //<>// //<>//
   
-  // Don't think we need this part below!! Just above part! //<>//
- //<>//
+  // Don't think we need this part below!! Just above part! //<>// //<>//
+ //<>// //<>//
   // looping thru the current mirror's Left, Center, and Right panels  
   //for (ButtonPanel p1 : m.get_AllMirrorPanels()){
   //  // check that panel's buttons 
