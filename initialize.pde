@@ -185,6 +185,7 @@ class initialize {
 
     Button(float xpos, float ypos, float sz, String t, boolean clickable) {
       txt = t;
+      icon = loadImage(t);
       x = xpos;
       y = ypos;
       size = sz;
