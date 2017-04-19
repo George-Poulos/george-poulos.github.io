@@ -2,7 +2,7 @@
 
 class MirrorOff extends Mirror {
   
-  private String POWER = "power-512.png";  
+  private String POWER = "power.png";  
   Button powerBtn;
     
   public MirrorOff(int x, int y, int w, int h){

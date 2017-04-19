@@ -62,8 +62,8 @@ class AppDrawer extends ButtonPanel {
       fbookBtn, instaBtn, twitterBtn, youTubeBtn, newsBtn, emailBtn, mapsBtn, calBtn, healthBtn, musicBtn});
   
     // sure ??
-    for (Button b : innerPanelBtns){
-      b.set_State(0);
-    }    
+    //for (Button b : innerPanelBtns){
+      //b.set_State(0);
+    //}    
   }   
 }

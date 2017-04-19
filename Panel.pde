@@ -3,13 +3,13 @@
 
 // everything that can be drawn is a Panel. 
 abstract class Panel { 
-  int state;
+  //int state;
   int locX, locY, szWidth, szHeight, corner;
   color fillColor;
   boolean isActive;
   
   public Panel(){
-    state = -1;
+    //state = -1;
     corner = 0;
   }
   public Panel(int w, int h){
@@ -42,7 +42,7 @@ abstract class Panel {
     noStroke();
     noFill();
     //fill(fillColor);
-    if (state != 0)       
+    //if (state != 0)       
       rect(locX, locY, szWidth, szHeight, corner);
   }
   
@@ -50,9 +50,9 @@ abstract class Panel {
     fillColor = c;
   }
   
-  public void set_State(int newState){
-    state = newState;
-  }
+  //public void set_State(int newState){
+  //  state = newState;
+  //}
   
   void set_isActive(boolean newIsActive){
     isActive = newIsActive;

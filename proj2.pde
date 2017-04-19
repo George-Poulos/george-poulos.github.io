@@ -85,6 +85,7 @@ public void create_MirrorActiveStates() {
   set_ActiveMirror(mirrorActiveRight);
 }
 
+/////////////////////////////////////////////////////
 // 
 // These buttons stretch across the center of the mirror, so we place them
 // based on where the right mirror starts :P
@@ -119,11 +120,12 @@ public void set_TimeAndDate(){
 void draw_CenteredText(Button b){
     rectMode(CENTER);  
     stroke(0); noFill();
-    rect(b.locX+(int)(b.szWidth/2), b.locY+(int)(b.szHeight/2), b.szWidth/2, b.szHeight/2, b.corner); 
+    //rect(b.locX+(int)(b.szWidth/2), b.locY+(int)(b.szHeight/2), b.szWidth/2, b.szHeight/2, b.corner); 
     b.prep_BtnTextAppearance();
     text(b.btnTxt, b.locX+(b.szWidth/2), b.locY+(b.szHeight/2));        
 }
 
+/////////////////////////////////////////////////////
 //
 // Goal here is to allow us to pass in a flag via javascript function in our html file
 // that will tell Processing which LEFT SIDE Mirror state we want to start in
@@ -165,12 +167,8 @@ public void setup_Text(PFont font, color c, int align, int alignVert) {
 }
 /////////////////////////////////////////////////////
 
-// just to check where the outer side mirror edges are drawn
-public void draw_OuterFrame() {
-  fill(200);  
-  rect(0, 0, sidePadding, canvasHeight);  // left outer padding
-  rect(canvasWidth-sidePadding, 0, sidePadding, canvasHeight);  // right outer padding
-}
+/* moved draw_OuterFrame() to draw_Mirror() in */
+
 /////////////////////////////////////////////////////
 
 final String fileLoc = "icons/normal/png/";
@@ -192,10 +190,16 @@ int numUsers = 2;
 // in the center of the screen
 FakeButton timeBtn, dateBtn;
 
-final int canvasWidth = 2732, canvasHeight = 1536;
-//final int canvasWidth = 1600, canvasHeight = 900;
+//final int canvasWidth = 2732;
+//final int canvasHeight = 1536;
+final int canvasWidth = 1600;
+final int canvasHeight = 900;
+
+//int canvasWidth = 2732;
+//int canvasHeight = 1536;
 
 int sidePadding = canvasWidth/32;
+
 int mirrorWidth = canvasWidth-2*sidePadding;
 int mirrorHeight = canvasHeight;  // update this if we add vertical padding
 
@@ -214,9 +218,9 @@ void setup() {
   // chose these numbers cause the mirror is 80"x45" and this 
   // is roughly the same ratio.
 
-
-  //size(1600,900);
-  size(2732, 1536);
+  size(1600,900);
+  //size(2732, 1536);
+  
   initState = new initialize();
 
   // If the keyboard is needed this is the constructor
@@ -243,23 +247,21 @@ void setup() {
 
 void draw() {
   //if(initState.inSetup){
-  if (false) {
-    initState.drawBegin(); //<>//
-  } else {
+  //if (false) {
+    //initState.drawBegin(); //<>//
+  //} else {
     background(MIRRORCOLOR); //<>//
     noStroke();
     //<>//
     // just to check where the outer frame is
-    draw_OuterFrame(); 
+    //draw_OuterFrame(); 
+    
     // Draw the current mirror state for each side of the mirror 
     draw_LRMirrors(currMirrorLeft, currMirrorRight);  
 
     //keyboard.displayModule(); 
     
     // we need to create something that draws the time/date buttons as long as the mirror is not turned off  
-    //timeBtn.set_Text(hour()%12+":"+ (minute()<10 ? "0":"") + minute()+  (hour()>=12 ? " pm" : " am")); 
-    //dateBtn.set_Text(month()+"/"+day()+"/"+year()); 
-    //draw_Btn(timeBtn, dateBtn); 
 
     set_TimeAndDate();
     draw_CenteredText(timeBtn);
@@ -267,7 +269,7 @@ void draw() {
     //tint(255);
     tint(ICONCOLOR);
     weatherMod.displayModule();
-  }
+  //}
 }  
 
 ///////////////////////////////////////////////////// 

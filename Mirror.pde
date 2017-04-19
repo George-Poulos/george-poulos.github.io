@@ -44,6 +44,10 @@ class Mirror extends Panel {
   ArrayList<Button> allBtns;
   ArrayList<Point> widgetFreeSpace;
   
+  // added empty constructor to allow MirrorSetup to function as 
+  // a "wrapper" Mirror class for 'initialize' class
+  public Mirror(){}
+  
   public Mirror(int x, int y, int w, int h){
     super(x,y,w,h);  
     init_BtnsAndPanels();
@@ -172,18 +176,60 @@ class Mirror extends Panel {
         
   // draw Mirror by drawing each Panel and its buttons
   public void draw_Mirror(){       //<>// //<>//
-      draw_PanelLine(leftPanel);
+    noStroke();
+    fill(215); 
+    rectMode(CORNER);
+    rect(0, locY, sidePadding, szHeight);  // left outer padding
+       
+      //stroke(0);
+      draw_PanelLine(leftPanel);      
       leftPanel.draw_ButtonPanel();   //<>// //<>//
+      
+      //strokeWeight(2.0);
+      //stroke(0,0,255);
       draw_PanelLine(centerPanel);   //<>// //<>//
+            
       centerPanel.draw_ButtonPanel();        //<>// //<>//
+      // TESTING SOMETHING!
+      //stroke(10); strokeWeight(0.5);
+      draw_GridLines(centerPanel);  
+      
+      //strokeWeight(2.0);
+      //stroke(PINK);
       draw_PanelLine(rightPanel);   //<>// //<>//
+      
       rightPanel.draw_ButtonPanel();   //<>// //<>//
+      line(rightPanel.locX+rightPanel.szWidth, rightPanel.locY, 
+          rightPanel.locX+rightPanel.szWidth, rightPanel.szHeight);
+    
+    noStroke();      
+    fill(215);  
+    rectMode(CORNER);
+    rect(locX+mirrorWidth, locY, sidePadding, szHeight);  // right outer padding    
   }
-     //<>// //<>//
+
+  // just to check where the outer side mirror edges are drawn
+  public void draw_OuterFrame() {
+    fill(215);  
+    rect(0, locY, locX, szHeight);  // left outer padding
+    rect(locX+mirrorWidth, locY, sidePadding, szHeight);  // right outer padding
+  }
+        //<>//
   // just to test where the boundaries are!
   public void draw_PanelLine(Panel p){
     stroke(0);   //<>// //<>//
     line(p.locX, p.locY, p.locX, p.szHeight);  //<>// //<>//
-  }   //<>// //<>//
+  }    //<>//
+  
+  public void draw_GridLines(ButtonPanel p){
+    int i;    
+    // line is (startX, startY, endX, endY)
+      // vertical lines
+      for (i=1; i<p.panelCols; i++)
+        line(p.locX + i*p.colWidth, p.locY, p.locX + i*p.colWidth, p.szHeight);
+      // horiz. lines
+      for (i=1; i<p.panelRows; i++)
+        line(p.locX, p.locY + i*p.rowHeight, p.locX+p.szWidth, p.locY + i*p.rowHeight);
+  }
   
 }  //<>// //<>//
