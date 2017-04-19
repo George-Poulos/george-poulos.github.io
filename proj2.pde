@@ -15,7 +15,9 @@ PFont defaultFont, clockFont, dateFont;
 String weather = "icons/normal/png/weather-512.png";
 Module weatherMod;
 Keyboard keyboard;
-initialize initState;
+boolean IN_SETUP;
+//initialize initState;
+
 
 public boolean key_Clicked(KeyboardKey k) {
   return k.is_MouseOverItem();
@@ -61,6 +63,19 @@ public void set_LRActiveMirrors(Mirror... mirrors) {
 public void draw_LRMirrors(Mirror... mirrors) {
   for (Mirror m : mirrors)
     m.draw_Mirror();
+}
+
+// borrowed this from Mirror class.  
+// ... this one draws a dividing line between the L and R mirror 
+public void draw_PanelLine(Mirror m){
+  stroke(100);   //<>//
+  line(m.locX, m.locY+dateBtn.locY + 2*dateBtn.szHeight, m.locX, m.szHeight);  //<>//
+}   
+  
+
+public void create_MirrorSetupState(){
+  mirrorSetup = new MirrorSetup();
+  IN_SETUP = true;
 }
 
 //
@@ -153,6 +168,7 @@ public void set_CurrentRMirror(int mirrorFlag) {
   }
 }
 
+// TODO: might need to call this from SetupState class ... ?
 public void set_CurrentMirrors(Mirror Lmirror, Mirror Rmirror) {
   currMirrorLeft = Lmirror;
   currMirrorRight = Rmirror;
@@ -167,7 +183,7 @@ public void setup_Text(PFont font, color c, int align, int alignVert) {
 }
 /////////////////////////////////////////////////////
 
-/* moved draw_OuterFrame() to draw_Mirror() in */
+/* moved draw_OuterFrame() to draw_Mirror() in Mirror class */
 
 /////////////////////////////////////////////////////
 
@@ -195,11 +211,7 @@ FakeButton timeBtn, dateBtn;
 final int canvasWidth = 1600;
 final int canvasHeight = 900;
 
-//int canvasWidth = 2732;
-//int canvasHeight = 1536;
-
 int sidePadding = canvasWidth/32;
-
 int mirrorWidth = canvasWidth-2*sidePadding;
 int mirrorHeight = canvasHeight;  // update this if we add vertical padding
 
@@ -207,6 +219,7 @@ int mirrorHeight = canvasHeight;  // update this if we add vertical padding
 // this allows us to set the "active mirror", and draw the current mirror state based on it :D
 Mirror currMirrorLeft, currMirrorRight; 
 
+MirrorSetup mirrorSetup;
 MirrorOff mirrorOffLeft, mirrorOffRight;
 // inactive state = off state + time/date buttons
 MirrorOff mirrorInactiveLeft, mirrorInactiveRight;
@@ -221,8 +234,8 @@ void setup() {
   size(1600,900);
   //size(2732, 1536);
   
-  initState = new initialize();
-
+  //initState = new initialize();
+  
   // If the keyboard is needed this is the constructor
   keyboard = new Keyboard(10, 10, 40, 40, 5); // x=10, y=10, keywidth=40, keyheight=40, round=5px
   keyboard.setVisibility(false); // Set true so displayModule() works
@@ -231,6 +244,7 @@ void setup() {
   clockFont = createFont("Arial Rounded MT Bold", 48, true);
   dateFont = createFont("Arial Rounded MT Bold", 22, true);
 
+  create_MirrorSetupState();
   create_MirrorOffStates();
   create_MirrorActiveStates();
 
@@ -238,37 +252,46 @@ void setup() {
 
   // starting state so we can test module locs  
   set_CurrentMirrors(mirrorActiveLeft, mirrorActiveRight);
+  // TODO: might move these to the create_MirrorXStates() methods
   currMirrorLeft.addFreespaceLeftMirror();
   currMirrorRight.addFreespaceRighttMirror(); 
+  
   set_CurrentMirrors(mirrorOffLeft, mirrorOffRight);
 } 
 /////////////////////////////////////////////////////  
 
 
 void draw() {
-  //if(initState.inSetup){
-  //if (false) {
-    //initState.drawBegin(); //<>//
-  //} else {
-    background(MIRRORCOLOR); //<>//
+    background(MIRRORCOLOR); //<>// //<>//
     noStroke();
     //<>//
     // just to check where the outer frame is
     //draw_OuterFrame(); 
     
     // Draw the current mirror state for each side of the mirror 
-    draw_LRMirrors(currMirrorLeft, currMirrorRight);  
+    if (IN_SETUP)
+      draw_LRMirrors(mirrorSetup);
+    else {
+      draw_LRMirrors(currMirrorLeft, currMirrorRight);
+      set_TimeAndDate();
+      draw_CenteredText(timeBtn);
+      draw_CenteredText(dateBtn);
+      //tint(255);
+      tint(ICONCOLOR);
+      weatherMod.displayModule(); 
+      draw_PanelLine(currMirrorRight);
+    }
 
     //keyboard.displayModule(); 
     
     // we need to create something that draws the time/date buttons as long as the mirror is not turned off  
 
-    set_TimeAndDate();
-    draw_CenteredText(timeBtn);
-    draw_CenteredText(dateBtn);
-    //tint(255);
-    tint(ICONCOLOR);
-    weatherMod.displayModule();
+    //set_TimeAndDate();
+    //draw_CenteredText(timeBtn);
+    //draw_CenteredText(dateBtn);
+    ////tint(255);
+    //tint(ICONCOLOR);
+    //weatherMod.displayModule();
   //}
 }  
 
@@ -278,14 +301,18 @@ void draw() {
 // don't really care about this for Project 2 though. 
 void mousePressed() {  
   //initState.mouse_Pressed();
+  if (IN_SETUP)
+    mirrorSetup.mouse_Pressed();
 } 
 /////////////////////////////////////////////////////
 
 // if the mouse button is released inside a known button,  
 // keep track of which button was pressed and do click stuff 
 void mouseReleased() {  
-  mouseReleasedBothUsers(currMirrorLeft);  
-  mouseReleasedBothUsers(currMirrorRight);
+  if (!IN_SETUP){
+    mouseReleasedBothUsers(currMirrorLeft);  
+    mouseReleasedBothUsers(currMirrorRight);
+  }
 } 
 
 // updated this to have Mirror as the parameter type; we check if mouse is clicked 

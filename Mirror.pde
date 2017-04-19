@@ -66,6 +66,10 @@ class Mirror extends Panel {
     widgetFreeSpace = new ArrayList<Point>();
   }
   
+  // created this so that we can call it on MirrorSetup 
+  // when it is the "current mirror state"
+  //public void mouse_Pressed(){ }
+  
   public boolean btn_Clicked(Button btn){
     return btn.is_MouseOverItem();
   }
@@ -181,26 +185,20 @@ class Mirror extends Panel {
     rectMode(CORNER);
     rect(0, locY, sidePadding, szHeight);  // left outer padding
        
-      //stroke(0);
-      draw_PanelLine(leftPanel);      
+      //draw_PanelLine(currMirrorRight.leftPanel);      
       leftPanel.draw_ButtonPanel();   //<>// //<>//
       
-      //strokeWeight(2.0);
-      //stroke(0,0,255);
-      draw_PanelLine(centerPanel);   //<>// //<>//
+      //draw_PanelLine(centerPanel);   //<>// //<>//
             
       centerPanel.draw_ButtonPanel();        //<>// //<>//
-      // TESTING SOMETHING!
-      //stroke(10); strokeWeight(0.5);
-      draw_GridLines(centerPanel);  
+
+      //draw_GridLines(centerPanel);  
       
-      //strokeWeight(2.0);
-      //stroke(PINK);
-      draw_PanelLine(rightPanel);   //<>// //<>//
+      //draw_PanelLine(rightPanel);   //<>// //<>//
       
       rightPanel.draw_ButtonPanel();   //<>// //<>//
-      line(rightPanel.locX+rightPanel.szWidth, rightPanel.locY, 
-          rightPanel.locX+rightPanel.szWidth, rightPanel.szHeight);
+      //line(rightPanel.locX+rightPanel.szWidth, rightPanel.locY, 
+      //    rightPanel.locX+rightPanel.szWidth, rightPanel.szHeight);
     
     noStroke();      
     fill(215);  
@@ -214,13 +212,15 @@ class Mirror extends Panel {
     rect(0, locY, locX, szHeight);  // left outer padding
     rect(locX+mirrorWidth, locY, sidePadding, szHeight);  // right outer padding
   }
-        //<>//
-  // just to test where the boundaries are!
+
+  // so we know where the side panels are on the mirrors 
   public void draw_PanelLine(Panel p){
-    stroke(0);   //<>// //<>//
-    line(p.locX, p.locY, p.locX, p.szHeight);  //<>// //<>//
-  }    //<>//
-  
+    stroke(100);   //<>//
+    line(p.locX, p.locY, p.locX, p.szHeight);  //<>//
+  }   
+    
+        //<>//
+  // testing purposes  //<>// //<>// //<>//
   public void draw_GridLines(ButtonPanel p){
     int i;    
     // line is (startX, startY, endX, endY)

@@ -1,3 +1,5 @@
+class SetupState {
+
 color bg_default = color(197, 214, 224);
 color bg;
 color hover_tint = color(0, 153, 204);
@@ -641,8 +643,8 @@ int lang;
 
 
 
-void setup() {
-  size(2732, 1536);
+void setup_SetupState() {
+  //size(2732, 1536);
   language = new eLanguage();
   state = new eState();
 
@@ -1224,7 +1226,7 @@ void draw_state(int s) {
   }
 }
 
-void draw() {
+void draw_SetupState() {
   draw_state(st);
 }
 
@@ -1269,7 +1271,7 @@ void draw_wifi_instance(int i) {
   }
 }
 
-void mousePressed() {
+void mouse_Pressed() {
   switch(st) {
     case eState.SETUP_LANGUAGE:
       for (int i = 0; i < strLanguages.length; i++) {
@@ -1429,6 +1431,8 @@ void mousePressed() {
       else {
       
       }
+      // added this so that we know which state to draw :)
+      IN_SETUP = false;
       break;
     case eState.WIFI_ERROR:
       if(back_button.isMouseOver()) {
@@ -1469,3 +1473,5 @@ void mousePressed() {
       break;
   }
 }
+
+} // end of giant SetupState class
