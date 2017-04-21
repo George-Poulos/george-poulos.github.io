@@ -231,7 +231,7 @@ void setup() {
   // chose these numbers cause the mirror is 80"x45" and this 
   // is roughly the same ratio.
 
-  size(1600,900);
+  size(2732, 1536);
   //size(2732, 1536);
   
   //initState = new initialize();

@@ -1,3 +1,4 @@
+class SetupState{
 color bg_default = color(197, 214, 224);
 color bg;
 color hover_tint = color(0, 153, 204);
@@ -626,8 +627,8 @@ class eLanguage {
 eLanguage language;
 int lang;
 
-void setup() {
-  size(2732, 1536);
+void setup_SetupState() {
+  //size(2732, 1536);
   language = new eLanguage();
   state = new eState();
   panel = new ePanel();
@@ -1379,7 +1380,7 @@ void draw_state(int s) {
   }
 }
 
-void draw() {
+void draw_SetupState() {
   draw_state(st);
 }
 
@@ -1425,7 +1426,7 @@ void draw_wifi_instance(int i) {
   back_menu.disp();
 }
 
-void mousePressed() {
+void mouse_Pressed() {
   for(int i = 0; i < 2; i++) {
     if(isPanelActive[i]) {
       switch(panels[i]) {
@@ -1731,4 +1732,5 @@ void mousePressed() {
       }
       break;
   }
+}
 }
