@@ -1,5 +1,3 @@
-class SetupState {
-
 color bg_default = color(197, 214, 224);
 color bg;
 color hover_tint = color(0, 153, 204);
@@ -28,9 +26,10 @@ String fileDirectory = "Data/";
 float font_size_large;
 float font_size_small;
 float spacing;
-//JSONArray json_wifi;
 int wifi_instance;
-String input_password;
+String[] input_password = {"", "", ""};
+int activeKb = 2;  // 0 is left, 1 is right, 2 is center
+String[] panel_inputs = {"", ""};
 String input_username;
 String input_location;
 int max_pass_length;
@@ -38,7 +37,10 @@ String strExt = "-512.png";
 int length_input = 12;
 int length_pin = 4;
 int nUsers = 0;
-int maxUsers = 3;
+int nPasswords = 0;
+int maxUsers = 4;
+int userOnLeft = -1;
+int userOnRight = -1;
 String[] usernames = {};
 String[] passwords = {};
 String location = "chicago";
@@ -50,12 +52,14 @@ int nMinute = 0;
 boolean isAM = true;
 boolean wasTimeSet = false;
 String[] daysInMonth = {"31", "29", "31", "30", "31", "30", "31", "31", "30", "31", "30", "31"};
-boolean isActiveLeft = false;
-boolean isActiveRight = false;
+boolean[] isPanelActive = {false, false};
+boolean[] isDockActive = {false, false};
 boolean isActiveCenter = false;
 float ytop;
 String strTemperature = "61";
 float cornerRadius = 5;
+float[] xOffset = {0, 0};
+int[] loggedUser = {-1, -1};
 
 String[][] wifi_spots = {
   {"super-wifi", "full", ""},
@@ -159,6 +163,12 @@ String[] strError = {
   "Contraseña incorrecta, vuelve a intentarlo."
 };
 
+String[] strError2 = {
+  "Wrong PIN, try again.", 
+  "Mauvais code PIN, essayez à nouveau.", 
+  "PIN incorrecto, intente de nuevo."
+};
+
 String[] strBack = {
   "back", 
   "reculer", 
@@ -219,6 +229,11 @@ String[][] strMonths = {
   {"enero", "feb.", "marzo", "abr.", "mayo", "jun.", "jul.", "agosto", "sept.", "oct.", "nov.", "dic."}
 };
 
+String[] strDockApps = {
+  "dock_email", "dock_facebook", "dock_health", "dock_instagram", "dock_map", "dock_music",
+  "dock_news", "dock_schedule", "dock_settings", "dock_twitter", "dock_youtube"
+};
+
 class bt {
   PImage icon;
   float x;
@@ -227,26 +242,6 @@ class bt {
   boolean active;
   boolean isImg;
   String txt;
-/*
-  bt(float xpos, float ypos, float sz, PImage pic, boolean clickable) {
-    icon = pic;
-    x = xpos;
-    y = ypos;
-    size = sz;
-    active = clickable;
-    isImg = true;
-  }
-
-  bt(float xpos, float ypos, float sz, PImage pic, String s, boolean clickable) {
-    icon = pic;
-    txt = s;
-    x = xpos;
-    y = ypos;
-    size = sz;
-    active = clickable;
-    isImg = true;
-  }
-*/
 
   bt(float xpos, float ypos, float sz, String pic, boolean clickable, boolean isPic) {
     pic = fileDirectory + pic;
@@ -330,7 +325,6 @@ class bt {
     float y2 = y + hsz;
     if (!isImg) {
       float adjustment = font_size_small*0.3;
-      //x1 -= txt.length()*adjustment;
       x2 += txt.length()*1.8*adjustment;
       y1 -= 2*adjustment;
     }
@@ -380,7 +374,6 @@ class Keyrow {
       String letter = "" + mapping.charAt(i);
       String letterext = letter + ".png";
       sz = icon_size_small;
-      //keys[i] = new bt(0, 0, sz, loadImage(letterext), letter, true);
       keys[i] = new bt(0, 0, sz, letterext, letter, true, true);
     }
   }
@@ -407,8 +400,8 @@ class Keyrow {
   void update() {
     for (int i = 0; i < n; i++) {
       if (keys[i].isMouseOver()) {
-        if (input_password.length() < max_pass_length) {
-          input_password += keys[i].getText();
+        if (input_password[activeKb].length() < max_pass_length) {
+          input_password[activeKb] += keys[i].getText();
         }
       }
     }
@@ -420,8 +413,10 @@ class kb {
   float y;
   Keyrow[] rows;
   int nrows;
+  int id;
 
-  kb(float xpos, float ypos) {
+  kb(float xpos, float ypos, int whichKb) {
+    id = whichKb;
     float padding = icon_size_small*1.1;
     x = xpos;
     y = ypos;
@@ -460,6 +455,7 @@ class kb {
   }
 
   void update() {
+    activeKb = id;
     max_pass_length = length_input;
     for (int i = 0; i < nrows; i++) {
       rows[i].update();
@@ -479,8 +475,10 @@ class np {
   float y;
   Keyrow[] rows;
   int nrows;
+  int id;
 
-  np(float xpos, float ypos) {
+  np(float xpos, float ypos, int whichNp) {
+    id = whichNp;
     x = xpos;
     y = ypos;
     float x2;
@@ -488,7 +486,7 @@ class np {
     float padding = icon_size_small*1.1;
     nrows = 4;
     rows = new Keyrow[nrows];
-    rows[0] = new Keyrow("789");
+    rows[0] = new Keyrow("123");
     x2 = x;
     y2 = y;
     for (int i = 0; i < rows[0].getLength(); i++) {
@@ -503,7 +501,7 @@ class np {
       x2 += padding;
     }
     y2 += padding;
-    rows[2] = new Keyrow("123");
+    rows[2] = new Keyrow("789");
     x2 = x;
     for (int i = 0; i < rows[2].getLength(); i++) {
       rows[2].setKey(i, x2, y2);
@@ -525,6 +523,7 @@ class np {
   }
 
   void update() {
+    activeKb = id;
     max_pass_length = length_pin;
     for (int i = 0; i < nrows; i++) {
       rows[i].update();
@@ -534,7 +533,9 @@ class np {
 
 
 kb osk;
+kb[] panel_kbs;
 np osnp;
+np[] panel_nps;
 bt power_button;
 bt power_button_left;
 bt power_button_right;
@@ -547,6 +548,7 @@ bt setup_status_icon_fill;
 bt setup_status_icon_empty;
 bt setup_user_icon;
 bt next_menu;
+bt back_menu;
 bt[] setup_language_texts;
 bt[] setup_wifi_texts;
 bt[] setup_wifi_icons;
@@ -560,25 +562,30 @@ bt button_am;
 bt button_pm;
 bt weather_icon;
 
-/*
-enum State {
-  OUT_OF_BOX, 
-  SETUP, 
-  SETUP_WIFI2, 
-  SETUP_TIME_HOUR, 
-  SETUP_TIME_MINUTE, 
-  SETUP_TIME_AMPM, 
-  SETUP_DATE_MONTH, 
-  SETUP_DATE_DAY, 
-  SETUP_DATE_YEAR, 
-  IDLE, 
-  WIFI_ERROR, 
-  CREATE_USER, 
-  CREATE_USER2, 
-  CREATE_USER3
-};
-State state;
-*/
+bt[] panel_user_icon;
+bt[] panel_create_user_text;
+bt[] panel_skip_user_text;
+bt[][] panel_usernames_text;
+bt[] panel_enter_button;
+bt[] panel_clear_button;
+bt[] panel_back_button;
+bt[] panel_apps_button;
+
+class ePanel {
+  final static int OFF = 0;
+  final static int SELECT_USER = 1;
+  final static int SELECT_USER_PIN = 2;
+  final static int SELECT_USER_PIN_ERROR = 3;
+  final static int CREATE_USER = 4;
+  final static int CREATE_USER_PIN = 5;
+  final static int ACTIVE = 6;
+  
+  ePanel() {
+    // empty
+  }
+}
+ePanel panel;
+int[] panels = {ePanel.OFF, ePanel.OFF};
 
 class eState {
   final static int SETUP_LANGUAGE = 0;
@@ -607,46 +614,23 @@ class eState {
 eState state;
 int st;
 
-/*
-enum Stp {
-  LANGUAGE, 
-  WIFI, 
-  TIME, 
-  DATE, 
-  LOCATION
-};
-*/
-
-/*
-enum Languages {
-  ENGLISH, 
-  FRENCH, 
-  SPANISH
-};
-Languages lang;
-*/
-
 class eLanguage {
   final static int ENGLISH = 0;
   final static int FRENCH = 1;
   final static int SPANISH = 2;
   
   eLanguage() {
-    
+    // empty
   }
 }
 eLanguage language;
 int lang;
 
-
-//Stp isetup;
-
-
-
-void setup_SetupState() {
-  //size(2732, 1536);
+void setup() {
+  size(2732, 1536);
   language = new eLanguage();
   state = new eState();
+  panel = new ePanel();
 
 /*
   // for testing purposes
@@ -678,13 +662,8 @@ void setup_SetupState() {
 
   bg = bg_default;
   background(bg);
-  //st = eState.OUT_OF_BOX;
   st = eState.OUT_OF_BOX;
-  /*
-  power_button = new bt(xmid, ybottom, icon_size_small, loadImage("power-512.png"), true);
-  power_button_left = new bt(xleftmid, ybottom, icon_size_small, loadImage("power-512.png"), true);
-  power_button_right = new bt(xrightmid, ybottom, icon_size_small, loadImage("power-512.png"), true);
-  */
+  
   power_button = new bt(xmid, ybottom, icon_size_small, "power-512.png", true, true);
   power_button_left = new bt(xleftmid, ybottom, icon_size_small, "power-512.png", true, true);
   power_button_right = new bt(xrightmid, ybottom, icon_size_small, "power-512.png", true, true);
@@ -696,18 +675,8 @@ void setup_SetupState() {
   xfooter = xmid;
   yfooter = height*0.9;
 
-  //isetup = Stp.LANGUAGE;
-  /*
-  setup_language_icon = new bt(xheader, yheader, icon_size_large, loadImage("language-512.png"), false);
-  setup_wifi_icon = new bt(xheader, yheader, icon_size_large, loadImage("wifi-512.png"), false);
-  setup_time_icon = new bt(xheader, yheader, icon_size_large, loadImage("clock-512.png"), false);
-  setup_date_icon = new bt(xheader, yheader, icon_size_large, loadImage("calendar-512.png"), false);
-  setup_location_icon = new bt(xheader, yheader, icon_size_large, loadImage("location-512.png"), false);
-  setup_status_icon_fill = new bt(0, 0, icon_size_small, loadImage("circle-fill-512.png"), false);
-  setup_status_icon_empty = new bt(0, 0, icon_size_small, loadImage("circle-empty-512.png"), false);
-  setup_user_icon = new bt(xheader, yheader, icon_size_large, loadImage("user-512.png"), false);
-  */
-  next_menu = new bt(xfooter + 2.5*spacing, yfooter*1.01, font_size_small, "ERROR", true);
+  next_menu = new bt(xfooter + 2.5*spacing, yfooter*1.016, font_size_small, "ERROR", true);
+  back_menu = new bt(xfooter - 2.5*spacing, yfooter*1.016, font_size_small, "ERROR", true);
   
   setup_language_icon = new bt(xheader, yheader, icon_size_large, "language-512.png", false, true);
   setup_wifi_icon = new bt(xheader, yheader, icon_size_large, "wifi-512.png", false, true);
@@ -723,26 +692,17 @@ void setup_SetupState() {
     setup_language_texts[i] = new bt(0, 0, font_size_small, strLanguages[i], true);
   }
 
-  //json_wifi = loadJSONArray("wifi.json");
-  //int wifi_count = json_wifi.size();
   int wifi_count = wifi_spots.length;
   setup_wifi_texts = new bt[wifi_count];
   setup_wifi_icons = new bt[wifi_count];
   for (int i = 0; i < wifi_count; i++) {
-    //JSONObject obj  = json_wifi.getJSONObject(i);
-    //setup_wifi_texts[i] = new bt(0, 0, font_size_small, obj.getString("id"), true);
-    //String s = "wifi-signal-" + obj.getString("strength") + strExt;
-    //setup_wifi_icons[i] = new bt(0, 0, icon_size_small, loadImage(s), false);
-    
     String s = "wifi-signal-" + wifi_spots[i][1] + strExt;
     setup_wifi_texts[i] = new bt(0, 0, font_size_small, wifi_spots[i][0], true);
-    //setup_wifi_icons[i] = new bt(0, 0, icon_size_small, loadImage(s), false);
     setup_wifi_icons[i] = new bt(0, 0, icon_size_small, s, false, true);
   }
 
-  input_password = "";
-  osk = new kb(xheader, height*0.6);
-  osnp = new np(xheader_text, height*0.6);
+  osk = new kb(xheader, height*0.6, 2);
+  osnp = new np(xheader_text, height*0.6, 2);
   enter_input = new bt(xfooter + 2.5*spacing, height*0.6 + 3.3*icon_size_small, font_size_small, strEnter[lang], true);
   clear_button = new bt(xfooter + 2.5*spacing, height*0.5 + 3.3*icon_size_small, font_size_small, strClear[lang], true);
 
@@ -753,8 +713,36 @@ void setup_SetupState() {
 
   button_am = new bt(xmid-spacing, ymid, font_size_large, "AM", true);
   button_pm = new bt(xmid+spacing, ymid, font_size_large, "PM", true);
-  //weather_icon = new bt(xmid+0.90*spacing, height*0.07, icon_size_large*1.5, loadImage("partly-cloudy-512.png"), false);
   weather_icon = new bt(xmid+0.90*spacing, height*0.07, icon_size_large*1.5, "partly-cloudy-512.png", false, true);
+  
+  panel_user_icon = new bt[2];
+  panel_create_user_text = new bt[2];
+  panel_skip_user_text = new bt[2];
+  panel_usernames_text = new bt[2][maxUsers];
+  panel_kbs = new kb[2];
+  panel_nps = new np[2];
+  panel_enter_button = new bt[2];
+  panel_clear_button = new bt[2];
+  panel_back_button = new bt[2];
+  panel_apps_button = new bt[2];
+  xOffset[0] = -(width/4);  // left side offset
+  xOffset[1] = width/4;  // right side offset
+  for(int i = 0; i < 2; i++) {
+    panel_user_icon[i] = new bt(xheader + xOffset[i], yheader, icon_size_large, "user-512.png", false, true);
+    panel_create_user_text[i] = new bt(xheader_text + xOffset[i], yheader_text+3.5*spacing, font_size_small*0.7, "ERROR", true);
+    panel_skip_user_text[i] = new bt(xheader_text + 3.0*spacing + xOffset[i], yheader_text+3.5*spacing, font_size_small*0.7, "ERROR", true);
+    float y = yheader_text+0.7*spacing;
+    for(int j = 0; j < maxUsers; j++) {
+      panel_usernames_text[i][j] = new bt(xheader_text + xOffset[i], y, font_size_small, "ERROR", true);
+      y += 0.6*spacing;
+    }
+    panel_kbs[i] = new kb(xheader - spacing + xOffset[i], height*0.6, i);
+    panel_nps[i] = new np(xheader_text + xOffset[i], height*0.6, i);
+    panel_enter_button[i] = new bt(xfooter + 1.5*spacing + xOffset[i], height*0.6 + 3.3*icon_size_small, font_size_small, "ERROR", true);
+    panel_clear_button[i] = new bt(xfooter + 1.5*spacing + xOffset[i], height*0.5 + 3.3*icon_size_small, font_size_small, "ERROR", true);
+    panel_back_button[i] = new bt(xheader + xOffset[i], height*0.6 + 3.3*icon_size_small, font_size_small, "ERROR", true);
+    panel_apps_button[i] = new bt(xmid + xOffset[i], ybottom, icon_size_small, "dock_home.png", true, true);
+  }
 }
 
 void draw_status_bar(int step) {
@@ -812,13 +800,20 @@ void draw_wifi_content() {
 
 
 boolean check_wifi() {
-  //JSONObject obj = json_wifi.getJSONObject(wifi_instance);
-  //String pw = obj.getString("password");
-  
   String pw = wifi_spots[wifi_instance][2];
-  if (pw.equals(input_password)) {
+  if (pw.equals(input_password[activeKb])) {
     return true;
   } else {
+    return false;
+  }
+}
+
+boolean check_password(int sd) {
+  String pp = passwords[loggedUser[sd]];
+  if(pp.equals(input_password[sd])) {
+    return true;
+  }
+  else {
     return false;
   }
 }
@@ -829,25 +824,44 @@ void draw_setup(int s) {
   textAlign(LEFT);
   switch(s) {
   case eState.SETUP_LANGUAGE:
+    // CHANGE LANGUAGE FOR BUTTONS HERE!
     setup_language_icon.disp();
     text(strLang[lang], xheader_text, yheader_text);
     next_menu.changeText(strNext[lang]);
+    back_menu.changeText(strBack[lang]);
+    back_menu.setPos(xfooter - (2.65*spacing + strBack[lang].length()*0.43*font_size_small), yfooter*1.016);
     enter_input.changeText(strEnter[lang]);
     skip_wifi_button.changeText(strSkip[lang]);
     skip_button.changeText(strSkip2[lang]);
     draw_language_content();
     create_new_user.changeText(strCreateUser[lang]);
+    next_menu.disp();
+    back_menu.disp();
+    
+    for(int i = 0; i < 2; i++) {
+      panel_create_user_text[i].changeText(strCreateUser[lang]);
+      panel_skip_user_text[i].changeText(strSkip2[lang]);
+      panel_enter_button[i].changeText(strEnter[lang]);
+      panel_clear_button[i].changeText(strClear[lang]);
+      panel_back_button[i].changeText(strBack[lang]);
+    }
     break;
   case eState.SETUP_WIFI:
     text(strWifi[lang], xheader_text, yheader_text);
     setup_wifi_icon.disp();
     draw_wifi_content();
+    skip_wifi_button.disp();
+    back_menu.disp();
     break;
   case eState.SETUP_TIME:
+    next_menu.disp();
+    back_menu.disp();
     break;
   case eState.SETUP_DATE:
     text(strDate[lang], xheader_text, yheader_text);
+    next_menu.disp();
     setup_date_icon.disp();
+    back_menu.disp();
     break;
   case eState.SETUP_LOCATION:
     text(strLocation[lang], xheader_text, yheader_text);
@@ -859,20 +873,16 @@ void draw_setup(int s) {
     text(strCity[lang], xicon, y);
     textAlign(LEFT);
     textSize(font_size_small);
-    text(input_password, xheader_text, y);
+    text(input_password[activeKb], xheader_text, y);
     osk.disp();
-    if (input_password.length() > 0) {
+    if (input_password[activeKb].length() > 0) {
       enter_input.disp();
       clear_button.disp();
     }
+    back_menu.disp();
     break;
   }
   draw_status_bar(s);
-  if (s != eState.SETUP_WIFI) {
-    next_menu.disp();
-  } else {
-    skip_wifi_button.disp();
-  }
 }
 
 void draw_time_and_date() {
@@ -893,11 +903,11 @@ void draw_time_and_date() {
   }
   if (wasTimeSet) {  // user set time and date
     timeString = h + ":" + minuteString + " " + endString;
-    dateString = nMonth + "." + nDay + "." + nYear;
+    dateString = strMonths[lang][nMonth] + " " + nDay + ", " + nYear;
   }
   else {
     timeString = h + ":" + minuteString + " " + endString;
-    dateString = month() + "." + day() + "." + year();
+    dateString = strMonths[lang][month()-1] + " " + day() + ", " + year();
   }
   textSize(font_size_small*1.2);
   textAlign(CENTER);
@@ -926,21 +936,149 @@ void draw_top_pane() {
   draw_weather();
 }
 
-void draw_left_pane() {
-  if(isActiveLeft) {
-  
+void draw_panel_select_user(int sd) {
+  textSize(font_size_large);
+  float y = yheader_text;
+  text(strUsers[lang], xheader_text+xOffset[sd], y);
+  panel_user_icon[sd].disp();
+  if (nUsers < maxUsers) {
+    panel_create_user_text[sd].disp();
   }
-  else {
-    power_button_left.disp();
+  panel_skip_user_text[sd].disp();
+  for(int i = 0; i < nPasswords; i++) {
+    panel_usernames_text[sd][i].changeText(usernames[i]);
+    panel_usernames_text[sd][i].disp();
   }
 }
 
-void draw_right_pane() {
-  if(isActiveRight) {
-  
+void draw_panel_create_user(int sd) {
+  panel_enter_button[sd].setPos(xfooter + 1.5*spacing + xOffset[sd], height*0.6 + 3.3*icon_size_small);
+  panel_clear_button[sd].setPos(xfooter + 1.5*spacing + xOffset[sd], height*0.5 + 3.3*icon_size_small);
+  textSize(font_size_large);
+  float y = yheader_text;
+  text(strUsers[lang], xheader_text+xOffset[sd], y);
+  panel_user_icon[sd].disp();
+  panel_kbs[sd].disp();
+  y += spacing;
+  float xicon = xheader*1.05;
+  textAlign(RIGHT);
+  textSize(font_size_small*0.5);
+  text(strName[lang], xicon+xOffset[sd], y);
+  textAlign(LEFT);
+  textSize(font_size_small);
+  text(input_password[sd], xheader_text + xOffset[sd], y);
+  if(input_password[sd].length() > 0) {
+    panel_enter_button[sd].disp();
+    panel_clear_button[sd].disp();
   }
-  else {
-    power_button_right.disp();
+}
+
+void draw_panel_create_user_pin(int sd) {
+  panel_enter_button[sd].setPos(xfooter + 0.7*spacing + xOffset[sd], height*0.6 + 3.3*icon_size_small);
+  panel_clear_button[sd].setPos(xfooter + 0.7*spacing + xOffset[sd], height*0.5 + 3.3*icon_size_small);
+  textSize(font_size_large);
+  float y = yheader_text;
+  text(strUsers[lang], xheader_text+xOffset[sd], y);
+  panel_user_icon[sd].disp();
+  panel_nps[sd].disp();
+  y += spacing;
+  float xicon = xheader*1.05;
+  textAlign(RIGHT);
+  textSize(font_size_small*0.5);
+  text(strPIN[lang], xicon+xOffset[sd], y);
+  textAlign(LEFT);
+  textSize(font_size_small);
+  text(input_password[sd], xheader_text + xOffset[sd], y);
+  if(input_password[sd].length() > 0) {
+    panel_clear_button[sd].disp();
+  }
+  panel_enter_button[sd].disp();
+}
+
+void draw_panel_select_user_pin(int sd) {
+  panel_enter_button[sd].setPos(xfooter + 0.7*spacing + xOffset[sd], height*0.6 + 3.3*icon_size_small);
+  panel_clear_button[sd].setPos(xfooter + 0.7*spacing + xOffset[sd], height*0.5 + 3.3*icon_size_small);
+  textSize(font_size_large);
+  float y = yheader_text;
+  text(strUsers[lang], xheader_text+xOffset[sd], y);
+  panel_user_icon[sd].disp();
+  panel_nps[sd].disp();
+  y += spacing;
+  float xicon = xheader*1.05;
+  textAlign(RIGHT);
+  textSize(font_size_small*0.5);
+  text(strPIN[lang], xicon+xOffset[sd], y);
+  textAlign(LEFT);
+  textSize(font_size_small);
+  draw_pass(input_password[sd], xheader_text + xOffset[sd], y);
+  if(input_password[sd].length() > 0) {
+    panel_clear_button[sd].disp();
+  }
+  panel_enter_button[sd].disp();
+}
+
+void draw_panel_select_user_pin_error(int sd) {
+  panel_back_button[sd].setPos(xheader_text+spacing+xOffset[sd], height*0.7);
+  textSize(font_size_large);
+  float y = yheader_text;
+  text(strUsers[lang], xheader_text+xOffset[sd], y);
+  panel_user_icon[sd].disp();
+  y += spacing;
+  float xicon = xheader*1.05;
+  textSize(font_size_small*0.7);
+  text(strError2[lang], xicon+xOffset[sd], y);
+  panel_back_button[sd].disp();
+}
+
+void draw_app_dock(int sd) {
+  if(isDockActive[sd]) {
+    
+  }
+}
+
+void draw_panel_active(int sd) {
+  textSize(font_size_small*0.7);
+  if(sd == 0) { // left user
+    textAlign(LEFT);
+    text(usernames[loggedUser[sd]], 0.013*width, height*0.05);
+  }
+  else if (sd == 1) { // right user
+    textAlign(RIGHT);
+    text(usernames[loggedUser[sd]], 0.983*width, height*0.05);
+  }
+  textAlign(LEFT);
+  panel_apps_button[sd].disp();
+  
+  draw_app_dock(sd);
+}
+
+void draw_panes(int sd) {
+  if(isPanelActive[sd]) {
+    switch(panels[sd]) {
+      case ePanel.OFF:
+        break;
+      case ePanel.SELECT_USER:
+        draw_panel_select_user(sd);
+        break;
+      case ePanel.SELECT_USER_PIN:
+        draw_panel_select_user_pin(sd);
+        break;
+      case ePanel.SELECT_USER_PIN_ERROR:
+        draw_panel_select_user_pin_error(sd);
+        break;
+      case ePanel.CREATE_USER:
+        if(nUsers >= maxUsers) {
+          panels[sd] = ePanel.SELECT_USER;
+        }
+        draw_panel_create_user(sd);
+        break;
+      case ePanel.CREATE_USER_PIN:
+        draw_panel_create_user_pin(sd);
+        break;
+      case ePanel.ACTIVE:
+        draw_panel_active(sd);
+        break;
+    }
   }
 }
 
@@ -953,8 +1091,14 @@ void draw_idle() {
   if (isActiveCenter) {
     draw_center_pane();
   } else {
-    draw_left_pane();
-    draw_right_pane();
+    draw_panes(0);
+    draw_panes(1);
+  }
+  if(!isPanelActive[0]) {
+    power_button_left.disp();
+  }
+  if(!isPanelActive[1]) {
+    power_button_right.disp();
   }
 }
 
@@ -964,7 +1108,7 @@ void draw_wifi_error() {
   textSize(font_size_small);
   text(strError[lang], xmid, ymid);
   back_button.disp();
-  input_password = "";
+  input_password[activeKb] = "";
 }
 
 void draw_create_user() {
@@ -990,9 +1134,9 @@ void draw_create_user2() {
   text(strName[lang], xicon, y);
   textAlign(LEFT);
   textSize(font_size_small);
-  text(input_password, xheader_text, y);
+  text(input_password[activeKb], xheader_text, y);
   osk.disp();
-  if (input_password.length() > 0) {
+  if (input_password[activeKb].length() > 0) {
     enter_input.disp();
     clear_button.disp();
   }
@@ -1012,11 +1156,13 @@ void draw_create_user3() {
   textSize(font_size_small*0.5);
   text(strPIN[lang], xicon, y);
   osnp.disp();
-  draw_pass(input_password, x, y);
-  if (input_password.length() > 0) {
-    enter_input.disp();
+  textAlign(LEFT);
+  textSize(font_size_small);
+  text(input_password[2], x, y);
+  if (input_password[activeKb].length() > 0) {
     clear_button.disp();
   }
+  enter_input.disp();
 }
 
 void draw_setup_time_hour() {
@@ -1025,7 +1171,7 @@ void draw_setup_time_hour() {
   textAlign(LEFT);
   text(strTime[lang], xheader_text, yheader_text);
   setup_time_icon.disp();
-  draw_status_bar(st);
+  draw_status_bar(eState.SETUP_TIME);
 
   float y = yheader_text + spacing;
   float xicon = xheader*1.05;
@@ -1034,15 +1180,16 @@ void draw_setup_time_hour() {
   text(strHour[lang], xicon, y);
   textAlign(LEFT);
   textSize(font_size_large);
-  if (parseInt(input_password) > 12) {
-    input_password = "12";
+  if (parseInt(input_password[activeKb]) > 12) {
+    input_password[activeKb] = "12";
   }
-  text(input_password, xheader_text, y);
+  text(input_password[activeKb], xheader_text, y);
   osnp.disp();
-  if (input_password.length() > 0) {
+  if (input_password[activeKb].length() > 0) {
     enter_input.disp();
     clear_button.disp();
   }
+  back_menu.disp();
 }
 
 void draw_setup_time_minute() {
@@ -1051,7 +1198,7 @@ void draw_setup_time_minute() {
   textAlign(LEFT);
   text(strTime[lang], xheader_text, yheader_text);
   setup_time_icon.disp();
-  draw_status_bar(st);
+  draw_status_bar(eState.SETUP_TIME);
 
   float y = yheader_text + spacing;
   float xicon = xheader*1.05;
@@ -1060,15 +1207,16 @@ void draw_setup_time_minute() {
   text(strMinute[lang], xicon, y);
   textAlign(LEFT);
   textSize(font_size_large);
-  if (parseInt(input_password) > 59) {
-    input_password = "59";
+  if (parseInt(input_password[activeKb]) > 59) {
+    input_password[activeKb] = "59";
   }
-  text(input_password, xheader_text, y);
+  text(input_password[activeKb], xheader_text, y);
   osnp.disp();
-  if (input_password.length() > 0) {
+  if (input_password[activeKb].length() > 0) {
     enter_input.disp();
     clear_button.disp();
   }
+  back_menu.disp();
 }
 
 void draw_setup_time_ampm() {
@@ -1077,7 +1225,7 @@ void draw_setup_time_ampm() {
   textAlign(LEFT);
   text(strTime[lang], xheader_text, yheader_text);
   setup_time_icon.disp();
-  draw_status_bar(st);
+  draw_status_bar(eState.SETUP_TIME);
   if (isAM) {
     button_am.disp(selected_tint);
     button_pm.disp();
@@ -1086,6 +1234,7 @@ void draw_setup_time_ampm() {
     button_pm.disp(selected_tint);
   }
   next_menu.disp();
+  back_menu.disp();
 }
 
 void draw_setup_date_month() {
@@ -1094,7 +1243,7 @@ void draw_setup_date_month() {
   textAlign(LEFT);
   text(strDate[lang], xheader_text, yheader_text);
   setup_date_icon.disp();
-  draw_status_bar(st);
+  draw_status_bar(eState.SETUP_DATE);
 
   float y = yheader_text + spacing;
   float xicon = xheader*1.05;
@@ -1103,15 +1252,18 @@ void draw_setup_date_month() {
   text(strMonth[lang], xicon, y);
   textAlign(LEFT);
   textSize(font_size_large);
-  if (parseInt(input_password) > 12) {
-    input_password = "12";
+  if (parseInt(input_password[activeKb]) > 12) {
+    input_password[activeKb] = "12";
   }
-  text(input_password, xheader_text, y);
+  if(input_password[activeKb].length() > 0) {
+    text(input_password[activeKb] + " (" + strMonths[lang][parseInt(input_password[activeKb])-1] + ")", xheader_text, y);
+  }
   osnp.disp();
-  if (input_password.length() > 0) {
+  if (input_password[activeKb].length() > 0) {
     enter_input.disp();
     clear_button.disp();
   }
+  back_menu.disp();
 }
 
 void draw_setup_date_day() {
@@ -1120,7 +1272,7 @@ void draw_setup_date_day() {
   textAlign(LEFT);
   text(strDate[lang], xheader_text, yheader_text);
   setup_date_icon.disp();
-  draw_status_bar(st);
+  draw_status_bar(eState.SETUP_DATE);
 
   float y = yheader_text + spacing;
   float xicon = xheader*1.05;
@@ -1129,15 +1281,16 @@ void draw_setup_date_day() {
   text(strDay[lang], xicon, y);
   textAlign(LEFT);
   textSize(font_size_large);
-  if (parseInt(input_password) > parseInt(daysInMonth[nMonth-1])) {
-    input_password = daysInMonth[nMonth-1];
+  if (parseInt(input_password[activeKb]) > parseInt(daysInMonth[nMonth-1])) {
+    input_password[activeKb] = daysInMonth[nMonth-1];
   }
-  text(input_password, xheader_text, y);
+  text(input_password[activeKb], xheader_text, y);
   osnp.disp();
-  if (input_password.length() > 0) {
+  if (input_password[activeKb].length() > 0) {
     enter_input.disp();
     clear_button.disp();
   }
+  back_menu.disp();
 }
 
 void draw_setup_date_year() {
@@ -1146,7 +1299,7 @@ void draw_setup_date_year() {
   textAlign(LEFT);
   text(strDate[lang], xheader_text, yheader_text);
   setup_date_icon.disp();
-  draw_status_bar(st);
+  draw_status_bar(eState.SETUP_DATE);
 
   float y = yheader_text + spacing;
   float xicon = xheader*1.05;
@@ -1155,15 +1308,16 @@ void draw_setup_date_year() {
   text(strYear[lang], xicon, y);
   textAlign(LEFT);
   textSize(font_size_large);
-  if (parseInt(input_password) > 9999) {
-    input_password = "9999";
+  if (parseInt(input_password[activeKb]) > 9999) {
+    input_password[activeKb] = "9999";
   }
-  text(input_password, xheader_text, y);
+  text(input_password[activeKb], xheader_text, y);
   osnp.disp();
-  if (input_password.length() > 0) {
+  if (input_password[activeKb].length() > 0) {
     enter_input.disp();
     clear_button.disp();
   }
+  back_menu.disp();
 }
 
 void draw_state(int s) {
@@ -1172,7 +1326,6 @@ void draw_state(int s) {
     draw_out_of_box();
     break;
   case eState.SETUP_LANGUAGE:
-    //draw_setup(isetup);
     draw_setup(st);
     break;
   case eState.SETUP_WIFI:
@@ -1226,7 +1379,7 @@ void draw_state(int s) {
   }
 }
 
-void draw_SetupState() {
+void draw() {
   draw_state(st);
 }
 
@@ -1242,12 +1395,14 @@ void draw_pass(String s, float x, float y) {
 }
 
 void draw_wifi_instance(int i) {
+  enter_input.setPos(xfooter + 2.5*spacing, height*0.6 + 3.3*icon_size_small);
+  clear_button.setPos(xfooter + 2.5*spacing, height*0.5 + 3.3*icon_size_small);
   background(bg);
   textSize(font_size_large);
   textAlign(LEFT);
   text(strWifi[lang], xheader_text, yheader_text);
   setup_wifi_icon.disp();
-  draw_status_bar(st);
+  draw_status_bar(eState.SETUP_WIFI);
 
   float x = xheader_text;
   float y = yheader_text + spacing;
@@ -1259,19 +1414,87 @@ void draw_wifi_instance(int i) {
   text(strSSID[lang], xicon, y);
   y += 0.7 * spacing;
   text(strPassword[lang], xicon, y);
-  //draw_pass(input_password, x, y);
-  //osk.disp();
   enter_input.disp();
   textAlign(LEFT);
   textSize(font_size_small);
-  text(input_password, xheader_text, y);
+  text(input_password[activeKb], xheader_text, y);
   osk.disp();
-  if (input_password.length() > 0) {
+  if (input_password[activeKb].length() > 0) {
     clear_button.disp();
   }
+  back_menu.disp();
 }
 
-void mouse_Pressed() {
+void mousePressed() {
+  for(int i = 0; i < 2; i++) {
+    if(isPanelActive[i]) {
+      switch(panels[i]) {
+        case ePanel.SELECT_USER:
+          if(panel_create_user_text[i].isMouseOver()) {
+            panels[i] = ePanel.CREATE_USER;
+          }
+          else if(panel_skip_user_text[i].isMouseOver()) {
+            isPanelActive[i] = false;
+            panels[i] = ePanel.OFF;
+          }
+          else {
+            for(int j = 0; j < nPasswords; j++) {
+              if(panel_usernames_text[i][j].isMouseOver()) {
+                panels[i] = ePanel.SELECT_USER_PIN;
+                loggedUser[i] = j;
+              }
+            }
+          }
+          break;
+        case ePanel.SELECT_USER_PIN:
+          panel_nps[i].update();
+          if(panel_clear_button[i].isMouseOver()) {
+            input_password[i] = "";
+          }
+          else if(panel_enter_button[i].isMouseOver()) {
+            if(check_password(i)) {
+              panels[i] = ePanel.ACTIVE;
+            }
+            else {
+              panels[i] = ePanel.SELECT_USER_PIN_ERROR;
+            }
+            input_password[i] = "";
+          }
+          break;
+        case ePanel.SELECT_USER_PIN_ERROR:
+          if(panel_back_button[i].isMouseOver()) {
+            panels[i] = ePanel.SELECT_USER;
+          }
+          break;
+        case ePanel.CREATE_USER:
+          panel_kbs[i].update();
+          if(panel_clear_button[i].isMouseOver()) {
+            input_password[i] = "";
+          }
+          else if(panel_enter_button[i].isMouseOver()) {
+            usernames = append(usernames, input_password[i]);
+            nUsers++;
+            input_password[i] = "";
+            panels[i] = ePanel.CREATE_USER_PIN;
+          }
+          break;
+        case ePanel.CREATE_USER_PIN:
+          panel_nps[i].update();
+          if(panel_clear_button[i].isMouseOver()) {
+            input_password[i] = "";
+          }
+          else if(panel_enter_button[i].isMouseOver()) {
+            passwords = append(passwords, input_password[i]);
+            nPasswords++;
+            input_password[i] = "";
+            panels[i] = ePanel.SELECT_USER;
+          }
+          break;
+        case ePanel.ACTIVE:
+          break;
+      }
+    }
+  }
   switch(st) {
     case eState.SETUP_LANGUAGE:
       for (int i = 0; i < strLanguages.length; i++) {
@@ -1282,12 +1505,18 @@ void mouse_Pressed() {
       if(next_menu.isMouseOver()) {
         st = eState.SETUP_WIFI;
       }
+      else if(back_menu.isMouseOver()) {
+        st = eState.OUT_OF_BOX;
+      }
       break;
     case eState.SETUP_WIFI:
       if(skip_wifi_button.isMouseOver()) {
         st = eState.SETUP_TIME_HOUR;
         enter_input.setPos(xfooter + 0.8*spacing, height*0.6 + 3.3*icon_size_small);
         clear_button.setPos(xfooter + 0.8*spacing, height*0.5 + 3.3*icon_size_small);
+      }
+      else if(back_menu.isMouseOver()) {
+        st = eState.SETUP_LANGUAGE;
       }
       for (int i = 0; i < setup_wifi_texts.length; i++) {
         if (setup_wifi_texts[i].isMouseOver()) {
@@ -1300,26 +1529,29 @@ void mouse_Pressed() {
       if(next_menu.isMouseOver()) {
         st = eState.SETUP_DATE;
       }
+      else if(back_menu.isMouseOver()) {
+        st = eState.SETUP_WIFI;
+      }
       break;
     case eState.SETUP_DATE:
       if(next_menu.isMouseOver()) {
         st = eState.SETUP_LOCATION;
       }
+      else if(back_menu.isMouseOver()) {
+        st = eState.SETUP_TIME_HOUR;
+      }
       break;
     case eState.SETUP_LOCATION:
       osk.update();
       if (enter_input.isMouseOver()) {
-        location = input_password;
-        st = eState.IDLE;
+        location = input_password[activeKb];
+        st = eState.CREATE_USER;
+      }
+      else if(back_menu.isMouseOver()) {
+        st = eState.SETUP_DATE_YEAR;
       }
       else if (clear_button.isMouseOver()) {
-        input_password = "";
-      }
-      else if(next_menu.isMouseOver()) {
-        st = eState.SETUP_WIFI;
-      }
-      else if(next_menu.isMouseOver()) {
-        st = eState.CREATE_USER;
+        input_password[activeKb] = "";
       }
       break;
     case eState.OUT_OF_BOX:
@@ -1338,36 +1570,49 @@ void mouse_Pressed() {
         }
       }
       else if(clear_button.isMouseOver()) {
-        input_password = "";
+        input_password[activeKb] = "";
+      }
+      else if(back_menu.isMouseOver()) {
+        st = eState.SETUP_WIFI;
+        input_password[activeKb] = "";
       }
       break;
     case eState.SETUP_TIME_HOUR:
       osnp.update();
       if (clear_button.isMouseOver()) {
-        input_password = "";
+        input_password[activeKb] = "";
       }
       else if (enter_input.isMouseOver()) {
-        nHour = parseInt(input_password);
+        nHour = parseInt(input_password[activeKb]);
         st = eState.SETUP_TIME_MINUTE;
-        input_password = "";
+        input_password[activeKb] = "";
+      }
+      else if(back_menu.isMouseOver()) {
+        st = eState.SETUP_WIFI;
       }
       break;
     case eState.SETUP_TIME_MINUTE:
       osnp.update();
       if (clear_button.isMouseOver()) {
-        input_password = "";
+        input_password[activeKb] = "";
       }
       else if (enter_input.isMouseOver()) {
-        nMinute = parseInt(input_password);
+        nMinute = parseInt(input_password[activeKb]);
         st = eState.SETUP_TIME_AMPM;
-        input_password = "";
+        input_password[activeKb] = "";
+      }
+      else if(back_menu.isMouseOver()) {
+        st = eState.SETUP_TIME_HOUR;
       }
       break;
     case eState.SETUP_TIME_AMPM:
       if (next_menu.isMouseOver()) {
-        input_password = "";
+        input_password[activeKb] = "";
         st = eState.SETUP_DATE_MONTH;
         wasTimeSet = true;
+      }
+      else if(back_menu.isMouseOver()) {
+        st = eState.SETUP_TIME_MINUTE;
       }
       else if (button_am.isMouseOver()) {
         isAM = true;
@@ -1379,83 +1624,94 @@ void mouse_Pressed() {
     case eState.SETUP_DATE_MONTH:
       osnp.update();
       if (clear_button.isMouseOver()) {
-        input_password = "";
+        input_password[activeKb] = "";
       }
       else if (enter_input.isMouseOver()) {
-        nMonth = parseInt(input_password);
+        nMonth = parseInt(input_password[activeKb]);
         st = eState.SETUP_DATE_DAY;
-        input_password = "";
+        input_password[activeKb] = "";
+      }
+      else if(back_menu.isMouseOver()) {
+        st = eState.SETUP_TIME_AMPM;
       }
       break;
     case eState.SETUP_DATE_DAY:
       osnp.update();
       if (clear_button.isMouseOver()) {
-        input_password = "";
+        input_password[activeKb] = "";
       }
       else if (enter_input.isMouseOver()) {
-        nDay = parseInt(input_password);
+        nDay = parseInt(input_password[activeKb]);
         st = eState.SETUP_DATE_YEAR;
-        input_password = "";
+        input_password[activeKb] = "";
+      }
+      else if(back_menu.isMouseOver()) {
+        st = eState.SETUP_DATE_MONTH;
       }
       break;
     case eState.SETUP_DATE_YEAR:
       osnp.update();
       if (clear_button.isMouseOver()) {
-        input_password = "";
+        input_password[activeKb] = "";
       }
       else if (enter_input.isMouseOver()) {
-        nYear = parseInt(input_password);
+        nYear = parseInt(input_password[activeKb]);
         if (nMonth == 2 && nDay == 29 && nYear%4 > 0) {
           nDay--;
         }
         enter_input.setPos(xfooter + 2.5*spacing, height*0.6 + 3.3*icon_size_small);
         clear_button.setPos(xfooter + 2.5*spacing, height*0.5 + 3.3*icon_size_small);
         st = eState.SETUP_LOCATION;
-        input_password = "";
+        input_password[activeKb] = "";
+      }
+      else if(back_menu.isMouseOver()) {
+        st = eState.SETUP_DATE_DAY;
       }
       break;
     case eState.IDLE:
-      if(!isActiveLeft) {
+      if(!isPanelActive[0]) {
         if(power_button_left.isMouseOver()) {
-          isActiveLeft = true;
+          isPanelActive[0] = true;
+          panels[0] = ePanel.SELECT_USER;
         }
       }
       else {
       
       }
-      if(!isActiveRight) {
+      if(!isPanelActive[1]) {
         if(power_button_right.isMouseOver()) {
-          isActiveRight = true;
+          isPanelActive[1] = true;
+          panels[1] = ePanel.SELECT_USER;
         }
       }
       else {
       
       }
-      // added this so that we know which state to draw :)
-      IN_SETUP = false;
       break;
     case eState.WIFI_ERROR:
       if(back_button.isMouseOver()) {
-        st = eState.SETUP_WIFI;
+        st = eState.SETUP_WIFI2;
       }
       break;
     case eState.CREATE_USER:
       if (skip_button.isMouseOver()) {
         st = eState.IDLE;
+        panels[0] = ePanel.OFF;
+        panels[1] = ePanel.OFF;
       }
       if (create_new_user.isMouseOver()) {
         st = eState.CREATE_USER2;
-        input_password = "";
+        input_password[activeKb] = "";
       }
       break;
     case eState.CREATE_USER2:
       osk.update();
       if (clear_button.isMouseOver()) {
-        input_password = "";
+        input_password[activeKb] = "";
       } else if (enter_input.isMouseOver()) {
-        usernames = append(usernames, input_password);
+        usernames = append(usernames, input_password[activeKb]);
         nUsers++;
-        input_password = "";
+        input_password[activeKb] = "";
         st = eState.CREATE_USER3;
         enter_input.setPos(xfooter + 0.8*spacing, height*0.6 + 3.3*icon_size_small);
         clear_button.setPos(xfooter + 0.8*spacing, height*0.5 + 3.3*icon_size_small);
@@ -1464,14 +1720,15 @@ void mouse_Pressed() {
     case eState.CREATE_USER3:
       osnp.update();
       if (clear_button.isMouseOver()) {
-        input_password = "";
+        input_password[activeKb] = "";
       } else if (enter_input.isMouseOver()) {
-        passwords = append(passwords, input_password);
-        input_password = "";
+        passwords = append(passwords, input_password[activeKb]);
+        input_password[activeKb] = "";
+        nPasswords++;
         st = eState.IDLE;
+        panels[0] = ePanel.OFF;
+        panels[1] = ePanel.OFF;
       }
       break;
   }
 }
-
-} // end of giant SetupState class
