@@ -1266,7 +1266,7 @@ void draw_time_and_date() {
   }
   h = h == 0 ? 12 : h;
   if (wasTimeSet) {  // user set time and date
-    dateString = strMonths[lang][nMonth] + " " + nDay + ", " + nYear;
+    dateString = strMonths[lang][nMonth-1] + " " + nDay + ", " + nYear;
   }
   else {
     dateString = strMonths[lang][month()-1] + " " + day() + ", " + year();
@@ -1636,7 +1636,8 @@ void draw_center_pane() {
 
 void set_flux() {
   if(isFluxOn) {
-    if(hour() < 7 || hour() > 20) {
+    int hr = (hour() + offsetHour) % 24;
+    if(hr < 7 || hr > 20) {
       bg = bg_flux;
     }
     else {
