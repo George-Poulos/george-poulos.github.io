@@ -1253,8 +1253,8 @@ void draw_time_and_date() {
   
   int m = (minute() + offsetMinute) % 60;
   int h = (hour() + offsetHour) % 24;
-  if(m < nMinute) {
-    h = (h+1)%60;
+  if(m < minute()) {
+    h = (h+1)%24;
   }
   minuteString = m < 10 ? ("0" + m) : ("" + m);
   if (h < 12) {
@@ -2284,6 +2284,7 @@ void mousePressed() {
       }
       else if (enter_input.isMouseOver()) {
         nHour = parseInt(input_password[activeKb]);
+        nHour = nHour == 12 ? 0 : nHour;
         st = eState.SETUP_TIME_MINUTE;
         input_password[activeKb] = "";
       }
