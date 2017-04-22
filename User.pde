@@ -10,12 +10,14 @@ class User {
   
   String userName;
   Mirror userMirror;
+  int userState;
   
   public User(String name){
     userName = name;
   }
   
-  public void set_UserMirror(Mirror m){
+  public void set_UserMirror(Mirror m, int state){
     userMirror = m;
+    userState = state;
   }
 }
